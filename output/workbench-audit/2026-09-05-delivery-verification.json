@@ -1,0 +1,148 @@
+{
+  "checkedAt": "2026-09-05T12:27:50.789Z",
+  "productionCommit": "d6fb9f2",
+  "tests": {
+    "count": 50,
+    "passed": 50,
+    "failed": 0,
+    "log": "C:\\Users\\PC\\AppData\\Local\\Temp\\dailywrite-delivery-tests.log"
+  },
+  "build": {
+    "passed": true,
+    "mainJsKb": 471.71,
+    "gzipKb": 143.51,
+    "log": "C:\\Users\\PC\\AppData\\Local\\Temp\\dailywrite-delivery-build.log"
+  },
+  "production": {
+    "health": {
+      "ok": true,
+      "applicationId": "dailywrite-workbench",
+      "degraded": true,
+      "integrity": {
+        "status": "degraded",
+        "errorCount": 17,
+        "warningCount": 10,
+        "infoCount": 19,
+        "missingReferenceCount": 17,
+        "usableCurrentCount": 10,
+        "actionableCurrentCount": 8,
+        "attentionCurrentCount": 19,
+        "usablePublishedCount": 22
+      },
+      "generatedAt": "2026-09-05T12:27:50.785Z",
+      "focus": "DW-20260604-CODEX-PLUGIN-01",
+      "counts": {
+        "current": 27,
+        "published": 22,
+        "publishedAnalytics": 147,
+        "scripts": 116,
+        "dailyHotspots": 185,
+        "weeklyTrends": 6,
+        "alerts": 46
+      },
+      "todos": {
+        "synchronized": true,
+        "sourceKey": "dailywrite-workbench.todos.v1",
+        "syncedAt": "2026-09-01T15:56:56.241Z",
+        "count": 7,
+        "open": 3
+      }
+    },
+    "backendOk": true,
+    "sourceMode": "explicit-index-writes",
+    "metadataBytes": 854009,
+    "originalIndexHash": "1e4cee8eef09abf606d79cfaca9b132eeb827819b5cc9aa6bf6329541b0f4d74",
+    "originalTodoHash": "a87337fdbcdb45d8f95426900bad97f56cf167d224d6055a3c188440d746555c",
+    "fixtureAbsent": true
+  },
+  "fixture": {
+    "root": "C:/Users/PC/AppData/Local/Temp/dailywrite-delivery-fixture-20260905",
+    "contentId": "DW-20260905-BD677A9AFC79",
+    "sourceHash": "95fc12d2c24553e0e5e2f4f4d468feb9feae16f18a309e82274c2fbc805ea29d",
+    "publication": {
+      "sourcePath": "01-内容生产/01-脚本创作中/工作台交付闭环验证样稿.md",
+      "bodyPath": "03-已发布归档/已发布成品/DW-20260905-BD677A9AFC79.md",
+      "dataPath": "04-数据与复盘/工作台发布数据/DW-20260905-BD677A9AFC79.md",
+      "platform": "隔离测试平台",
+      "url": "https://example.com/dailywrite-fixture",
+      "publishedAt": "2026-09-05",
+      "sha256": "95fc12d2c24553e0e5e2f4f4d468feb9feae16f18a309e82274c2fbc805ea29d",
+      "recordedAt": "2026-09-05T12:16:21.347Z"
+    },
+    "review": {
+      "contentId": "DW-20260905-BD677A9AFC79",
+      "summary": "隔离测试：登记、成品与数据文件保持同一内容主键；没有真实传播指标，不能推断效果。",
+      "evidence": [
+        {
+          "path": "04-数据与复盘/工作台发布数据/DW-20260905-BD677A9AFC79.md",
+          "bytes": 399,
+          "sha256": "a5fbd7d41e27a63c14fff8ee1d3f3de8766f7389f3bcd89172c3e9b11005dda9",
+          "modifiedAt": "2026-09-05T12:16:21.374Z"
+        }
+      ],
+      "experiment": "下一次在有实际指标的作品上核对复盘证据。",
+      "lesson": "隔离验证经验：先核对实际证据，再记录适用条件。",
+      "businessSignal": "未知",
+      "createdAt": "2026-09-05T12:16:36.968Z",
+      "lessonPath": "05-方法论沉淀/复盘经验/DW-20260905-BD677A9AFC79-8d125e9f.md",
+      "path": "04-数据与复盘/工作台复盘/DW-20260905-BD677A9AFC79-8d125e9f.md"
+    },
+    "acceptedTodoId": "88fa59b2-4886-4ad7-b03f-27177be45834",
+    "acceptance": {
+      "contentId": "DW-20260604-CODEX-PLUGIN-01",
+      "runIds": [
+        "mock:ef86c438-2662-458e-b6be-8bba9da5ef19"
+      ],
+      "artifacts": [
+        {
+          "path": "01-内容生产/01-脚本创作中/6.4 codex 最新发布的插件.md",
+          "bytes": 7231,
+          "sha256": "f556b8ef4e8422516119d59ef89b3c58cbd4945f7fe226020837962cfacd0d49",
+          "modifiedAt": "2026-06-06T16:14:57.441Z"
+        }
+      ],
+      "note": "隔离验收流程测试：核对的是测试副本及文件关联，不代表真实创作任务已完成。",
+      "at": "2026-09-05T12:08:30.628Z"
+    },
+    "sourceTodoId": "aae10488-3a1d-4a77-b33a-b67f2e5cfc57",
+    "sourceReference": {
+      "sourceKey": "4a180419e03c45ff2f9695cc781caa2886532b4a867321c53791b695757d296b",
+      "title": "AI 博主每日内容信号｜2026-09-05",
+      "path": "E:/projects/codexProjects/AI博主爬取/outputs/creator-analysis/report-data/daily/2026-09-05-daily.json",
+      "date": "2026-09-05"
+    },
+    "analyticsSource": {
+      "path": "04-数据与复盘/平台导入/作品列表导出.xlsx",
+      "sourcePath": "03-已发布归档/作品列表导出.xlsx",
+      "sha256": "bfdc5d9849aca5cbcfbc6e3aa1f037dec8da4648f25cb164e3c4bc937427321f",
+      "sourceModifiedAt": "2026-08-12T16:54:10.210Z",
+      "importedAt": "2026-09-05T12:21:05.486Z"
+    },
+    "platformMappings": {
+      "published-802dee2b1ca79b89bbacc695": {
+        "contentId": "DW-20260905-BD677A9AFC79",
+        "platform": "隔离测试平台",
+        "platformId": "isolated-test-only",
+        "url": "https://example.com/dailywrite-fixture",
+        "title": "用AI还在疯狂上滑找之前的提问？这个插件1秒解决！ 找个上次的聊天记录找半天 ，常用提示词每次都要重新打 \n装了这个插件后，直接点目录秒跳任意对话！\n各大AI平台都能用👍\n常用问题还能收藏，下次一键发送！\n效率直接起飞🚀\n#AI #插件",
+        "publishedAt": "2026-01-22T22:37:54+08:00",
+        "observedAt": "2026-09-05T12:21:34.536Z"
+      }
+    }
+  },
+  "browserChecks": [
+    "source refresh preserves unsaved todo title",
+    "selected script survives full reload",
+    "explicit plan date stage week selection",
+    "mock todo tracked after leaving detail and human acceptance required",
+    "mock script tracked from home inbox and accepted",
+    "registration publication and evidence review writeback",
+    "intelligence creates source-linked todo",
+    "analytics import and mapping return to published review",
+    "stale form retains inputs and requires explicit recheck",
+    "production home footer notices absent and delivery form loads"
+  ],
+  "realAgentDispatched": false,
+  "realPublication": false,
+  "realMessagesSent": false
+}

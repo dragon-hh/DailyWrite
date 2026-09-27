@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>只剩2%额度如何用Codex</title>
+  <style>
+    :root {
+      --ink: #141413;
+      --paper: #f7f1e3;
+      --paper-deep: #eadfca;
+      --line: rgba(20, 20, 19, 0.18);
+      --hot: #ff4b2f;
+      --gold: #f5b84b;
+      --green: #1eaa70;
+      --blue: #1d6ec7;
+      --muted: rgba(20, 20, 19, 0.58);
+      --shadow: 0 22px 70px rgba(20, 20, 19, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(20, 20, 19, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+        linear-gradient(rgba(20, 20, 19, 0.035) 1px, transparent 1px) 0 0 / 28px 28px,
+        var(--paper);
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          -8deg,
+          rgba(20, 20, 19, 0.03) 0 1px,
+          transparent 1px 7px
+        );
+      mix-blend-mode: multiply;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 72px 1fr 76px;
+    }
+
+    header,
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(18px, 4vw, 52px);
+      border-color: var(--line);
+      position: relative;
+      z-index: 5;
+    }
+
+    header { border-bottom: 1px solid var(--line); }
+    footer { border-top: 1px solid var(--line); }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 900;
+      border-radius: 8px;
+      box-shadow: inset 0 -4px 0 rgba(255,255,255,0.12);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      font-size: 15px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .meter {
+      width: min(24vw, 180px);
+      height: 12px;
+      border: 1px solid var(--ink);
+      background: rgba(20, 20, 19, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meter::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2%;
+      min-width: 4px;
+      background: var(--hot);
+    }
+
+    main {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides {
+      height: 100%;
+      display: flex;
+      transition: transform 520ms cubic-bezier(.2,.8,.2,1);
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: calc(100vh - 148px);
+      padding: clamp(24px, 5vw, 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: clamp(24px, 5vw, 72px);
+      align-items: center;
+      position: relative;
+    }
+
+    .slide::after {
+      content: attr(data-step);
+      position: absolute;
+      right: clamp(16px, 4vw, 54px);
+      bottom: clamp(14px, 3vw, 34px);
+      font-size: clamp(58px, 13vw, 180px);
+      line-height: 1;
+      font-weight: 950;
+      color: rgba(20, 20, 19, 0.055);
+      letter-spacing: 0;
+      pointer-events: none;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: "STZhongsong", "Songti SC", "SimSun", serif;
+      letter-spacing: 0;
+      line-height: 0.96;
+    }
+
+    h1 {
+      max-width: 860px;
+      font-size: clamp(48px, 9vw, 132px);
+    }
+
+    h2 {
+      max-width: 760px;
+      font-size: clamp(38px, 6.4vw, 90px);
+    }
+
+    .lead {
+      margin: 26px 0 0;
+      max-width: 620px;
+      color: rgba(20, 20, 19, 0.78);
+      font-size: clamp(19px, 2.1vw, 30px);
+      line-height: 1.55;
+      font-weight: 760;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--hot);
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 44px;
+      height: 3px;
+      background: currentColor;
+    }
+
+    .visual {
+      position: relative;
+      z-index: 2;
+      min-height: 360px;
+    }
+
+    .quota-dial {
+      width: min(42vw, 520px);
+      aspect-ratio: 1;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background:
+        conic-gradient(var(--hot) 0 7.2deg, rgba(20,20,19,0.12) 7.2deg 360deg);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      margin-inline: auto;
+    }
+
+    .quota-dial::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .quota-number {
+      position: relative;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .quota-number b {
+      font-size: clamp(72px, 12vw, 170px);
+      line-height: .78;
+      letter-spacing: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .quota-number span {
+      margin-top: 20px;
+      color: var(--hot);
+      font-size: clamp(16px, 2vw, 26px);
+      font-weight: 900;
+    }
+
+    .terminal {
+      width: min(42vw, 560px);
+      max-width: 100%;
+      background: #151515;
+      color: #f6f0df;
+      border: 2px solid var(--ink);
+      box-shadow: var(--shadow);
+      transform: rotate(-1.5deg);
+    }
+
+    .terminal-bar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      background: #242421;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--hot);
+    }
+
+    .dot:nth-child(2) { background: var(--gold); }
+    .dot:nth-child(3) { background: var(--green); }
+
+    .terminal pre {
+      margin: 0;
+      padding: clamp(22px, 4vw, 42px);
+      white-space: pre-wrap;
+      font: 800 clamp(18px, 2.2vw, 30px)/1.55 "Consolas", "Cascadia Mono", monospace;
+    }
+
+    .prompt { color: var(--green); }
+    .slash { color: var(--gold); }
+    .danger { color: #ff725d; }
+
+    .loop {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 560px;
+      margin-inline: auto;
+    }
+
+    .loop-item,
+    .template-block {
+      min-height: 128px;
+      border: 2px solid var(--ink);
+      background: rgba(247, 241, 227, 0.86);
+      padding: 22px;
+      box-shadow: 8px 8px 0 rgba(20, 20, 19, 0.13);
+    }
+
+    .loop-item:nth-child(1) { border-top: 10px solid var(--blue); }
+    .loop-item:nth-child(2) { border-top: 10px solid var(--gold); }
+    .loop-item:nth-child(3) { border-top: 10px solid var(--green); }
+    .loop-item:nth-child(4) { border-top: 10px solid var(--hot); }
+
+    .loop-item b,
+    .template-block b {
+      display: block;
+      font-size: clamp(21px, 2.5vw, 34px);
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    .loop-item span,
+    .template-block span {
+      display: block;
+      color: var(--muted);
+      font-size: clamp(14px, 1.4vw, 18px);
+      line-height: 1.45;
+      font-weight: 760;
+    }
+
+    .compare {
+      display: grid;
+      gap: 22px;
+      width: min(42vw, 570px);
+      margin-inline: auto;
+    }
+
+    .row {
+      border: 2px solid var(--ink);
+      background: var(--paper-deep);
+      padding: clamp(18px, 3vw, 30px);
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 20px;
+      align-items: start;
+      box-shadow: 8px 8px 0 rgba(20, 20, 19, 0.13);
+    }
+
+    .row strong {
+      color: var(--hot);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1;
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .row p {
+      margin: 0;
+      font-size: clamp(18px, 2.1vw, 27px);
+      line-height: 1.38;
+      font-weight: 860;
+    }
+
+    .template {
+      display: grid;
+      gap: 18px;
+      width: min(42vw, 580px);
+      margin-inline: auto;
+    }
+
+    .template-block:nth-child(1) { background: #f9e0d5; }
+    .template-block:nth-child(2) { background: #f4e4a5; }
+    .template-block:nth-child(3) { background: #d8eadc; }
+
+    .command-sheet {
+      width: min(42vw, 600px);
+      margin-inline: auto;
+      border: 2px solid var(--ink);
+      background: #fff9ea;
+      box-shadow: var(--shadow);
+      padding: clamp(22px, 4vw, 42px);
+      position: relative;
+    }
+
+    .command-sheet::before {
+      content: "/goal";
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      color: rgba(20, 20, 19, 0.16);
+      font: 950 clamp(36px, 7vw, 86px)/1 "Consolas", monospace;
+    }
+
+    .command-sheet p {
+      position: relative;
+      margin: 0 0 18px;
+      font-size: clamp(19px, 2.1vw, 28px);
+      line-height: 1.5;
+      font-weight: 860;
+    }
+
+    .command-sheet code {
+      display: block;
+      position: relative;
+      margin-top: 26px;
+      padding: 18px;
+      background: var(--ink);
+      color: var(--paper);
+      font: 850 clamp(15px, 1.5vw, 20px)/1.45 "Consolas", monospace;
+      white-space: pre-wrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    button {
+      width: 46px;
+      height: 42px;
+      border: 2px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 rgba(20, 20, 19, 0.13);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    button:hover {
+      background: var(--gold);
+      transform: translate(-1px, -1px);
+      box-shadow: 6px 6px 0 rgba(20, 20, 19, 0.18);
+    }
+
+    button:disabled {
+      opacity: .34;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .ticks {
+      display: flex;
+      gap: 5px;
+    }
+
+    .tick {
+      width: 18px;
+      height: 8px;
+      border: 1px solid var(--ink);
+      background: transparent;
+    }
+
+    .tick.active { background: var(--ink); }
+
+    @media (max-width: 920px) {
+      body { overflow: auto; }
+      .app { min-height: 100svh; grid-template-rows: 64px 1fr 70px; }
+      main { overflow: hidden; }
+      .slide {
+        height: calc(100svh - 134px);
+        min-height: 680px;
+        grid-template-columns: 1fr;
+        gap: 26px;
+        align-content: center;
+      }
+      .slide::after { font-size: 88px; }
+      .visual { min-height: auto; }
+      .quota-dial,
+      .terminal,
+      .compare,
+      .template,
+      .command-sheet { width: min(100%, 560px); }
+      .quota-dial { max-width: 360px; }
+      .loop { grid-template-columns: 1fr 1fr; }
+      header,
+      footer { padding-inline: 16px; }
+      .brand strong { max-width: 180px; }
+    }
+
+    @media (max-width: 560px) {
+      .status { gap: 8px; font-size: 12px; }
+      .meter { width: 78px; }
+      .slide {
+        padding: 24px 18px;
+        min-height: 740px;
+      }
+      h1 { font-size: clamp(46px, 15vw, 76px); }
+      h2 { font-size: clamp(36px, 12vw, 58px); }
+      .lead { font-size: 19px; }
+      .loop { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; gap: 10px; }
+      .command-sheet::before { opacity: .75; }
+      .brand strong { display: none; }
+      .progress span { display: none; }
+      .tick { width: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="mark">C</div>
+        <strong>Codex 高手不会说的技巧</strong>
+      </div>
+      <div class="status">
+        <span>额度只剩 2%</span>
+        <div class="meter" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="slides" id="slides">
+        <article class="slide" data-step="01">
+          <div>
+            <div class="kicker">标题</div>
+            <h1>只剩2%额度如何用 Codex</h1>
+            <p class="lead">Codex 额度快用完的时候，别再一条一条问了，最后那点额度，最适合拿来跑一个完整目标。</p>
+          </div>
+          <div class="visual">
+            <div class="quota-dial" aria-label="额度只剩 2%">
+              <div class="quota-number">
+                <b>2%</b>
+                <span>最后额度</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-step="02">
+          <div>
+            <div class="kicker">机制</div>
+            <h2>先理解「透支机制」</h2>
+            <p class="lead">哪怕额度已经快见底，只要当前任务还没跑完，Codex 不会中途停掉。</p>
+          </div>
+          <div class="visual">
+            <div class="terminal">
+              <div class="terminal-bar">
+                <i class="dot"></i><i class="dot"></i><i class="dot"></i>
+              </div>
+              <pre><span class="prompt">quota</span>: <span class="danger">2%</span>
+<span class="prompt">task</span>: running
+<span class="prompt">rule</span>: 当前任务没跑完
+      不会中途停掉</pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-step="03">
+          <div>
+            <div class="kicker">命令</div>
+            <h2>/goal 是什么</h2>
+            <p class="lead">普通指令是一问一答；/goal 是给它一个目标，让它规划、执行、验证，发现不对就自己调整。</p>
+          </div>
+          <div class="visual">
+            <div class="loop">
+              <div class="loop-item"><b>规划</b><span>先把目标拆开</span></div>
+              <div class="loop-item"><b>执行</b><span>按步骤推进</span></div>
+              <div class="loop-item"><b>验证</b><span>检查完成没有</span></div>
+              <div class="loop-item"><b>调整</b><span>不对就继续迭代</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-step="04">
+          <div>
+            <div class="kicker">差异</div>
+            <h2>一个目标，顶多条指令</h2>
+            <p class="lead">一个 /goal 命令，可以顶过去几条甚至几十条指令。加上透支机制，最后一点额度也能一路跑到底。</p>
+          </div>
+          <div class="visual">
+            <div class="compare">
+              <div class="row">
+                <strong>普通</strong>
+                <p>一问一答，一步一步来。</p>
+              </div>
+              <div class="row">
+                <strong>/goal</strong>
+                <p>给一个目标，跑到目标达成才停。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-step="05">
+          <div>
+            <div class="kicker">写法</div>
+            <h2>/goal 指令的三部分</h2>
+            <p class="lead">效果差，往往不是 /goal 的问题，而是指令写法的问题。</p>
+          </div>
+          <div class="visual">
+            <div class="template">
+              <div class="template-block"><b>目标终态</b><span>做完之后，最终结果是什么样。</span></div>
+              <div class="template-block"><b>约束边界</b><span>哪些不能动，必须用什么，哪些不要猜。</span></div>
+              <div class="template-block"><b>验收标准</b><span>怎么算做完，Codex 才能自己判断。</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" data-step="06">
+          <div>
+            <div class="kicker">方法</div>
+            <h2>让 Codex 先写 /goal</h2>
+            <p class="lead">不需要自己硬想模板。直接让 Codex 基于你的需求，写一个 /goal 指令，再新开线程去跑。</p>
+          </div>
+          <div class="visual">
+            <div class="command-sheet">
+              <p>到月底 token 快耗尽的那几天，一个 /goal 加上透支机制，基本上把 Codex 的额度拉满。</p>
+              <code>/goal
+目标终态：……
+约束边界：……
+验收标准：……</code>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div class="progress">
+        <span id="counter">01 / 06</span>
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+      </div>
+      <div class="nav">
+        <button id="prev" type="button" aria-label="上一页">‹</button>
+        <button id="next" type="button" aria-label="下一页">›</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = document.querySelector("#slides");
+    const allSlides = Array.from(document.querySelectorAll(".slide"));
+    const prev = document.querySelector("#prev");
+    const next = document.querySelector("#next");
+    const counter = document.querySelector("#counter");
+    const ticks = document.querySelector("#ticks");
+    let index = 0;
+
+    allSlides.forEach((_, i) => {
+      const tick = document.createElement("i");
+      tick.className = "tick";
+      tick.addEventListener("click", () => setSlide(i));
+      ticks.appendChild(tick);
+    });
+
+    function setSlide(nextIndex) {
+      index = Math.max(0, Math.min(allSlides.length - 1, nextIndex));
+      slides.style.transform = `translateX(${-index * 100}%)`;
+      counter.textContent = `${String(index + 1).padStart(2, "0")} / ${String(allSlides.length).padStart(2, "0")}`;
+      prev.disabled = index === 0;
+      next.disabled = index === allSlides.length - 1;
+      Array.from(ticks.children).forEach((tick, i) => {
+        tick.classList.toggle("active", i === index);
+      });
+    }
+
+    prev.addEventListener("click", () => setSlide(index - 1));
+    next.addEventListener("click", () => setSlide(index + 1));
+    window.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") setSlide(index - 1);
+      if (event.key === "ArrowRight" || event.key === " ") setSlide(index + 1);
+    });
+
+    setSlide(0);
+  </script>
+</body>
+</html>

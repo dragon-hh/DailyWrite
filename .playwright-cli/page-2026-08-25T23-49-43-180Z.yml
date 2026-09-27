@@ -1,0 +1,135 @@
+- generic [active] [ref=f1e1]:
+  - main [ref=f1e3]:
+    - generic [ref=f1e5]:
+      - generic [ref=f1e6]:
+        - paragraph [ref=f1e7]: 卖出看跌期权 · 零基础图解
+        - heading "SELL PUT" [level=1] [ref=f1e8]:
+          - generic [ref=f1e9]: SELL
+          - generic [ref=f1e10]: PUT
+        - paragraph [ref=f1e11]: 先收钱，承诺：跌到某个价，我来买。
+        - generic [ref=f1e12]: ↓ 往下看一笔交易
+      - generic "一张低价接股票的承诺书插图" [ref=f1e13]:
+        - generic [ref=f1e14]: 收
+        - generic [ref=f1e15]:
+          - generic [ref=f1e16]:
+            - generic [ref=f1e17]: PUT CONTRACT
+            - generic [ref=f1e18]: "#001"
+          - generic [ref=f1e19]: 我来接
+          - strong [ref=f1e20]: 股价低于 ¥90我也按 ¥90 买
+          - generic [ref=f1e22]: 对方为这项权利，先付我 ¥3 / 股
+        - generic [ref=f1e23]: ¥3
+    - generic [ref=f1e25]:
+      - paragraph [ref=f1e26]: 01 · 这笔交易里，谁给谁什么？
+      - heading "一手交钱， 一手交承诺。" [level=2] [ref=f1e27]: 一手交钱，一手交承诺。
+      - generic [ref=f1e28]:
+        - article [ref=f1e29]:
+          - img "你收到金币" [ref=f1e30]
+          - generic [ref=f1e34]:
+            - heading "你：卖方" [level=3] [ref=f1e35]
+            - paragraph [ref=f1e36]: 先收权利金
+        - generic [ref=f1e37]:
+          - generic [ref=f1e38]: 交换
+          - generic [ref=f1e39]: ⇄
+        - article [ref=f1e40]:
+          - img "对方拿着可卖股票的票据" [ref=f1e41]
+          - generic [ref=f1e46]:
+            - heading "对方：买方" [level=3] [ref=f1e47]
+            - paragraph [ref=f1e48]: 拿到“卖给你”的权利
+      - generic [ref=f1e49]: 对方有权按约定价卖，你有义务买。
+    - generic [ref=f1e51]:
+      - generic [ref=f1e52]:
+        - paragraph [ref=f1e53]: 02 · 拖一拖，看看结果
+        - heading "到期时，股价多少？" [level=2] [ref=f1e54]
+        - paragraph [ref=f1e55]: 假设现价 ¥100约定 30 天后到期按 ¥90 接，收 ¥3 / 股
+        - paragraph [ref=f1e56]: 先用“现金担保 Put”理解：留足 ¥9,000 接货。以下均为到期总盈亏，已计入股票市值。
+      - generic [ref=f1e57]:
+        - generic [ref=f1e58]:
+          - generic [ref=f1e59]: 到期总盈亏 / 1 张合约
+          - generic [ref=f1e60]: 通常不用接货，最多赚这笔权利金
+          - generic [ref=f1e61]: + ¥300
+        - generic [ref=f1e62]:
+          - generic [ref=f1e63]:
+            - generic [ref=f1e64]: 到期股价
+            - status [ref=f1e65]: ¥100
+          - slider "选择到期股价" [ref=f1e66]: "100"
+          - generic [ref=f1e67]:
+            - generic [ref=f1e68]: ¥0
+            - generic [ref=f1e69]: ¥87 持平
+            - generic [ref=f1e70]: ¥120
+        - generic [ref=f1e71]:
+          - generic [ref=f1e72]:
+            - generic [ref=f1e73]: 行权价
+            - strong [ref=f1e74]: ¥90
+          - generic [ref=f1e75]:
+            - generic [ref=f1e76]: 权利金
+            - strong [ref=f1e77]: ¥3
+          - generic [ref=f1e78]:
+            - generic [ref=f1e79]: 1 张
+            - strong [ref=f1e80]: 100 股
+    - generic [ref=f1e82]:
+      - paragraph [ref=f1e83]: 03 · 持有到期，按股票市值计算
+      - heading "不是只赚不赔。" [level=2] [ref=f1e84]
+      - generic [ref=f1e85]:
+        - article [ref=f1e86]:
+          - generic [ref=f1e87]: A / 股价 ¥100
+          - img [ref=f1e88]:
+            - generic [ref=f1e92]: ¥
+          - generic [ref=f1e93]:
+            - heading "高于 ¥90" [level=3] [ref=f1e94]
+            - paragraph [ref=f1e95]: 通常不接货；大涨也不多赚
+            - text: 最多赚 ¥300
+        - article [ref=f1e96]:
+          - generic [ref=f1e97]: B / 股价 ¥88
+          - img [ref=f1e98]:
+            - generic [ref=f1e102]: "87"
+          - generic [ref=f1e103]:
+            - heading "小跌到 ¥88" [level=3] [ref=f1e104]
+            - paragraph [ref=f1e105]: 按 ¥90 接货；成本 ¥87
+            - text: 仍赚 ¥100
+        - article [ref=f1e106]:
+          - generic [ref=f1e107]: C / 股价 ¥50
+          - img [ref=f1e108]:
+            - generic [ref=f1e112]: 股票
+          - generic [ref=f1e113]:
+            - heading "暴跌到 ¥50" [level=3] [ref=f1e114]
+            - paragraph [ref=f1e115]: 仍要按 ¥90 接货
+            - text: 亏 ¥3,700
+    - generic [ref=f1e117]:
+      - generic "股票跌到零的风险悬崖插图" [ref=f1e118]:
+        - generic [ref=f1e121]: 股
+        - generic [ref=f1e122]: 90 → 0
+      - generic [ref=f1e123]:
+        - paragraph [ref=f1e124]: 04 · 最危险的误解
+        - heading "权利金很小， 亏损可以很大。" [level=2] [ref=f1e125]: 权利金很小，亏损可以很大。
+        - generic [ref=f1e126]: 股票跌到 0
+        - paragraph [ref=f1e127]: 你仍可能要按 ¥90买下 100 股。
+        - generic [ref=f1e128]:
+          - text: 最大亏损 = (90 − 3) × 100
+          - strong [ref=f1e129]: = ¥8,700
+    - generic [ref=f1e131]:
+      - paragraph [ref=f1e132]: 05 · 下单前，只问 4 句
+      - heading "四个“是”， 才继续研究。" [level=2] [ref=f1e133]: 四个“是”，才继续研究。
+      - generic [ref=f1e134]:
+        - generic [ref=f1e135]:
+          - generic [ref=f1e136]: ✓
+          - paragraph [ref=f1e137]: 真想长期持有这只股票？
+        - generic [ref=f1e138]:
+          - generic [ref=f1e139]: ✓
+          - paragraph [ref=f1e140]: 真愿意按这个价格买？
+        - generic [ref=f1e141]:
+          - generic [ref=f1e142]: ✓
+          - paragraph [ref=f1e143]: 真留足接货现金？本例：¥9,000
+        - generic [ref=f1e144]:
+          - generic [ref=f1e145]: ✓
+          - paragraph [ref=f1e146]: 真能承受它跌很多？
+      - generic [ref=f1e147]: Sell Put ≠ 白捡利息它是“收钱 + 承担买入义务”。
+  - contentinfo [ref=f1e149]:
+    - generic [ref=f1e150]:
+      - paragraph [ref=f1e151]: 假设每张合约 100 股，金额用“元”演示；实际以合约规格为准。盈亏忽略费用、税费和利息。美式期权可能提前被要求买入（指派）；股价恰好等于行权价时也不能保证不被指派。未备足现金的卖 Put 还可能面临追保、强平。想提前退出，需买回同一合约，可能亏损。仅作入门教学，不构成投资建议。
+      - paragraph [ref=f1e152]:
+        - text: 资料：
+        - link "OIC · Cash-Secured Put" [ref=f1e153] [cursor=pointer]:
+          - /url: https://www.optionseducation.org/strategies/all-strategies/cash-secured-put
+        - text: ·
+        - link "SEC · Options" [ref=f1e154] [cursor=pointer]:
+          - /url: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-63

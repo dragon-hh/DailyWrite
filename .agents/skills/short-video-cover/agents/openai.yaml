@@ -1,0 +1,4 @@
+interface:
+  display_name: "短视频封面（多风格）"
+  short_description: "用 imagegen 生成并选择多风格短视频封面成品"
+  default_prompt: "Use $short-video-cover to create selectable multi-style 3:4 and 4:3 short-video covers."

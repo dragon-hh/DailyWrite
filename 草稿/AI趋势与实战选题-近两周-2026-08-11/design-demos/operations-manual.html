@@ -1,0 +1,311 @@
+<!--
+ASSUMPTIONS / REASONING / FACT BOUNDARY
+- 目标受众：AI 工具实践者、个人开发者、内容创作者；主要在笔记本浏览器阅读，也会截取局部讨论。
+- 内容假设：读者更需要可执行的判断与验证协议，而不是新闻聚合；因此结构按「结论 → 证据边界 → 九个判断 → 工具 → 本周行动 → 选题」推进。
+- 事实边界：分析窗口为 2026-07-29 至 2026-08-11，仅覆盖仓库中存在的 8 份 AI HOT 与 9 份 Builders Digest；缺档不等于当天没有动态。
+- 核验标签：「官方核验」只用于 product-facts.md 已列明官方来源的能力；其余明确标作「本地日报收录」，不暗示已亲测或全面上线。
+- 图片决策：这是工具、数据与观点型内容，图片不是信息必需；不使用外部图片、CDN、框架或字体，保证 file:// 直接打开。
+- 视觉方向：工程作战手册。浅灰蓝工程纸、深蓝骨架、少量荧光黄作为验证标记；流程、清单与验收感优先，避免通用 GitHub-dark。
+-->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>AI 工程作战手册｜2026-07-29—08-11</title>
+  <style>
+    :root{
+      --paper:#edf2f4;--panel:#f8faf9;--ink:#10283a;--muted:#567080;--line:#b8c7ce;
+      --blue:#124e78;--blue-2:#d9e8ee;--signal:#eef43b;--signal-soft:#f8fac8;--white:#fff;
+      --local:#8a5c27;--danger:#9d3a35;--shadow:0 16px 40px rgba(16,40,58,.09);
+      --display:Georgia,"Noto Serif SC","Songti SC",SimSun,serif;
+      --body:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+      --mono:Consolas,"SFMono-Regular","Liberation Mono",monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:82px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.78}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;background-image:linear-gradient(rgba(18,78,120,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,78,120,.08) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(to bottom,#000,transparent 80%);z-index:-1}
+    a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}
+    button,summary{font:inherit} button{min-height:44px}
+    .shell{max-width:1180px;margin:auto;padding:0 28px}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(237,242,244,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .topbar-in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:10px 28px}
+    .brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.04em}
+    .brand-mark{width:13px;height:13px;background:var(--signal);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+    .nav{display:flex;gap:4px;overflow:auto;scrollbar-width:none;flex:1}.nav::-webkit-scrollbar{display:none}
+    .nav a{min-height:44px;display:flex;align-items:center;padding:0 10px;color:var(--muted);text-decoration:none;font:12px var(--mono);white-space:nowrap;border-bottom:2px solid transparent}
+    .nav a:hover,.nav a.active{color:var(--ink);border-color:var(--signal);background:rgba(255,255,255,.48)}
+    .print-btn,.filter-btn,.utility-btn{border:1px solid var(--ink);background:var(--panel);color:var(--ink);padding:8px 13px;font:700 12px var(--mono);cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
+    .print-btn:hover,.filter-btn:hover,.utility-btn:hover,.filter-btn.active{background:var(--signal)}
+    .hero{padding:76px 0 54px;border-bottom:1px solid var(--line)}
+    .eyebrow,.kicker{font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+    h1,h2,h3{margin:0;text-wrap:balance} h1{font:700 clamp(48px,7.4vw,102px)/.98 var(--display);letter-spacing:-.045em;max-width:980px}
+    h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--signal) 62%)}
+    .dek{max-width:810px;margin:30px 0 36px;font-size:clamp(19px,2vw,25px);line-height:1.62;color:#29495c;text-wrap:pretty}
+    .command{display:grid;grid-template-columns:1.6fr repeat(3,.7fr);border:2px solid var(--ink);background:var(--panel);box-shadow:8px 8px 0 var(--blue)}
+    .command > div{padding:20px;border-right:1px solid var(--ink)}.command > div:last-child{border-right:0}
+    .command strong{display:block;font:700 clamp(25px,3vw,42px)/1 var(--display);margin-bottom:7px}.command span{font:11px var(--mono);color:var(--muted);letter-spacing:.05em}
+    .brief{margin-top:36px;display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start}
+    .brief-main{font:700 clamp(25px,3vw,40px)/1.25 var(--display);border-top:8px solid var(--ink);padding-top:18px}
+    .brief-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+    .brief-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+    .brief-list b{font:700 12px var(--mono);background:var(--signal);width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--ink)}
+    main section{padding:72px 0;border-bottom:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:90px 1fr;gap:24px;margin-bottom:36px;align-items:start}
+    .section-no{font:700 12px var(--mono);color:var(--blue);border-top:4px solid var(--blue);padding-top:9px}
+    .section-title h2{font:700 clamp(34px,4.6vw,60px)/1.06 var(--display);letter-spacing:-.025em}
+    .section-title p{max-width:720px;margin:12px 0 0;color:var(--muted);font-size:17px}
+    .method-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px}
+    .coverage-board{background:var(--ink);color:var(--white);padding:28px;box-shadow:7px 7px 0 var(--signal)}
+    .coverage-board h3{font:700 23px var(--display);margin-bottom:22px}
+    .coverage-row{display:grid;grid-template-columns:72px 1fr 52px;gap:14px;align-items:center;margin:15px 0;font:12px var(--mono)}
+    .bar{height:12px;border:1px solid #8ba2ad;background:#24475b}.bar i{display:block;height:100%;background:var(--signal)}
+    .boundary{background:var(--panel);border:1px solid var(--ink);padding:24px}
+    .boundary h3{font:700 20px var(--display);margin-bottom:14px}.boundary ul{padding-left:20px;margin:0}.boundary li{margin:9px 0}
+    .status{display:inline-flex;align-items:center;min-height:26px;padding:2px 8px;border:1px solid currentColor;font:700 11px var(--mono);letter-spacing:.03em;white-space:nowrap}
+    .status.official{color:var(--blue);background:var(--blue-2)}.status.local{color:var(--local);background:#f5eadb}
+    .principles{counter-reset:principle;display:grid;gap:0;border-top:2px solid var(--ink)}
+    .principle{counter-increment:principle;display:grid;grid-template-columns:78px 1.1fr .9fr;gap:26px;padding:31px 0;border-bottom:1px solid var(--line)}
+    .principle::before{content:counter(principle,decimal-leading-zero);font:700 29px var(--mono);color:var(--blue)}
+    .principle h3{font:700 26px/1.28 var(--display);margin-bottom:10px}.principle p{margin:0;color:#385769}
+    .op-box{border-left:1px solid var(--ink);padding-left:22px}.op-label{font:700 11px var(--mono);letter-spacing:.08em;color:var(--blue)}
+    .op-box strong{display:block;margin:7px 0 6px;line-height:1.45}.op-box small{display:block;color:var(--muted);line-height:1.6}
+    .filterbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 25px}.filter-count{align-self:center;margin-left:auto;font:12px var(--mono);color:var(--muted)}
+    .tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--ink);border-left:1px solid var(--line)}
+    .tool{background:rgba(248,250,249,.76);padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:232px}
+    .tool.hidden,.topic.hidden{display:none}.tool-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:13px}
+    .rank{font:700 27px var(--mono);line-height:1}.rank.a{background:var(--signal);padding:3px 8px;border:1px solid var(--ink)}.rank.b{color:var(--blue)}.rank.c{color:var(--muted)}
+    .tool h3{font:700 21px/1.3 var(--display);margin-bottom:10px}.tool p{margin:0 0 11px;color:#3c5a6a}.test{font:12px/1.55 var(--mono);border-top:1px dashed var(--line);padding-top:10px;color:var(--ink)}
+    .actions{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);background:var(--panel);box-shadow:8px 8px 0 var(--blue)}
+    .action{padding:24px;border-right:1px solid var(--ink)}.action:last-child{border-right:0}.action b{font:700 36px var(--mono);color:var(--blue)}
+    .action h3{font:700 19px/1.35 var(--display);margin:12px 0 9px}.action p{margin:0;color:var(--muted);font-size:14px}.action .check{display:block;margin-top:15px;padding-top:10px;border-top:1px dashed var(--line);font:11px/1.5 var(--mono);color:var(--ink)}
+    .topics{display:grid;gap:12px}.topic{background:var(--panel);border:1px solid var(--ink);box-shadow:3px 3px 0 var(--line)}
+    .topic[open]{box-shadow:5px 5px 0 var(--signal)}.topic summary{list-style:none;cursor:pointer;min-height:70px;padding:14px 18px;display:grid;grid-template-columns:56px 1fr auto;gap:15px;align-items:center}.topic summary::-webkit-details-marker{display:none}
+    .topic-id{font:700 22px var(--mono);color:var(--blue)}.topic-title{font:700 20px/1.35 var(--display)}.topic-meta{display:flex;gap:7px;align-items:center}.priority{padding:4px 8px;font:700 11px var(--mono);border:1px solid var(--ink)}.priority.now{background:var(--signal)}
+    .chev{width:28px;height:28px;border:1px solid var(--ink);display:grid;place-items:center;font:700 18px var(--mono)}.topic[open] .chev{background:var(--ink);color:white}.topic[open] .chev::before{content:"−"}.chev::before{content:"+"}
+    .topic-body{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink)}.topic-body > div{padding:18px;border-right:1px solid var(--line)}.topic-body > div:last-child{border-right:0}.topic-body dl{margin:0}.topic-body dt{font:700 10px var(--mono);letter-spacing:.08em;color:var(--blue);margin-top:10px}.topic-body dt:first-child{margin-top:0}.topic-body dd{margin:2px 0 0;color:#3b5868}.hook{background:var(--signal-soft);font-weight:700;color:var(--ink)!important;padding:12px;border:1px solid #d1d52e}
+    .matrix-wrap{overflow:auto;border:1px solid var(--ink);background:var(--panel)}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:13px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}th{font:700 11px var(--mono);letter-spacing:.04em;background:var(--ink);color:white}td{font-size:14px}tr:last-child td{border-bottom:0}.score{font:700 12px var(--mono)}.score i{display:inline-block;width:44px;height:7px;margin-left:8px;background:linear-gradient(90deg,var(--blue) var(--score),#d7e0e3 var(--score))}
+    .appendix-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.appendix-block{background:var(--panel);border-top:5px solid var(--ink);padding:24px}.appendix-block h3{font:700 23px var(--display);margin-bottom:14px}.source-list{margin:0;padding:0;list-style:none;columns:2;column-gap:24px}.source-list li{break-inside:avoid;padding:7px 0;border-bottom:1px dotted var(--line);font:12px/1.45 var(--mono)}
+    .official-list{margin:0;padding-left:19px}.official-list li{margin:11px 0}.official-list a{overflow-wrap:anywhere}
+    .foot{padding:40px 0 70px;color:var(--muted);font:12px/1.7 var(--mono)}.foot strong{color:var(--ink)}
+    .backtop{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border:1px solid var(--ink);background:var(--signal);box-shadow:3px 3px 0 var(--ink);cursor:pointer;display:none;z-index:40;font:700 17px var(--mono)}.backtop.show{display:block}
+    @media(max-width:820px){
+      html{scroll-padding-top:66px}.shell{padding:0 18px}.topbar-in{padding:7px 14px}.brand span{display:none}.print-btn{display:none}.hero{padding-top:48px}.command{grid-template-columns:1fr 1fr}.command > div{border-bottom:1px solid var(--ink)}.command > div:nth-child(2){border-right:0}.command > div:nth-last-child(-n+2){border-bottom:0}.brief,.method-grid,.appendix-grid{grid-template-columns:1fr}.section-head{grid-template-columns:58px 1fr;gap:12px}.principle{grid-template-columns:54px 1fr;gap:12px}.op-box{grid-column:2}.tools{grid-template-columns:1fr}.actions{grid-template-columns:1fr 1fr}.action:nth-child(2){border-right:0}.action:nth-child(-n+2){border-bottom:1px solid var(--ink)}.topic summary{grid-template-columns:46px 1fr}.topic-meta{grid-column:2}.topic-body{grid-template-columns:1fr}.topic-body > div{border-right:0;border-bottom:1px solid var(--line)}.source-list{columns:1}}
+    @media(max-width:520px){body{font-size:16px}.nav a{padding:0 7px}.hero{padding-bottom:42px}h1{font-size:48px}.command{grid-template-columns:1fr 1fr}.command strong{font-size:27px}.brief-main{font-size:27px}.section-head{display:block}.section-no{display:inline-block;margin-bottom:12px}.principle{grid-template-columns:42px 1fr}.principle::before{font-size:22px}.principle h3{font-size:22px}.actions{grid-template-columns:1fr}.action{border-right:0!important;border-bottom:1px solid var(--ink)}.action:last-child{border-bottom:0}.filter-count{width:100%;margin-left:0}.topic summary{padding:13px 12px}.topic-title{font-size:18px}.backtop{right:14px;bottom:14px}}
+    @media print{
+      @page{size:A4;margin:14mm}.topbar,.backtop,.filterbar,.utility-row{display:none!important}body{background:white;color:#111;font-size:10pt}body::before{display:none}.shell{max-width:none;padding:0}.hero,main section{padding:24px 0}.command,.coverage-board,.actions,.topic{box-shadow:none;break-inside:avoid}.principle,.tool,.appendix-block{break-inside:avoid}.tools{grid-template-columns:1fr 1fr}.topic{display:block!important}.topic > summary{min-height:auto}.topic > .topic-body{display:grid!important}.chev{display:none}a{color:#111;text-decoration:none}.section-title h2{font-size:28pt}h1{font-size:44pt}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-in">
+      <div class="brand"><i class="brand-mark"></i><span>OPS MANUAL / AI SIGNALS</span></div>
+      <nav class="nav" aria-label="页内目录">
+        <a href="#summary">结论</a><a href="#method">覆盖</a><a href="#principles">九个判断</a><a href="#tools">工具</a><a href="#actions">行动</a><a href="#topics">选题</a><a href="#matrix">矩阵</a><a href="#appendix">附录</a>
+      </nav>
+      <button class="print-btn" type="button" onclick="window.print()">PRINT</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <header class="hero" id="summary">
+      <div class="eyebrow">FIELD NOTE 2026.08.11 · ASIA/SHANGHAI</div>
+      <h1>模型更强，不等于任务会完成。<em>系统层</em>才是新战场。</h1>
+      <p class="dek">这两周真正发生的结构变化，是竞争重心从模型能力上移到稳定交付：Harness、上下文组织、模型路由、评估、可观测性、沙箱与权限边界，开始共同决定结果。</p>
+      <div class="command" aria-label="覆盖摘要">
+        <div><strong>2026-07-29 → 08-11</strong><span>分析窗口，不以缺档推断新闻空白</span></div>
+        <div><strong>17</strong><span>本地日报文件</span></div>
+        <div><strong>8</strong><span>AI HOT</span></div>
+        <div><strong>9</strong><span>Builders Digest</span></div>
+      </div>
+      <div class="brief">
+        <div class="brief-main">内容不要再停在模型新闻复述。把系统层变化做成可复制、可测量、可回放的工作流。</div>
+        <ol class="brief-list">
+          <li><b>1</b><span>成本单位从 token 单价改为「每个成功任务的总成本」。</span></li>
+          <li><b>2</b><span>安全不靠无尽弹窗，先用环境隔离限制爆炸半径。</span></li>
+          <li><b>3</b><span>生成能力越强，可审查性、证据链与人工签字越稀缺。</span></li>
+          <li><b>4</b><span>强模型做决策与验收，便宜模型做批量执行。</span></li>
+        </ol>
+      </div>
+    </header>
+
+    <main>
+      <section id="method">
+        <div class="section-head"><div class="section-no">01 / SCOPE</div><div class="section-title"><h2>覆盖与判读协议</h2><p>先把样本、缺口和事实层级写清楚，再谈趋势。这个页面只压缩本地存在的 17 份日报，不把缺档日期解释成「当天没有动态」。</p></div></div>
+        <div class="method-grid">
+          <div class="coverage-board">
+            <h3>LOCAL CORPUS / 17 FILES</h3>
+            <div class="coverage-row"><span>AI HOT</span><div class="bar"><i style="width:88.9%"></i></div><b>8 / 9</b></div>
+            <div class="coverage-row"><span>BUILDERS</span><div class="bar"><i style="width:100%"></i></div><b>9 / 9</b></div>
+            <div class="coverage-row"><span>OFFICIAL</span><div class="bar"><i style="width:100%"></i></div><b>9 项</b></div>
+            <p style="margin:22px 0 0;color:#bcd0d9;font-size:13px">条形仅表示两类日报在本次实际样本中的数量，不表示行业热度、质量或每日完整率。</p>
+          </div>
+          <aside class="boundary">
+            <h3>证据边界</h3>
+            <p><span class="status official">官方核验</span> 能力由产品官方页面、官方博客或官方仓库确认。</p>
+            <p><span class="status local">本地日报收录</span> 只说明它进入本次样本；不写成已亲测、全面上线或达到绝对效果。</p>
+            <ul><li>不为缺档日期补写事件。</li><li>不把多次出现自动等同于事实正确。</li><li>实测选题必须另建验收协议。</li></ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="principles">
+        <div class="section-head"><div class="section-no">02 / SIGNALS</div><div class="section-title"><h2>九个新判断</h2><p>每个判断都落到一个操作原则。阅读方式不是「同意或不同意」，而是「下一次任务怎么验证」。</p></div></div>
+        <div class="principles">
+          <article class="principle"><div><h3>成本单位从 token 单价变成每个成功任务的成本</h3><p>强模型单次调用更贵，但若少返工、少人工接管并能完成更难任务，最终 $/task 反而可能更低。</p></div><div class="op-box"><span class="op-label">MEASURE</span><strong>同表记录：模型费、工具费、耗时、人工分钟、成功率、返工次数。</strong><small>不要拿一次账单替代完整交付成本。</small></div></article>
+          <article class="principle"><div><h3>Harness 正在成为模型能力的放大器</h3><p>同一模型在不同框架里会出现巨大差异。上下文堆积、缺少按需检索工具、用例过宽，都会把模型能力吃掉。</p></div><div class="op-box"><span class="op-label">PROTOCOL</span><strong>固定模型、任务、预算与验收测试，只替换 Harness。</strong><small>先优化任务结构，再决定是否换模型。</small></div></article>
+          <article class="principle"><div><h3>Agent 从聊天框变成异步控制塔</h3><p>远程调度、后台检查、跨 session 摘要、持久化 memory 与 Project，正在把交互中心转向任务启动、介入、恢复与验收。</p></div><div class="op-box"><span class="op-label">DESIGN</span><strong>为任务定义状态、介入门、恢复点和验收证据。</strong><small>不要要求人一直盯着对话窗口。</small></div></article>
+          <article class="principle"><div><h3>安全边界从「每次弹窗」转向「环境先限权」</h3><p>用户会快速批准大量权限请求，审批疲劳让确认框失去意义。Auto mode 只能是防御纵深的一层。</p></div><div class="op-box"><span class="op-label">CONTAIN</span><strong>优先配置 sandbox、VM、文件边界、egress control 与审计日志。</strong><small>环境不给出口，比提醒用户小心更确定。</small></div></article>
+          <article class="principle"><div><h3>AI 写代码之后，真正稀缺的是可审查性</h3><p>生成量上升后，巨大 diff 和「看起来不错」都会压垮人审。小批次变更与可回放证据成为产线核心。</p></div><div class="op-box"><span class="op-label">REVIEW</span><strong>拆小 PR、写验收条件、自动测试与风险扫描，最终由人签字。</strong><small>审查对象应是可观察结果，不是模型自述。</small></div></article>
+          <article class="principle"><div><h3>企业落地首先是工作流与组织问题</h3><p>先找杠杆最高的十个流程，把 agent 接进现有系统；让同类榜样在真实会议里展示结果，比抽象宣传更能推动采用。</p></div><div class="op-box"><span class="op-label">ADOPT</span><strong>从高杠杆流程和现场演示开始，不从「全员自由探索」开始。</strong><small>安装派对与可见的真实成果也是产品的一部分。</small></div></article>
+          <article class="principle"><div><h3>最强模型做验证，便宜模型做生产</h3><p>先用最强模型验证体验与需求；成立后再优化 prompt、routing、Harness、小模型与微调。</p></div><div class="op-box"><span class="op-label">ROUTE</span><strong>强模型拆解、升级判断、验收；便宜模型做摘要、抽取与重复实现。</strong><small>先证明任务值得做，再压低单位成本。</small></div></article>
+          <article class="principle"><div><h3>Agent-native 基础设施形成独立产品层</h3><p>浏览器、沙箱、持久状态、预算、追踪、回放与人工接管，正在分离「做出 agent」和「让 agent 长期生产」两件事。</p></div><div class="op-box"><span class="op-label">OPERATE</span><strong>长任务上线前，至少补齐隔离、追踪、回放、预算与人工接管。</strong><small>能跑一次，不等于能持续运行。</small></div></article>
+          <article class="principle"><div><h3>专业能力更值钱，但专家培养链可能断裂</h3><p>AI 替代初级工作，却仍需要多年经验来检查输出。每家公司削减初级岗位都可能理性，集体却失去下一代专家。</p></div><div class="op-box"><span class="op-label">TRAIN</span><strong>保留基本功练习、人工复盘和判断力训练，不只考核产出速度。</strong><small>把「会验收」当作需要被培养的专业能力。</small></div></article>
+        </div>
+      </section>
+
+      <section id="tools">
+        <div class="section-head"><div class="section-no">03 / RADAR</div><div class="section-title"><h2>工具雷达：先测什么，后看什么</h2><p>A 级现在实测，B 级做垂直案例，C 级先做边界测试。筛选只改变视图，不改变判断等级。</p></div></div>
+        <div class="filterbar" data-filter-group="tools">
+          <button class="filter-btn active" data-filter="all">全部 15</button><button class="filter-btn" data-filter="a">A 级</button><button class="filter-btn" data-filter="b">B 级</button><button class="filter-btn" data-filter="c">C 级</button><button class="filter-btn" data-filter="official">官方核验</button><button class="filter-btn" data-filter="local">本地收录</button><span class="filter-count" id="toolCount">显示 15 / 15</span>
+        </div>
+        <div class="tools" id="toolGrid">
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A1</span><span class="status official">官方核验</span></div><h3>Codex Security CLI / TypeScript SDK</h3><p>仓库、路径、diff 与 working-tree 扫描；支持验证、修复、CI 阈值与成本上限。</p><div class="test">实测：用同一真实 diff 对比扫描 → validate → patch → CI 阻断链。</div></article>
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A2</span><span class="status official">官方核验</span></div><h3>Claude Code Auto mode + cross-session messaging</h3><p>减少审批疲劳，并验证跨会话接力时的权限、摘要与恢复边界。</p><div class="test">实测：文件、网络、危险命令与跨 session 传递分别设验收门。</div></article>
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A3</span><span class="status official">官方核验</span></div><h3>LangSmith Align Evals + LLM Gateway</h3><p>把偏好校准、支出限制、PII/secret 脱敏与调用追踪放进同一运行链。</p><div class="test">实测：先校准 judge，再检查限额、脱敏与 trace 是否同时生效。</div></article>
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A4</span><span class="status official">官方核验</span></div><h3>Cloudflare Browser Run / Dynamic Workers</h3><p>远程浏览器、实时观察、回放、人工接管与短生命周期隔离执行。</p><div class="test">实测：失败任务保留 DOM、console、network、replay 和接管记录。</div></article>
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A5</span><span class="status official">官方核验</span></div><h3>GitHub Copilot sessions / stacked PR</h3><p>任务拆成独立 session、branch 与 PR，用更小变更降低人类审查压力。</p><div class="test">实测：一次功能改造拆四层 PR，逐层测试、回滚和验收。</div></article>
+          <article class="tool" data-rank="a" data-proof="official"><div class="tool-top"><span class="rank a">A6</span><span class="status official">官方核验</span></div><h3>OpenRouter routing / subagent / advisor / ori CLI</h3><p>验证「强模型审查 + 便宜模型执行」的任务成本与升级策略；ori CLI 仅按日报收录。</p><div class="test">实测：按任务类型记录路由、升级、失败和完整 $/task。</div></article>
+          <article class="tool" data-rank="b" data-proof="local"><div class="tool-top"><span class="rank b">B1</span><span class="status local">本地日报收录</span></div><h3>/human-review</h3><p>AI 生成页面后的多人可视化审阅与修改闭环。</p><div class="test">案例：从视觉批注到修订证据，验证是否减少来回描述。</div></article>
+          <article class="tool" data-rank="b" data-proof="official"><div class="tool-top"><span class="rank b">B2</span><span class="status official">官方核验</span></div><h3>Deep Agents / Managed Deep Agents</h3><p>持久线程、checkpoint、memory、sandbox 与长期任务运行时。</p><div class="test">案例：中断并恢复一个长任务，检查状态、上下文与可观测性。</div></article>
+          <article class="tool" data-rank="b" data-proof="official"><div class="tool-top"><span class="rank b">B3</span><span class="status official">官方核验</span></div><h3>Replit Design / Agent 4</h3><p>多设计变体、设计与代码同环境，以及并行 agent 工作方式。</p><div class="test">案例：同一真实内容出多变体，再比较收敛成本与代码一致性。</div></article>
+          <article class="tool" data-rank="b" data-proof="local"><div class="tool-top"><span class="rank b">B4</span><span class="status local">本地日报收录</span></div><h3>Token Saver</h3><p>本地混合 RAG 降低长 PDF 上下文成本；节省比例尚需独立复测。</p><div class="test">案例：固定 PDF、问题集与正确率，再比较端到端成本。</div></article>
+          <article class="tool" data-rank="b" data-proof="local"><div class="tool-top"><span class="rank b">B5</span><span class="status local">本地日报收录</span></div><h3>SkillSpector / Numbat</h3><p>技能市场与 agent 行为的安全扫描、风险提示和阻断。</p><div class="test">案例：构造重复、冲突与危险技能，记录检出率和误报。</div></article>
+          <article class="tool" data-rank="b" data-proof="local"><div class="tool-top"><span class="rank b">B6</span><span class="status local">本地日报收录</span></div><h3>Cloudflare Local Explorer / OpenTelemetry traces</h3><p>让 agent 直接读取失败 span、日志与网络时序，自诊断后再验证修复。</p><div class="test">案例：同一个故障，对比无 trace 猜测与有 trace 定位耗时。</div></article>
+          <article class="tool" data-rank="c" data-proof="local"><div class="tool-top"><span class="rank c">C1</span><span class="status local">本地日报收录</span></div><h3>Swiftlet / Soup / SpecForge</h3><p>本地推理、低显存微调与投机解码信号。</p><div class="test">边界：在明确硬件、模型、质量阈值下复测，不复述峰值数字。</div></article>
+          <article class="tool" data-rank="c" data-proof="local"><div class="tool-top"><span class="rank c">C2</span><span class="status local">本地日报收录</span></div><h3>ForgeStencil</h3><p>自动优化工业与科学软件的观察对象。</p><div class="test">边界：选一个真实算子做可复现实验，核验「零人工」条件。</div></article>
+          <article class="tool" data-rank="c" data-proof="local"><div class="tool-top"><span class="rank c">C3</span><span class="status local">本地日报收录</span></div><h3>Seedance 2.5 API / Lyria 3.5 / FLUX 3 Video</h3><p>内容生产向多素材控制、长叙事与后期可编辑工作流移动。</p><div class="test">边界：用真实素材做跨镜一致性、可编辑性与验收测试。</div></article>
+        </div>
+      </section>
+
+      <section id="actions">
+        <div class="section-head"><div class="section-no">04 / THIS WEEK</div><div class="section-title"><h2>这周可以立刻做</h2><p>四项行动都能产生可复用资产，而不是只留下一次演示。</p></div></div>
+        <div class="actions">
+          <article class="action"><b>01</b><h3>建一张 $/task 成本表</h3><p>用同一真实任务跑三套模型或框架，完整记录成功、返工和人工接管。</p><span class="check">DONE WHEN：模板 + 原始记录 + 结论表</span></article>
+          <article class="action"><b>02</b><h3>搭最小安全沙箱</h3><p>测试文件读取、网络外传、工作区写入和危险命令的确定性边界。</p><span class="check">DONE WHEN：四层基线 + 审计日志</span></article>
+          <article class="action"><b>03</b><h3>给浏览器 Agent 装回放</h3><p>记录 DOM、console、network、点击轨迹和 session replay，再让 agent 定位失败。</p><span class="check">DONE WHEN：一次失败可在 30 秒内复盘</span></article>
+          <article class="action"><b>04</b><h3>做 Skill / Memory 清理员</h3><p>扫描重复、过期、冲突和从未触发项；只生成候选清单，由人确认后改。</p><span class="check">DONE WHEN：评分 + 去重规则 + 周任务</span></article>
+        </div>
+      </section>
+
+      <section id="topics">
+        <div class="section-head"><div class="section-no">05 / BACKLOG</div><div class="section-title"><h2>十个实战选题</h2><p>点击展开完整拍摄协议。默认优先 01、04、06、07：它们有强对比画面、真实结果、可下载模板，也更有新增量。</p></div></div>
+        <div class="filterbar" data-filter-group="topics"><button class="filter-btn active" data-filter="all">全部 10</button><button class="filter-btn" data-filter="now">优先拍</button><button class="filter-btn" data-filter="series">系列教程</button><button class="filter-btn" data-filter="watch">观察后拍</button><button class="utility-btn" id="toggleTopics" type="button">展开全部</button><span class="filter-count" id="topicCount">显示 10 / 10</span></div>
+        <div class="topics" id="topicList">
+          <details class="topic" data-priority="now"><summary><span class="topic-id">01</span><span class="topic-title">别再比较 token 单价：我给 3 个 Agent 做了一张「每任务成本表」</span><span class="topic-meta"><span class="priority now">优先拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>便宜模型是否真的更省钱？</dd><dt>演示</dt><dd>同一真实任务跑 3 套模型/框架，记录总成本、耗时、成功率、返工与人工接管。</dd><dt>交付物</dt><dd>可复用的 $/task 记账模板和结论表。</dd></dl></div><div><div class="hook">钩子：三个工具账单都很便宜，但只有一个真正交付成功。</div></div></div></details>
+          <details class="topic" data-priority="series"><summary><span class="topic-id">02</span><span class="topic-title">同一个模型，换个 Harness 为什么能差这么多？</span><span class="topic-meta"><span class="priority">系列教程</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>模型能力与框架能力如何拆开测？</dd><dt>演示</dt><dd>固定模型和仓库，使用不同 Harness 完成同一 issue；保持 prompt、验收测试和预算一致。</dd><dt>交付物</dt><dd>A/B 测试协议、成功条件、上下文与工具调用对比。</dd></dl></div><div><div class="hook">钩子：模型没换，成功率却明显变化。</div></div></div></details>
+          <details class="topic" data-priority="series"><summary><span class="topic-id">03</span><span class="topic-title">让 3 个 Coding Agent 接力：Issue → Session → PR → 人审</span><span class="topic-meta"><span class="priority">系列教程</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>多 agent 怎样避免互相覆盖和无限解释上下文？</dd><dt>演示</dt><dd>规划 agent 拆 issue，执行 agent 各开 session，审查 agent 看 stacked PR，人只做最终验收。</dd><dt>交付物</dt><dd>任务交接模板、状态字段和失败恢复方式。</dd></dl></div><div><div class="hook">钩子：人没复制一段历史记录，三个 session 仍然接上了。</div></div></div></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">04</span><span class="topic-title">Agent 安全别只靠「允许/拒绝」：搭一个最小安全沙箱</span><span class="topic-meta"><span class="priority now">优先拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>为什么每次点允许并不等于安全？</dd><dt>演示</dt><dd>测试文件读取、网络外传、工作区写入和危险命令；增加 sandbox、egress allowlist、只读挂载和审计日志。</dd><dt>交付物</dt><dd>四层安全基线检查表。</dd></dl></div><div><div class="hook">钩子：同一条恶意指令，模型想执行，但环境根本不给它出口。</div></div></div></details>
+          <details class="topic" data-priority="series"><summary><span class="topic-id">05</span><span class="topic-title">AI 一次改 1000 行代码，怎么让人敢合并？</span><span class="topic-meta"><span class="priority">系列教程</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>如何把巨大 diff 拆成能审查的小块？</dd><dt>演示</dt><dd>把功能改造拆成数据层、API、接线、UI 四层 stacked PR，每层独立测试和回滚。</dd><dt>交付物</dt><dd>PR 拆层规则、审查人分工、自动检查清单。</dd></dl></div><div><div class="hook">钩子：左边 1000 行巨型 PR，右边 4 个一眼能审完的小 PR。</div></div></div></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">06</span><span class="topic-title">给浏览器 Agent 装「行车记录仪」：失败后能完整回放</span><span class="topic-meta"><span class="priority now">优先拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>浏览器自动化失败时为什么总只剩一句「元素没找到」？</dd><dt>演示</dt><dd>记录 DOM、console、network、点击轨迹与 session replay；让 agent 从 trace 找根因再复测。</dd><dt>交付物</dt><dd>浏览器 agent 可观测性最小配置。</dd></dl></div><div><div class="hook">钩子：同一个失败任务，开启回放前靠猜，开启后 30 秒定位。</div></div></div></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">07</span><span class="topic-title">Skill 越装越多，Agent 为什么反而变笨？做一个自动清理员</span><span class="topic-meta"><span class="priority now">优先拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>自动积累 skills 和 memory 如何产生 slop？</dd><dt>演示</dt><dd>扫描重复、过期、冲突与从未触发技能；生成候选清单，人确认后再改。</dd><dt>交付物</dt><dd>Skill/Memory 健康评分、去重规则与每周 curator 任务。</dd></dl></div><div><div class="hook">钩子：删除 30% 垃圾能力后，任务成功率反而上升。</div></div></div></details>
+          <details class="topic" data-priority="series"><summary><span class="topic-id">08</span><span class="topic-title">大模型当主管，小模型当员工：真实任务省多少？</span><span class="topic-meta"><span class="priority">系列教程</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>何时值得把执行委托给便宜模型？</dd><dt>演示</dt><dd>强模型负责拆解、升级和验收，小模型负责摘要、抽取、格式与重复实现；记录节省和返工。</dd><dt>交付物</dt><dd>路由决策树和「必须升级强模型」五类情况。</dd></dl></div><div><div class="hook">钩子：不是所有步骤都值得烧最贵的 token。</div></div></div></details>
+          <details class="topic" data-priority="watch"><summary><span class="topic-id">09</span><span class="topic-title">会议纪要已经过时：让 Agent 在会议结束前交付结果</span><span class="topic-meta"><span class="priority">观察后拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>如何把「会后待办」变成「会中完成」？</dd><dt>演示</dt><dd>实时转录 → 行动项 → 邮件/文档/任务 → 负责人确认 → 写回系统。</dd><dt>交付物</dt><dd>一套有确认门的会议执行工作流。</dd></dl></div><div><div class="hook">钩子：会议结束时，不是多了 8 条待办，而是 6 条已经完成。</div></div></div></details>
+          <details class="topic" data-priority="watch"><summary><span class="topic-id">10</span><span class="topic-title">AI 写代码、AI 审代码后，人到底做什么？做一份验收规格</span><span class="topic-meta"><span class="priority">观察后拍</span><i class="chev"></i></span></summary><div class="topic-body"><div><dl><dt>核心问题</dt><dd>人类如何从「盯实现」转成「定义结果与测试产品」？</dd><dt>演示</dt><dd>先写可观察的验收标准、边界案例与禁止项，再由 agent 实现、预审，真人只按用户路径测试。</dd><dt>交付物</dt><dd>一页 acceptance spec 模板与真实前后对比。</dd></dl></div><div><div class="hook">钩子：不再告诉 AI 每一步怎么写，只告诉它什么结果才算完成。</div></div></div></details>
+        </div>
+      </section>
+
+      <section id="matrix">
+        <div class="section-head"><div class="section-no">06 / MATRIX</div><div class="section-title"><h2>选题优先级矩阵</h2><p>评分是编辑决策的可视化：画面强度、实作可行性、内容新增量各 5 分。它用于排序，不伪装成统计学结论。</p></div></div>
+        <div class="matrix-wrap"><table><thead><tr><th>ID</th><th>选题简写</th><th>队列</th><th>画面</th><th>可行</th><th>新增量</th><th>先决条件</th></tr></thead><tbody>
+          <tr><td>01</td><td>每任务成本表</td><td>优先拍</td><td class="score">5<i style="--score:100%"></i></td><td class="score">5<i style="--score:100%"></i></td><td class="score">5<i style="--score:100%"></i></td><td>三套真实任务记录</td></tr>
+          <tr><td>04</td><td>最小安全沙箱</td><td>优先拍</td><td class="score">5<i style="--score:100%"></i></td><td class="score">4<i style="--score:80%"></i></td><td class="score">5<i style="--score:100%"></i></td><td>隔离环境与恶意样例</td></tr>
+          <tr><td>06</td><td>浏览器行车记录仪</td><td>优先拍</td><td class="score">5<i style="--score:100%"></i></td><td class="score">4<i style="--score:80%"></i></td><td class="score">5<i style="--score:100%"></i></td><td>可回放失败任务</td></tr>
+          <tr><td>07</td><td>Skill 自动清理员</td><td>优先拍</td><td class="score">4<i style="--score:80%"></i></td><td class="score">5<i style="--score:100%"></i></td><td class="score">5<i style="--score:100%"></i></td><td>真实技能清单</td></tr>
+          <tr><td>02</td><td>Harness A/B</td><td>系列教程</td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td>固定模型与验收集</td></tr>
+          <tr><td>03</td><td>三 Agent 接力</td><td>系列教程</td><td class="score">4<i style="--score:80%"></i></td><td class="score">3<i style="--score:60%"></i></td><td class="score">4<i style="--score:80%"></i></td><td>跨 session 案例</td></tr>
+          <tr><td>05</td><td>四层 stacked PR</td><td>系列教程</td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td>可拆分功能改造</td></tr>
+          <tr><td>08</td><td>强弱模型路由</td><td>系列教程</td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td class="score">4<i style="--score:80%"></i></td><td>真实成本与返工</td></tr>
+          <tr><td>09</td><td>会中交付结果</td><td>观察后拍</td><td class="score">4<i style="--score:80%"></i></td><td class="score">2<i style="--score:40%"></i></td><td class="score">3<i style="--score:60%"></i></td><td>完整会议系统接线</td></tr>
+          <tr><td>10</td><td>人类验收规格</td><td>观察后拍</td><td class="score">3<i style="--score:60%"></i></td><td class="score">3<i style="--score:60%"></i></td><td class="score">3<i style="--score:60%"></i></td><td>可录制前后案例</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="appendix">
+        <div class="section-head"><div class="section-no">07 / SOURCES</div><div class="section-title"><h2>来源附录</h2><p>本地语料负责提供信号，官方链接负责确认页面中重点引用的产品能力。两者不混写。</p></div></div>
+        <div class="appendix-grid">
+          <div class="appendix-block"><h3>本地日报覆盖 / 17</h3><ul class="source-list">
+            <li>AI HOT · 2026-07-29</li><li>AI HOT · 2026-07-30</li><li>AI HOT · 2026-07-31</li><li>AI HOT · 2026-08-02</li><li>AI HOT · 2026-08-03</li><li>AI HOT · 2026-08-05</li><li>AI HOT · 2026-08-08</li><li>AI HOT · 2026-08-09</li>
+            <li>Builders Digest · 2026-07-29</li><li>Builders Digest · 2026-07-30</li><li>Builders Digest · 2026-07-31</li><li>Builders Digest · 2026-08-01</li><li>Builders Digest · 2026-08-03</li><li>Builders Digest · 2026-08-04</li><li>Builders Digest · 2026-08-06</li><li>Builders Digest · 2026-08-09</li><li>Builders Digest · 2026-08-10</li>
+          </ul><p style="margin:18px 0 0;color:var(--muted);font-size:13px">未覆盖日期只表示仓库中没有对应文件，不代表当天没有行业动态。</p></div>
+          <div class="appendix-block"><h3>官方能力核验 / 9 组</h3><ol class="official-list">
+            <li><a href="https://github.com/openai/codex-security/blob/main/sdk/typescript/README.md">Codex Security SDK README</a> · <a href="https://openai.com/index/codex-security-now-in-research-preview/">OpenAI 官方介绍</a></li>
+            <li><a href="https://www.anthropic.com/engineering/how-we-contain-claude">Anthropic：How we contain Claude</a></li>
+            <li><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code changelog</a></li>
+            <li><a href="https://blog.cloudflare.com/browser-run-for-ai-agents/">Cloudflare Browser Run</a> · <a href="https://blog.cloudflare.com/dynamic-workers/">Dynamic Workers</a></li>
+            <li><a href="https://www.langchain.com/blog/introducing-managed-deep-agents">Managed Deep Agents</a></li>
+            <li><a href="https://www.langchain.com/blog/introducing-align-evals">Align Evals</a> · <a href="https://docs.langchain.com/langsmith/llm-gateway">LLM Gateway</a></li>
+            <li><a href="https://replit.com/blog/introducing-agent-4-built-for-creativity">Replit Agent 4</a></li>
+            <li><a href="https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/">GitHub Copilot app sessions</a></li>
+            <li><a href="https://openrouter.ai/blog/announcements/">OpenRouter announcements</a></li>
+          </ol></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot"><strong>阅读提示：</strong>这是从 17 份本地日报压缩出的工程判断，不是产品排行榜，也不是已亲测清单。下一步应把优先选题转成可复现协议，再用真实任务记录证据。</footer>
+  </div>
+  <button class="backtop" id="backtop" type="button" aria-label="返回顶部">↑</button>
+
+  <script>
+    (() => {
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const applyFilter = (group, value) => {
+        const isTools = group === 'tools';
+        const items = $$(isTools ? '.tool' : '.topic');
+        let visible = 0;
+        items.forEach(item => {
+          const match = value === 'all' || (isTools ? item.dataset.rank === value || item.dataset.proof === value : item.dataset.priority === value);
+          item.classList.toggle('hidden', !match);
+          if (match) visible += 1;
+        });
+        document.getElementById(isTools ? 'toolCount' : 'topicCount').textContent = `显示 ${visible} / ${items.length}`;
+      };
+      $$('[data-filter-group]').forEach(bar => {
+        const group = bar.dataset.filterGroup;
+        $$('.filter-btn', bar).forEach(button => button.addEventListener('click', () => {
+          $$('.filter-btn', bar).forEach(item => item.classList.remove('active'));
+          button.classList.add('active');
+          applyFilter(group, button.dataset.filter);
+        }));
+      });
+
+      const toggle = document.getElementById('toggleTopics');
+      toggle.addEventListener('click', () => {
+        const visible = $$('.topic:not(.hidden)');
+        const shouldOpen = visible.some(item => !item.open);
+        visible.forEach(item => { item.open = shouldOpen; });
+        toggle.textContent = shouldOpen ? '收起全部' : '展开全部';
+      });
+
+      const navLinks = $$('.nav a');
+      const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      const observer = new IntersectionObserver(entries => {
+        entries.filter(entry => entry.isIntersecting).forEach(entry => {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+        });
+      }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+      sections.forEach(section => observer.observe(section));
+
+      const backtop = document.getElementById('backtop');
+      window.addEventListener('scroll', () => backtop.classList.toggle('show', window.scrollY > 700), { passive:true });
+      backtop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+      window.addEventListener('beforeprint', () => $$('.topic').forEach(item => { item.dataset.wasOpen = item.open ? '1' : '0'; item.open = true; }));
+      window.addEventListener('afterprint', () => $$('.topic').forEach(item => { item.open = item.dataset.wasOpen === '1'; delete item.dataset.wasOpen; }));
+    })();
+  </script>
+</body>
+</html>

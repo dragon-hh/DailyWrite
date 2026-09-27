@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 写代码前，先做这 4 步</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      --ink: #101616;
+      --paper: #f2efe6;
+      --paper-2: #e7e1d2;
+      --grid: rgba(16, 22, 22, .095);
+      --muted: #66706d;
+      --acid: #c9ff3b;
+      --orange: #ff6038;
+      --cyan: #39d9dc;
+      --white: #fffdf6;
+      --shadow: 0 24px 80px rgba(6, 14, 14, .24);
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; }
+
+    body {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--ink);
+      background: #080d0d;
+      font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .deck {
+      position: relative;
+      width: min(100vw, 133.333vh);
+      height: min(100vh, 75vw);
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      isolation: isolate;
+      container-type: size;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .deck::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      opacity: .32;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    .topline {
+      position: absolute;
+      top: 2.6cqh;
+      left: 3.4cqw;
+      right: 3.4cqw;
+      z-index: 35;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2cqw;
+      font: 700 1.15cqw/1 "Cascadia Code", Consolas, monospace;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .brand { display: flex; align-items: center; gap: .9cqw; }
+    .brand-mark { width: 1.2cqw; height: 1.2cqw; background: var(--orange); transform: rotate(45deg); }
+    .live { color: var(--muted); }
+    .live::before { content: ""; display: inline-block; width: .62cqw; height: .62cqw; margin-right: .7cqw; border-radius: 50%; background: var(--acid); box-shadow: 0 0 0 .4cqw rgba(201,255,59,.16); animation: pulse 1.8s infinite; }
+
+    .slides { position: absolute; inset: 0; }
+
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      padding: 8.8cqh 6.2cqw 9.5cqh;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(3.5cqw) scale(.985);
+      transition: opacity .42s ease, transform .58s var(--ease), visibility 0s .58s;
+    }
+
+    .scene.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: none;
+      transition-delay: 0s;
+    }
+
+    .scene.exit-left { transform: translateX(-3.5cqw) scale(.985); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1cqw;
+      width: max-content;
+      margin-bottom: 2.2cqh;
+      color: var(--orange);
+      font: 900 1.35cqw/1 "Cascadia Code", Consolas, monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before { content: ""; width: 3.2cqw; height: .42cqh; background: currentColor; }
+
+    h1, h2, h3, p { margin: 0; }
+    h1, h2 { font-family: "STZhongsong", "Songti SC", "SimSun", serif; font-weight: 900; letter-spacing: -.055em; }
+    h1 { font-size: 7.6cqw; line-height: .98; }
+    h2 { font-size: 5.25cqw; line-height: 1.02; }
+    h3 { font-size: 2.2cqw; line-height: 1.2; }
+    .sub { color: var(--muted); font-size: 1.72cqw; line-height: 1.55; font-weight: 700; }
+    .mono { font-family: "Cascadia Code", Consolas, monospace; }
+    .hot { color: var(--orange); }
+    .acid { color: #6f9500; }
+    .marker { position: relative; display: inline-block; z-index: 0; }
+    .marker::after { content: ""; position: absolute; left: -.2em; right: -.15em; bottom: .04em; height: .28em; z-index: -1; background: var(--acid); transform: rotate(-1.5deg); }
+
+    .reveal { opacity: 0; transform: translateY(2.3cqh); }
+    .active .reveal { animation: reveal .72s var(--ease) forwards; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+
+    .panel {
+      border: .18cqw solid var(--ink);
+      background: rgba(255,253,246,.74);
+      box-shadow: .7cqw .7cqw 0 var(--ink);
+    }
+
+    .tag { display: inline-flex; align-items: center; min-height: 3cqh; padding: .45cqh .8cqw; border: .13cqw solid currentColor; border-radius: 99px; font: 800 1.05cqw/1 "Cascadia Code", Consolas, monospace; }
+
+    /* 01 — Hook */
+    .hero { grid-template-columns: 1.2fr .8fr; align-items: center; gap: 5cqw; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 span { display: block; }
+    .hero .sub { max-width: 50cqw; margin-top: 3cqh; color: var(--ink); }
+    .counter-wrap { position: relative; display: grid; place-items: center; min-height: 54cqh; }
+    .counter-ring { position: absolute; width: 31cqw; aspect-ratio: 1; border: .2cqw solid var(--ink); border-radius: 50%; }
+    .counter-ring::before, .counter-ring::after { content: ""; position: absolute; inset: 2.2cqw; border: .12cqw dashed var(--muted); border-radius: inherit; animation: spin 18s linear infinite; }
+    .counter-ring::after { inset: 5cqw; border-style: solid; border-color: var(--orange); animation-direction: reverse; animation-duration: 11s; }
+    .counter { position: relative; font: 900 12cqw/.8 "Cascadia Code", Consolas, monospace; letter-spacing: -.1em; }
+    .counter-label { position: absolute; bottom: 7cqh; padding: 1cqh 1.4cqw; color: var(--white); background: var(--ink); font-size: 1.5cqw; font-weight: 900; transform: rotate(-3deg); }
+    .warning-line { display: inline-flex; align-items: center; gap: 1cqw; margin-top: 2.4cqh; padding: 1cqh 1.4cqw; color: var(--white); background: var(--orange); font-size: 1.35cqw; font-weight: 900; transform: rotate(-1deg); }
+
+    /* 02 — Risk */
+    .risk { grid-template-rows: auto 1fr; }
+    .risk-title { max-width: 76cqw; }
+    .factory { align-self: end; position: relative; height: 35cqh; overflow: hidden; border-top: .2cqw solid var(--ink); }
+    .belt { position: absolute; left: 0; right: 0; bottom: 4cqh; height: 7cqh; border: .2cqw solid var(--ink); background: repeating-linear-gradient(90deg, transparent 0 3.8cqw, rgba(16,22,22,.18) 3.8cqw 4cqw); }
+    .belt::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 7cqw, var(--acid) 7cqw 8cqw); animation: belt 3s linear infinite; opacity: .9; }
+    .box { position: absolute; bottom: 11cqh; width: 11cqw; height: 9cqh; display: grid; place-items: center; border: .18cqw solid var(--ink); background: var(--white); font: 900 1.25cqw/1.2 "Cascadia Code", Consolas, monospace; box-shadow: .45cqw .45cqw 0 var(--ink); animation: boxes 8s linear infinite; }
+    .box::after { content: "×"; position: absolute; right: -.9cqw; top: -1.8cqh; display: grid; place-items: center; width: 2.5cqw; aspect-ratio: 1; border-radius: 50%; color: var(--white); background: var(--orange); font-size: 1.9cqw; }
+    .box:nth-child(2) { animation-delay: -2.6s; }
+    .box:nth-child(3) { animation-delay: -5.2s; }
+    .factory-note { position: absolute; right: 0; top: 2.5cqh; width: 29cqw; padding: 1.6cqh 1.6cqw; background: var(--ink); color: var(--white); font-size: 1.45cqw; line-height: 1.45; font-weight: 800; transform: rotate(1.5deg); }
+
+    /* 03 — System */
+    .system { grid-template-columns: .88fr 1.12fr; gap: 5cqw; align-items: center; }
+    .repo-card { padding: 3.2cqh 2.5cqw; transform: rotate(-1.4deg); }
+    .repo-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2.2cqh; border-bottom: .14cqw solid var(--ink); }
+    .repo-name { font: 900 1.8cqw/1.2 "Cascadia Code", Consolas, monospace; }
+    .stars { font: 900 3.8cqw/1 "Cascadia Code", Consolas, monospace; color: var(--orange); }
+    .repo-card p { margin-top: 2.6cqh; font-size: 1.5cqw; line-height: 1.55; font-weight: 800; }
+    .pipeline { display: grid; gap: 1.4cqh; }
+    .pipe-row { display: grid; grid-template-columns: 4.8cqw 1fr; align-items: center; gap: 1.3cqw; padding: 1.45cqh 1.2cqw; border: .14cqw solid var(--ink); background: rgba(255,253,246,.82); font-size: 1.35cqw; font-weight: 900; transform: translateX(calc(var(--i) * .7cqw)); }
+    .pipe-num { display: grid; place-items: center; height: 3.8cqh; color: var(--white); background: var(--ink); font-family: "Cascadia Code", Consolas, monospace; }
+
+    /* 04 — Chain */
+    .chain { align-content: center; }
+    .chain h2 { max-width: 68cqw; }
+    .chain-rail { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.2cqw; margin-top: 7cqh; }
+    .chain-rail::before { content: ""; position: absolute; left: 4cqw; right: 4cqw; top: 50%; height: .45cqh; background: var(--ink); transform: translateY(-50%); }
+    .chain-rail::after { content: ""; position: absolute; left: 4cqw; top: 50%; width: 0; height: .45cqh; background: var(--acid); transform: translateY(-50%); }
+    .active .chain-rail::after { animation: growRail 2.6s .8s var(--ease) forwards; }
+    .chain-node { position: relative; z-index: 2; min-height: 17cqh; display: grid; place-items: center; align-content: center; gap: 1.1cqh; padding: 1.5cqh 1cqw; border: .18cqw solid var(--ink); background: var(--paper); box-shadow: .45cqw .45cqw 0 var(--ink); text-align: center; }
+    .chain-node code { font: 900 1.35cqw/1.2 "Cascadia Code", Consolas, monospace; }
+    .chain-node span { color: var(--muted); font-size: 1.05cqw; font-weight: 800; }
+    .chain-node:nth-child(4) { color: var(--white); background: var(--ink); }
+
+    /* 05 — Grill */
+    .grill { grid-template-columns: .92fr 1.08fr; gap: 4cqw; align-items: center; }
+    .question-cloud { position: relative; height: 52cqh; }
+    .q { position: absolute; padding: 1.1cqh 1cqw; border: .14cqw solid var(--ink); background: var(--white); font-size: 1.2cqw; font-weight: 900; box-shadow: .38cqw .38cqw 0 var(--ink); animation: hover 4s ease-in-out infinite; }
+    .q:nth-child(1) { top: 5%; left: 2%; transform: rotate(-3deg); }
+    .q:nth-child(2) { top: 29%; right: 0; transform: rotate(2deg); animation-delay: -.8s; }
+    .q:nth-child(3) { bottom: 10%; left: 8%; transform: rotate(-1deg); animation-delay: -1.6s; }
+    .q:nth-child(4) { top: 6%; right: 7%; background: var(--acid); animation-delay: -2.4s; }
+    .q-big { position: absolute; inset: 15% 16% 18% 18%; display: grid; place-items: center; border-radius: 50%; color: var(--white); background: var(--ink); font: 900 9cqw/1 "Cascadia Code", Consolas, monospace; }
+    .q-big small { position: absolute; bottom: 8cqh; font-size: 1.1cqw; letter-spacing: .1em; }
+    .grill-copy .sub { margin-top: 3cqh; max-width: 38cqw; }
+
+    /* 06 — Docs */
+    .docs { grid-template-columns: 1fr 1fr; gap: 5cqw; align-items: center; }
+    .decision-stack { position: relative; height: 45cqh; }
+    .decision { position: absolute; left: 0; width: 29cqw; padding: 1.6cqh 1.5cqw; border: .15cqw solid var(--ink); background: var(--white); font-size: 1.2cqw; font-weight: 900; box-shadow: .4cqw .4cqw 0 var(--ink); }
+    .decision:nth-child(1) { top: 2%; transform: rotate(-2deg); }
+    .decision:nth-child(2) { top: 34%; left: 6cqw; transform: rotate(1.5deg); }
+    .decision:nth-child(3) { top: 66%; left: 2cqw; transform: rotate(-.7deg); }
+    .doc-sheet { position: absolute; right: 0; top: 5%; width: 21cqw; height: 41cqh; padding: 3cqh 2cqw; border: .18cqw solid var(--ink); background: var(--paper); box-shadow: .6cqw .6cqw 0 var(--ink); overflow: hidden; }
+    .doc-sheet::before { content: "PROJECT\A DECISIONS"; white-space: pre; font: 900 1.5cqw/1.3 "Cascadia Code", Consolas, monospace; }
+    .doc-line { height: .8cqh; margin-top: 2cqh; background: var(--ink); opacity: .18; }
+    .doc-line.short { width: 62%; }
+    .scan { position: absolute; left: 0; right: 0; top: -5%; height: 1.2cqh; background: var(--acid); box-shadow: 0 0 2cqh var(--acid); opacity: .8; }
+    .active .scan { animation: scan 2.4s .6s var(--ease) forwards; }
+
+    /* 07 — Spec */
+    .spec { grid-template-columns: .84fr 1.16fr; gap: 4.5cqw; align-items: center; }
+    .spec-board { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 43cqh; border: .18cqw solid var(--ink); box-shadow: .65cqw .65cqw 0 var(--ink); }
+    .spec-col { position: relative; padding: 3cqh 1.5cqw; background: rgba(255,253,246,.8); border-right: .14cqw solid var(--ink); overflow: hidden; }
+    .spec-col:last-child { border: 0; }
+    .spec-col:nth-child(2) { background: var(--ink); color: var(--white); }
+    .spec-col:nth-child(3) { background: var(--acid); }
+    .spec-col b { display: block; font: 900 1.5cqw/1.2 "Cascadia Code", Consolas, monospace; }
+    .spec-col p { margin-top: 3cqh; font-size: 1.18cqw; line-height: 1.65; font-weight: 800; }
+    .spec-col::after { content: ""; position: absolute; left: 1.5cqw; right: 1.5cqw; bottom: 3cqh; height: .45cqh; background: currentColor; opacity: .3; }
+
+    /* 08 — Tickets */
+    .tickets { grid-template-columns: 1fr 1fr; gap: 5cqw; align-items: center; }
+    .ticket-stack { position: relative; height: 49cqh; }
+    .ticket { position: absolute; left: 4cqw; width: 31cqw; min-height: 12cqh; padding: 1.8cqh 1.5cqw; border: .18cqw solid var(--ink); background: var(--paper); box-shadow: .55cqw .55cqw 0 var(--ink); }
+    .ticket:nth-child(1) { top: 0; transform: rotate(-3deg); }
+    .ticket:nth-child(2) { top: 16cqh; left: 8cqw; transform: rotate(2deg); background: var(--acid); }
+    .ticket:nth-child(3) { top: 32cqh; left: 2cqw; transform: rotate(-1deg); }
+    .ticket b { font: 900 1.35cqw/1.2 "Cascadia Code", Consolas, monospace; }
+    .ticket p { margin-top: 1.2cqh; color: var(--muted); font-size: 1.05cqw; font-weight: 800; }
+    .tickets-copy .sub { margin-top: 3cqh; }
+    .counter-strip { display: inline-flex; gap: .8cqw; margin-top: 3cqh; }
+    .counter-strip span { padding: .7cqh .8cqw; color: var(--white); background: var(--ink); font: 900 1.1cqw/1 "Cascadia Code", Consolas, monospace; }
+
+    /* 09 / 10 — Slices */
+    .slice { grid-template-rows: auto 1fr; }
+    .slice-head { display: flex; align-items: end; justify-content: space-between; gap: 3cqw; }
+    .slice-head .sub { max-width: 34cqw; text-align: right; }
+    .slice-board { align-self: end; display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; min-height: 39cqh; margin-top: 4cqh; }
+    .phone { position: relative; overflow: hidden; border: .22cqw solid var(--ink); border-radius: 2.1cqw; background: var(--white); box-shadow: .6cqw .6cqw 0 var(--ink); }
+    .phone-bar { height: 5cqh; display: flex; align-items: center; justify-content: space-between; padding: 0 1.4cqw; color: var(--white); background: var(--ink); font: 800 1cqw/1 "Cascadia Code", Consolas, monospace; }
+    .layers { display: grid; height: calc(100% - 5cqh); }
+    .layer { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 0 1.6cqw; border-bottom: .13cqw solid var(--ink); font-size: 1.28cqw; font-weight: 900; }
+    .layer:last-child { border: 0; }
+    .layer em { font-style: normal; color: var(--orange); font: 900 1.1cqw/1 "Cascadia Code", Consolas, monospace; }
+    .no-order { position: absolute; inset: 50% auto auto 50%; z-index: 3; width: 15cqw; padding: 1.6cqh 1cqw; color: var(--white); background: var(--orange); text-align: center; font-size: 1.25cqw; font-weight: 900; transform: translate(-50%,-50%) rotate(-5deg); box-shadow: .4cqw .4cqw 0 var(--ink); }
+    .vertical-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5cqw; }
+    .v-step { position: relative; min-height: 32cqh; padding: 2cqh 1.2cqw; border: .16cqw solid var(--ink); background: var(--white); box-shadow: .4cqw .4cqw 0 var(--ink); }
+    .v-step:nth-child(1) { background: var(--acid); }
+    .v-step b { font: 900 2.2cqw/1 "Cascadia Code", Consolas, monospace; }
+    .v-step h3 { margin-top: 2cqh; }
+    .v-step p { margin-top: 1.6cqh; color: var(--muted); font-size: 1.05cqw; line-height: 1.5; font-weight: 800; }
+    .loop { position: absolute; left: 1.2cqw; right: 1.2cqw; bottom: 1.6cqh; display: flex; align-items: center; justify-content: space-between; padding-top: 1.2cqh; border-top: .12cqw dashed var(--ink); font: 900 .9cqw/1 "Cascadia Code", Consolas, monospace; }
+
+    /* 11 — Parallel */
+    .parallel { grid-template-columns: .9fr 1.1fr; gap: 4cqw; align-items: center; }
+    .network { position: relative; height: 51cqh; }
+    .hub { position: absolute; left: 50%; top: 50%; z-index: 3; display: grid; place-items: center; width: 12cqw; aspect-ratio: 1; border-radius: 50%; color: var(--white); background: var(--ink); font: 900 1.3cqw/1.2 "Cascadia Code", Consolas, monospace; text-align: center; transform: translate(-50%,-50%); box-shadow: 0 0 0 1.1cqw rgba(201,255,59,.45); }
+    .agent { position: absolute; z-index: 2; width: 11cqw; padding: 1.5cqh 1cqw; border: .16cqw solid var(--ink); background: var(--white); text-align: center; font: 900 1.05cqw/1.2 "Cascadia Code", Consolas, monospace; box-shadow: .35cqw .35cqw 0 var(--ink); }
+    .agent:nth-child(2) { left: 1%; top: 4%; }
+    .agent:nth-child(3) { right: 1%; top: 4%; }
+    .agent:nth-child(4) { left: 1%; bottom: 4%; }
+    .agent:nth-child(5) { right: 1%; bottom: 4%; }
+    .network svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .network path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 8; animation: dash 2s linear infinite; }
+    .parallel-copy .sub { margin-top: 3cqh; }
+
+    /* 12 — Implement */
+    .implement { grid-template-columns: .82fr 1.18fr; gap: 5cqw; align-items: center; }
+    .terminal { min-height: 48cqh; overflow: hidden; color: #d9fff1; background: var(--ink); border: .18cqw solid var(--ink); box-shadow: .7cqw .7cqw 0 var(--orange); }
+    .terminal-head { display: flex; gap: .7cqw; align-items: center; height: 5cqh; padding: 0 1.4cqw; border-bottom: .12cqw solid rgba(255,255,255,.22); }
+    .terminal-head i { width: .9cqw; aspect-ratio: 1; border-radius: 50%; background: var(--orange); }
+    .terminal-head i:nth-child(2) { background: #ffd13b; }
+    .terminal-head i:nth-child(3) { background: var(--acid); }
+    .terminal-body { padding: 2.4cqh 2cqw; font: 800 1.13cqw/1.8 "Cascadia Code", Consolas, monospace; }
+    .term-line { opacity: 0; transform: translateX(-1cqw); }
+    .active .term-line { animation: term .42s var(--ease) forwards; animation-delay: calc(var(--i) * 420ms + 300ms); }
+    .term-ok { color: var(--acid); }
+    .term-dim { color: #7f9390; }
+    .cursor { display: inline-block; width: .8cqw; height: 1.4cqh; margin-left: .3cqw; background: var(--acid); animation: blink .8s steps(1) infinite; }
+
+    /* 13 — Review */
+    .review { grid-template-rows: auto 1fr; }
+    .gates { align-self: end; display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; min-height: 39cqh; margin-top: 4cqh; }
+    .gate { position: relative; padding: 3cqh 2.4cqw; border: .2cqw solid var(--ink); background: var(--white); box-shadow: .65cqw .65cqw 0 var(--ink); }
+    .gate:nth-child(2) { color: var(--white); background: var(--ink); }
+    .gate-no { position: absolute; right: 2cqw; top: 2cqh; font: 900 4.5cqw/1 "Cascadia Code", Consolas, monospace; color: var(--orange); }
+    .gate h3 { max-width: 25cqw; font-size: 2.4cqw; }
+    .gate p { margin-top: 3cqh; max-width: 31cqw; color: var(--muted); font-size: 1.32cqw; line-height: 1.55; font-weight: 800; }
+    .gate:nth-child(2) p { color: #a9bbb7; }
+    .gate-status { position: absolute; left: 2.4cqw; right: 2.4cqw; bottom: 2.6cqh; display: flex; justify-content: space-between; align-items: center; padding-top: 1.5cqh; border-top: .13cqw solid currentColor; font: 900 1.05cqw/1 "Cascadia Code", Consolas, monospace; }
+    .gate-status b { color: #6d9400; }
+
+    /* 14 — Summary */
+    .summary { grid-template-columns: 1.15fr .85fr; gap: 4cqw; align-items: center; }
+    .steps { display: grid; gap: 1.25cqh; margin-top: 3.5cqh; }
+    .step { display: grid; grid-template-columns: 4.6cqw 1fr auto; align-items: center; gap: 1.2cqw; min-height: 6.8cqh; padding: 0 1.2cqw 0 0; border: .15cqw solid var(--ink); background: rgba(255,253,246,.78); font-size: 1.2cqw; font-weight: 900; }
+    .step b { align-self: stretch; display: grid; place-items: center; color: var(--white); background: var(--ink); font-family: "Cascadia Code", Consolas, monospace; }
+    .step code { color: var(--orange); font: 900 1.05cqw/1 "Cascadia Code", Consolas, monospace; }
+    .install { padding: 3.2cqh 2.4cqw; color: var(--white); background: var(--ink); box-shadow: .7cqw .7cqw 0 var(--acid); transform: rotate(1.2deg); }
+    .install-label { color: var(--acid); font: 900 1.05cqw/1 "Cascadia Code", Consolas, monospace; letter-spacing: .09em; }
+    .install code { display: block; margin-top: 2.6cqh; color: var(--white); font: 900 1.35cqw/1.55 "Cascadia Code", Consolas, monospace; word-break: break-word; }
+    .ask { margin-top: 4cqh; padding-top: 2.4cqh; border-top: .12cqw solid rgba(255,255,255,.25); color: #a9bbb7; font-size: 1.18cqw; line-height: 1.6; font-weight: 800; }
+    .ask strong { color: var(--acid); font-family: "Cascadia Code", Consolas, monospace; }
+
+    .controls {
+      position: absolute;
+      left: 3.4cqw;
+      right: 3.4cqw;
+      bottom: 2.4cqh;
+      z-index: 35;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 1.4cqw;
+    }
+
+    .progress { position: relative; height: .55cqh; overflow: hidden; background: rgba(16,22,22,.18); }
+    .progress-bar { width: 7.142%; height: 100%; background: var(--orange); transition: width .55s var(--ease); }
+    .count { min-width: 6.3cqw; color: var(--muted); font: 900 1.15cqw/1 "Cascadia Code", Consolas, monospace; text-align: center; }
+    .nav { display: flex; gap: .7cqw; }
+    .nav button { display: grid; place-items: center; width: 3.1cqw; aspect-ratio: 1; border: .13cqw solid var(--ink); border-radius: 50%; color: var(--ink); background: rgba(255,253,246,.85); font-size: 1.45cqw; font-weight: 900; cursor: pointer; transition: transform .2s ease, color .2s ease, background .2s ease; }
+    .nav button:hover { color: var(--white); background: var(--ink); transform: translateY(-.3cqh); }
+    .nav button:focus-visible { outline: .35cqw solid var(--acid); outline-offset: .2cqw; }
+
+    .side-index { position: absolute; right: 1.5cqw; top: 50%; z-index: 35; display: grid; gap: .65cqh; transform: translateY(-50%); }
+    .dot { width: .55cqw; height: .55cqw; padding: 0; border: 0; border-radius: 50%; background: rgba(16,22,22,.22); cursor: pointer; transition: transform .25s ease, background .25s ease; }
+    .dot.active { background: var(--orange); transform: scale(1.65); }
+
+    @keyframes reveal { to { opacity: 1; transform: none; } }
+    @keyframes pulse { 50% { opacity: .45; transform: scale(.82); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes belt { to { transform: translateX(8cqw); } }
+    @keyframes boxes { from { left: -13cqw; } to { left: 100%; } }
+    @keyframes growRail { to { width: calc(100% - 8cqw); } }
+    @keyframes hover { 50% { translate: 0 -1.1cqh; } }
+    @keyframes scan { to { top: 104%; } }
+    @keyframes dash { to { stroke-dashoffset: -32; } }
+    @keyframes term { to { opacity: 1; transform: none; } }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+      .scene { transition-duration: .01ms; }
+    }
+  </style>
+  <style id="dark-theme-override" media="not all">
+    :root {
+      --ink: #e8f4f0;
+      --paper: #07100f;
+      --paper-2: #0c1917;
+      --grid: rgba(160, 230, 211, .075);
+      --muted: #879b96;
+      --acid: #b9ff38;
+      --orange: #ff654b;
+      --cyan: #33e0d2;
+      --white: #0a1412;
+      --shadow: 0 26px 100px rgba(0, 0, 0, .62);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 16% 12%, rgba(51,224,210,.11), transparent 30%),
+        radial-gradient(circle at 86% 88%, rgba(185,255,56,.08), transparent 32%),
+        #010504;
+    }
+
+    .deck {
+      background:
+        radial-gradient(circle at 18% 10%, rgba(51,224,210,.075), transparent 24%),
+        radial-gradient(circle at 82% 84%, rgba(185,255,56,.055), transparent 25%),
+        linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        var(--paper);
+      box-shadow: 0 30px 110px rgba(0,0,0,.78), inset 0 0 0 1px rgba(185,255,56,.08);
+    }
+
+    .deck::before { opacity: .13; mix-blend-mode: screen; filter: invert(1); }
+    .deck::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 32;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(51,224,210,.12), transparent 16%, transparent 84%, rgba(185,255,56,.08)),
+        repeating-linear-gradient(0deg, transparent 0 4px, rgba(255,255,255,.012) 4px 5px);
+      mix-blend-mode: screen;
+    }
+
+    h1, h2 { color: #f1fbf8; text-shadow: 0 0 32px rgba(51,224,210,.06); }
+    .acid { color: var(--acid); }
+    .topline { color: #dce9e5; }
+    .live { color: #91a39f; }
+
+    .panel, .pipe-row, .spec-col, .step, .nav button { background: rgba(8, 19, 17, .9); }
+
+    .panel, .chain-node, .q, .decision, .doc-sheet, .spec-board,
+    .ticket, .phone, .v-step, .agent, .gate, .step {
+      box-shadow: .55cqw .55cqw 0 rgba(185,255,56,.72);
+    }
+
+    .repo-card, .pipe-row, .chain-node, .q, .decision, .doc-sheet,
+    .spec-col, .ticket, .phone, .v-step, .agent, .gate, .step { backdrop-filter: blur(9px); }
+
+    .repo-card, .chain-node, .doc-sheet, .ticket, .phone, .v-step, .agent, .gate {
+      background: rgba(8, 18, 16, .92);
+    }
+
+    .chain-node:nth-child(4), .q-big, .factory-note, .counter-label, .pipe-num, .step b {
+      color: #06100d;
+      background: var(--ink);
+      box-shadow: 0 0 28px rgba(232,244,240,.08);
+    }
+
+    .chain-node:nth-child(4) span { color: #43524f; }
+    .q:nth-child(4), .ticket:nth-child(2), .v-step:nth-child(1), .spec-col:nth-child(3) {
+      color: #07100f;
+      background: var(--acid);
+      box-shadow: .55cqw .55cqw 0 rgba(51,224,210,.7), 0 0 44px rgba(185,255,56,.12);
+    }
+
+    .q:nth-child(4) *, .ticket:nth-child(2) *, .v-step:nth-child(1) *, .spec-col:nth-child(3) * { color: #07100f; }
+    .spec-col:nth-child(2), .gate:nth-child(2) { color: #07100f; background: #dceae6; }
+    .spec-col:nth-child(2) p, .gate:nth-child(2) p { color: #455450; }
+    .factory-note, .q-big { box-shadow: 0 0 46px rgba(51,224,210,.08); }
+    .belt { background-color: rgba(232,244,240,.04); }
+    .box { background: #0c1816; box-shadow: .45cqw .45cqw 0 var(--ink); }
+
+    .terminal, .install {
+      color: #dafcf0;
+      background: #030a09;
+      border-color: #b9cbc6;
+      box-shadow: .7cqw .7cqw 0 var(--orange), 0 0 54px rgba(255,101,75,.08);
+    }
+
+    .terminal-head { border-color: rgba(232,244,240,.18); }
+    .term-dim { color: #71847f; }
+    .install code { color: #eefaf6; }
+    .install .ask { color: #91a7a1; }
+    .gate:nth-child(2) .gate-status b { color: #547500; }
+    .phone-bar { color: #07100f; background: var(--ink); }
+    .layer { background: rgba(7,16,15,.72); }
+    .no-order { color: #07100f; box-shadow: .4cqw .4cqw 0 var(--ink); }
+    .progress { background: rgba(232,244,240,.16); }
+    .dot { background: rgba(232,244,240,.25); }
+    .nav button:hover { color: #07100f; background: var(--ink); }
+    .marker::after { box-shadow: 0 0 24px rgba(185,255,56,.2); }
+    .counter-ring { box-shadow: inset 0 0 42px rgba(51,224,210,.04); }
+    .network path { stroke: var(--cyan); opacity: .7; }
+  </style>
+  <style id="dark-theme-system">
+    :root {
+      --bg-0: #020202;
+      --bg-1: #070707;
+      --surface-1: #0d0d0d;
+      --surface-2: #141414;
+      --surface-3: #1a1a1a;
+      --line: #303030;
+      --line-strong: #4a4a4a;
+      --text-1: #f1eee7;
+      --text-2: #b8b1a8;
+      --text-3: #78736d;
+      --primary: #eeeae1;
+      --info: #b3aca2;
+      --warn: #f2bd63;
+      --danger: #ff6347;
+      --ink: var(--text-1);
+      --paper: var(--bg-1);
+      --paper-2: var(--surface-1);
+      --grid: rgba(122, 116, 108, .07);
+      --muted: var(--text-3);
+      --acid: var(--primary);
+      --orange: var(--danger);
+      --cyan: var(--info);
+      --white: var(--text-1);
+      --shadow: 0 28px 90px rgba(0, 0, 0, .56);
+      --card-shadow: 0 16px 38px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255,255,255,.035);
+    }
+
+    body {
+      color: var(--text-1);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(238,234,225,.07), transparent 28%),
+        radial-gradient(circle at 92% 86%, rgba(179,172,162,.05), transparent 30%),
+        var(--bg-0);
+    }
+
+    .deck {
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 3.125cqw 3.125cqw,
+        radial-gradient(circle at 12% 8%, rgba(238,234,225,.045), transparent 24%),
+        radial-gradient(circle at 88% 88%, rgba(179,172,162,.035), transparent 26%),
+        var(--bg-1);
+      box-shadow: 0 30px 100px rgba(0,0,0,.7), inset 0 0 0 1px #1c1c1c;
+    }
+
+    .deck::before { opacity: .08; filter: invert(1); mix-blend-mode: screen; }
+    .topline { color: var(--text-2); }
+    .brand-mark { background: var(--warn); box-shadow: 0 0 18px rgba(242,189,99,.2); }
+    .live { color: var(--text-3); }
+    .live::before { background: var(--warn); box-shadow: 0 0 0 .35cqw rgba(242,189,99,.09), 0 0 18px rgba(242,189,99,.2); }
+
+    h1, h2 { color: var(--text-1); text-shadow: 0 10px 32px rgba(0,0,0,.26); }
+    h3 { color: var(--text-1); }
+    .sub { color: var(--text-2); }
+    .hero .sub { color: var(--text-2); }
+    .eyebrow, .acid { color: var(--primary); }
+    .hot { color: var(--danger); }
+    .marker::after {
+      height: .22em;
+      background: linear-gradient(90deg, var(--primary), var(--info));
+      box-shadow: 0 0 22px rgba(238,234,225,.1);
+      opacity: .9;
+    }
+
+    .panel, .repo-card, .pipe-row, .chain-node, .q, .decision, .doc-sheet,
+    .spec-board, .ticket, .phone, .v-step, .agent, .gate, .step {
+      color: var(--text-1);
+      background: var(--surface-1);
+      border-color: var(--line-strong);
+      box-shadow: var(--card-shadow);
+    }
+
+    .panel { background: linear-gradient(145deg, var(--surface-2), var(--surface-1)); }
+    .tag { color: var(--text-2); border-color: var(--line-strong); background: rgba(20,20,20,.78); }
+
+    .counter-ring { border-color: var(--line-strong); box-shadow: inset 0 0 48px rgba(238,234,225,.018); }
+    .counter-ring::before { border-color: #5c5c5c; opacity: .65; }
+    .counter-ring::after { border-color: var(--danger); opacity: .9; }
+    .counter { color: var(--text-1); }
+    .counter-label {
+      color: var(--primary);
+      background: var(--surface-3);
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 10px 28px rgba(0,0,0,.34);
+    }
+    .warning-line { color: #120705; background: var(--danger); box-shadow: 0 10px 26px rgba(255,99,71,.13); }
+
+    .factory { border-color: var(--line); }
+    .belt { border-color: var(--line-strong); background: repeating-linear-gradient(90deg, transparent 0 3.8cqw, rgba(132,125,115,.15) 3.8cqw 4cqw); }
+    .belt::after { background: repeating-linear-gradient(90deg, transparent 0 7cqw, var(--primary) 7cqw 8cqw); opacity: .52; }
+    .box { color: var(--text-1); background: var(--surface-2); border-color: var(--line-strong); box-shadow: 0 12px 26px rgba(0,0,0,.4); }
+    .box::after { color: #120705; background: var(--danger); }
+    .factory-note {
+      color: var(--text-1);
+      background: var(--surface-3);
+      border-left: .45cqw solid var(--danger);
+      box-shadow: 0 14px 34px rgba(0,0,0,.36);
+    }
+
+    .repo-card { background: linear-gradient(150deg, var(--surface-2), var(--surface-1)); }
+    .repo-head { border-color: var(--line); }
+    .stars { color: var(--warn); }
+    .pipe-row { background: var(--surface-1); border-color: var(--line); box-shadow: inset .35cqw 0 0 rgba(238,234,225,.62); }
+    .pipe-num { color: #090909; background: var(--primary); }
+
+    .chain-rail::before { background: var(--line-strong); }
+    .chain-rail::after { background: linear-gradient(90deg, var(--primary), var(--warn)); box-shadow: 0 0 16px rgba(238,234,225,.08); }
+    .chain-node { background: var(--surface-1); border-color: var(--line); }
+    .chain-node span { color: var(--text-3); }
+    .chain-node:nth-child(4) { color: var(--text-1); background: var(--surface-3); border-color: var(--warn); box-shadow: 0 16px 38px rgba(0,0,0,.34), inset 0 0 0 1px rgba(242,189,99,.09); }
+    .chain-node:nth-child(4) span { color: var(--text-2); }
+
+    .q { background: var(--surface-2); border-color: var(--line-strong); box-shadow: 0 12px 28px rgba(0,0,0,.36); }
+    .q:nth-child(4) { color: #090909; background: var(--primary); border-color: var(--primary); }
+    .q-big {
+      color: var(--text-1);
+      background: radial-gradient(circle, var(--surface-3), var(--surface-1));
+      border: .18cqw solid var(--primary);
+      box-shadow: 0 0 0 .8cqw rgba(238,234,225,.04), 0 20px 48px rgba(0,0,0,.42);
+    }
+    .q-big small { color: var(--text-3); }
+
+    .decision { background: var(--surface-2); border-color: var(--line-strong); box-shadow: 0 12px 28px rgba(0,0,0,.32); }
+    .doc-sheet { background: linear-gradient(160deg, var(--surface-2), var(--surface-1)); border-color: var(--line-strong); }
+    .doc-line { background: var(--text-2); opacity: .16; }
+    .scan { background: var(--warn); box-shadow: 0 0 20px rgba(242,189,99,.28); opacity: .58; }
+
+    .spec-board { background: var(--surface-1); border-color: var(--line-strong); }
+    .spec-col { color: var(--text-1); background: var(--surface-1); border-color: var(--line); box-shadow: none; }
+    .spec-col:nth-child(2) { color: var(--text-1); background: var(--surface-3); }
+    .spec-col:nth-child(3) { color: var(--text-1); background: rgba(242,189,99,.085); }
+    .spec-col:nth-child(2) p, .spec-col:nth-child(3) p { color: var(--text-2); }
+    .spec-col:nth-child(3) b { color: var(--primary); }
+
+    .ticket { background: var(--surface-2); border-color: var(--line-strong); box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+    .ticket:nth-child(2) { color: var(--text-1); background: var(--surface-3); border-color: var(--warn); }
+    .ticket:nth-child(2) p { color: var(--text-2); }
+    .ticket p { color: var(--text-3); }
+    .counter-strip span { color: var(--primary); background: var(--surface-3); border: 1px solid var(--line-strong); }
+
+    .phone { background: var(--surface-1); border-color: var(--line-strong); }
+    .phone-bar { color: var(--primary); background: var(--surface-3); border-bottom: 1px solid var(--line-strong); }
+    .layer { color: var(--text-1); background: var(--surface-1); border-color: var(--line); }
+    .layer em { color: var(--danger); }
+    .no-order { color: #120705; background: var(--danger); box-shadow: 0 12px 30px rgba(255,99,71,.14); }
+    .v-step { background: var(--surface-1); border-color: var(--line-strong); }
+    .v-step:nth-child(1) { color: var(--text-1); background: rgba(238,234,225,.055); border-color: var(--warn); }
+    .v-step:nth-child(1) p { color: var(--text-2); }
+    .v-step p { color: var(--text-3); }
+    .loop { border-color: var(--line-strong); color: var(--text-2); }
+
+    .hub {
+      color: var(--text-1);
+      background: var(--surface-3);
+      border: .18cqw solid var(--primary);
+      box-shadow: 0 0 0 .8cqw rgba(238,234,225,.045), 0 18px 42px rgba(0,0,0,.42);
+    }
+    .agent { background: var(--surface-1); border-color: var(--line-strong); box-shadow: 0 12px 28px rgba(0,0,0,.34); }
+    .network path { stroke: var(--info); opacity: .58; }
+
+    .terminal {
+      color: #e8e4dc;
+      background: #050505;
+      border-color: var(--line-strong);
+      box-shadow: 0 18px 44px rgba(0,0,0,.44), 0 0 0 1px rgba(179,172,162,.07);
+    }
+    .terminal-head { background: #0c0c0c; border-color: var(--line); }
+    .terminal-head i { background: var(--danger); }
+    .terminal-head i:nth-child(2) { background: var(--warn); }
+    .terminal-head i:nth-child(3) { background: var(--primary); }
+    .term-ok { color: var(--primary); }
+    .term-dim { color: var(--text-3); }
+    .cursor { background: var(--primary); }
+
+    .gate { color: var(--text-1); background: var(--surface-1); border-color: var(--line-strong); }
+    .gate:nth-child(2) { color: var(--text-1); background: var(--surface-2); border-color: var(--warn); }
+    .gate p, .gate:nth-child(2) p { color: var(--text-2); }
+    .gate-no { color: var(--danger); }
+    .gate-status { color: var(--text-3); border-color: var(--line); }
+    .gate-status b, .gate:nth-child(2) .gate-status b { color: var(--primary); }
+
+    .step { background: var(--surface-1); border-color: var(--line); box-shadow: inset .3cqw 0 0 rgba(238,234,225,.44); }
+    .step b { color: var(--primary); background: var(--surface-3); border-right: 1px solid var(--line-strong); }
+    .step code { color: var(--warn); }
+    .install {
+      color: var(--text-1);
+      background: linear-gradient(145deg, var(--surface-3), var(--surface-1));
+      border: .15cqw solid var(--warn);
+      box-shadow: 0 18px 44px rgba(0,0,0,.4), .55cqw .55cqw 0 rgba(242,189,99,.12);
+    }
+    .install-label { color: var(--primary); }
+    .install code { color: var(--text-1); }
+    .ask { color: var(--text-2); border-color: var(--line); }
+    .ask strong { color: var(--warn); }
+
+    .progress { background: #202020; }
+    .progress-bar { background: linear-gradient(90deg, var(--primary), var(--warn)); }
+    .count { color: var(--text-3); }
+    .nav button { color: var(--text-2); background: var(--surface-2); border-color: var(--line-strong); }
+    .nav button:hover { color: #090909; background: var(--primary); border-color: var(--primary); }
+    .dot { background: #3a3a3a; }
+    .dot.active { background: var(--warn); box-shadow: 0 0 14px rgba(242,189,99,.28); }
+    .topline,
+    .controls { display: none; }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck" aria-label="AI 开发工作流 4:3 演示">
+    <div class="topline">
+      <div class="brand"><span class="brand-mark"></span><span>AI DEV WORKFLOW / V2</span></div>
+      <div class="live">SYSTEM ONLINE</div>
+    </div>
+
+    <div class="slides">
+      <section class="scene hero active" data-title="25 个问题">
+        <div class="hero-copy">
+          <div class="eyebrow reveal" style="--i:0">先别急着写代码</div>
+          <h1 class="reveal" style="--i:1"><span>AI 写代码前</span><span>先回答 <span class="marker">25 个问题</span></span></h1>
+          <p class="sub reveal" style="--i:2">听起来很慢，但这反而是我一天里最省时间的一步。</p>
+          <div class="warning-line reveal" style="--i:3">错误需求 × 高速执行 = 高速返工</div>
+        </div>
+        <div class="counter-wrap reveal" style="--i:2">
+          <div class="counter-ring"></div>
+          <div class="counter" data-count="25">0</div>
+          <div class="counter-label">QUESTIONS BEFORE CODE</div>
+        </div>
+      </section>
+
+      <section class="scene risk" data-title="真正的危险">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">真正的危险</div>
+          <h2 class="risk-title reveal" style="--i:1">不是代码写错，而是 AI 把<span class="hot">错误需求</span>做得又快又完整。</h2>
+        </div>
+        <div class="factory reveal" style="--i:2">
+          <div class="factory-note">写得越快，返工得越快。<br>所以先把边界想清楚。</div>
+          <div class="box">FAST<br>CODE</div><div class="box">FULL<br>BUILD</div><div class="box">DONE<br>WRONG</div>
+          <div class="belt"></div>
+        </div>
+      </section>
+
+      <section class="scene system" data-title="工程级 Skills">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">Matt 开源 Skills</div>
+          <h2 class="reveal" style="--i:1">一条完整的<br><span class="marker">工程流程</span></h2>
+          <div class="repo-card panel reveal" style="--i:2; margin-top:4cqh">
+            <div class="repo-head"><span class="repo-name">mattpocock/skills</span><span>★</span></div>
+            <div class="stars">170K+</div>
+            <p>GitHub Star 超过 17 万<br>我用 GPT-5.6 实测一天</p>
+          </div>
+        </div>
+        <div class="pipeline">
+          <div class="pipe-row reveal" style="--i:1"><span class="pipe-num">01</span><span>需求澄清</span></div>
+          <div class="pipe-row reveal" style="--i:2"><span class="pipe-num">02</span><span>任务拆分</span></div>
+          <div class="pipe-row reveal" style="--i:3"><span class="pipe-num">03</span><span>代码开发</span></div>
+          <div class="pipe-row reveal" style="--i:4"><span class="pipe-num">04</span><span>测试</span></div>
+          <div class="pipe-row reveal" style="--i:5"><span class="pipe-num">05</span><span>审查</span></div>
+        </div>
+      </section>
+
+      <section class="scene chain" data-title="四步主线">
+        <div class="eyebrow reveal" style="--i:0">目前最顺手的链路</div>
+        <h2 class="reveal" style="--i:1">四个 Skill，覆盖一条完整主线</h2>
+        <div class="chain-rail reveal" style="--i:2">
+          <div class="chain-node"><code>grill-with-docs</code><span>追问 / 澄清</span></div>
+          <div class="chain-node"><code>to-spec</code><span>沉淀 / 对齐</span></div>
+          <div class="chain-node"><code>to-tickets</code><span>拆分 / 闭环</span></div>
+          <div class="chain-node"><code>implement</code><span>开发 / 审查</span></div>
+        </div>
+      </section>
+
+      <section class="scene grill" data-title="grill-with-docs">
+        <div class="question-cloud reveal" style="--i:1">
+          <div class="q">产品边界是什么？</div>
+          <div class="q">数据怎么存？</div>
+          <div class="q">哪些东西这次坚决不做？</div>
+          <div class="q">WHY?</div>
+          <div class="q-big">25<small>QUESTIONS</small></div>
+        </div>
+        <div class="grill-copy">
+          <div class="eyebrow reveal" style="--i:0">STEP 01 / grill-with-docs</div>
+          <h2 class="reveal" style="--i:1">像一个很难缠的<span class="hot">技术负责人</span></h2>
+          <p class="sub reveal" style="--i:2">你给它一个模糊需求，它不会立刻写代码，而是一题一题追问你。</p>
+          <p class="sub reveal" style="--i:3">痛苦是真的痛苦，但问题不在开发前想清楚，后面返工得更快。</p>
+        </div>
+      </section>
+
+      <section class="scene docs" data-title="关键决策沉淀">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">问完，不等于结束</div>
+          <h2 class="reveal" style="--i:1">把术语与决策<br><span class="marker">沉淀进文档</span></h2>
+          <p class="sub reveal" style="--i:2; margin-top:3cqh">新的会话、新的 Agent，不需要每次重新猜。</p>
+        </div>
+        <div class="decision-stack reveal" style="--i:2">
+          <div class="decision">TERM / 专业术语</div>
+          <div class="decision">BOUNDARY / 产品边界</div>
+          <div class="decision">DECISION / 关键决策</div>
+          <div class="doc-sheet"><div class="doc-line"></div><div class="doc-line short"></div><div class="doc-line"></div><div class="doc-line short"></div><div class="scan"></div></div>
+        </div>
+      </section>
+
+      <section class="scene spec" data-title="to-spec">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">STEP 02 / to-spec</div>
+          <h2 class="reveal" style="--i:1">不是“写文档”<br>是建立<span class="hot">基准线</span></h2>
+          <p class="sub reveal" style="--i:2; margin-top:3cqh">把散落在对话里的共识，变成所有人和 AI 都能反复对照的需求文档。</p>
+        </div>
+        <div class="spec-board reveal" style="--i:2">
+          <div class="spec-col"><b>DO</b><p>做什么<br>目标与范围</p></div>
+          <div class="spec-col"><b>DON'T</b><p>不做什么<br>约束与边界</p></div>
+          <div class="spec-col"><b>DONE</b><p>怎样才算<br>真正做对</p></div>
+        </div>
+      </section>
+
+      <section class="scene tickets" data-title="to-tickets">
+        <div class="ticket-stack reveal" style="--i:2">
+          <article class="ticket"><b>TICKET / 01</b><p>可独立运行</p></article>
+          <article class="ticket"><b>TICKET / 02</b><p>可独立测试</p></article>
+          <article class="ticket"><b>TICKET / 03</b><p>形成最小闭环</p></article>
+        </div>
+        <div class="tickets-copy">
+          <div class="eyebrow reveal" style="--i:0">STEP 03 / to-tickets</div>
+          <h2 class="reveal" style="--i:1">把需求拆成<br><span class="marker">小闭环</span></h2>
+          <p class="sub reveal" style="--i:2">这里有个非常反常识的概念：纵向切片。</p>
+          <div class="counter-strip reveal" style="--i:3"><span>RUN</span><span>TEST</span><span>LOOP</span></div>
+        </div>
+      </section>
+
+      <section class="scene slice" data-title="横向拆分的问题">
+        <div class="slice-head">
+          <div><div class="eyebrow reveal" style="--i:0">外卖小程序 / 横向拆</div><h2 class="reveal" style="--i:1">每一层都做了<br>用户仍然<span class="hot">点不了餐</span></h2></div>
+          <p class="sub reveal" style="--i:2">菜单页、购物车、支付接口分别完成，看起来合理，却没有一个完整结果。</p>
+        </div>
+        <div class="slice-board reveal" style="--i:2">
+          <div class="phone"><div class="phone-bar"><span>BUILD / LAYERS</span><span>×</span></div><div class="layers"><div class="layer"><span>01 菜单页</span><em>DONE</em></div><div class="layer"><span>02 购物车</span><em>DONE</em></div><div class="layer"><span>03 支付接口</span><em>DONE</em></div></div><div class="no-order">无法完成一次点餐</div></div>
+          <div class="panel" style="display:grid;place-items:center;padding:3cqw;text-align:center"><div><div class="mono" style="font-size:6cqw;font-weight:900;color:var(--orange)">3/3</div><h3 style="margin-top:2cqh">任务完成</h3><p class="sub" style="margin-top:1.5cqh">但用户价值 = 0</p></div></div>
+        </div>
+      </section>
+
+      <section class="scene slice" data-title="纵向切片">
+        <div class="slice-head">
+          <div><div class="eyebrow reveal" style="--i:0">反过来 / 纵向切</div><h2 class="reveal" style="--i:1">每一步都是一个<br><span class="marker">能跑、能测的闭环</span></h2></div>
+          <p class="sub reveal" style="--i:2">哪怕功能极简，也先让用户完成一次真正的点餐。</p>
+        </div>
+        <div class="vertical-steps reveal" style="--i:2; align-self:end; margin-top:4cqh">
+          <article class="v-step"><b>01</b><h3>固定套餐</h3><p>能看、能点、能生成订单</p><div class="loop"><span>VIEW</span><span>→</span><span>ORDER</span></div></article>
+          <article class="v-step"><b>02</b><h3>加入购物车</h3><p>在完整闭环上增加能力</p><div class="loop"><span>ADD</span><span>→</span><span>RUN</span></div></article>
+          <article class="v-step"><b>03</b><h3>真实支付</h3><p>继续扩展，不破坏闭环</p><div class="loop"><span>PAY</span><span>→</span><span>TEST</span></div></article>
+        </div>
+      </section>
+
+      <section class="scene parallel" data-title="边界清楚才能并行">
+        <div class="parallel-copy">
+          <div class="eyebrow reveal" style="--i:0">为什么纵向切片关键</div>
+          <h2 class="reveal" style="--i:1">任务不怕大<br>最怕<span class="hot">边界不清</span></h2>
+          <p class="sub reveal" style="--i:2">边界清楚，AI 才能真正并行干活，而不是互相冲突。</p>
+        </div>
+        <div class="network reveal" style="--i:2">
+          <svg viewBox="0 0 500 390" aria-hidden="true"><path d="M250 195 L75 55 M250 195 L425 55 M250 195 L75 335 M250 195 L425 335"/></svg>
+          <div class="hub">CLEAR<br>BOUNDARY</div>
+          <div class="agent">AGENT / A<br>LOOP 01</div><div class="agent">AGENT / B<br>LOOP 02</div><div class="agent">AGENT / C<br>LOOP 03</div><div class="agent">AGENT / D<br>LOOP 04</div>
+        </div>
+      </section>
+
+      <section class="scene implement" data-title="implement">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">STEP 04 / implement</div>
+          <h2 class="reveal" style="--i:1">到这里<br>才真正<span class="marker">开始写代码</span></h2>
+          <p class="sub reveal" style="--i:2; margin-top:3cqh">TDD 测试驱动开发，完成代码并提交 Git，随后进入代码审查。</p>
+        </div>
+        <div class="terminal reveal" style="--i:2">
+          <div class="terminal-head"><i></i><i></i><i></i></div>
+          <div class="terminal-body">
+            <div class="term-line" style="--i:0"><span class="term-dim">$</span> implement ticket-01</div>
+            <div class="term-line" style="--i:1">→ write failing test</div>
+            <div class="term-line" style="--i:2">→ implement minimum code</div>
+            <div class="term-line term-ok" style="--i:3">✓ tests passed</div>
+            <div class="term-line" style="--i:4">→ git commit</div>
+            <div class="term-line term-ok" style="--i:5">✓ ready for review <span class="cursor"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene review" data-title="双重审查">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">CODE REVIEW / TWO GATES</div>
+          <h2 class="reveal" style="--i:1">代码与需求，<span class="hot">两道门</span>都要过</h2>
+        </div>
+        <div class="gates reveal" style="--i:2">
+          <article class="gate"><span class="gate-no">01</span><h3>有没有违反项目规范？</h3><p>需求做对了，但把项目架构踩烂了，也不行。</p><div class="gate-status"><span>PROJECT RULES</span><b>PASS ✓</b></div></article>
+          <article class="gate"><span class="gate-no">02</span><h3>有没有实现原来的需求？</h3><p>代码写得很漂亮，但需求做错了，还是不行。</p><div class="gate-status"><span>ORIGINAL SPEC</span><b>PASS ✓</b></div></article>
+        </div>
+      </section>
+
+      <section class="scene summary" data-title="完整流程">
+        <div>
+          <div class="eyebrow reveal" style="--i:0">FINAL / 完整开发流程</div>
+          <h2 class="reveal" style="--i:1">先想清楚<br>再让 AI <span class="marker">跑得快</span></h2>
+          <div class="steps reveal" style="--i:2">
+            <div class="step"><b>01</b><span>通过追问澄清需求</span><code>grill-with-docs</code></div>
+            <div class="step"><b>02</b><span>基于讨论生成 PRD</span><code>to-spec</code></div>
+            <div class="step"><b>03</b><span>拆成可独立运行的子任务</span><code>to-tickets</code></div>
+            <div class="step"><b>04</b><span>多线程并行实现</span><code>implement</code></div>
+          </div>
+        </div>
+        <div class="install reveal" style="--i:3">
+          <div class="install-label">INSTALL / 按需选择</div>
+          <code>npx skills@latest add<br>mattpocock/skills</code>
+          <div class="ask">不知道该调用哪个 Skill？<br>直接调用 <strong>ask-matt</strong>，让它根据问题导航。</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="side-index" aria-label="场景导航"></div>
+    <div class="controls">
+      <div class="progress"><div class="progress-bar"></div></div>
+      <div class="count"><span id="current">01</span> / <span id="total">14</span></div>
+      <div class="nav">
+        <button type="button" id="prev" aria-label="上一页">←</button>
+        <button type="button" id="next" aria-label="下一页">→</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const scenes = [...document.querySelectorAll('.scene')];
+      const currentEl = document.getElementById('current');
+      const totalEl = document.getElementById('total');
+      const bar = document.querySelector('.progress-bar');
+      const side = document.querySelector('.side-index');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let countTimer = 0;
+
+      totalEl.textContent = String(scenes.length).padStart(2, '0');
+
+      scenes.forEach((scene, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `${i + 1}. ${scene.dataset.title}`);
+        dot.addEventListener('click', () => go(i));
+        side.appendChild(dot);
+      });
+
+      const dots = [...side.children];
+
+      function animateCounter(scene) {
+        clearInterval(countTimer);
+        const el = scene.querySelector('[data-count]');
+        if (!el) return;
+        const end = Number(el.dataset.count);
+        if (reduceMotion) { el.textContent = end; return; }
+        let value = 0;
+        el.textContent = '0';
+        countTimer = setInterval(() => {
+          value += 1;
+          el.textContent = value;
+          if (value >= end) clearInterval(countTimer);
+        }, 42);
+      }
+
+      function restartSceneAnimations(scene) {
+        scene.querySelectorAll('.reveal, .term-line, .scan').forEach(el => {
+          el.style.animation = 'none';
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+      }
+
+      function go(nextIndex) {
+        nextIndex = (nextIndex + scenes.length) % scenes.length;
+        if (nextIndex === index) return;
+        const old = scenes[index];
+        old.classList.remove('active');
+        old.classList.toggle('exit-left', nextIndex > index);
+        scenes[nextIndex].classList.remove('exit-left');
+        scenes[nextIndex].classList.add('active');
+        index = nextIndex;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentEl.textContent = String(index + 1).padStart(2, '0');
+        bar.style.width = `${((index + 1) / scenes.length) * 100}%`;
+        restartSceneAnimations(scenes[index]);
+        animateCounter(scenes[index]);
+      }
+
+      document.getElementById('prev').addEventListener('click', () => go(index - 1));
+      document.getElementById('next').addEventListener('click', () => go(index + 1));
+      document.addEventListener('keydown', event => {
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); go(index + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1); }
+        if (event.key === 'Home') go(0);
+        if (event.key === 'End') go(scenes.length - 1);
+        if (event.key.toLowerCase() === 'f') {
+          if (!document.fullscreenElement) document.getElementById('deck').requestFullscreen?.();
+          else document.exitFullscreen?.();
+        }
+      });
+
+      let touchStart = 0;
+      document.getElementById('deck').addEventListener('touchstart', e => touchStart = e.changedTouches[0].clientX, { passive: true });
+      document.getElementById('deck').addEventListener('touchend', e => {
+        const delta = e.changedTouches[0].clientX - touchStart;
+        if (Math.abs(delta) > 40) go(index + (delta < 0 ? 1 : -1));
+      }, { passive: true });
+
+      animateCounter(scenes[0]);
+    })();
+  </script>
+</body>
+</html>

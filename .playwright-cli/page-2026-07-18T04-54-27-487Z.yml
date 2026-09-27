@@ -1,0 +1,61 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - generic:
+        - generic:
+          - generic: 反过来 / 纵向切
+          - heading "每一步都是一个 能跑、能测的闭环" [level=2]:
+            - text: 每一步都是一个
+            - generic: 能跑、能测的闭环
+        - paragraph: 先选一个最小但完整的用户动作，从页面到数据库一次打通。
+      - generic:
+        - article:
+          - text: "01"
+          - heading "固定套餐" [level=3]
+          - paragraph: 页面下单 → 后端建单数据库保存 → 下单成功
+          - generic:
+            - generic: PAGE
+            - generic: →
+            - generic: SUCCESS
+        - article:
+          - text: "02"
+          - heading "加入购物车" [level=3]
+          - paragraph: 在完整闭环上增加能力
+          - generic:
+            - generic: ADD
+            - generic: →
+            - generic: RUN
+        - article:
+          - text: "03"
+          - heading "真实支付" [level=3]
+          - paragraph: 继续扩展，不破坏闭环
+          - generic:
+            - generic: PAY
+            - generic: →
+            - generic: TEST
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - generic [ref=e90]: 每完成一个任务
+        - heading "系统多出一个 完整功能" [level=2] [ref=e91]: 系统多出一个完整功能
+        - paragraph [ref=e92]: 每个任务都能运行、能演示、能测试。
+      - generic [ref=e93]:
+        - generic [ref=e96]: EACHTICKET
+        - generic [ref=e97]: RUN能运行
+        - generic [ref=e98]: DEMO能演示
+        - generic [ref=e99]: TEST能测试
+        - generic [ref=e100]: DONE完整功能
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [ref=e27] [cursor=pointer]
+    - button "11. 每个任务交付完整功能" [active] [ref=e28] [cursor=pointer]
+    - button "12. implement" [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [ref=e31] [cursor=pointer]

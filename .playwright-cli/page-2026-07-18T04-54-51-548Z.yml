@@ -1,0 +1,42 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - generic:
+        - generic: 每完成一个任务
+        - heading "系统多出一个 完整功能" [level=2]: 系统多出一个完整功能
+        - paragraph: 每个任务都能运行、能演示、能测试。
+      - generic:
+        - generic: EACHTICKET
+        - generic: RUN能运行
+        - generic: DEMO能演示
+        - generic: TEST能测试
+        - generic: DONE完整功能
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]: STEP 04 / implement
+        - heading "到这里 才真正 开始写代码" [level=2] [ref=e104]:
+          - text: 到这里才真正
+          - generic [ref=e105]: 开始写代码
+        - paragraph [ref=e106]: 在适合的边界使用 TDD，过程中持续运行测试，完成后审查并提交。
+      - generic [ref=e112]:
+        - generic [ref=e113]: $ implement ticket-01
+        - generic [ref=e114]: → choose suitable TDD boundary
+        - generic [ref=e115]: → run tests continuously
+        - generic [ref=e116]: ✓ tests passed
+        - generic [ref=e117]: → review code
+        - generic [ref=e118]: ✓ git commit
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [ref=e27] [cursor=pointer]
+    - button "11. 每个任务交付完整功能" [ref=e28] [cursor=pointer]
+    - button "12. implement" [active] [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [ref=e31] [cursor=pointer]

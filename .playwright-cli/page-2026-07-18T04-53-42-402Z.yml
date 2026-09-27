@@ -1,0 +1,56 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - generic:
+        - generic: AI 没急着写代码
+        - heading "开发项目之前 先追问 25 个问题" [level=1]:
+          - generic: 开发项目之前
+          - generic:
+            - text: 先追问
+            - generic: 25 个问题
+        - paragraph: 它不是问题多，而是在动手之前，把我没想清楚的需求一层层逼出来。
+        - generic: 错误需求 × 高速执行 = 耗时又耗 token
+      - generic:
+        - generic: "25"
+        - generic: QUESTIONS BEFORE CODE
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: 外卖小程序 / 按技术层拆
+          - heading "三层都完成 用户仍然用不了" [level=2] [ref=e36]: 三层都完成用户仍然用不了
+        - paragraph [ref=e37]: 数据库、后端接口、前端页面分别完成，在最后一层打通前，用户什么都用不了。
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: TECH / LAYERS
+            - generic [ref=e42]: ×
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: 01 建数据库
+              - emphasis [ref=e46]: DONE
+            - generic [ref=e47]:
+              - generic [ref=e48]: 02 后端接口
+              - emphasis [ref=e49]: DONE
+            - generic [ref=e50]:
+              - generic [ref=e51]: 03 前端页面
+              - emphasis [ref=e52]: DONE
+          - generic [ref=e53]: 链路没有打通
+        - generic [ref=e55]:
+          - generic [ref=e56]: 3/3
+          - heading "每层完成" [level=3] [ref=e57]
+          - paragraph [ref=e58]: 却很难单独验证
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [active] [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [ref=e27] [cursor=pointer]
+    - button "11. 每个任务交付完整功能" [ref=e28] [cursor=pointer]
+    - button "12. implement" [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [ref=e31] [cursor=pointer]

@@ -1,0 +1,786 @@
+<!--
+  目标受众：AI 工具实践者、个人开发者、内容创作者；主要在笔记本浏览器阅读，也会截取局部用于选题讨论。
+  内容假设：读者更关心可执行判断与验证路径，而非逐条新闻复述；页面按“信号 → 判断 → 行动 → 选题”组织，可跳读也可深读。
+  事实边界：分析窗口为 2026-07-29 至 2026-08-11，仅覆盖仓库中实际存在的 8 份 AI HOT 与 9 份 Builders Digest；缺档表示未纳入样本，不代表当天没有动态。产品事实分为“官方核验”与“本地日报收录”，均不等同于本报告亲测。
+  图片决策：不使用图片。工具、证据、观点和优先级关系用排版、连线、数据条与矩阵表达；页面不依赖外部字体、CDN、框架或后端，可由 file:// 直接打开。
+-->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>信号地图｜近两周 AI 趋势与实战选题</title>
+  <style>
+    :root {
+      --paper: #f6f5f1;
+      --ink: #10100f;
+      --muted: #6f6d67;
+      --line: #c9c6bd;
+      --soft: #e9e7e0;
+      --orange: #f05a28;
+      --orange-soft: #ffe3d7;
+      --white: #fffefb;
+      --max: 1180px;
+      --rail: 176px;
+      --shadow: 0 18px 55px rgba(16, 16, 15, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(16, 16, 15, .032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 16, 15, .032) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: 16px;
+      line-height: 1.78;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 78% 4%, rgba(240, 90, 40, .09), transparent 28%);
+      z-index: -1;
+    }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:hover { color: var(--orange); }
+    button, summary { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { color: var(--white); background: var(--orange); }
+
+    .site-header {
+      border-bottom: 2px solid var(--ink);
+      background: rgba(246, 245, 241, .93);
+      backdrop-filter: blur(12px);
+    }
+    .masthead {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand { font-weight: 900; }
+    .brand b { color: var(--orange); }
+    .window { display: flex; gap: 12px; align-items: center; color: var(--muted); }
+    .window::before { content: ""; width: 42px; height: 2px; background: var(--orange); }
+    .print-btn {
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .print-btn:hover { color: var(--white); background: var(--ink); }
+
+    .hero {
+      max-width: var(--max);
+      min-height: 680px;
+      margin: 0 auto;
+      padding: 76px 24px 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(280px, .75fr);
+      gap: 72px;
+      align-items: end;
+      position: relative;
+    }
+    .hero::after {
+      content: "01 / 08";
+      position: absolute;
+      top: 42px;
+      right: 24px;
+      color: var(--orange);
+      font: 800 13px/1 "Courier New", monospace;
+      letter-spacing: .12em;
+    }
+    .kicker {
+      margin: 0 0 22px;
+      font: 700 13px/1.2 "Courier New", monospace;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    h1, h2, h3, .display {
+      font-family: Georgia, "Songti SC", SimSun, serif;
+      text-wrap: balance;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(58px, 9vw, 126px);
+      line-height: .86;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
+    h1 span { display: block; }
+    h1 .slash { color: var(--orange); font-style: italic; }
+    .hero-deck {
+      max-width: 760px;
+      margin: 34px 0 0;
+      font-size: clamp(20px, 2.2vw, 30px);
+      line-height: 1.48;
+      font-weight: 700;
+    }
+    .hero-side {
+      border-top: 8px solid var(--orange);
+      padding-top: 24px;
+    }
+    .hero-side p { margin: 0 0 22px; }
+    .hero-side strong { font-size: 21px; }
+    .data-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 2px solid var(--ink);
+      background: var(--white);
+    }
+    .datum { min-height: 112px; padding: 16px; border-right: 1px solid var(--ink); }
+    .datum:last-child { border: 0; }
+    .datum b { display: block; font: 800 42px/1 Georgia, serif; color: var(--orange); }
+    .datum span { display: block; margin-top: 8px; font-size: 12px; line-height: 1.35; }
+
+    .thesis-band { color: var(--white); background: var(--ink); }
+    .thesis-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 62px 24px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .thesis-mark {
+      width: 142px; height: 142px;
+      border: 2px solid var(--orange);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font: italic 800 86px/1 Georgia, serif;
+      color: var(--orange);
+    }
+    .thesis-band blockquote {
+      margin: 0;
+      font: 700 clamp(27px, 3.6vw, 48px)/1.38 Georgia, "Songti SC", SimSun, serif;
+    }
+    .thesis-band blockquote em { color: var(--orange); font-style: normal; }
+    .thesis-band small { display: block; margin-top: 24px; color: #aaa79f; font-size: 14px; }
+
+    .layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: var(--rail) minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 18px;
+      padding: 42px 0;
+      max-height: 96vh;
+      overflow: auto;
+    }
+    .toc-label { margin: 0 0 12px; font: 800 11px/1.2 "Courier New", monospace; letter-spacing: .16em; color: var(--orange); }
+    .toc a {
+      display: flex;
+      min-height: 44px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.25;
+      transition: padding .2s, color .2s;
+    }
+    .toc a:last-child { border-bottom: 1px solid var(--line); }
+    .toc a.active, .toc a:hover { color: var(--orange); padding-left: 8px; }
+
+    main { min-width: 0; }
+    .section {
+      padding: 92px 0 82px;
+      border-bottom: 2px solid var(--ink);
+      position: relative;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+    .section-no { color: var(--orange); font: italic 800 58px/1 Georgia, serif; }
+    .section h2 { margin: 0; font-size: clamp(38px, 5vw, 68px); line-height: 1; letter-spacing: -.045em; }
+    .section-intro { max-width: 760px; margin: 16px 0 0; color: var(--muted); font-size: 18px; }
+
+    .coverage-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; }
+    .coverage-card { border-top: 4px solid var(--ink); padding-top: 20px; }
+    .coverage-card h3 { margin: 0 0 16px; font-size: 25px; }
+    .coverage-card p { margin: 0 0 18px; }
+    .coverage-row {
+      display: grid;
+      grid-template-columns: 116px 1fr 40px;
+      gap: 12px;
+      align-items: center;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    .bar { height: 12px; background: var(--soft); overflow: hidden; }
+    .bar i { display: block; height: 100%; background: var(--orange); }
+    .date-runs { display: flex; flex-wrap: wrap; gap: 7px; }
+    .date-runs span { padding: 4px 7px; border: 1px solid var(--ink); font: 700 11px/1.2 "Courier New", monospace; background: var(--white); }
+    .method-steps { counter-reset: step; margin: 0; padding: 0; list-style: none; }
+    .method-steps li { position: relative; padding: 0 0 22px 42px; }
+    .method-steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute; left: 0; top: 3px;
+      width: 26px; height: 26px;
+      display: grid; place-items: center;
+      color: var(--white); background: var(--ink);
+      font: 800 12px/1 "Courier New", monospace;
+    }
+    .method-steps li::after { content: ""; position: absolute; left: 12px; top: 29px; bottom: 2px; width: 1px; background: var(--line); }
+    .method-steps li:last-child::after { display: none; }
+    .boundary { margin-top: 26px; padding: 18px; border: 2px solid var(--orange); background: var(--orange-soft); font-size: 14px; }
+
+    .signal-flow { position: relative; padding-left: 48px; }
+    .signal-flow::before { content: ""; position: absolute; left: 13px; top: 16px; bottom: 30px; width: 3px; background: var(--ink); }
+    .signal {
+      position: relative;
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 28px;
+      padding: 0 0 62px;
+    }
+    .signal::before {
+      content: "";
+      position: absolute; left: -45px; top: 7px;
+      width: 20px; height: 20px;
+      border: 3px solid var(--ink); border-radius: 50%; background: var(--paper);
+    }
+    .signal::after { content: ""; position: absolute; left: -25px; top: 17px; width: 24px; height: 2px; background: var(--ink); }
+    .signal-num { font: italic 800 62px/.9 Georgia, serif; color: var(--orange); }
+    .signal-body { border-top: 2px solid var(--ink); padding-top: 14px; }
+    .signal-body h3 { margin: 0 0 12px; font-size: clamp(25px, 3vw, 35px); line-height: 1.25; }
+    .signal-body p { margin: 0 0 14px; }
+    .signal-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 8px; border: 1px solid var(--ink); background: var(--white); font: 700 11px/1.2 "Courier New", monospace; letter-spacing: .04em; }
+    .tag.verified { color: var(--white); background: var(--ink); }
+    .tag.local { border-color: var(--orange); color: #9d3310; background: var(--orange-soft); }
+    .judgment { padding: 14px 18px; border-left: 5px solid var(--orange); background: var(--white); box-shadow: var(--shadow); }
+    .judgment b { margin-right: 8px; color: var(--orange); font: 800 11px/1 "Courier New", monospace; letter-spacing: .12em; }
+
+    .controls {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      margin: -12px 0 30px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .controls span { margin-right: 8px; color: var(--muted); font-size: 13px; }
+    .filter-btn {
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--ink);
+      color: var(--ink); background: transparent;
+      font-weight: 800;
+    }
+    .filter-btn[aria-pressed="true"] { color: var(--white); background: var(--ink); }
+    .filter-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .filter-btn[aria-pressed="true"]:hover { color: var(--white); }
+
+    .tool-tier { margin-bottom: 52px; }
+    .tool-tier-head {
+      display: grid; grid-template-columns: 76px 1fr; gap: 18px; align-items: center;
+      margin-bottom: 16px;
+    }
+    .tier-letter { width: 68px; height: 68px; display: grid; place-items: center; color: var(--white); background: var(--ink); font: 800 38px/1 Georgia, serif; }
+    .tool-tier[data-tier="A"] .tier-letter { background: var(--orange); }
+    .tool-tier-head h3 { margin: 0; font-size: 27px; }
+    .tool-tier-head p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+    .tool-list { border-top: 2px solid var(--ink); }
+    .tool {
+      display: grid;
+      grid-template-columns: 56px minmax(210px, .8fr) minmax(270px, 1.45fr) 116px;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      transition: opacity .2s;
+    }
+    .tool-index { color: var(--orange); font: 800 18px/1.4 "Courier New", monospace; }
+    .tool-name { font-weight: 900; line-height: 1.45; }
+    .tool p { margin: 0; font-size: 14px; line-height: 1.65; }
+    .fact-status { justify-self: end; text-align: center; }
+    .hidden { display: none !important; }
+
+    .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 2px solid var(--ink); background: var(--white); }
+    .action { min-height: 280px; padding: 28px; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); position: relative; }
+    .action:nth-child(2n) { border-right: 0; }
+    .action:nth-last-child(-n+2) { border-bottom: 0; }
+    .action-no { position: absolute; right: 20px; top: 18px; color: var(--soft); font: italic 800 70px/1 Georgia, serif; }
+    .action h3 { max-width: 80%; margin: 0 0 18px; font-size: 27px; position: relative; }
+    .action p { margin: 0 0 16px; position: relative; }
+    .action-output { display: inline-block; margin-top: 8px; padding-top: 9px; border-top: 3px solid var(--orange); font-weight: 800; font-size: 14px; }
+
+    .topic-list { display: grid; gap: 18px; }
+    details.topic {
+      border: 2px solid var(--ink);
+      background: var(--white);
+      transition: box-shadow .2s, transform .2s;
+    }
+    details.topic:hover { transform: translateY(-2px); box-shadow: 7px 7px 0 var(--orange); }
+    details.topic[open] { box-shadow: 7px 7px 0 var(--orange); }
+    details.topic summary {
+      min-height: 88px;
+      display: grid;
+      grid-template-columns: 66px 1fr 40px;
+      gap: 18px;
+      align-items: center;
+      padding: 16px 18px;
+      list-style: none;
+      cursor: pointer;
+    }
+    details.topic summary::-webkit-details-marker { display: none; }
+    .topic-id { color: var(--orange); font: italic 800 36px/1 Georgia, serif; }
+    .topic-title { font-family: Georgia, "Songti SC", SimSun, serif; font-size: 23px; line-height: 1.35; font-weight: 800; }
+    .topic-plus { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--ink); font-size: 24px; line-height: 1; }
+    details[open] .topic-plus { color: var(--white); background: var(--ink); transform: rotate(45deg); }
+    .topic-detail { padding: 6px 24px 26px 102px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 30px; }
+    .topic-detail p { margin: 0; }
+    .topic-detail strong { display: block; margin-bottom: 2px; color: var(--orange); font: 800 11px/1.4 "Courier New", monospace; letter-spacing: .08em; }
+    .topic-priority { display: inline-block; margin: 0 24px 22px 102px; padding: 4px 9px; color: var(--white); background: var(--ink); font: 800 11px/1.4 "Courier New", monospace; }
+    .topic[data-priority="now"] .topic-priority { background: var(--orange); }
+
+    .matrix-wrap { overflow-x: auto; padding: 8px 8px 30px; }
+    .matrix {
+      min-width: 720px;
+      min-height: 540px;
+      display: grid;
+      grid-template-columns: 62px repeat(10, 1fr);
+      grid-template-rows: repeat(10, 1fr) 62px;
+      position: relative;
+      border-left: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      background:
+        linear-gradient(rgba(16,16,15,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,16,15,.10) 1px, transparent 1px),
+        rgba(255,254,251,.72);
+      background-size: 10% 10%;
+    }
+    .axis-y { grid-column: 1; grid-row: 1 / 11; writing-mode: vertical-rl; transform: rotate(180deg); display: flex; justify-content: center; align-items: center; font: 800 12px/1 "Courier New", monospace; letter-spacing: .1em; }
+    .axis-x { grid-column: 2 / 12; grid-row: 11; display: flex; justify-content: center; align-items: center; font: 800 12px/1 "Courier New", monospace; letter-spacing: .1em; }
+    .quadrant { position: absolute; color: var(--muted); font: 800 11px/1 "Courier New", monospace; letter-spacing: .08em; }
+    .q1 { top: 12px; right: 12px; color: var(--orange); }
+    .q2 { top: 12px; left: 74px; }
+    .q3 { bottom: 74px; left: 74px; }
+    .q4 { bottom: 74px; right: 12px; }
+    .dot {
+      width: 40px; height: 40px;
+      align-self: center; justify-self: center;
+      display: grid; place-items: center;
+      border: 2px solid var(--ink); border-radius: 50%;
+      background: var(--white);
+      font: 800 12px/1 "Courier New", monospace;
+      box-shadow: 3px 3px 0 var(--ink);
+      position: relative;
+      z-index: 2;
+    }
+    .dot.now { color: var(--white); border-color: var(--orange); background: var(--orange); box-shadow: 3px 3px 0 var(--ink); }
+    .matrix-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 13px; }
+    .matrix-legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 7px; border: 2px solid var(--ink); border-radius: 50%; vertical-align: -2px; background: var(--white); }
+    .matrix-legend .hot::before { border-color: var(--orange); background: var(--orange); }
+
+    .appendix-note { margin-bottom: 28px; padding: 20px; background: var(--ink); color: var(--white); }
+    .appendix-note b { color: var(--orange); }
+    .source-table { width: 100%; border-collapse: collapse; background: var(--white); }
+    .source-table th, .source-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .source-table th { color: var(--white); background: var(--ink); font: 800 12px/1.4 "Courier New", monospace; letter-spacing: .06em; }
+    .source-table td:first-child { white-space: nowrap; font-family: "Courier New", monospace; font-weight: 800; }
+    .official-list { columns: 2; column-gap: 36px; margin: 34px 0 0; padding: 0; list-style: none; }
+    .official-list li { break-inside: avoid; padding: 12px 0; border-top: 1px solid var(--line); font-size: 14px; }
+    .official-list a { word-break: break-word; }
+
+    footer { color: var(--white); background: var(--ink); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 52px 24px; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; }
+    .footer-big { margin: 0; font: 800 clamp(38px, 6vw, 78px)/.95 Georgia, "Songti SC", serif; letter-spacing: -.04em; }
+    .footer-big em { color: var(--orange); font-style: normal; }
+    .footer-meta { color: #aaa79f; text-align: right; font: 700 11px/1.8 "Courier New", monospace; letter-spacing: .08em; }
+    .back-top { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; margin-top: 10px; border: 1px solid #aaa79f; color: var(--white); text-decoration: none; }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; gap: 44px; }
+      .hero-side { max-width: 620px; }
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: relative; top: auto; max-height: none; padding: 26px 0 0; display: flex; gap: 8px; overflow-x: auto; }
+      .toc-label { flex: 0 0 auto; display: grid; place-items: center; margin: 0 8px 0 0; }
+      .toc a { flex: 0 0 auto; padding: 0 12px; border: 1px solid var(--line); }
+      .toc a:last-child { border: 1px solid var(--line); }
+      .toc a.active, .toc a:hover { padding-left: 12px; border-color: var(--orange); }
+      .coverage-grid { grid-template-columns: 1fr; }
+      .tool { grid-template-columns: 48px 1fr 110px; }
+      .tool p { grid-column: 2 / 4; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      .masthead { padding: 10px 16px; }
+      .window { display: none; }
+      .hero { padding: 58px 16px 40px; }
+      .hero::after { right: 16px; top: 24px; }
+      h1 { font-size: clamp(54px, 21vw, 86px); }
+      .hero-deck { font-size: 20px; }
+      .data-strip { grid-template-columns: 1fr; }
+      .datum { min-height: 84px; border-right: 0; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 86px 1fr; align-items: center; }
+      .datum:last-child { border-bottom: 0; }
+      .datum span { margin: 0; }
+      .thesis-inner { padding: 42px 16px; grid-template-columns: 1fr; gap: 20px; }
+      .thesis-mark { width: 78px; height: 78px; font-size: 48px; }
+      .layout { padding: 0 16px; gap: 0; }
+      .section { padding: 68px 0 60px; }
+      .section-head { grid-template-columns: 60px 1fr; gap: 12px; margin-bottom: 36px; }
+      .section-no { font-size: 42px; }
+      .section h2 { font-size: 39px; }
+      .section-intro { grid-column: 1 / 3; font-size: 16px; }
+      .coverage-row { grid-template-columns: 92px 1fr 32px; gap: 7px; }
+      .signal-flow { padding-left: 32px; }
+      .signal-flow::before { left: 8px; }
+      .signal { grid-template-columns: 1fr; gap: 8px; padding-bottom: 50px; }
+      .signal::before { left: -33px; width: 18px; height: 18px; }
+      .signal::after { left: -13px; width: 13px; }
+      .signal-num { font-size: 42px; }
+      .tool-tier-head { grid-template-columns: 58px 1fr; }
+      .tier-letter { width: 54px; height: 54px; font-size: 30px; }
+      .tool { grid-template-columns: 42px 1fr; gap: 10px; }
+      .tool p { grid-column: 2; }
+      .fact-status { grid-column: 2; justify-self: start; }
+      .actions { grid-template-columns: 1fr; }
+      .action { min-height: auto; border-right: 0; border-bottom: 1px solid var(--ink) !important; }
+      .action:last-child { border-bottom: 0 !important; }
+      details.topic summary { grid-template-columns: 50px 1fr 34px; gap: 8px; padding: 14px 10px; }
+      .topic-id { font-size: 29px; }
+      .topic-title { font-size: 18px; }
+      .topic-detail { padding: 5px 18px 22px; grid-template-columns: 1fr; }
+      .topic-priority { margin: 0 18px 20px; }
+      .official-list { columns: 1; }
+      .source-table { font-size: 13px; }
+      .source-table th, .source-table td { padding: 10px 8px; }
+      .footer-inner { padding: 42px 16px; grid-template-columns: 1fr; }
+      .footer-meta { text-align: left; }
+    }
+
+    @media print {
+      :root { --paper: #fff; --white: #fff; }
+      body { background: #fff; font-size: 10.5pt; }
+      body::before, .toc, .controls, .print-btn, .back-top { display: none !important; }
+      .site-header { position: static; background: #fff; }
+      .hero { min-height: auto; padding-top: 40px; }
+      .layout { display: block; max-width: 100%; }
+      .section { padding: 36px 0; break-before: page; }
+      .section:first-of-type { break-before: auto; }
+      .signal, .tool, .action, details.topic, .coverage-card { break-inside: avoid; }
+      .signal-flow { padding-left: 36px; }
+      details.topic { box-shadow: none !important; transform: none !important; }
+      details.topic:not([open]) .topic-detail, details.topic:not([open]) .topic-priority { display: grid; }
+      details.topic:not([open]) .topic-priority { display: inline-block; }
+      .topic-plus { display: none; }
+      a { text-decoration: none; }
+      .official-list a::after { content: " (" attr(href) ")"; font-size: 8pt; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="masthead">
+      <div class="brand">AI FIELD NOTE <b>/ 2026.08</b></div>
+      <div class="window">2026-07-29 → 2026-08-11 · Asia/Shanghai</div>
+      <button class="print-btn" type="button" onclick="window.print()">打印 / PDF</button>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div>
+      <p class="kicker">17 LOCAL REPORTS / 9 SIGNALS / 10 FIELD TESTS</p>
+      <h1 id="page-title"><span>信号</span><span class="slash">地/图</span></h1>
+      <p class="hero-deck">模型新闻正在退居二线。真正决定 AI 能否稳定交付的，是上下文、任务拆分、路由、评估、可观测性与安全边界。</p>
+    </div>
+    <div class="hero-side">
+      <p><strong>这不是新闻聚合。</strong><br>这是把两周重复信号压缩成“现在该测什么、怎么测、拍成什么”的行动地图。</p>
+      <div class="data-strip" aria-label="报告关键数字">
+        <div class="datum"><b>17</b><span>份本地日报样本</span></div>
+        <div class="datum"><b>9</b><span>个结构性判断</span></div>
+        <div class="datum"><b>10</b><span>个可直接开拍选题</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thesis-band" aria-label="核心结论">
+    <div class="thesis-inner">
+      <div class="thesis-mark">!</div>
+      <div>
+        <blockquote>竞争重心正从“谁的模型更强”，上移到“谁能让模型<em>稳定完成任务</em>”。</blockquote>
+        <small>因此，最值得做的内容不是复述排行榜，而是把系统层变化做成可复制、可验证的工作流。</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <nav class="toc" aria-label="页面目录">
+      <p class="toc-label">ROUTE</p>
+      <a href="#coverage">01 覆盖与方法</a>
+      <a href="#signals">02 九个信号</a>
+      <a href="#tools">03 工具雷达</a>
+      <a href="#actions">04 立即行动</a>
+      <a href="#topics">05 十个选题</a>
+      <a href="#matrix">06 优先矩阵</a>
+      <a href="#sources">07 来源附录</a>
+    </nav>
+
+    <main>
+      <section class="section" id="coverage">
+        <div class="section-head">
+          <div class="section-no">01</div>
+          <div><h2>覆盖与方法</h2><p class="section-intro">时间窗口完整，文件样本不完整。我们只分析仓库中真实存在的文件，不把缺档日期解释为“当天没有动态”。</p></div>
+        </div>
+        <div class="coverage-grid">
+          <div class="coverage-card">
+            <h3>实际样本 / 17 份</h3>
+            <div class="coverage-row"><b>AI HOT</b><div class="bar"><i style="width:47.06%"></i></div><span>8</span></div>
+            <div class="coverage-row"><b>Builders</b><div class="bar"><i style="width:52.94%"></i></div><span>9</span></div>
+            <p><b>AI HOT 入样日期</b></p>
+            <div class="date-runs" aria-label="AI HOT 入样日期"><span>07-29</span><span>07-30</span><span>07-31</span><span>08-02</span><span>08-03</span><span>08-05</span><span>08-08</span><span>08-09</span></div>
+            <p style="margin-top:18px"><b>Builders Digest 入样日期</b></p>
+            <div class="date-runs" aria-label="Builders Digest 入样日期"><span>07-29</span><span>07-30</span><span>07-31</span><span>08-01</span><span>08-03</span><span>08-04</span><span>08-06</span><span>08-09</span><span>08-10</span></div>
+          </div>
+          <div class="coverage-card">
+            <h3>压缩路径</h3>
+            <ol class="method-steps">
+              <li><b>找重复信号</b><br>从 17 份日报中聚合同向变化，而非按发布日期罗列。</li>
+              <li><b>提升为判断</b><br>区分模型层新闻与工作流、组织、基础设施层变化。</li>
+              <li><b>核验重点产品</b><br>关键能力回看官方页面或官方仓库。</li>
+              <li><b>落到可拍实验</b><br>每个优先选题必须有对比画面、可观察结果和交付物。</li>
+            </ol>
+            <div class="boundary"><b>事实标签说明</b><br>“官方核验”表示产品能力有官方材料支持；“本地日报收录”表示本报告未扩展验证。二者都不表示已由作者亲测。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="signals">
+        <div class="section-head">
+          <div class="section-no">02</div>
+          <div><h2>九个新观点</h2><p class="section-intro">每个节点不是孤立新闻，而是一组信号汇成的判断。橙色短线标出从观察走向行动的落点。</p></div>
+        </div>
+        <div class="signal-flow">
+          <article class="signal">
+            <div class="signal-num">01</div>
+            <div class="signal-body"><h3>衡量单位从 token 单价变成每个成功任务的成本</h3><div class="signal-meta"><span class="tag local">多份日报交叉信号</span><span class="tag">成本模型</span></div><p>只比较输入输出 token 价格已经失真。强模型单次调用更贵，却可能因为少返工、少人工接管、能完成更难任务而拥有更低的 <b>$/task</b>。成本表至少应记录模型费、工具调用费、任务耗时、人工接管分钟数、成功率和返工次数。</p><div class="judgment"><b>判断</b>采购与评测的最小单位应从“调用”升级为“成功交付”。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">02</div>
+            <div class="signal-body"><h3>Harness 正在成为模型能力的放大器</h3><div class="signal-meta"><span class="tag local">日报与 Builders 观察</span><span class="tag">上下文工程</span></div><p>同一模型在不同框架中可以出现巨大结果差异。Compaction、长程推理、按需检索、工具调用、环境恢复与 harness 蒸馏反复出现。很多失败不是模型不够强，而是上下文塞太多、缺少按需找信息的工具、同时覆盖太多用例。</p><div class="judgment"><b>判断</b>先优化任务结构和信息供给，再决定是否换模型。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">03</div>
+            <div class="signal-body"><h3>Agent 的产品形态从聊天框变成异步控制塔</h3><div class="signal-meta"><span class="tag verified">部分能力官方核验</span><span class="tag">交互范式</span></div><p>移动端远程调度、语音驱动、后台检查、堆叠会话、跨 session 摘要、持久 memory 和 Project，都说明用户不再需要一直盯着聊天窗口。新的交互重点是任务怎样启动、何时需要人介入、如何看进度、恢复上下文并验收。</p><div class="judgment"><b>判断</b>Agent 产品的首页最终会更像任务控制台，而非空白输入框。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">04</div>
+            <div class="signal-body"><h3>安全边界从“每次弹窗确认”转向“环境先限权”</h3><div class="signal-meta"><span class="tag verified">Anthropic 官方核验</span><span class="tag">安全</span></div><p>用户会批准约 93% 的权限请求，频繁弹窗造成审批疲劳。更可靠的方向是用 sandbox、VM、文件系统边界、egress control 与审计日志限制爆炸半径，再用模型分类器降低日常摩擦。Auto mode 只是防御纵深的一层。</p><div class="judgment"><b>判断</b>安全设计要把“模型会不会做”改成“环境允许它做到哪”。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">05</div>
+            <div class="signal-body"><h3>AI 写代码之后，真正稀缺的是可审查性</h3><div class="signal-meta"><span class="tag verified">多项产品官方核验</span><span class="tag">软件交付</span></div><p>堆叠 PR、可视化人审、Codex Security、Align Evals 与 agent issue 循环都在解决同一瓶颈：生成量上升后，人无法审查巨大 diff，也无法凭“看起来不错”判断结果。标准产线需要小批次变更、明确验收条件、自动测试、风险扫描、人工签字与可回放证据。</p><div class="judgment"><b>判断</b>未来的开发速度由审查带宽和证据质量决定，而不只由生成速度决定。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">06</div>
+            <div class="signal-body"><h3>企业落地首先是工作流与组织问题</h3><div class="signal-meta"><span class="tag local">行业观察</span><span class="tag">组织采用</span></div><p>先找企业内部杠杆最高的 10 个流程，把 agent 隐形接入员工已有系统，比让所有人散点试验更有效。安装派对、同类榜样、会议现场直接展示 agent 工作，也比抽象宣讲“效率提升 10 倍”更能推动采用。</p><div class="judgment"><b>判断</b>采用机制本身就是产品的一部分，也值得被做成可复制教程。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">07</div>
+            <div class="signal-body"><h3>最强模型做验证，便宜模型做生产</h3><div class="signal-meta"><span class="tag verified">OpenRouter 官方核验</span><span class="tag">模型路由</span></div><p>先用最强 frontier model 验证体验，需求成立后再优化 prompt、routing、harness、小模型与微调。OpenRouter 的 subagent / advisor，以及日报中的 Sol 指挥 Luna，都体现“强模型做决策与验收、便宜模型做批量执行”。</p><div class="judgment"><b>判断</b>模型不是单选题，而是一条按任务风险动态升级的供应链。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">08</div>
+            <div class="signal-body"><h3>Agent-native 基础设施正在形成独立产品层</h3><div class="signal-meta"><span class="tag verified">部分能力官方核验</span><span class="tag local">部分工具仅日报收录</span><span class="tag">基础设施</span></div><p>Browser Run、Kitesurf、Dynamic Workers、Managed Deep Agents、LLM Gateway、Local Explorer 等工具共同补齐浏览器、沙箱、持久状态、预算控制、追踪、回放与人工接管。这意味着“做一个 agent”与“让 agent 持续在生产环境工作”已是两件事。</p><div class="judgment"><b>判断</b>生产级 Agent 的护城河正在从 prompt 转向运行时与治理层。</div></div>
+          </article>
+          <article class="signal">
+            <div class="signal-num">09</div>
+            <div class="signal-body"><h3>专业能力更值钱，但专家培养链可能断裂</h3><div class="signal-meta"><span class="tag local">行业观察</span><span class="tag">人才结构</span></div><p>AI 能替代大量初级工作，但检查 AI 输出依赖多年经验。每家公司削减初级岗位或许都理性，集体却可能失去培养下一代专家的渠道。内容不应只问“AI 替代谁”，还应讨论如何保留基本功、人工复盘与判断力训练。</p><div class="judgment"><b>判断</b>组织需要把“练习机会”当成必须维护的认知基础设施。</div></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-head"><div class="section-no">03</div><div><h2>工具雷达</h2><p class="section-intro">A 是立即实测，B 是垂直案例，C 是边界观察。筛选只改变视图，不改变原始分级。</p></div></div>
+        <div class="controls" aria-label="工具筛选"><span>显示分级</span><button class="filter-btn tool-filter" type="button" data-tool-filter="all" aria-pressed="true">全部 15 项</button><button class="filter-btn tool-filter" type="button" data-tool-filter="A" aria-pressed="false">只看 A 级</button><button class="filter-btn tool-filter" type="button" data-tool-filter="B" aria-pressed="false">只看 B 级</button><button class="filter-btn tool-filter" type="button" data-tool-filter="C" aria-pressed="false">只看 C 级</button></div>
+
+        <div class="tool-tier" data-tier="A">
+          <div class="tool-tier-head"><div class="tier-letter">A</div><div><h3>现在就值得实测</h3><p>能力信号明确，能做出可观察的真实任务对照。</p></div></div>
+          <div class="tool-list">
+            <article class="tool"><div class="tool-index">01</div><div class="tool-name">Codex Security CLI / TypeScript SDK</div><p>仓库扫描、diff 扫描、验证、修复、CI 阈值与成本上限。</p><span class="tag verified fact-status">官方核验</span></article>
+            <article class="tool"><div class="tool-index">02</div><div class="tool-name">Claude Code Auto mode + cross-session messaging</div><p>降低权限弹窗疲劳，并验证多会话接力的真实边界。</p><span class="tag verified fact-status">官方核验</span></article>
+            <article class="tool"><div class="tool-index">03</div><div class="tool-name">LangSmith Align Evals + LLM Gateway</div><p>把人类偏好校准、支出限制、PII / secret 脱敏与追踪放进同一运行链。</p><span class="tag verified fact-status">官方核验</span></article>
+            <article class="tool"><div class="tool-index">04</div><div class="tool-name">Cloudflare Browser Run / Dynamic Workers</div><p>远程浏览器、实时观察、会话回放、人工接管与快速隔离代码执行。</p><span class="tag verified fact-status">官方核验</span></article>
+            <article class="tool"><div class="tool-index">05</div><div class="tool-name">GitHub Copilot sessions / stacked PR</div><p>把大任务拆成独立 session、branch 与 PR，降低审查压力。</p><span class="tag verified fact-status">部分核验</span></article>
+            <article class="tool"><div class="tool-index">06</div><div class="tool-name">OpenRouter routing / subagent / advisor / ori CLI</div><p>验证“强模型审查 + 便宜模型执行”的任务成本；ori CLI 仅按日报观察。</p><span class="tag verified fact-status">部分核验</span></article>
+          </div>
+        </div>
+
+        <div class="tool-tier" data-tier="B">
+          <div class="tool-tier-head"><div class="tier-letter">B</div><div><h3>适合做垂直案例</h3><p>值得围绕单一流程做深，不急于宣称通用效果。</p></div></div>
+          <div class="tool-list">
+            <article class="tool"><div class="tool-index">07</div><div class="tool-name">/human-review</div><p>AI 生成页面后的多人可视化审阅与修改闭环。</p><span class="tag local fact-status">本地日报收录</span></article>
+            <article class="tool"><div class="tool-index">08</div><div class="tool-name">Deep Agents / Managed Deep Agents</div><p>持久化线程、checkpoint、memory、sandbox 和长期任务运行时。</p><span class="tag verified fact-status">部分核验</span></article>
+            <article class="tool"><div class="tool-index">09</div><div class="tool-name">Replit Design / Agent 4</div><p>多设计变体、设计与代码同环境、并行 agent。</p><span class="tag verified fact-status">官方核验</span></article>
+            <article class="tool"><div class="tool-index">10</div><div class="tool-name">Token Saver</div><p>本地混合 RAG 降低长 PDF 上下文成本，需独立复测真实节省比例。</p><span class="tag local fact-status">本地日报收录</span></article>
+            <article class="tool"><div class="tool-index">11</div><div class="tool-name">SkillSpector / Numbat</div><p>技能市场和 agent 行为的安全扫描与阻断；不把日报描述扩展成产品承诺。</p><span class="tag local fact-status">本地日报收录</span></article>
+            <article class="tool"><div class="tool-index">12</div><div class="tool-name">Cloudflare Local Explorer / OpenTelemetry traces</div><p>让 agent 直接读取失败 span、日志和网络时序，自诊断后再验证修复。</p><span class="tag local fact-status">本地日报收录</span></article>
+          </div>
+        </div>
+
+        <div class="tool-tier" data-tier="C">
+          <div class="tool-tier-head"><div class="tier-letter">C</div><div><h3>有信号，先做边界测试</h3><p>存在应用潜力，但必须用真实任务拆穿营销口径。</p></div></div>
+          <div class="tool-list">
+            <article class="tool"><div class="tool-index">13</div><div class="tool-name">Swiftlet / Soup / SpecForge</div><p>本地推理、低显存微调、投机解码；适合做硬件边界实测而非新闻转述。</p><span class="tag local fact-status">本地日报收录</span></article>
+            <article class="tool"><div class="tool-index">14</div><div class="tool-name">ForgeStencil</div><p>自动优化工业与科学软件；用一个真实算子复现实验检验“零人工”边界。</p><span class="tag local fact-status">本地日报收录</span></article>
+            <article class="tool"><div class="tool-index">15</div><div class="tool-name">Seedance 2.5 API / Lyria 3.5 / FLUX 3 Video</div><p>多素材控制、长叙事与后期可编辑工作流；需要真实素材的一致性验收。</p><span class="tag local fact-status">本地日报收录</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="actions">
+        <div class="section-head"><div class="section-no">04</div><div><h2>这周可以立刻做</h2><p class="section-intro">四项行动对应四个优先选题：都有强对比画面、真实结果与可下载模板。</p></div></div>
+        <div class="actions">
+          <article class="action"><div class="action-no">01</div><h3>建立每任务成本表</h3><p>固定一个真实任务，跑 3 套模型或框架；同时记录总费用、耗时、成功率、返工和人工接管。</p><span class="action-output">交付：$/task 记账模板</span></article>
+          <article class="action"><div class="action-no">02</div><h3>搭最小安全沙箱</h3><p>逐项测试文件读取、网络外传、工作区写入和危险命令，再加 sandbox、egress allowlist、只读挂载和审计日志。</p><span class="action-output">交付：四层安全基线</span></article>
+          <article class="action"><div class="action-no">03</div><h3>给浏览器 Agent 装回放</h3><p>记录 DOM、console、network、点击轨迹和 session replay；让 agent 从 trace 找根因并复测。</p><span class="action-output">交付：可观测性最小配置</span></article>
+          <article class="action"><div class="action-no">04</div><h3>做 Skill / Memory 清理员</h3><p>扫描重复、过期、冲突与从未触发项，只生成候选清单，由人确认后再改。</p><span class="action-output">交付：健康评分与每周任务</span></article>
+        </div>
+      </section>
+
+      <section class="section" id="topics">
+        <div class="section-head"><div class="section-no">05</div><div><h2>十个实战选题</h2><p class="section-intro">点击展开演示、交付物与钩子画面。优先筛选用于快速进入本周拍摄队列。</p></div></div>
+        <div class="controls" aria-label="选题筛选"><span>拍摄队列</span><button class="filter-btn topic-filter" type="button" data-topic-filter="all" aria-pressed="true">全部 10 个</button><button class="filter-btn topic-filter" type="button" data-topic-filter="now" aria-pressed="false">只看优先拍</button><button class="filter-btn" id="toggleTopics" type="button" aria-pressed="false">全部展开</button></div>
+        <div class="topic-list">
+          <details class="topic" data-priority="now"><summary><span class="topic-id">01</span><span class="topic-title">别再比较 token 单价：我给 3 个 Agent 做了一张“每任务成本表”</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>便宜模型是否真的更省钱？</p><p><strong>演示</strong>同一真实任务跑 3 套模型 / 框架，记录总成本、耗时、成功率、返工次数和人工接管。</p><p><strong>交付物</strong>可复用的 $/task 记账模板与结论表。</p><p><strong>钩子画面</strong>三个账单都很便宜，但只有一个真正交付成功。</p></div><span class="topic-priority">本周优先</span></details>
+          <details class="topic" data-priority="next"><summary><span class="topic-id">02</span><span class="topic-title">同一个模型，换个 Harness 为什么能差这么多？</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>模型能力与框架能力如何拆开测？</p><p><strong>演示</strong>固定模型和仓库，用不同 harness 完成同一 issue；保持 prompt、验收测试与预算一致。</p><p><strong>交付物</strong>A/B 测试协议、成功条件、上下文与工具调用对比。</p><p><strong>钩子画面</strong>模型没换，成功率却明显变化。</p></div><span class="topic-priority">第二梯队</span></details>
+          <details class="topic" data-priority="next"><summary><span class="topic-id">03</span><span class="topic-title">让 3 个 Coding Agent 接力干活：Issue → Session → PR → 人审</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>多 agent 怎样避免互相覆盖和无限解释上下文？</p><p><strong>演示</strong>规划 agent 拆 issue，执行 agent 各开 session，审查 agent 看 stacked PR，人只做最终验收。</p><p><strong>交付物</strong>任务交接模板、状态字段和失败恢复方式。</p><p><strong>钩子画面</strong>人没复制历史记录，三个 session 仍然接上了。</p></div><span class="topic-priority">第二梯队</span></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">04</span><span class="topic-title">Agent 安全别只靠“允许 / 拒绝”：搭一个最小安全沙箱</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>为什么每次点允许并不等于安全？</p><p><strong>演示</strong>测试文件读取、网络外传、工作区写入和危险命令；增加 sandbox、egress allowlist、只读挂载与审计日志。</p><p><strong>交付物</strong>四层安全基线检查表。</p><p><strong>钩子画面</strong>模型想执行恶意指令，但环境根本不给出口。</p></div><span class="topic-priority">本周优先</span></details>
+          <details class="topic" data-priority="next"><summary><span class="topic-id">05</span><span class="topic-title">AI 一次改 1000 行代码，怎么让人敢合并？</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>如何把巨大 diff 拆成能审查的小块？</p><p><strong>演示</strong>一次功能改造拆成数据层、API、接线、UI 四层 stacked PR，每层独立测试和回滚。</p><p><strong>交付物</strong>PR 拆层规则、审查分工与自动检查清单。</p><p><strong>钩子画面</strong>左边 1000 行巨型 PR，右边 4 个一眼能审完的小 PR。</p></div><span class="topic-priority">第二梯队</span></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">06</span><span class="topic-title">给浏览器 Agent 装“行车记录仪”：失败后能完整回放</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>浏览器自动化失败为何总只剩“元素没找到”？</p><p><strong>演示</strong>记录 DOM、console、network、点击轨迹和 session replay；让 agent 从 trace 找根因再复测。</p><p><strong>交付物</strong>浏览器 agent 可观测性最小配置。</p><p><strong>钩子画面</strong>开启回放前靠猜，开启后 30 秒定位。</p></div><span class="topic-priority">本周优先</span></details>
+          <details class="topic" data-priority="now"><summary><span class="topic-id">07</span><span class="topic-title">Skill 越装越多，Agent 为什么反而变笨？做一个自动清理员</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>自动积累 skills 和 memory 如何产生 slop？</p><p><strong>演示</strong>扫描重复、过期、冲突和从未触发技能；生成候选清理清单，人确认后再改。</p><p><strong>交付物</strong>Skill / Memory 健康评分、去重规则与每周 curator 任务。</p><p><strong>钩子画面</strong>删除 30% 垃圾能力后，任务成功率反而上升。</p></div><span class="topic-priority">本周优先</span></details>
+          <details class="topic" data-priority="next"><summary><span class="topic-id">08</span><span class="topic-title">大模型当主管，小模型当员工：真实任务省多少？</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>何时值得把执行委托给便宜模型？</p><p><strong>演示</strong>强模型负责拆解、升级判断和验收，小模型做摘要、抽取、改格式与重复实现；记录节省和返工。</p><p><strong>交付物</strong>路由决策树与“必须升级强模型”的五类情况。</p><p><strong>钩子画面</strong>不是所有步骤都值得烧最贵的 token。</p></div><span class="topic-priority">第二梯队</span></details>
+          <details class="topic" data-priority="watch"><summary><span class="topic-id">09</span><span class="topic-title">会议纪要已经过时：让 Agent 在会议结束前交付结果</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>如何把“会后待办”变成“会中完成”？</p><p><strong>演示</strong>实时转录 → 识别行动项 → 生成邮件 / 文档 / 任务 → 负责人确认 → 写回系统。</p><p><strong>交付物</strong>一套有确认门的会议执行工作流。</p><p><strong>钩子画面</strong>会议结束时，不是多了 8 条待办，而是 6 条已经完成。</p></div><span class="topic-priority">观察后再拍</span></details>
+          <details class="topic" data-priority="watch"><summary><span class="topic-id">10</span><span class="topic-title">AI 写代码、AI 审代码后，人到底做什么？做一份验收规格</span><span class="topic-plus">+</span></summary><div class="topic-detail"><p><strong>核心问题</strong>人如何从“盯实现”转成“定义结果与测试产品”？</p><p><strong>演示</strong>先写可观察的验收标准、边界案例和禁止项，再让 agent 实现、另一 agent 预审，真人按用户路径测试。</p><p><strong>交付物</strong>一页 acceptance spec 模板与前后对比。</p><p><strong>钩子画面</strong>不再告诉 AI 每一步怎么写，只告诉它什么结果才算完成。</p></div><span class="topic-priority">观察后再拍</span></details>
+        </div>
+      </section>
+
+      <section class="section" id="matrix">
+        <div class="section-head"><div class="section-no">06</div><div><h2>选题优先级矩阵</h2><p class="section-intro">横轴是当前可执行度，纵轴是画面与传播张力。橙色节点进入本周拍摄队列；位置为基于底稿优先级的编辑判断，不是假装精确的评分。</p></div></div>
+        <div class="matrix-wrap" role="img" aria-label="十个选题按可执行度和传播张力排列的优先级矩阵">
+          <div class="matrix">
+            <span class="axis-y">画面与传播张力 ↑</span><span class="axis-x">当前可执行度 →</span>
+            <span class="quadrant q1">本周开拍</span><span class="quadrant q2">补齐验证</span><span class="quadrant q3">暂缓</span><span class="quadrant q4">系列储备</span>
+            <span class="dot now" style="grid-column:10;grid-row:2" title="01 每任务成本表">01</span>
+            <span class="dot" style="grid-column:8;grid-row:5" title="02 Harness A/B 测试">02</span>
+            <span class="dot" style="grid-column:7;grid-row:4" title="03 多 Agent 接力">03</span>
+            <span class="dot now" style="grid-column:11;grid-row:3" title="04 最小安全沙箱">04</span>
+            <span class="dot" style="grid-column:7;grid-row:6" title="05 拆解巨大 diff">05</span>
+            <span class="dot now" style="grid-column:10;grid-row:1" title="06 浏览器 Agent 回放">06</span>
+            <span class="dot now" style="grid-column:9;grid-row:2" title="07 Skill 清理员">07</span>
+            <span class="dot" style="grid-column:8;grid-row:6" title="08 强弱模型路由">08</span>
+            <span class="dot" style="grid-column:4;grid-row:7" title="09 会中完成工作流">09</span>
+            <span class="dot" style="grid-column:5;grid-row:8" title="10 验收规格">10</span>
+          </div>
+          <div class="matrix-legend"><span class="hot">优先拍：01、04、06、07</span><span>第二梯队：02、03、05、08</span><span>观察后再拍：09、10</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <div class="section-head"><div class="section-no">07</div><div><h2>来源附录</h2><p class="section-intro">附录同时记录本地样本覆盖与重点产品的官方核验入口，以便回看证据边界。</p></div></div>
+        <div class="appendix-note"><b>覆盖口径：</b>分析窗口 2026-07-29 至 2026-08-11；AI HOT 8 份、Builders Digest 9 份，共 17 份。未列日期是仓库样本缺档，不是“当天没有新闻”。</div>
+        <table class="source-table">
+          <thead><tr><th>来源组</th><th>实际入样日期</th><th>份数</th></tr></thead>
+          <tbody>
+            <tr><td>AI HOT</td><td>07-29、07-30、07-31、08-02、08-03、08-05、08-08、08-09</td><td>8</td></tr>
+            <tr><td>Builders Digest</td><td>07-29、07-30、07-31、08-01、08-03、08-04、08-06、08-09、08-10</td><td>9</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin:42px 0 10px;font-size:28px">重点产品官方核验入口</h3>
+        <p style="color:var(--muted)">核验日期：2026-08-11。其余工具按“本地日报收录”引用，不扩展为已亲测、全面上线或绝对效果。</p>
+        <ul class="official-list">
+          <li><b>Codex Security</b><br><a href="https://github.com/openai/codex-security/blob/main/sdk/typescript/README.md">TypeScript SDK README</a> · <a href="https://openai.com/index/codex-security-now-in-research-preview/">OpenAI 介绍</a></li>
+          <li><b>Claude Code containment / auto mode</b><br><a href="https://www.anthropic.com/engineering/how-we-contain-claude">Anthropic Engineering</a></li>
+          <li><b>Claude Code cross-session messaging</b><br><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">官方 Changelog</a></li>
+          <li><b>Cloudflare Browser Run</b><br><a href="https://blog.cloudflare.com/browser-run-for-ai-agents/">官方发布说明</a></li>
+          <li><b>Cloudflare Dynamic Workers</b><br><a href="https://blog.cloudflare.com/dynamic-workers/">官方工程说明</a></li>
+          <li><b>Managed Deep Agents</b><br><a href="https://www.langchain.com/blog/introducing-managed-deep-agents">LangChain 官方介绍</a></li>
+          <li><b>LangSmith Align Evals</b><br><a href="https://www.langchain.com/blog/introducing-align-evals">LangChain 官方介绍</a></li>
+          <li><b>LangSmith LLM Gateway</b><br><a href="https://docs.langchain.com/langsmith/llm-gateway">官方文档</a></li>
+          <li><b>Replit Agent 4</b><br><a href="https://replit.com/blog/introducing-agent-4-built-for-creativity">Replit 官方介绍</a></li>
+          <li><b>GitHub Copilot sessions</b><br><a href="https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/">GitHub Changelog</a></li>
+          <li><b>OpenRouter subagent / advisor</b><br><a href="https://openrouter.ai/blog/announcements/">OpenRouter Announcements</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-big">别追逐噪声。<br>追踪<em>可验证的变化</em>。</p>
+      <div class="footer-meta">SIGNAL MAP / 2026-08-11<br>17 SOURCES · 9 JUDGMENTS · 10 TESTS<br><a class="back-top" href="#top" aria-label="回到顶部">↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const toolButtons = [...document.querySelectorAll('.tool-filter')];
+      const tiers = [...document.querySelectorAll('.tool-tier')];
+      toolButtons.forEach(button => button.addEventListener('click', () => {
+        const value = button.dataset.toolFilter;
+        toolButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        tiers.forEach(tier => tier.classList.toggle('hidden', value !== 'all' && tier.dataset.tier !== value));
+      }));
+
+      const topicButtons = [...document.querySelectorAll('.topic-filter')];
+      const topics = [...document.querySelectorAll('.topic')];
+      topicButtons.forEach(button => button.addEventListener('click', () => {
+        const value = button.dataset.topicFilter;
+        topicButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        topics.forEach(topic => topic.classList.toggle('hidden', value === 'now' && topic.dataset.priority !== 'now'));
+      }));
+
+      const toggle = document.getElementById('toggleTopics');
+      toggle.addEventListener('click', () => {
+        const shouldOpen = toggle.getAttribute('aria-pressed') !== 'true';
+        topics.filter(topic => !topic.classList.contains('hidden')).forEach(topic => { topic.open = shouldOpen; });
+        toggle.setAttribute('aria-pressed', String(shouldOpen));
+        toggle.textContent = shouldOpen ? '全部收起' : '全部展开';
+      });
+
+      const links = [...document.querySelectorAll('.toc a')];
+      const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+            }
+          });
+        }, { rootMargin: '-20% 0px -65% 0px' });
+        sections.forEach(section => observer.observe(section));
+      }
+    })();
+  </script>
+</body>
+</html>

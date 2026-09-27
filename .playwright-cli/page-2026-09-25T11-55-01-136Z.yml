@@ -1,0 +1,456 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ↔
+        - generic [ref=e6]:
+          - text: IMAGE BENCH
+          - generic [ref=e7]: same prompt / different model
+      - generic [ref=e8]:
+        - button "左右对比" [ref=e9] [cursor=pointer]
+        - button "上下对比" [active] [ref=e10] [cursor=pointer]
+        - button "回到顶部" [ref=e11] [cursor=pointer]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: 9.15 · IMAGE MODEL BENCHMARK
+        - heading [level=1] [ref=e17]:
+          - text: 同一条提示词，
+          - emphasis [ref=e18]: 两种视觉答案。
+        - paragraph [ref=e19]: 把 GPT-Image-2.5 和 Seedream 5.0 Pro 放进同一组真实任务里：审美、编辑、海报、UI、科研绘图。拖着看，放大看，再回到提示词看。
+      - generic [ref=e20]:
+        - strong [ref=e21]: 没有全能选手，只有合适的工具。
+        - text: 这页保留了文稿里的原始提示词和输出图，结论先放在每个卡片上，判断权留给你。
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]: "3 : 0"
+        - generic [ref=e25]: 原生审美 · Seedream 领先
+      - generic [ref=e26]:
+        - generic [ref=e27]: "2 : 0"
+        - generic [ref=e28]: 编辑与一致性 · GPT 领先
+      - generic [ref=e29]:
+        - generic [ref=e30]: "13"
+        - generic [ref=e31]: 提示词场景
+      - generic [ref=e32]:
+        - generic [ref=e33]: "31"
+        - generic [ref=e34]: 张本地素材
+    - generic "筛选对比维度" [ref=e35]:
+      - button "全部 13" [ref=e36] [cursor=pointer]
+      - button "01 审美" [ref=e37] [cursor=pointer]
+      - button "02 编辑" [ref=e38] [cursor=pointer]
+      - button "03 海报" [ref=e39] [cursor=pointer]
+      - button "04 UI" [ref=e40] [cursor=pointer]
+      - button "05 科研绘图" [ref=e41] [cursor=pointer]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "01 · 原生审美" [level=2] [ref=e44]
+        - paragraph [ref=e45]: 同一提示词，不改参数，先看模型自己的审美倾向。
+      - article [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]: 审美 / 01
+            - heading "中式诗意肖像" [level=3] [ref=e50]
+            - generic [ref=e51]: 柔润低纹理 · 16:9
+          - generic [ref=e52]:
+            - generic [ref=e53]: 人像
+            - generic [ref=e54]: 氛围
+            - generic [ref=e55]: 肤质
+        - paragraph [ref=e56]: Seedream 更暖、更有辨识度；GPT 的统一感更强，但容易出现假人和动漫感。
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: GPT-Image-2.5
+              - generic [ref=e62]: 1 output
+            - figure [ref=e64]:
+              - img "GPT-Image-2.5 · 中式诗意肖像" [ref=e469]
+              - text: 点击放大
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: Seedream 5.0 Pro
+              - generic [ref=e69]: 1 output
+            - figure [ref=e71]:
+              - img "Seedream 5.0 Pro · 中式诗意肖像" [ref=e470]
+              - text: 点击放大
+        - group [ref=e73]:
+          - generic "查看本组完整提示词 ＋" [ref=e74] [cursor=pointer]
+      - article [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: 审美 / 02
+            - heading "校园初恋特写" [level=3] [ref=e79]
+            - generic [ref=e80]: 清透伪素颜 · 超近景
+          - generic [ref=e81]:
+            - generic [ref=e82]: 人像
+            - generic [ref=e83]: 面部
+            - generic [ref=e84]: 真实感
+        - paragraph [ref=e85]: Seedream 的少女感更轻盈；GPT 更像稳定的标准化人像方案。
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]: GPT-Image-2.5
+              - generic [ref=e91]: 1 output
+            - figure [ref=e93]:
+              - img "GPT-Image-2.5 · 校园初恋特写" [ref=e471]
+              - text: 点击放大
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: Seedream 5.0 Pro
+              - generic [ref=e98]: 1 output
+            - figure [ref=e100]:
+              - img "Seedream 5.0 Pro · 校园初恋特写" [ref=e472]
+              - text: 点击放大
+        - group [ref=e102]:
+          - generic "查看本组完整提示词 ＋" [ref=e103] [cursor=pointer]
+      - article [ref=e104]:
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - generic [ref=e107]: 审美 / 03
+            - heading "海边胶片人像" [level=3] [ref=e108]
+            - generic [ref=e109]: 随机姿态 · 过曝颗粒
+          - generic [ref=e110]:
+            - generic [ref=e111]: 人像
+            - generic [ref=e112]: 胶片
+            - generic [ref=e113]: 随机性
+        - paragraph [ref=e114]: Seedream 的现场感和风格记忆点更明显；GPT 更克制、更规整。
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - generic [ref=e118]: GPT-Image-2.5
+              - generic [ref=e120]: 1 output
+            - figure [ref=e122]:
+              - img "GPT-Image-2.5 · 海边胶片人像"
+              - text: 点击放大
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]: Seedream 5.0 Pro
+              - generic [ref=e127]: 1 output
+            - figure [ref=e129]:
+              - img "Seedream 5.0 Pro · 海边胶片人像"
+              - text: 点击放大
+        - group [ref=e131]:
+          - generic "查看本组完整提示词 ＋" [ref=e132] [cursor=pointer]
+      - generic [ref=e133]:
+        - heading "02 · 图像编辑能力" [level=2] [ref=e134]
+        - paragraph [ref=e135]: 参考图融合与人物多视角，是最接近真实生产的两类任务。
+      - article [ref=e136]:
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - generic [ref=e139]: 编辑 / 01
+            - heading "四图融合街拍" [level=3] [ref=e140]
+            - generic [ref=e141]: 参考图融合 · 全身人物
+          - generic [ref=e142]:
+            - generic [ref=e143]: 图像编辑
+            - generic [ref=e144]: 参考图
+            - generic [ref=e145]: 全身
+        - paragraph [ref=e146]: GPT 略胜：人物比例、服装细节和整体搭配更稳。
+        - generic [ref=e147]:
+          - generic [ref=e148]: 参考输入 · 4 张
+          - generic [ref=e149]:
+            - figure [ref=e150]:
+              - img "参考图 1" [ref=e151]
+            - figure [ref=e152]:
+              - img "参考图 2" [ref=e153]
+            - figure [ref=e154]:
+              - img "参考图 3" [ref=e155]
+            - figure [ref=e156]:
+              - img "参考图 4" [ref=e157]
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e161]: GPT-Image-2.5
+              - generic [ref=e163]: 1 output
+            - figure [ref=e165]:
+              - img "GPT-Image-2.5 · 四图融合街拍"
+              - text: 点击放大
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - generic [ref=e168]: Seedream 5.0 Pro
+              - generic [ref=e170]: 1 output
+            - figure [ref=e172]:
+              - img "Seedream 5.0 Pro · 四图融合街拍"
+              - text: 点击放大
+        - group [ref=e174]:
+          - generic "查看本组完整提示词 ＋" [ref=e175] [cursor=pointer]
+      - article [ref=e176]:
+        - generic [ref=e177]:
+          - generic [ref=e178]:
+            - generic [ref=e179]: 编辑 / 02
+            - heading "真人角色四视图" [level=3] [ref=e180]
+            - generic [ref=e181]: 同一人物 · 正面 / 侧面 / 背面
+          - generic [ref=e182]:
+            - generic [ref=e183]: 一致性
+            - generic [ref=e184]: 角色设定
+            - generic [ref=e185]: 多视角
+        - paragraph [ref=e186]: GPT 的跨视角一致性更强，人物特征保持更稳定。
+        - generic [ref=e187]:
+          - generic [ref=e188]: 参考输入 · 1 张
+          - figure [ref=e190]:
+            - img "参考图 1" [ref=e191]
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e194]:
+              - generic [ref=e195]: GPT-Image-2.5
+              - generic [ref=e197]: 1 output
+            - figure [ref=e199]:
+              - img "GPT-Image-2.5 · 真人角色四视图"
+              - text: 点击放大
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: Seedream 5.0 Pro
+              - generic [ref=e204]: 1 output
+            - figure [ref=e206]:
+              - img "Seedream 5.0 Pro · 真人角色四视图"
+              - text: 点击放大
+        - group [ref=e208]:
+          - generic "查看本组完整提示词 ＋" [ref=e209] [cursor=pointer]
+      - generic [ref=e210]:
+        - heading "03 · 海报生成" [level=2] [ref=e211]
+        - paragraph [ref=e212]: 排版、中文文字、信息层级和视觉冲击一起接受检验。
+      - article [ref=e213]:
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]: 海报 / 01
+            - heading "秋冬新品促销" [level=3] [ref=e217]
+            - generic [ref=e218]: 电商大促 · 竖版
+          - generic [ref=e219]:
+            - generic [ref=e220]: 电商
+            - generic [ref=e221]: 文字
+            - generic [ref=e222]: 促销
+        - paragraph [ref=e223]: 看主标题、价格层级和倒计时是否抓眼且可读。
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - generic [ref=e227]: GPT-Image-2.5
+              - generic [ref=e229]: 1 output
+            - figure [ref=e231]:
+              - img "GPT-Image-2.5 · 秋冬新品促销"
+              - text: 点击放大
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - generic [ref=e234]: Seedream 5.0 Pro
+              - generic [ref=e236]: 1 output
+            - figure [ref=e238]:
+              - img "Seedream 5.0 Pro · 秋冬新品促销"
+              - text: 点击放大
+        - group [ref=e240]:
+          - generic "查看本组完整提示词 ＋" [ref=e241] [cursor=pointer]
+      - article [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e245]: 海报 / 02
+            - heading "秋日共读会" [level=3] [ref=e246]
+            - generic [ref=e247]: 活动信息 · 文艺留白
+          - generic [ref=e248]:
+            - generic [ref=e249]: 活动
+            - generic [ref=e250]: 文字
+            - generic [ref=e251]: 留白
+        - paragraph [ref=e252]: 看主题、嘉宾、时间地点与二维码占位能否形成清晰层级。
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - generic [ref=e256]: GPT-Image-2.5
+              - generic [ref=e258]: 1 output
+            - figure [ref=e260]:
+              - img "GPT-Image-2.5 · 秋日共读会"
+              - text: 点击放大
+          - generic [ref=e261]:
+            - generic [ref=e262]:
+              - generic [ref=e263]: Seedream 5.0 Pro
+              - generic [ref=e265]: 1 output
+            - figure [ref=e267]:
+              - img "Seedream 5.0 Pro · 秋日共读会"
+              - text: 点击放大
+        - group [ref=e269]:
+          - generic "查看本组完整提示词 ＋" [ref=e270] [cursor=pointer]
+      - article [ref=e271]:
+        - generic [ref=e272]:
+          - generic [ref=e273]:
+            - generic [ref=e274]: 海报 / 03
+            - heading "寒露节气" [level=3] [ref=e275]
+            - generic [ref=e276]: 无促销 · 水墨 / 插画
+          - generic [ref=e277]:
+            - generic [ref=e278]: 节气
+            - generic [ref=e279]: 意境
+            - generic [ref=e280]: 留白
+        - paragraph [ref=e281]: 看节气标题与意境文案的准确性，以及画面留白。
+        - generic [ref=e282]:
+          - generic [ref=e283]:
+            - generic [ref=e284]:
+              - generic [ref=e285]: GPT-Image-2.5
+              - generic [ref=e287]: 1 output
+            - figure [ref=e289]:
+              - img "GPT-Image-2.5 · 寒露节气"
+              - text: 点击放大
+          - generic [ref=e290]:
+            - generic [ref=e291]:
+              - generic [ref=e292]: Seedream 5.0 Pro
+              - generic [ref=e294]: 1 output
+            - figure [ref=e296]:
+              - img "Seedream 5.0 Pro · 寒露节气"
+              - text: 点击放大
+        - group [ref=e298]:
+          - generic "查看本组完整提示词 ＋" [ref=e299] [cursor=pointer]
+      - generic [ref=e300]:
+        - heading "04 · UI 设计能力" [level=2] [ref=e301]
+        - paragraph [ref=e302]: 从一句短需求到一份高保真规范，看模型如何补全产品细节。
+      - article [ref=e303]:
+        - generic [ref=e304]:
+          - generic [ref=e305]:
+            - generic [ref=e306]: UI / 01
+            - heading "数据分析后台 · 简版需求" [level=3] [ref=e307]
+            - generic [ref=e308]: Dashboard · 轻量输入
+          - generic [ref=e309]:
+            - generic [ref=e310]: Dashboard
+            - generic [ref=e311]: 布局
+            - generic [ref=e312]: 补全
+        - paragraph [ref=e313]: 同一个短提示下，GPT 的任务补全更主动，信息架构更丰富。
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - generic [ref=e317]: GPT-Image-2.5
+              - generic [ref=e319]: 1 output
+            - figure [ref=e321]:
+              - img "GPT-Image-2.5 · 数据分析后台 · 简版需求"
+              - text: 点击放大
+          - generic [ref=e322]:
+            - generic [ref=e323]:
+              - generic [ref=e324]: Seedream 5.0 Pro
+              - generic [ref=e326]: 1 output
+            - figure [ref=e328]:
+              - img "Seedream 5.0 Pro · 数据分析后台 · 简版需求"
+              - text: 点击放大
+        - group [ref=e330]:
+          - generic "查看本组完整提示词 ＋" [ref=e331] [cursor=pointer]
+      - article [ref=e332]:
+        - generic [ref=e333]:
+          - generic [ref=e334]:
+            - generic [ref=e335]: UI / 02
+            - heading "数据分析后台 · 详细规范" [level=3] [ref=e336]
+            - generic [ref=e337]: 企业级 SaaS · 16:10
+          - generic [ref=e338]:
+            - generic [ref=e339]: Dashboard
+            - generic [ref=e340]: 规范
+            - generic [ref=e341]: 中文 UI
+        - paragraph [ref=e342]: 详细约束下，重点看导航、卡片、图表、表格和中文 UI 的执行度。
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - generic [ref=e345]:
+              - generic [ref=e346]: GPT-Image-2.5
+              - generic [ref=e348]: 1 output
+            - figure [ref=e350]:
+              - img "GPT-Image-2.5 · 数据分析后台 · 详细规范"
+              - text: 点击放大
+          - generic [ref=e351]:
+            - generic [ref=e352]:
+              - generic [ref=e353]: Seedream 5.0 Pro
+              - generic [ref=e355]: 1 output
+            - figure [ref=e357]:
+              - img "Seedream 5.0 Pro · 数据分析后台 · 详细规范"
+              - text: 点击放大
+        - group [ref=e359]:
+          - generic "查看本组完整提示词 ＋" [ref=e360] [cursor=pointer]
+      - generic [ref=e361]:
+        - heading "05 · 科研绘图" [level=2] [ref=e362]
+        - paragraph [ref=e363]: 流程、架构、信息图，考的是结构、连接和文字准确度。
+      - article [ref=e364]:
+        - generic [ref=e365]:
+          - generic [ref=e366]:
+            - generic [ref=e367]: 科研绘图 / 01
+            - heading "多智能体协作流程图" [level=3] [ref=e368]
+            - generic [ref=e369]: 逻辑与连接关系
+          - generic [ref=e370]:
+            - generic [ref=e371]: 流程图
+            - generic [ref=e372]: Agent
+            - generic [ref=e373]: 连接
+        - paragraph [ref=e374]: 观察节点关系、箭头路径和技术文档的清晰度。
+        - generic [ref=e375]:
+          - generic [ref=e376]:
+            - generic [ref=e377]:
+              - generic [ref=e378]: GPT-Image-2.5
+              - generic [ref=e380]: 1 output
+            - figure [ref=e382]:
+              - img "GPT-Image-2.5 · 多智能体协作流程图"
+              - text: 点击放大
+          - generic [ref=e383]:
+            - generic [ref=e384]:
+              - generic [ref=e385]: Seedream 5.0 Pro
+              - generic [ref=e387]: 1 output
+            - figure [ref=e389]:
+              - img "Seedream 5.0 Pro · 多智能体协作流程图"
+              - text: 点击放大
+        - group [ref=e391]:
+          - generic "查看本组完整提示词 ＋" [ref=e392] [cursor=pointer]
+      - article [ref=e393]:
+        - generic [ref=e394]:
+          - generic [ref=e395]:
+            - generic [ref=e396]: 科研绘图 / 02
+            - heading "AI 应用分层架构图" [level=3] [ref=e397]
+            - generic [ref=e398]: 复杂架构 · 高信息密度
+          - generic [ref=e399]:
+            - generic [ref=e400]: 架构图
+            - generic [ref=e401]: 分层
+            - generic [ref=e402]: 信息密度
+        - paragraph [ref=e403]: 观察四层架构、组件归属和高密度信息的可读性。
+        - generic [ref=e404]:
+          - generic [ref=e405]:
+            - generic [ref=e406]:
+              - generic [ref=e407]: GPT-Image-2.5
+              - generic [ref=e409]: 1 output
+            - figure [ref=e411]:
+              - img "GPT-Image-2.5 · AI 应用分层架构图"
+              - text: 点击放大
+          - generic [ref=e412]:
+            - generic [ref=e413]:
+              - generic [ref=e414]: Seedream 5.0 Pro
+              - generic [ref=e416]: 1 output
+            - figure [ref=e418]:
+              - img "Seedream 5.0 Pro · AI 应用分层架构图"
+              - text: 点击放大
+        - group [ref=e420]:
+          - generic "查看本组完整提示词 ＋" [ref=e421] [cursor=pointer]
+      - article [ref=e422]:
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - generic [ref=e425]: 科研绘图 / 03
+            - heading "AIGC 内容生产三阶段" [level=3] [ref=e426]
+            - generic [ref=e427]: 视觉设计 · 信息表达
+          - generic [ref=e428]:
+            - generic [ref=e429]: 信息图
+            - generic [ref=e430]: 三阶段
+            - generic [ref=e431]: 文字
+        - paragraph [ref=e432]: 观察三栏顺序、阶段编号、颜色系统和中文文字准确度。
+        - generic [ref=e433]:
+          - generic [ref=e434]:
+            - generic [ref=e435]:
+              - generic [ref=e436]: GPT-Image-2.5
+              - generic [ref=e438]: 1 output
+            - figure [ref=e440]:
+              - img "GPT-Image-2.5 · AIGC 内容生产三阶段"
+              - text: 点击放大
+          - generic [ref=e441]:
+            - generic [ref=e442]:
+              - generic [ref=e443]: Seedream 5.0 Pro
+              - generic [ref=e445]: 1 output
+            - figure [ref=e447]:
+              - img "Seedream 5.0 Pro · AIGC 内容生产三阶段"
+              - text: 点击放大
+        - group [ref=e449]:
+          - generic "查看本组完整提示词 ＋" [ref=e450] [cursor=pointer]
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - heading "把模型当成工具箱， 别把它当成冠军榜。" [level=2] [ref=e453]: 把模型当成工具箱，别把它当成冠军榜。
+        - paragraph [ref=e454]: 同一个模型在不同任务里会切换角色：Seedream 更容易给出有温度、有风格记忆点的人像；GPT 在参考图编辑、角色一致性和复杂版式上更像一个可靠的执行者。真正有用的比较，是把任务拆开。
+      - generic [ref=e455]:
+        - heading "场景选择速记" [level=3] [ref=e456]
+        - generic [ref=e457]:
+          - generic [ref=e458]: 想要氛围
+          - generic [ref=e459]: 先看 Seedream 的人像与节气海报
+        - generic [ref=e460]:
+          - generic [ref=e461]: 要做编辑
+          - generic [ref=e462]: 优先看 GPT 的融合与四视图
+        - generic [ref=e463]:
+          - generic [ref=e464]: 要做生产
+          - generic [ref=e465]: 重点放大 UI 和科研绘图的文字、结构、连接
+    - generic [ref=e466]:
+      - generic [ref=e467]: Source · 9.15 豆包生图和gpt生图对比-claude.md
+      - generic [ref=e468]: 本页图片为本地素材 · 点击任意图片放大

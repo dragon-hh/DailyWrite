@@ -1,0 +1,108 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - strong [ref=e6]: DailyWrite
+      - generic [ref=e7]: 本地优先 · Markdown
+    - navigation "主要导航" [ref=e8]:
+      - button "今日推进舱" [ref=e9] [cursor=pointer]
+      - button "每日待办" [ref=e13] [cursor=pointer]
+      - button "内容库" [ref=e18] [cursor=pointer]
+      - button "素材库" [ref=e23] [cursor=pointer]
+      - button "脚本库" [ref=e29] [cursor=pointer]
+      - button "发布库" [ref=e34] [cursor=pointer]
+      - button "复盘库" [ref=e39] [cursor=pointer]
+    - generic [ref=e45]:
+      - button "标签体系" [ref=e46] [cursor=pointer]
+      - button "模板中心" [ref=e51] [cursor=pointer]
+      - button "设置" [ref=e56] [cursor=pointer]
+    - generic [ref=e61]:
+      - button "本地存储 已连接" [ref=e62] [cursor=pointer]:
+        - generic [ref=e63]: 本地存储
+        - strong [ref=e65]: 已连接
+      - button "刷新本地数据" [ref=e66] [cursor=pointer]
+      - generic [ref=e70]: DailyWrite 本地内容库
+      - button "29 条一致性提醒" [ref=e71] [cursor=pointer]
+  - main [ref=e72]:
+    - region [ref=e213]:
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - text: 日清 · 日结
+          - heading "每日待办" [level=1] [ref=e216]
+          - paragraph [ref=e217]: 先记录，再完成。需要 Agent 的事项可以分配给一个或多个 Runtime，并在这里追踪各自结果。
+        - button "回到今日推进舱" [ref=e218] [cursor=pointer]
+      - generic "待办视图" [ref=e221]:
+        - button "日视图" [pressed] [ref=e222] [cursor=pointer]
+        - button "周视图" [ref=e223] [cursor=pointer]
+        - button "月视图" [ref=e224] [cursor=pointer]
+        - generic [ref=e225]: 逐项执行
+      - generic [ref=e226]:
+        - button "上一个日期" [ref=e227] [cursor=pointer]
+        - generic [ref=e230] [cursor=pointer]:
+          - generic [ref=e233]: 7月20日星期一
+          - textbox "7月20日星期一" [ref=e333]: 2026-07-20
+        - button "下一个日期" [ref=e235] [cursor=pointer]
+        - button "回到今天" [ref=e334] [cursor=pointer]
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - generic [ref=e241]:
+              - textbox "待办标题" [active] [ref=e243]:
+                - /placeholder: 写下今天要完成的一件事…
+              - combobox "优先级" [ref=e244] [cursor=pointer]:
+                - option "今天必须"
+                - option "重要" [selected]
+                - option "有余力再做"
+              - button "添加待办" [disabled] [ref=e245]
+            - button "+ 添加说明或完成标准" [ref=e246] [cursor=pointer]
+          - generic "待办筛选" [ref=e247]:
+            - button "待完成 2" [ref=e336] [cursor=pointer]:
+              - text: 待完成
+              - generic [ref=e249]: "2"
+            - button "已配委派 0" [ref=e250] [cursor=pointer]:
+              - text: 已配委派
+              - generic [ref=e251]: "0"
+            - button "已完成 0" [ref=e252] [cursor=pointer]:
+              - text: 已完成
+              - generic [ref=e253]: "0"
+            - button "全部 1" [ref=e337] [cursor=pointer]:
+              - text: 全部
+              - generic [ref=e255]: "1"
+          - paragraph [ref=e256]: 显示所有日期的未完成事项；新事项仍会添加到7月20日星期一。
+          - generic [ref=e259]:
+            - article [ref=e298]:
+              - button "完成待办：验收事项：今天" [ref=e299] [cursor=pointer]
+              - generic [ref=e303]:
+                - heading "验收事项：今天" [level=3] [ref=e305]
+                - generic [ref=e306]: 今天
+                - generic [ref=e309]: 重要
+              - generic [ref=e310]:
+                - button "委派给 Agent" [ref=e311] [cursor=pointer]
+                - button "编辑：验收事项：今天" [ref=e323] [cursor=pointer]
+                - button "删除：验收事项：今天" [ref=e328] [cursor=pointer]
+            - article [ref=e338]:
+              - button "完成待办：验收事项：明天" [ref=e339] [cursor=pointer]
+              - generic [ref=e343]:
+                - heading "验收事项：明天" [level=3] [ref=e345]
+                - generic [ref=e346]: 7/20周一
+                - generic [ref=e349]: 重要
+              - generic [ref=e350]:
+                - button "委派给 Agent" [ref=e351] [cursor=pointer]
+                - button "编辑：验收事项：明天" [ref=e363] [cursor=pointer]
+                - button "删除：验收事项：明天" [ref=e368] [cursor=pointer]
+        - complementary [ref=e264]:
+          - text: 当日进度
+          - strong [ref=e265]:
+            - text: "0"
+            - generic [ref=e266]: / 1
+          - generic [ref=e268]:
+            - generic [ref=e269]:
+              - term [ref=e270]: 今天必须
+              - definition [ref=e272]: "0"
+            - generic [ref=e273]:
+              - term [ref=e274]: 已配委派
+              - definition [ref=e286]: "0"
+            - generic [ref=e287]:
+              - term [ref=e288]: 已完成
+              - definition [ref=e291]: "0"
+          - paragraph [ref=e292]: 待办保存在当前浏览器，本阶段不会写入 DailyWrite 内容库。
+  - status [ref=e372]: 待办已保存到当前浏览器

@@ -1,0 +1,22 @@
+[2026-06-16 10:00:04] DailyWrite 入库检查开始
+处理: 测试文档已入库.md -> 标题: 测试文档已
+  ✗ 上传失败: [31;1mException: [0mE:\projects\openclawProjects\skills\feishu-picgo-doc\scripts\upload-local-doc.ps1:53[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  53 | [0m … eJson.ok) { [36;1mthrow "lark-cli docs +create failed: $($createOutput -joi[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mlark-cli docs +create failed: {   "ok": false,   "identity": "bot",   "error": {     "type": "config",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"subtype": "not_configured",     "message": "hermes context detected but lark-cli is not bound to it",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"hint": "read `lark-cli config bind --help`, then ask the user to confirm intent and identity preset (bot-only[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mor user-default); only after both are confirmed, run `lark-cli config bind`"   } }[0m
+
+=== 摘要 ===
+上传成功: 0 个
+失败: 1 个
+  测试文档已入库.md: [31;1mException: [0mE:\projects\openclawProjects\skills\feishu-picgo-doc\scripts\upload-local-doc.ps1:53[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  53 | [0m … eJson.ok) { [36;1mthrow "lark-cli docs +create failed: $($createOutput -joi[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mlark-cli docs +create failed: {   "ok": false,   "identity": "bot",   "error": {     "type": "config",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"subtype": "not_configured",     "message": "hermes context detected but lark-cli is not bound to it",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"hint": "read `lark-cli config bind --help`, then ask the user to confirm intent and identity preset (bot-only[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mor user-default); only after both are confirmed, run `lark-cli config bind`"   } }[0m

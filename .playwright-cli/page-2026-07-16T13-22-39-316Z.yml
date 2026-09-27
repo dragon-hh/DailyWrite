@@ -1,0 +1,384 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - strong [ref=e6]: DailyWrite
+      - generic [ref=e7]: 本地优先 · Markdown
+    - navigation "主要导航" [ref=e8]:
+      - button "今日推进舱" [ref=e9] [cursor=pointer]
+      - button "每日待办" [ref=e13] [cursor=pointer]
+      - button "内容库" [ref=e18] [cursor=pointer]
+      - button "素材库" [ref=e23] [cursor=pointer]
+      - button "脚本库" [active] [ref=e29] [cursor=pointer]
+      - button "发布库" [ref=e34] [cursor=pointer]
+      - button "复盘库" [ref=e39] [cursor=pointer]
+    - generic [ref=e45]:
+      - button "标签体系" [ref=e46] [cursor=pointer]
+      - button "模板中心" [ref=e51] [cursor=pointer]
+      - button "设置" [ref=e56] [cursor=pointer]
+    - generic [ref=e61]:
+      - button "本地存储 已连接" [ref=e62] [cursor=pointer]:
+        - generic [ref=e63]: 本地存储
+        - strong [ref=e65]: 已连接
+      - button "刷新本地数据" [ref=e66] [cursor=pointer]
+      - generic [ref=e70]: DailyWrite 本地内容库
+      - button "11 条一致性提醒" [ref=e71] [cursor=pointer]
+  - main [ref=e72]:
+    - region [ref=e213]:
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - text: 脚本库
+          - heading "脚本库" [level=1] [ref=e216]
+        - button "回到今日推进舱" [ref=e217] [cursor=pointer]
+      - generic [ref=e220]:
+        - paragraph [ref=e221]: 正在创作目录根层有 82 份可阅读脚本：78 份 Markdown、4 份 HTML；其中 7 份已登记主索引。
+        - generic [ref=e222]:
+          - textbox [ref=e227]:
+            - /placeholder: 搜索脚本标题或正文
+          - generic "筛选条件" [ref=e228]:
+            - button "目录全部 82" [ref=e229] [cursor=pointer]:
+              - text: 目录全部
+              - generic [ref=e230]: "82"
+            - button "脚本创作中 5" [ref=e231] [cursor=pointer]:
+              - text: 脚本创作中
+              - generic [ref=e232]: "5"
+            - button "主索引已登记 7" [ref=e233] [cursor=pointer]:
+              - text: 主索引已登记
+              - generic [ref=e234]: "7"
+            - button "未登记库存 75" [ref=e235] [cursor=pointer]:
+              - text: 未登记库存
+              - generic [ref=e236]: "75"
+            - button "Markdown 78" [ref=e237] [cursor=pointer]:
+              - text: Markdown
+              - generic [ref=e238]: "78"
+            - button "HTML 4" [ref=e239] [cursor=pointer]:
+              - text: HTML
+              - generic [ref=e240]: "4"
+        - generic [ref=e241]:
+          - button "未登记库存 AI开发工作流 · 口播稿 Markdown · 5.9 KB · 更新 07-16" [ref=e242] [cursor=pointer]:
+            - generic [ref=e243]: 未登记库存
+            - strong [ref=e248]: AI开发工作流 · 口播稿
+            - generic [ref=e249]: Markdown · 5.9 KB · 更新 07-16
+          - button "未登记库存 7.15 硅谷顶级工程师的最新AI开发工作流 Markdown · 4.6 KB · 更新 07-16" [ref=e252] [cursor=pointer]:
+            - generic [ref=e253]: 未登记库存
+            - strong [ref=e258]: 7.15 硅谷顶级工程师的最新AI开发工作流
+            - generic [ref=e259]: Markdown · 4.6 KB · 更新 07-16
+          - button "未登记库存 硅谷顶级工程师的最新 AI 开发工作流 Markdown · 10.2 KB · 更新 07-16" [ref=e262] [cursor=pointer]:
+            - generic [ref=e263]: 未登记库存
+            - strong [ref=e268]: 硅谷顶级工程师的最新 AI 开发工作流
+            - generic [ref=e269]: Markdown · 10.2 KB · 更新 07-16
+          - button "未登记库存 7.16 确定性程序的边界和ai的不确定性的边界 Markdown · 0 B · 更新 07-15" [ref=e272] [cursor=pointer]:
+            - generic [ref=e273]: 未登记库存
+            - strong [ref=e278]: 7.16 确定性程序的边界和ai的不确定性的边界
+            - generic [ref=e279]: Markdown · 0 B · 更新 07-15
+          - button "未登记库存 7.11 我用codex最新模型5.6 做了一个超棒的应用-文章版本 Markdown · 1.5 KB · 更新 07-14" [ref=e282] [cursor=pointer]:
+            - generic [ref=e283]: 未登记库存
+            - strong [ref=e288]: 7.11 我用codex最新模型5.6 做了一个超棒的应用-文章版本
+            - generic [ref=e289]: Markdown · 1.5 KB · 更新 07-14
+          - button "未登记库存 7.13 agent公司 1 Markdown · 138 B · 更新 07-14" [ref=e292] [cursor=pointer]:
+            - generic [ref=e293]: 未登记库存
+            - strong [ref=e298]: 7.13 agent公司 1
+            - generic [ref=e299]: Markdown · 138 B · 更新 07-14
+          - button "未登记库存 7.13 agent公司 Markdown · 3.9 KB · 更新 07-13" [ref=e302] [cursor=pointer]:
+            - generic [ref=e303]: 未登记库存
+            - strong [ref=e308]: 7.13 agent公司
+            - generic [ref=e309]: Markdown · 3.9 KB · 更新 07-13
+          - button "未登记库存 标题 Markdown · 4.0 KB · 更新 07-12" [ref=e312] [cursor=pointer]:
+            - generic [ref=e313]: 未登记库存
+            - strong [ref=e318]: 标题
+            - generic [ref=e319]: Markdown · 4.0 KB · 更新 07-12
+          - button "未登记库存 7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5-口播稿 Markdown · 2.9 KB · 更新 07-12" [ref=e322] [cursor=pointer]:
+            - generic [ref=e323]: 未登记库存
+            - strong [ref=e328]: 7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5-口播稿
+            - generic [ref=e329]: Markdown · 2.9 KB · 更新 07-12
+          - button "未登记库存 7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5 Markdown · 2.8 KB · 更新 07-12" [ref=e332] [cursor=pointer]:
+            - generic [ref=e333]: 未登记库存
+            - strong [ref=e338]: 7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5
+            - generic [ref=e339]: Markdown · 2.8 KB · 更新 07-12
+          - button "未登记库存 推荐标题 Markdown · 4.7 KB · 更新 07-11" [ref=e342] [cursor=pointer]:
+            - generic [ref=e343]: 未登记库存
+            - strong [ref=e348]: 推荐标题
+            - generic [ref=e349]: Markdown · 4.7 KB · 更新 07-11
+          - button "未登记库存 7.11 AI 用得越深，越需要管理 Skill-v2 口播稿-口播稿 Markdown · 1.9 KB · 更新 07-11" [ref=e352] [cursor=pointer]:
+            - generic [ref=e353]: 未登记库存
+            - strong [ref=e358]: 7.11 AI 用得越深，越需要管理 Skill-v2 口播稿-口播稿
+            - generic [ref=e359]: Markdown · 1.9 KB · 更新 07-11
+          - button "未登记库存 7.11 AI 用得越深，越需要管理 Skill-v2 口播稿 Markdown · 1.9 KB · 更新 07-11" [ref=e362] [cursor=pointer]:
+            - generic [ref=e363]: 未登记库存
+            - strong [ref=e368]: 7.11 AI 用得越深，越需要管理 Skill-v2 口播稿
+            - generic [ref=e369]: Markdown · 1.9 KB · 更新 07-11
+          - button "脚本创作中 本地 AI Skill 管理与能力治理 DW-20260711-SKILL-MANAGEMENT-01 · 录制真实扫描和三个核心操作画面" [ref=e372] [cursor=pointer]:
+            - generic [ref=e373]: 脚本创作中
+            - strong [ref=e378]: 本地 AI Skill 管理与能力治理
+            - generic [ref=e379]: DW-20260711-SKILL-MANAGEMENT-01 · 录制真实扫描和三个核心操作画面
+          - button "未登记库存 7.11 AI 用得越深，越需要管理 Skill Markdown · 2.3 KB · 更新 07-11" [ref=e382] [cursor=pointer]:
+            - generic [ref=e383]: 未登记库存
+            - strong [ref=e388]: 7.11 AI 用得越深，越需要管理 Skill
+            - generic [ref=e389]: Markdown · 2.3 KB · 更新 07-11
+          - button "未登记库存 AI 用得越深，越需要管理 Skill Markdown · 5.6 KB · 更新 07-11" [ref=e392] [cursor=pointer]:
+            - generic [ref=e393]: 未登记库存
+            - strong [ref=e398]: AI 用得越深，越需要管理 Skill
+            - generic [ref=e399]: Markdown · 5.6 KB · 更新 07-11
+          - button "未登记库存 7.11 最近发现了一个有趣的应用 本地skill管理应用 1 Markdown · 1.5 KB · 更新 07-11" [ref=e402] [cursor=pointer]:
+            - generic [ref=e403]: 未登记库存
+            - strong [ref=e408]: 7.11 最近发现了一个有趣的应用 本地skill管理应用 1
+            - generic [ref=e409]: Markdown · 1.5 KB · 更新 07-11
+          - button "未登记库存 7.11 我用codex最新模型5.6 做了一个超棒的应用 Markdown · 2.3 KB · 更新 07-11" [ref=e412] [cursor=pointer]:
+            - generic [ref=e413]: 未登记库存
+            - strong [ref=e418]: 7.11 我用codex最新模型5.6 做了一个超棒的应用
+            - generic [ref=e419]: Markdown · 2.3 KB · 更新 07-11
+          - button "未登记库存 6.28 豆包使用分享 -创意视频 -v4-口播稿 Markdown · 2.0 KB · 更新 07-09" [ref=e422] [cursor=pointer]:
+            - generic [ref=e423]: 未登记库存
+            - strong [ref=e428]: 6.28 豆包使用分享 -创意视频 -v4-口播稿
+            - generic [ref=e429]: Markdown · 2.0 KB · 更新 07-09
+          - button "未登记库存 口播稿｜豆包办公任务：一句话生成产品宣传片和产品网站 Markdown · 2.1 KB · 更新 07-09" [ref=e432] [cursor=pointer]:
+            - generic [ref=e433]: 未登记库存
+            - strong [ref=e438]: 口播稿｜豆包办公任务：一句话生成产品宣传片和产品网站
+            - generic [ref=e439]: Markdown · 2.1 KB · 更新 07-09
+          - 'button "未登记库存 Role: 高级网页动效视听导演 (Text-to-SVG-Animation Expert) Markdown · 3.4 KB · 更新 07-09" [ref=e442] [cursor=pointer]':
+            - generic [ref=e443]: 未登记库存
+            - strong [ref=e448]: "Role: 高级网页动效视听导演 (Text-to-SVG-Animation Expert)"
+            - generic [ref=e449]: Markdown · 3.4 KB · 更新 07-09
+          - button "未登记库存 6.28 豆包使用分享 -创意视频 -v3-口播稿 Markdown · 2.4 KB · 更新 07-08" [ref=e452] [cursor=pointer]:
+            - generic [ref=e453]: 未登记库存
+            - strong [ref=e458]: 6.28 豆包使用分享 -创意视频 -v3-口播稿
+            - generic [ref=e459]: Markdown · 2.4 KB · 更新 07-08
+          - button "未登记库存 口播稿｜豆包办公任务：一句话生成产品宣传片 Markdown · 2.4 KB · 更新 07-08" [ref=e462] [cursor=pointer]:
+            - generic [ref=e463]: 未登记库存
+            - strong [ref=e468]: 口播稿｜豆包办公任务：一句话生成产品宣传片
+            - generic [ref=e469]: Markdown · 2.4 KB · 更新 07-08
+          - button "未登记库存 7.8 速记 Markdown · 2.2 KB · 更新 07-08" [ref=e472] [cursor=pointer]:
+            - generic [ref=e473]: 未登记库存
+            - strong [ref=e478]: 7.8 速记
+            - generic [ref=e479]: Markdown · 2.2 KB · 更新 07-08
+          - button "未登记库存 7.5-产品需求-顶级聊天室 Markdown · 356 B · 更新 07-05" [ref=e482] [cursor=pointer]:
+            - generic [ref=e483]: 未登记库存
+            - strong [ref=e488]: 7.5-产品需求-顶级聊天室
+            - generic [ref=e489]: Markdown · 356 B · 更新 07-05
+          - button "未登记库存 口播稿｜豆包办公任务：一句话生成产品宣传片 Markdown · 1.8 KB · 更新 07-04" [ref=e492] [cursor=pointer]:
+            - generic [ref=e493]: 未登记库存
+            - strong [ref=e498]: 口播稿｜豆包办公任务：一句话生成产品宣传片
+            - generic [ref=e499]: Markdown · 1.8 KB · 更新 07-04
+          - button "未登记库存 7.4 豆包办公任务推广 1 Markdown · 94 B · 更新 07-04" [ref=e502] [cursor=pointer]:
+            - generic [ref=e503]: 未登记库存
+            - strong [ref=e508]: 7.4 豆包办公任务推广 1
+            - generic [ref=e509]: Markdown · 94 B · 更新 07-04
+          - button "未登记库存 7.4 豆包办公任务推广 Markdown · 238 B · 更新 07-04" [ref=e512] [cursor=pointer]:
+            - generic [ref=e513]: 未登记库存
+            - strong [ref=e518]: 7.4 豆包办公任务推广
+            - generic [ref=e519]: Markdown · 238 B · 更新 07-04
+          - button "未登记库存 7.1 用豆包做一个本地skill 管理页面 Markdown · 32 B · 更新 07-01" [ref=e522] [cursor=pointer]:
+            - generic [ref=e523]: 未登记库存
+            - strong [ref=e528]: 7.1 用豆包做一个本地skill 管理页面
+            - generic [ref=e529]: Markdown · 32 B · 更新 07-01
+          - button "未登记库存 7.1 codex最被低估的功能 goal模式 Markdown · 2.1 KB · 更新 07-01" [ref=e532] [cursor=pointer]:
+            - generic [ref=e533]: 未登记库存
+            - strong [ref=e538]: 7.1 codex最被低估的功能 goal模式
+            - generic [ref=e539]: Markdown · 2.1 KB · 更新 07-01
+          - button "未登记库存 口播稿｜豆包办公任务：一句话生成产品宣传片 Markdown · 3.9 KB · 更新 06-29" [ref=e542] [cursor=pointer]:
+            - generic [ref=e543]: 未登记库存
+            - strong [ref=e548]: 口播稿｜豆包办公任务：一句话生成产品宣传片
+            - generic [ref=e549]: Markdown · 3.9 KB · 更新 06-29
+          - button "未登记库存 6.28 豆包使用分享 -创意视频 Markdown · 2.1 KB · 更新 06-29" [ref=e552] [cursor=pointer]:
+            - generic [ref=e553]: 未登记库存
+            - strong [ref=e558]: 6.28 豆包使用分享 -创意视频
+            - generic [ref=e559]: Markdown · 2.1 KB · 更新 06-29
+          - button "未登记库存 6.28 豆包使用分享 Markdown · 1.3 KB · 更新 06-28" [ref=e562] [cursor=pointer]:
+            - generic [ref=e563]: 未登记库存
+            - strong [ref=e568]: 6.28 豆包使用分享
+            - generic [ref=e569]: Markdown · 1.3 KB · 更新 06-28
+          - button "未登记库存 6.22 爬取ai博主视频，并存放多维表格第二集 1-口播稿 Markdown · 2.4 KB · 更新 06-25" [ref=e572] [cursor=pointer]:
+            - generic [ref=e573]: 未登记库存
+            - strong [ref=e578]: 6.22 爬取ai博主视频，并存放多维表格第二集 1-口播稿
+            - generic [ref=e579]: Markdown · 2.4 KB · 更新 06-25
+          - button "未登记库存 6.22 爬取ai博主视频，并存放多维表格第二集 1 Markdown · 2.3 KB · 更新 06-25" [ref=e582] [cursor=pointer]:
+            - generic [ref=e583]: 未登记库存
+            - strong [ref=e588]: 6.22 爬取ai博主视频，并存放多维表格第二集 1
+            - generic [ref=e589]: Markdown · 2.3 KB · 更新 06-25
+          - button "未登记库存 6.22 爬取ai博主视频，并存放多维表格第二集 Markdown · 3.9 KB · 更新 06-24" [ref=e592] [cursor=pointer]:
+            - generic [ref=e593]: 未登记库存
+            - strong [ref=e598]: 6.22 爬取ai博主视频，并存放多维表格第二集
+            - generic [ref=e599]: Markdown · 3.9 KB · 更新 06-24
+          - button "未登记库存 选题 Markdown · 962 B · 更新 06-22" [ref=e602] [cursor=pointer]:
+            - generic [ref=e603]: 未登记库存
+            - strong [ref=e608]: 选题
+            - generic [ref=e609]: Markdown · 962 B · 更新 06-22
+          - button "未登记库存 6.21 codex使用教程 Markdown · 70 B · 更新 06-21" [ref=e612] [cursor=pointer]:
+            - generic [ref=e613]: 未登记库存
+            - strong [ref=e618]: 6.21 codex使用教程
+            - generic [ref=e619]: Markdown · 70 B · 更新 06-21
+          - button "未登记库存 6.20 爬取ai博主视频，并存放多维表格-claude-v1-口播稿 Markdown · 2.8 KB · 更新 06-21" [ref=e622] [cursor=pointer]:
+            - generic [ref=e623]: 未登记库存
+            - strong [ref=e628]: 6.20 爬取ai博主视频，并存放多维表格-claude-v1-口播稿
+            - generic [ref=e629]: Markdown · 2.8 KB · 更新 06-21
+          - button "脚本创作中 AI 博主视频文案追踪系统 DW-20260620-AI-CREATOR-TRACKER-01 · 补真实飞书截图或直接进入公众号排版" [ref=e632] [cursor=pointer]:
+            - generic [ref=e633]: 脚本创作中
+            - strong [ref=e638]: AI 博主视频文案追踪系统
+            - generic [ref=e639]: DW-20260620-AI-CREATOR-TRACKER-01 · 补真实飞书截图或直接进入公众号排版
+          - button "未登记库存 6.20 爬取ai博主视频，并存放多维表格-claude-v1 1 Markdown · 3.1 KB · 更新 06-20" [ref=e642] [cursor=pointer]:
+            - generic [ref=e643]: 未登记库存
+            - strong [ref=e648]: 6.20 爬取ai博主视频，并存放多维表格-claude-v1 1
+            - generic [ref=e649]: Markdown · 3.1 KB · 更新 06-20
+          - button "未登记库存 6.20 爬取ai博主视频，并存放多维表格-claude-v1 Markdown · 2.9 KB · 更新 06-20" [ref=e652] [cursor=pointer]:
+            - generic [ref=e653]: 未登记库存
+            - strong [ref=e658]: 6.20 爬取ai博主视频，并存放多维表格-claude-v1
+            - generic [ref=e659]: Markdown · 2.9 KB · 更新 06-20
+          - button "未登记库存 6.20 爬取ai博主视频，并存放多维表格 Markdown · 3.4 KB · 更新 06-20" [ref=e662] [cursor=pointer]:
+            - generic [ref=e663]: 未登记库存
+            - strong [ref=e668]: 6.20 爬取ai博主视频，并存放多维表格
+            - generic [ref=e669]: Markdown · 3.4 KB · 更新 06-20
+          - button "未登记库存 6.20 cli Markdown · 1.3 KB · 更新 06-20" [ref=e672] [cursor=pointer]:
+            - generic [ref=e673]: 未登记库存
+            - strong [ref=e678]: 6.20 cli
+            - generic [ref=e679]: Markdown · 1.3 KB · 更新 06-20
+          - button "未登记库存 6.19 ai日报-claude v1 1 Markdown · 642 B · 更新 06-20" [ref=e682] [cursor=pointer]:
+            - generic [ref=e683]: 未登记库存
+            - strong [ref=e688]: 6.19 ai日报-claude v1 1
+            - generic [ref=e689]: Markdown · 642 B · 更新 06-20
+          - button "未登记库存 6.19 ai日报-claude v1 口播稿 Markdown · 2.3 KB · 更新 06-20" [ref=e692] [cursor=pointer]:
+            - generic [ref=e693]: 未登记库存
+            - strong [ref=e698]: 6.19 ai日报-claude v1 口播稿
+            - generic [ref=e699]: Markdown · 2.3 KB · 更新 06-20
+          - button "未登记库存 6.19 ai日报-claude v1 Markdown · 3.0 KB · 更新 06-20" [ref=e702] [cursor=pointer]:
+            - generic [ref=e703]: 未登记库存
+            - strong [ref=e708]: 6.19 ai日报-claude v1
+            - generic [ref=e709]: Markdown · 3.0 KB · 更新 06-20
+          - button "未登记库存 6.10 codex省token 的小技巧，额度快用完的时候 v1-claude Markdown · 3.1 KB · 更新 06-13" [ref=e712] [cursor=pointer]:
+            - generic [ref=e713]: 未登记库存
+            - strong [ref=e718]: 6.10 codex省token 的小技巧，额度快用完的时候 v1-claude
+            - generic [ref=e719]: Markdown · 3.1 KB · 更新 06-13
+          - button "未登记库存 6.10 codex省token 的小技巧，额度快用完的时候 Markdown · 1.3 KB · 更新 06-10" [ref=e722] [cursor=pointer]:
+            - generic [ref=e723]: 未登记库存
+            - strong [ref=e728]: 6.10 codex省token 的小技巧，额度快用完的时候
+            - generic [ref=e729]: Markdown · 1.3 KB · 更新 06-10
+          - button "未登记库存 6.4 codex 最新发布的插件 v3 Markdown · 8.5 KB · 更新 06-09" [ref=e732] [cursor=pointer]:
+            - generic [ref=e733]: 未登记库存
+            - strong [ref=e738]: 6.4 codex 最新发布的插件 v3
+            - generic [ref=e739]: Markdown · 8.5 KB · 更新 06-09
+          - button "未登记库存 🎬 口播稿 V2.0｜Codex 六大插件，国内用户到底能用哪些？ Markdown · 6.7 KB · 更新 06-08" [ref=e742] [cursor=pointer]:
+            - generic [ref=e743]: 未登记库存
+            - strong [ref=e748]: 🎬 口播稿 V2.0｜Codex 六大插件，国内用户到底能用哪些？
+            - generic [ref=e749]: Markdown · 6.7 KB · 更新 06-08
+          - button "脚本创作中 Codex 插件发布 DW-20260604-CODEX-PLUGIN-01 · 拆成教程或观点稿" [ref=e752] [cursor=pointer]:
+            - generic [ref=e753]: 脚本创作中
+            - strong [ref=e758]: Codex 插件发布
+            - generic [ref=e759]: DW-20260604-CODEX-PLUGIN-01 · 拆成教程或观点稿
+          - button "脚本创作中 Claude Code Workflow 新能力 DW-20260605-CC-WORKFLOW-01 · 过开头和结构审查" [ref=e762] [cursor=pointer]:
+            - generic [ref=e763]: 脚本创作中
+            - strong [ref=e768]: Claude Code Workflow 新能力
+            - generic [ref=e769]: DW-20260605-CC-WORKFLOW-01 · 过开头和结构审查
+          - button "脚本创作中 三省六部工作流 DW-20260605-SANSHEN-LIUBU-01 · 补观众背景和案例钩子" [ref=e772] [cursor=pointer]:
+            - generic [ref=e773]: 脚本创作中
+            - strong [ref=e778]: 三省六部工作流
+            - generic [ref=e779]: DW-20260605-SANSHEN-LIUBU-01 · 补观众背景和案例钩子
+          - button "待处理空稿 手写 harness 时代变化 DW-20260605-CC-HARNESS-01 · 判断保留/合并/废弃" [ref=e782] [cursor=pointer]:
+            - generic [ref=e783]: 待处理空稿
+            - strong [ref=e788]: 手写 harness 时代变化
+            - generic [ref=e789]: DW-20260605-CC-HARNESS-01 · 判断保留/合并/废弃
+          - button "未登记库存 A-报价记录 Markdown · 382 B · 更新 06-05" [ref=e792] [cursor=pointer]:
+            - generic [ref=e793]: 未登记库存
+            - strong [ref=e798]: A-报价记录
+            - generic [ref=e799]: Markdown · 382 B · 更新 06-05
+          - button "待处理空稿 Claude Code 与 Codex 联动 DW-20260603-CC-CODEX-LINKAGE-01 · 判断是否并入插件选题" [ref=e802] [cursor=pointer]:
+            - generic [ref=e803]: 待处理空稿
+            - strong [ref=e808]: Claude Code 与 Codex 联动
+            - generic [ref=e809]: DW-20260603-CC-CODEX-LINKAGE-01 · 判断是否并入插件选题
+          - button "未登记库存 5.31 windows用户的春天，codex终于支持电脑操控了 -claude-v1 Markdown · 1.5 KB · 更新 06-01" [ref=e812] [cursor=pointer]:
+            - generic [ref=e813]: 未登记库存
+            - strong [ref=e818]: 5.31 windows用户的春天，codex终于支持电脑操控了 -claude-v1
+            - generic [ref=e819]: Markdown · 1.5 KB · 更新 06-01
+          - button "未登记库存 5.31 windows用户的春天，codex终于支持电脑操控了 Markdown · 1.2 KB · 更新 06-01" [ref=e822] [cursor=pointer]:
+            - generic [ref=e823]: 未登记库存
+            - strong [ref=e828]: 5.31 windows用户的春天，codex终于支持电脑操控了
+            - generic [ref=e829]: Markdown · 1.2 KB · 更新 06-01
+          - button "未登记库存 Claude Code Workflow，可能是下一个 MCP 时刻 HTML · 8.8 KB · 更新 05-31" [ref=e832] [cursor=pointer]:
+            - generic [ref=e833]: 未登记库存
+            - strong [ref=e838]: Claude Code Workflow，可能是下一个 MCP 时刻
+            - generic [ref=e839]: HTML · 8.8 KB · 更新 05-31
+          - button "未登记库存 5.30 claudecode workflow v4 口播稿 Markdown · 3.4 KB · 更新 05-31" [ref=e842] [cursor=pointer]:
+            - generic [ref=e843]: 未登记库存
+            - strong [ref=e848]: 5.30 claudecode workflow v4 口播稿
+            - generic [ref=e849]: Markdown · 3.4 KB · 更新 05-31
+          - button "未登记库存 5.30 claudecode workflow v4 Markdown · 3.4 KB · 更新 05-31" [ref=e852] [cursor=pointer]:
+            - generic [ref=e853]: 未登记库存
+            - strong [ref=e858]: 5.30 claudecode workflow v4
+            - generic [ref=e859]: Markdown · 3.4 KB · 更新 05-31
+          - button "未登记库存 我用 AI 把微信聊天记录，变成了私人商业情报系统 HTML · 9.2 KB · 更新 05-31" [ref=e862] [cursor=pointer]:
+            - generic [ref=e863]: 未登记库存
+            - strong [ref=e868]: 我用 AI 把微信聊天记录，变成了私人商业情报系统
+            - generic [ref=e869]: HTML · 9.2 KB · 更新 05-31
+          - button "未登记库存 5.30 claudecode workflow v3 Markdown · 7.8 KB · 更新 05-30" [ref=e872] [cursor=pointer]:
+            - generic [ref=e873]: 未登记库存
+            - strong [ref=e878]: 5.30 claudecode workflow v3
+            - generic [ref=e879]: Markdown · 7.8 KB · 更新 05-30
+          - button "未登记库存 5.30 claudecode workflow v2-Claude Code 的 Workflow，不是新命令，是 AI 编程开始变形的地方 Markdown · 7.7 KB · 更新 05-30" [ref=e882] [cursor=pointer]:
+            - generic [ref=e883]: 未登记库存
+            - strong [ref=e888]: 5.30 claudecode workflow v2-Claude Code 的 Workflow，不是新命令，是 AI 编程开始变形的地方
+            - generic [ref=e889]: Markdown · 7.7 KB · 更新 05-30
+          - button "未登记库存 6.1 写文章永远的神-claude Markdown · 8.3 KB · 更新 05-30" [ref=e892] [cursor=pointer]:
+            - generic [ref=e893]: 未登记库存
+            - strong [ref=e898]: 6.1 写文章永远的神-claude
+            - generic [ref=e899]: Markdown · 8.3 KB · 更新 05-30
+          - button "未登记库存 Claude Code 的 Workflow 不是新命令，是 AI 编程开始变形的地方 Markdown · 15.8 KB · 更新 05-30" [ref=e902] [cursor=pointer]:
+            - generic [ref=e903]: 未登记库存
+            - strong [ref=e908]: Claude Code 的 Workflow 不是新命令，是 AI 编程开始变形的地方
+            - generic [ref=e909]: Markdown · 15.8 KB · 更新 05-30
+          - button "未登记库存 5.19 选题调研 Markdown · 2.3 KB · 更新 05-30" [ref=e912] [cursor=pointer]:
+            - generic [ref=e913]: 未登记库存
+            - strong [ref=e918]: 5.19 选题调研
+            - generic [ref=e919]: Markdown · 2.3 KB · 更新 05-30
+          - button "未登记库存 XCrawl 推广演示：以前三四天，现在半小时 HTML · 20.7 KB · 更新 05-26" [ref=e922] [cursor=pointer]:
+            - generic [ref=e923]: 未登记库存
+            - strong [ref=e928]: XCrawl 推广演示：以前三四天，现在半小时
+            - generic [ref=e929]: HTML · 20.7 KB · 更新 05-26
+          - button "未登记库存 5.20 微信聊天数据沉淀 -claude v4 口播稿 Markdown · 1.8 KB · 更新 05-21" [ref=e932] [cursor=pointer]:
+            - generic [ref=e933]: 未登记库存
+            - strong [ref=e938]: 5.20 微信聊天数据沉淀 -claude v4 口播稿
+            - generic [ref=e939]: Markdown · 1.8 KB · 更新 05-21
+          - button "未登记库存 5.20 微信聊天数据沉淀 -claude v4 Markdown · 3.4 KB · 更新 05-20" [ref=e942] [cursor=pointer]:
+            - generic [ref=e943]: 未登记库存
+            - strong [ref=e948]: 5.20 微信聊天数据沉淀 -claude v4
+            - generic [ref=e949]: Markdown · 3.4 KB · 更新 05-20
+          - button "未登记库存 5.20 微信聊天数据沉淀 -claude v3 Markdown · 3.6 KB · 更新 05-20" [ref=e952] [cursor=pointer]:
+            - generic [ref=e953]: 未登记库存
+            - strong [ref=e958]: 5.20 微信聊天数据沉淀 -claude v3
+            - generic [ref=e959]: Markdown · 3.6 KB · 更新 05-20
+          - button "未登记库存 5.20 微信聊天数据沉淀 -claude v2 Markdown · 3.2 KB · 更新 05-20" [ref=e962] [cursor=pointer]:
+            - generic [ref=e963]: 未登记库存
+            - strong [ref=e968]: 5.20 微信聊天数据沉淀 -claude v2
+            - generic [ref=e969]: Markdown · 3.2 KB · 更新 05-20
+          - button "未登记库存 5.20 微信聊天数据沉淀 -claude v1 Markdown · 4.2 KB · 更新 05-20" [ref=e972] [cursor=pointer]:
+            - generic [ref=e973]: 未登记库存
+            - strong [ref=e978]: 5.20 微信聊天数据沉淀 -claude v1
+            - generic [ref=e979]: Markdown · 4.2 KB · 更新 05-20
+          - button "未登记库存 5.20 codex额度重置 Markdown · 5.6 KB · 更新 05-20" [ref=e982] [cursor=pointer]:
+            - generic [ref=e983]: 未登记库存
+            - strong [ref=e988]: 5.20 codex额度重置
+            - generic [ref=e989]: Markdown · 5.6 KB · 更新 05-20
+          - button "未登记库存 5.20 微信聊天数据沉淀 Markdown · 5.2 KB · 更新 05-20" [ref=e992] [cursor=pointer]:
+            - generic [ref=e993]: 未登记库存
+            - strong [ref=e998]: 5.20 微信聊天数据沉淀
+            - generic [ref=e999]: Markdown · 5.2 KB · 更新 05-20
+          - button "未登记库存 AI 博主自媒体选题库 · 2026-05-19 HTML · 54.2 KB · 更新 05-19" [ref=e1002] [cursor=pointer]:
+            - generic [ref=e1003]: 未登记库存
+            - strong [ref=e1008]: AI 博主自媒体选题库 · 2026-05-19
+            - generic [ref=e1009]: HTML · 54.2 KB · 更新 05-19
+          - button "未登记库存 AI 博主自媒体选题库 Markdown · 32.7 KB · 更新 05-19" [ref=e1012] [cursor=pointer]:
+            - generic [ref=e1013]: 未登记库存
+            - strong [ref=e1018]: AI 博主自媒体选题库
+            - generic [ref=e1019]: Markdown · 32.7 KB · 更新 05-19
+          - button "未登记库存 AI 周报：最近一周精选内容 Markdown · 110.9 KB · 更新 05-19" [ref=e1022] [cursor=pointer]:
+            - generic [ref=e1023]: 未登记库存
+            - strong [ref=e1028]: AI 周报：最近一周精选内容
+            - generic [ref=e1029]: Markdown · 110.9 KB · 更新 05-19
+          - button "未登记库存 5.19 codex 实用小案例 Markdown · 18 B · 更新 05-19" [ref=e1032] [cursor=pointer]:
+            - generic [ref=e1033]: 未登记库存
+            - strong [ref=e1038]: 5.19 codex 实用小案例
+            - generic [ref=e1039]: Markdown · 18 B · 更新 05-19
+          - button "未登记库存 5.15 ai科普课程 Markdown · 665 B · 更新 05-12" [ref=e1042] [cursor=pointer]:
+            - generic [ref=e1043]: 未登记库存
+            - strong [ref=e1048]: 5.15 ai科普课程
+            - generic [ref=e1049]: Markdown · 665 B · 更新 05-12
+          - button "未登记库存 A-报价模板 Markdown · 1.7 KB · 更新 05-09" [ref=e1052] [cursor=pointer]:
+            - generic [ref=e1053]: 未登记库存
+            - strong [ref=e1058]: A-报价模板
+            - generic [ref=e1059]: Markdown · 1.7 KB · 更新 05-09

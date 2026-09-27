@@ -1,0 +1,689 @@
+<!doctype html>
+<!--
+ASSUMPTIONS / REASONING
+- 目标受众：AI 工具实践者、个人开发者、内容创作者；主要在笔记本浏览器阅读，也会截取局部讨论选题。
+- 内容假设：页面是一份“编辑部研究简报”，不是新闻聚合页或 SaaS dashboard；读者先要判断，再要证据边界与可执行动作。
+- 事实边界：分析窗口为 2026-07-29 至 2026-08-11；实际只覆盖仓库中 8 份 AI HOT 与 9 份 AI Builders Digest。缺档不等于当天没有动态。产品能力仅在 product-facts.md 标注的官方来源范围内写作；其余明确标记为“本地日报收录 / 待复测”，不写成已亲测事实。
+- 图片决策：本页是工具、数据和观点型内容，图片对信息无增益，因此不使用图片；视觉层级由排版、编号、真实覆盖数据、表格和矩阵承担。
+- 交互决策：只提供目录、工具分级筛选、选题优先筛选、原生 details 折叠与打印；全部使用原生 HTML/CSS/JS，确保 file:// 直接打开。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>近两周 AI 情报：从模型竞赛到任务系统｜编辑部研究简报</title>
+  <style>
+    :root {
+      --paper: #f3eee3;
+      --paper-deep: #e9e0d0;
+      --ink: #191713;
+      --muted: #6e675d;
+      --rule: #c9beaa;
+      --accent: #9e3428;
+      --accent-soft: #ead3c9;
+      --blue: #345269;
+      --white: #fffdf8;
+      --shadow: 0 18px 60px rgba(54, 43, 29, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(104, 84, 54, .035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 100% 28px;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:hover { color: var(--accent); }
+    button, summary { font: inherit; }
+    button { min-height: 44px; }
+    [hidden] { display: none !important; }
+    ::selection { background: var(--accent); color: var(--white); }
+
+    .masthead {
+      border-bottom: 1px solid var(--ink);
+      background: rgba(243, 238, 227, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .masthead-inner,
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .masthead-inner {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .issue-mark { font-weight: 800; }
+    .issue-date { color: var(--muted); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 70px;
+      padding: 76px 0 58px;
+      border-bottom: 3px double var(--ink);
+    }
+
+    .kicker,
+    .eyebrow,
+    .label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 14px 0 26px;
+      font-size: clamp(48px, 6.7vw, 96px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+
+    .dek {
+      max-width: 780px;
+      margin: 0;
+      font-family: Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+      font-size: clamp(19px, 2.1vw, 27px);
+      line-height: 1.55;
+      color: #403b34;
+      text-wrap: pretty;
+    }
+
+    .hero-note {
+      align-self: end;
+      border-top: 5px solid var(--accent);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-note strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-size: 17px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 22px;
+      padding: 34px 0;
+      max-height: calc(100vh - 44px);
+      overflow: auto;
+      scrollbar-width: thin;
+    }
+
+    .toc-title {
+      display: block;
+      padding-bottom: 9px;
+      border-bottom: 2px solid var(--ink);
+      font: 800 11px/1.4 "Microsoft YaHei", sans-serif;
+      letter-spacing: .16em;
+    }
+
+    .toc a {
+      display: block;
+      min-height: 44px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .toc a:hover { color: var(--accent); padding-left: 5px; }
+    .content { min-width: 0; padding-bottom: 100px; }
+
+    section {
+      scroll-margin-top: 24px;
+      padding: 74px 0;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 38px;
+    }
+
+    .section-no {
+      color: var(--accent);
+      font: italic 700 42px/1 Georgia, serif;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .section-head p { max-width: 720px; margin: 10px 0 0; color: var(--muted); }
+
+    .verdict {
+      padding: 34px 38px;
+      color: var(--white);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .verdict p {
+      margin: 8px 0 0;
+      font-family: Georgia, "Noto Serif CJK SC", "SimSun", serif;
+      font-size: clamp(23px, 2.6vw, 35px);
+      line-height: 1.5;
+    }
+
+    .signal-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 24px;
+      border: 1px solid var(--ink);
+      background: rgba(255,255,255,.24);
+    }
+
+    .signal {
+      min-height: 145px;
+      padding: 22px;
+      border-right: 1px solid var(--ink);
+    }
+    .signal:last-child { border-right: 0; }
+    .signal b { display: block; font: 700 38px/1 Georgia, serif; color: var(--accent); }
+    .signal span { display: block; margin-top: 14px; color: var(--muted); font-size: 13px; }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+    }
+
+    .method-block { border-top: 4px solid var(--ink); padding-top: 20px; }
+    .method-block h3 { margin: 0 0 12px; font-size: 25px; }
+    .method-block p, .method-block ul { margin: 0; color: #4c473f; }
+    .method-block ul { padding-left: 1.2em; }
+
+    .coverage-line {
+      margin-top: 28px;
+      padding: 18px 22px;
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      color: #5a211b;
+    }
+
+    .viewpoints { counter-reset: point; }
+    .point {
+      counter-increment: point;
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr) 170px;
+      gap: 26px;
+      padding: 34px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .point:first-child { border-top: 3px solid var(--ink); }
+    .point-number::before {
+      content: "0" counter(point);
+      font: 700 42px/1 Georgia, serif;
+      color: var(--accent);
+    }
+    .point h3 { margin: 0 0 10px; font-size: 26px; line-height: 1.25; }
+    .point p { margin: 0; text-wrap: pretty; }
+    .point-note { color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .point-note b { display: block; color: var(--blue); letter-spacing: .05em; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: -8px 0 28px;
+    }
+    .filter {
+      padding: 9px 15px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .filter:hover, .filter.active { background: var(--ink); color: var(--white); }
+    .filter:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .tier { margin-top: 36px; }
+    .tier-head {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 3px solid var(--ink);
+    }
+    .tier-letter {
+      font: 700 52px/1 Georgia, serif;
+      color: var(--accent);
+    }
+    .tier-head h3 { margin: 0; font-size: 25px; }
+    .tier-head p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+    .tool-list { list-style: none; padding: 0; margin: 0; }
+    .tool {
+      display: grid;
+      grid-template-columns: 42px minmax(180px, .72fr) minmax(0, 1.28fr) 115px;
+      gap: 18px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+    .tool-index { font: 700 18px/1.5 Georgia, serif; color: var(--muted); }
+    .tool-name { font-weight: 800; line-height: 1.5; }
+    .tool-use { color: #48433c; font-size: 14px; }
+    .status {
+      display: inline-block;
+      padding: 4px 7px;
+      border: 1px solid currentColor;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-align: center;
+    }
+    .status.local { color: var(--accent); }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--ink);
+    }
+    .action {
+      min-height: 240px;
+      padding: 30px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: rgba(255,255,255,.18);
+    }
+    .action:nth-child(2n) { border-right: 0; }
+    .action:nth-last-child(-n+2) { border-bottom: 0; }
+    .action-no { font: italic 700 34px/1 Georgia, serif; color: var(--accent); }
+    .action h3 { margin: 12px 0 10px; font-size: 24px; }
+    .action p { margin: 0; color: var(--muted); }
+    .action .deliverable { margin-top: 18px; color: var(--ink); font-size: 13px; font-weight: 800; }
+
+    .topic-list { border-top: 3px solid var(--ink); }
+    .topic {
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+    }
+    .topic summary {
+      min-height: 76px;
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) 92px;
+      gap: 16px;
+      align-items: center;
+      padding: 15px 0;
+      cursor: pointer;
+      list-style: none;
+    }
+    .topic summary::-webkit-details-marker { display: none; }
+    .topic-id { font: 700 24px/1 Georgia, serif; color: var(--accent); }
+    .topic-title { font-family: Georgia, "Noto Serif CJK SC", "SimSun", serif; font-size: 21px; font-weight: 700; line-height: 1.35; }
+    .priority { justify-self: end; color: var(--muted); font-size: 11px; font-weight: 800; }
+    .priority.primary { color: var(--accent); }
+    .topic-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 36px;
+      padding: 0 0 28px 74px;
+    }
+    .topic-body p { margin: 0; font-size: 14px; }
+    .topic-body b { color: var(--blue); }
+    .topic[open] { background: rgba(255,255,255,.24); }
+
+    .matrix-wrap { overflow-x: auto; border-top: 3px solid var(--ink); }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; }
+    th, td { padding: 16px 14px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+    th { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    td:first-child { width: 23%; font-weight: 800; }
+    .dot {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      margin: 2px;
+      border: 1px solid var(--ink);
+      font: 700 12px/1 Georgia, serif;
+    }
+    .dot.hot { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    .appendix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+    .appendix h3 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 3px solid var(--ink); font-size: 24px; }
+    .source-list { margin: 0; padding-left: 1.25em; }
+    .source-list li { margin: 8px 0; }
+    .source-list a { overflow-wrap: anywhere; }
+    .fineprint { margin-top: 26px; color: var(--muted); font-size: 12px; }
+
+    .footer {
+      padding: 28px 0 50px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 52px; }
+      .hero-note { max-width: 520px; }
+      .layout { display: block; }
+      .toc {
+        position: relative;
+        top: auto;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        max-height: none;
+        padding: 18px 0 8px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .toc-title { display: none; }
+      .toc a { flex: 0 0 auto; padding: 10px 12px; border: 1px solid var(--rule); }
+      .point { grid-template-columns: 70px minmax(0, 1fr); }
+      .point-note { grid-column: 2; }
+      .tool { grid-template-columns: 38px minmax(0, 1fr) 105px; }
+      .tool-use { grid-column: 2 / -1; }
+      .appendix-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .masthead-inner, .page { width: min(100% - 28px, 1180px); }
+      .masthead-inner { min-height: 48px; }
+      .issue-date { display: none; }
+      h1 { font-size: clamp(46px, 15.5vw, 64px); }
+      .hero { padding: 46px 0 40px; }
+      section { padding: 54px 0; }
+      .section-head { grid-template-columns: 54px 1fr; gap: 10px; }
+      .section-no { font-size: 30px; }
+      .section-head h2 { font-size: 34px; }
+      .verdict { padding: 26px 22px; }
+      .signal-strip, .method-grid, .actions, .topic-body { grid-template-columns: 1fr; }
+      .signal { border-right: 0; border-bottom: 1px solid var(--ink); }
+      .signal:last-child { border-bottom: 0; }
+      .point { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
+      .point-number::before { font-size: 30px; }
+      .point h3 { font-size: 23px; }
+      .action { border-right: 0; border-bottom: 1px solid var(--ink) !important; }
+      .action:last-child { border-bottom: 0 !important; }
+      .tool { grid-template-columns: 34px minmax(0, 1fr); }
+      .tool .status { grid-column: 2; justify-self: start; }
+      .tool-use { grid-column: 2; }
+      .topic summary { grid-template-columns: 42px minmax(0, 1fr); }
+      .priority { grid-column: 2; justify-self: start; }
+      .topic-body { padding-left: 56px; gap: 12px; }
+      .footer { display: block; }
+    }
+
+    @media print {
+      :root { --paper: #fff; --paper-deep: #fff; }
+      body { background: #fff; font-size: 10.5pt; }
+      .masthead, .toc, .filters, .print-hide { display: none !important; }
+      .page { width: 100%; }
+      .layout { display: block; }
+      .hero { padding: 26px 0; }
+      h1 { font-size: 46pt; }
+      section { padding: 30px 0; break-inside: avoid-page; }
+      .point, .tool, .topic, .action { break-inside: avoid; }
+      .topic:not([open]) .topic-body { display: grid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <span class="issue-mark">DailyWrite · Editorial Intelligence</span>
+      <span class="issue-date">Research Brief / 2026.08.11</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <header class="hero" id="top">
+      <div>
+        <div class="kicker">近两周 AI 情报研究简报</div>
+        <h1>模型竞赛退到幕后，任务系统走到台前</h1>
+        <p class="dek">17 份本地日报里，真正反复出现的不是“谁又赢了榜单”，而是 Harness、路由、评估、沙箱、可观测性与审查链如何让模型稳定交付。</p>
+      </div>
+      <aside class="hero-note">
+        <strong>分析窗口</strong>
+        2026-07-29 — 2026-08-11<br>
+        Asia / Shanghai<br><br>
+        <strong>事实口径</strong>
+        8 份 AI HOT<br>
+        9 份 Builders Digest<br>
+        缺档不等于无动态
+      </aside>
+    </header>
+
+    <div class="layout">
+      <nav class="toc" aria-label="页面目录">
+        <span class="toc-title">Contents</span>
+        <a href="#summary">01　结论摘要</a>
+        <a href="#method">02　来源与方法</a>
+        <a href="#viewpoints">03　九个观点</a>
+        <a href="#tools">04　工具雷达</a>
+        <a href="#actions">05　立刻行动</a>
+        <a href="#topics">06　十个选题</a>
+        <a href="#matrix">07　优先矩阵</a>
+        <a href="#appendix">08　来源附录</a>
+      </nav>
+
+      <article class="content">
+        <section id="summary">
+          <div class="section-head">
+            <div class="section-no">01</div>
+            <div><h2>先看结论：竞争单位已经改变</h2><p>从“单次回答质量”上移到“一个任务是否低风险、低返工地完成”。</p></div>
+          </div>
+          <div class="verdict">
+            <div class="eyebrow">总判断</div>
+            <p>AI 产品竞争的重心，正在从「谁的模型更强」转向「谁能让模型稳定完成任务」。下一轮差异化，不只在模型层，而在任务结构、上下文组织、模型路由、验证与安全边界。</p>
+          </div>
+          <div class="signal-strip" aria-label="关键覆盖数字">
+            <div class="signal"><b>17</b><span>份本地日报进入分析；所有数字来自底稿，不做装饰性扩写。</span></div>
+            <div class="signal"><b>9</b><span>个结构性判断，覆盖成本、Harness、控制塔、安全、审查、组织与基础设施。</span></div>
+            <div class="signal"><b>10</b><span>个可直接动手的选题；其中 4 个具备强画面、真结果与模板交付。</span></div>
+          </div>
+        </section>
+
+        <section id="method">
+          <div class="section-head">
+            <div class="section-no">02</div>
+            <div><h2>来源覆盖与方法</h2><p>不是把 14 天全部填满，而是诚实分析仓库里确实存在的 17 份文件。</p></div>
+          </div>
+          <div class="method-grid">
+            <div class="method-block">
+              <h3>AI HOT · 8 份</h3>
+              <p>07-29、07-30、07-31、08-02、08-03、08-05、08-08、08-09。</p>
+            </div>
+            <div class="method-block">
+              <h3>Builders Digest · 9 份</h3>
+              <p>07-29、07-30、07-31、08-01、08-03、08-04、08-06、08-09、08-10。</p>
+            </div>
+            <div class="method-block">
+              <h3>压缩方法</h3>
+              <ul><li>只保留跨日报重复出现的结构信号。</li><li>把产品新闻还原为可验证的工作流命题。</li><li>优先寻找能产生演示、模板或对照结果的选题。</li></ul>
+            </div>
+            <div class="method-block">
+              <h3>证据等级</h3>
+              <ul><li><b>官方核验：</b>由产品官网或官方仓库确认。</li><li><b>本地日报收录：</b>作为观察对象，不扩展为已亲测或绝对能力。</li><li><b>研究判断：</b>由多条信号归纳，等待实测验证。</li></ul>
+            </div>
+          </div>
+          <div class="coverage-line"><b>覆盖说明：</b>缺档日期没有进入分析，但不能据此解释为“当天没有新闻”或“没有动态”。</div>
+        </section>
+
+        <section id="viewpoints">
+          <div class="section-head">
+            <div class="section-no">03</div>
+            <div><h2>九个值得关注的新观点</h2><p>每个判断都附着行动含义，不把趋势停在概念层。</p></div>
+          </div>
+          <div class="viewpoints">
+            <article class="point"><div class="point-number"></div><div><h3>衡量单位从 token 单价变成每个成功任务的成本</h3><p>只比较输入输出 token 价格已经失真。强模型单次更贵，却可能因少返工、少人工接管而拥有更低的 $/task。成本表至少要同时记录模型费、工具费、耗时、人工接管分钟数、成功率与返工次数。</p></div><aside class="point-note"><b>下一步</b>用同一真实任务做三组对照，统一成功条件。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>Harness 正在成为模型能力的放大器</h3><p>同一模型在不同框架中可能产生巨大差异。Compaction、长程推理、按需检索、工具调用、环境恢复与 harness 蒸馏都在说明：很多失败不是模型不够强，而是上下文过载、工具不足或用例范围失控。</p></div><aside class="point-note"><b>判断</b>先优化任务结构，再考虑换模型。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>Agent 的产品形态从聊天框变成异步控制塔</h3><p>远程调度、语音驱动、后台检查、堆叠会话、跨 session 摘要、持久化 memory 与 Project，意味着用户不必一直盯着窗口。新交互重点是启动、介入、进度、恢复与验收。</p></div><aside class="point-note"><b>产品问题</b>何时需要人回来，而不是如何让人一直在线。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>安全边界从“每次弹窗确认”转向“环境先限权”</h3><p>Anthropic 工程复盘称用户会批准约 93% 的权限请求，审批疲劳会削弱弹窗价值。更可靠的方向是 sandbox、VM、文件系统边界、egress control 与审计日志先限制爆炸半径。</p></div><aside class="point-note"><b>官方核验</b>Auto mode 是 defense-in-depth 的一层，不能替代确定性隔离。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>AI 写代码之后，真正稀缺的是可审查性</h3><p>生成量上升后，人无法审查巨大 diff，也不能凭“看起来不错”验收。标准产线需要小批次变更、明确验收条件、自动测试、风险扫描、真人签字与可回放证据。</p></div><aside class="point-note"><b>产线原则</b>小 PR、独立测试、风险可回放。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>企业落地首先是工作流与组织问题</h3><p>先找杠杆最高的 10 个流程，把 agent 接进员工已有系统，比全员散点试验更有效。安装派对、同类榜样、在会议中直接展示 agent 工作，比抽象承诺“效率提升十倍”更能推动采用。</p></div><aside class="point-note"><b>内容机会</b>把采用手段本身做成教程。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>最强模型做验证，便宜模型做生产</h3><p>先用 frontier model 验证体验，需求成立后再优化 prompt、routing、harness、小模型与微调。生产架构逐渐变成：强模型负责决策、升级与验收，便宜模型负责批量执行。</p></div><aside class="point-note"><b>官方核验</b>OpenRouter 的 subagent / advisor 支持这类协作模式。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>Agent-native 基础设施正在形成独立产品层</h3><p>浏览器、沙箱、持久化状态、预算控制、追踪、回放与人工接管正在被拆成专门产品。做出一个 agent，与让它在生产环境持续工作，已经是两件不同的事。</p></div><aside class="point-note"><b>观察</b>基础设施决定长任务能否持续、可控、可恢复。</aside></article>
+            <article class="point"><div class="point-number"></div><div><h3>专业能力更值钱，但专家培养链可能断裂</h3><p>AI 能替代大量初级工作，但检查 AI 输出依赖多年经验。每家公司削减初级岗位或许局部理性，集体却可能失去培养下一代专家的渠道。更该讨论如何保留练基本功、人工复盘与判断力训练。</p></div><aside class="point-note"><b>议题转向</b>不只问“替代谁”，还要问“专家从哪里来”。</aside></article>
+          </div>
+        </section>
+
+        <section id="tools">
+          <div class="section-head">
+            <div class="section-no">04</div>
+            <div><h2>工具雷达：A / B / C 三档</h2><p>档位代表当前实测优先级，不代表绝对产品排名。</p></div>
+          </div>
+          <div class="filters print-hide" aria-label="工具筛选">
+            <button class="filter active" type="button" data-tool-filter="all">全部工具</button>
+            <button class="filter" type="button" data-tool-filter="A">只看 A 级</button>
+            <button class="filter" type="button" data-tool-filter="B">只看 B 级</button>
+            <button class="filter" type="button" data-tool-filter="C">只看 C 级</button>
+            <button class="filter" type="button" id="printPage">打印 / 存 PDF</button>
+          </div>
+
+          <div class="tier" data-tier="A"><div class="tier-head"><span class="tier-letter">A</span><div><h3>现在就值得实测</h3><p>有清晰命题、可搭建对照、能形成模板或验证报告。</p></div></div><ol class="tool-list">
+            <li class="tool"><span class="tool-index">01</span><span class="tool-name">Codex Security CLI / TypeScript SDK</span><span class="tool-use">仓库、路径、diff 与 working tree 扫描；验证、修复、CI 阈值和成本上限。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">02</span><span class="tool-name">Claude Code Auto mode + cross-session messaging</span><span class="tool-use">测试审批疲劳下降、多会话接力与接收端权限边界。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">03</span><span class="tool-name">LangSmith Align Evals + LLM Gateway</span><span class="tool-use">人类偏好校准、支出限制、PII / secret 脱敏和全链路追踪。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">04</span><span class="tool-name">Cloudflare Browser Run / Dynamic Workers</span><span class="tool-use">远程浏览器、Live View、回放、人工接管与隔离代码执行。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">05</span><span class="tool-name">GitHub Copilot sessions / stacked PR</span><span class="tool-use">把大任务拆成独立 session、branch 与 PR，降低审查压力。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">06</span><span class="tool-name">OpenRouter routing / subagent / advisor / ori CLI</span><span class="tool-use">验证“强模型审查 + 便宜模型执行”的任务成本；ori CLI 仍按日报线索复测。</span><span class="status">部分核验</span></li>
+          </ol></div>
+
+          <div class="tier" data-tier="B"><div class="tier-head"><span class="tier-letter">B</span><div><h3>适合做垂直案例</h3><p>价值清晰，但更适合围绕一个具体场景展开。</p></div></div><ol class="tool-list">
+            <li class="tool"><span class="tool-index">07</span><span class="tool-name">/human-review</span><span class="tool-use">AI 生成页面后的多人可视化审阅与修改闭环。</span><span class="status local">日报收录</span></li>
+            <li class="tool"><span class="tool-index">08</span><span class="tool-name">Deep Agents / Managed Deep Agents</span><span class="tool-use">持久化线程、checkpoint、memory、sandbox 与长期任务运行时。</span><span class="status">部分核验</span></li>
+            <li class="tool"><span class="tool-index">09</span><span class="tool-name">Replit Design / Agent 4</span><span class="tool-use">多设计变体、设计与代码同环境、并行 agent。</span><span class="status">官方核验</span></li>
+            <li class="tool"><span class="tool-index">10</span><span class="tool-name">Token Saver</span><span class="tool-use">本地混合 RAG 降低长 PDF 上下文成本，重点独立复测节省比例。</span><span class="status local">日报收录</span></li>
+            <li class="tool"><span class="tool-index">11</span><span class="tool-name">SkillSpector / Numbat</span><span class="tool-use">技能市场与 agent 行为的安全扫描、阻断和治理。</span><span class="status local">日报收录</span></li>
+            <li class="tool"><span class="tool-index">12</span><span class="tool-name">Cloudflare Local Explorer / OpenTelemetry traces</span><span class="tool-use">让 agent 读取失败 span、日志和网络时序，自诊断后再验证修复。</span><span class="status">部分核验</span></li>
+          </ol></div>
+
+          <div class="tier" data-tier="C"><div class="tier-head"><span class="tier-letter">C</span><div><h3>有信号，先观察或做边界测试</h3><p>不复述新闻，先找一个可被证伪的实验。</p></div></div><ol class="tool-list">
+            <li class="tool"><span class="tool-index">13</span><span class="tool-name">Swiftlet / Soup / SpecForge</span><span class="tool-use">本地推理、低显存微调与投机解码；适合硬件边界实测。</span><span class="status local">日报收录</span></li>
+            <li class="tool"><span class="tool-index">14</span><span class="tool-name">ForgeStencil</span><span class="tool-use">以真实工业或科学算子复现实验，检验“零人工”优化边界。</span><span class="status local">日报收录</span></li>
+            <li class="tool"><span class="tool-index">15</span><span class="tool-name">Seedance 2.5 API / Lyria 3.5 / FLUX 3 Video</span><span class="tool-use">测试多素材控制、长叙事与后期可编辑工作流中的一致性。</span><span class="status local">日报收录</span></li>
+          </ol></div>
+        </section>
+
+        <section id="actions">
+          <div class="section-head"><div class="section-no">05</div><div><h2>这周可以立刻做</h2><p>四个最短路径：都有强对照画面、真实结果与可下载模板。</p></div></div>
+          <div class="actions">
+            <article class="action"><span class="action-no">01</span><h3>建立「每任务成本表」</h3><p>固定一个真实任务，用三套模型或框架跑完；把人工接管、返工、成功条件一起记账。</p><div class="deliverable">交付：$/task 模板 + 三组结论</div></article>
+            <article class="action"><span class="action-no">04</span><h3>搭最小安全沙箱</h3><p>逐一测试文件读取、网络外传、工作区写入与危险命令，再加 sandbox、allowlist、只读挂载和审计日志。</p><div class="deliverable">交付：四层安全基线清单</div></article>
+            <article class="action"><span class="action-no">06</span><h3>给浏览器 Agent 装回放</h3><p>记录 DOM、console、network、点击轨迹和 session replay，让 agent 从 trace 找根因并复测。</p><div class="deliverable">交付：可观测性最小配置</div></article>
+            <article class="action"><span class="action-no">07</span><h3>做 Skill / Memory 清理员</h3><p>扫描重复、过期、冲突与从未触发项，只生成候选清单，人确认后再修改。</p><div class="deliverable">交付：健康评分 + 每周 curator 任务</div></article>
+          </div>
+        </section>
+
+        <section id="topics">
+          <div class="section-head"><div class="section-no">06</div><div><h2>十个偏实战选题</h2><p>点击展开问题、演示、交付物与钩子画面。</p></div></div>
+          <div class="filters print-hide" aria-label="选题筛选"><button class="filter active" type="button" data-topic-filter="all">全部选题</button><button class="filter" type="button" data-topic-filter="primary">只看优先选题</button><button class="filter" type="button" id="expandTopics">全部展开</button></div>
+          <div class="topic-list">
+            <details class="topic" data-priority="primary"><summary><span class="topic-id">01</span><span class="topic-title">别再比较 token 单价：我给 3 个 Agent 做了一张“每任务成本表”</span><span class="priority primary">优先拍</span></summary><div class="topic-body"><p><b>核心问题：</b>便宜模型是否真的更省钱？</p><p><b>演示：</b>同一真实任务跑 3 套模型 / 框架，记录成本、耗时、成功率、返工与人工接管。</p><p><b>交付物：</b>可复用的 $/task 记账模板和结论表。</p><p><b>钩子：</b>三个账单都很便宜，但只有一个真正交付成功。</p></div></details>
+            <details class="topic" data-priority="second"><summary><span class="topic-id">02</span><span class="topic-title">同一个模型，换个 Harness 为什么能差这么多？</span><span class="priority">第二梯队</span></summary><div class="topic-body"><p><b>核心问题：</b>模型能力与框架能力如何拆开测？</p><p><b>演示：</b>固定模型和仓库，用不同 harness 完成同一 issue；统一 prompt、预算和验收。</p><p><b>交付物：</b>A/B 测试协议、成功条件、上下文与工具调用对比。</p><p><b>钩子：</b>模型没换，成功率却明显变化。</p></div></details>
+            <details class="topic" data-priority="second"><summary><span class="topic-id">03</span><span class="topic-title">让 3 个 Coding Agent 接力干活：Issue → Session → PR → 人审</span><span class="priority">第二梯队</span></summary><div class="topic-body"><p><b>核心问题：</b>多 agent 怎样避免互相覆盖和无限解释上下文？</p><p><b>演示：</b>规划 agent 拆 issue，执行 agent 各开 session，审查 agent 看 stacked PR。</p><p><b>交付物：</b>任务交接模板、状态字段和失败恢复方式。</p><p><b>钩子：</b>人没复制历史记录，三个 session 仍然接上了。</p></div></details>
+            <details class="topic" data-priority="primary"><summary><span class="topic-id">04</span><span class="topic-title">Agent 安全别只靠“允许 / 拒绝”：搭一个最小安全沙箱</span><span class="priority primary">优先拍</span></summary><div class="topic-body"><p><b>核心问题：</b>为什么每次点允许并不等于安全？</p><p><b>演示：</b>测试读取、外传、写入和危险命令；加入 sandbox、egress allowlist、只读挂载和审计日志。</p><p><b>交付物：</b>四层安全基线检查表。</p><p><b>钩子：</b>模型想执行恶意指令，但环境根本不给出口。</p></div></details>
+            <details class="topic" data-priority="second"><summary><span class="topic-id">05</span><span class="topic-title">AI 一次改 1000 行代码，怎么让人敢合并？</span><span class="priority">第二梯队</span></summary><div class="topic-body"><p><b>核心问题：</b>如何把巨大 diff 拆成能审查的小块？</p><p><b>演示：</b>按数据层、API、接线、UI 拆成 4 层 stacked PR，各自测试和回滚。</p><p><b>交付物：</b>PR 拆层规则、审查人分工、自动检查清单。</p><p><b>钩子：</b>左边 1000 行巨型 PR，右边 4 个一眼能审完的小 PR。</p></div></details>
+            <details class="topic" data-priority="primary"><summary><span class="topic-id">06</span><span class="topic-title">给浏览器 Agent 装“行车记录仪”：失败后能完整回放</span><span class="priority primary">优先拍</span></summary><div class="topic-body"><p><b>核心问题：</b>为什么浏览器失败后常只剩“元素没找到”？</p><p><b>演示：</b>记录 DOM、console、network、点击轨迹和 replay；让 agent 从 trace 找根因再复测。</p><p><b>交付物：</b>浏览器 agent 可观测性最小配置。</p><p><b>钩子：</b>开启回放前靠猜，开启后 30 秒定位。</p></div></details>
+            <details class="topic" data-priority="primary"><summary><span class="topic-id">07</span><span class="topic-title">Skill 越装越多，Agent 为什么反而变笨？做一个自动清理员</span><span class="priority primary">优先拍</span></summary><div class="topic-body"><p><b>核心问题：</b>skills 和 memory 如何产生 slop？</p><p><b>演示：</b>扫描重复、过期、冲突和从未触发项；只产候选清单，人确认后再改。</p><p><b>交付物：</b>健康评分、去重规则和每周 curator 任务。</p><p><b>钩子：</b>删除 30% 垃圾能力后，任务成功率反而上升。</p></div></details>
+            <details class="topic" data-priority="second"><summary><span class="topic-id">08</span><span class="topic-title">大模型当主管，小模型当员工：真实任务省多少？</span><span class="priority">第二梯队</span></summary><div class="topic-body"><p><b>核心问题：</b>何时值得把执行委托给便宜模型？</p><p><b>演示：</b>强模型拆解、升级与验收；小模型做摘要、抽取、改格式和重复实现。</p><p><b>交付物：</b>路由决策树和五类“必须升级强模型”情况。</p><p><b>钩子：</b>不是所有步骤都值得烧最贵的 token。</p></div></details>
+            <details class="topic" data-priority="observe"><summary><span class="topic-id">09</span><span class="topic-title">会议纪要已经过时：让 Agent 在会议结束前交付结果</span><span class="priority">观察后拍</span></summary><div class="topic-body"><p><b>核心问题：</b>如何把会后待办变成会中完成？</p><p><b>演示：</b>转录 → 行动项 → 邮件 / 文档 / 任务 → 负责人确认 → 写回系统。</p><p><b>交付物：</b>一套有确认门的会议执行工作流。</p><p><b>钩子：</b>会议结束时，8 条待办里已有 6 条完成。</p></div></details>
+            <details class="topic" data-priority="observe"><summary><span class="topic-id">10</span><span class="topic-title">AI 写代码、AI 审代码后，人到底做什么？做一份验收规格</span><span class="priority">观察后拍</span></summary><div class="topic-body"><p><b>核心问题：</b>人类如何从盯实现转成定义结果？</p><p><b>演示：</b>先写可观察标准、边界案例和禁止项，再让 agent 实现、预审，真人只走用户路径。</p><p><b>交付物：</b>一页 acceptance spec 模板与前后对比。</p><p><b>钩子：</b>不再告诉 AI 每一步怎么写，只定义什么结果才算完成。</p></div></details>
+          </div>
+        </section>
+
+        <section id="matrix">
+          <div class="section-head"><div class="section-no">07</div><div><h2>选题优先级矩阵</h2><p>优先不是“观点更正确”，而是画面、验证与交付物更完整。</p></div></div>
+          <div class="matrix-wrap"><table><thead><tr><th>梯队</th><th>选题</th><th>强对比画面</th><th>可验证结果</th><th>模板交付</th><th>制作前置</th></tr></thead><tbody>
+            <tr><td>优先拍</td><td><span class="dot hot">01</span><span class="dot hot">04</span><span class="dot hot">06</span><span class="dot hot">07</span></td><td>强</td><td>强</td><td>强</td><td>低 — 中</td></tr>
+            <tr><td>第二梯队</td><td><span class="dot">02</span><span class="dot">03</span><span class="dot">05</span><span class="dot">08</span></td><td>中 — 强</td><td>强</td><td>中 — 强</td><td>中</td></tr>
+            <tr><td>观察后再拍</td><td><span class="dot">09</span><span class="dot">10</span></td><td>需搭案例</td><td>中</td><td>中</td><td>高</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section id="appendix" class="appendix">
+          <div class="section-head"><div class="section-no">08</div><div><h2>来源附录</h2><p>区分本地样本、官方核验与编辑部归纳。</p></div></div>
+          <div class="appendix-grid">
+            <div><h3>本地日报样本</h3><ul class="source-list"><li><b>AI HOT（8）</b>：2026-07-29、07-30、07-31、08-02、08-03、08-05、08-08、08-09。</li><li><b>AI Builders Digest（9）</b>：2026-07-29、07-30、07-31、08-01、08-03、08-04、08-06、08-09、08-10。</li><li>分析底稿：<a href="../source-analysis.md">source-analysis.md</a></li><li>事实核验：<a href="../product-facts.md">product-facts.md</a></li><li>设计规格：<a href="../design-spec.md">design-spec.md</a></li></ul></div>
+            <div><h3>官方核验链接</h3><ol class="source-list"><li><a href="https://github.com/openai/codex-security/blob/main/sdk/typescript/README.md">Codex Security CLI / SDK</a>；<a href="https://openai.com/index/codex-security-now-in-research-preview/">OpenAI Research Preview</a></li><li><a href="https://www.anthropic.com/engineering/how-we-contain-claude">Anthropic：How we contain Claude</a></li><li><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code changelog</a></li><li><a href="https://blog.cloudflare.com/browser-run-for-ai-agents/">Cloudflare Browser Run</a>；<a href="https://blog.cloudflare.com/dynamic-workers/">Dynamic Workers</a></li><li><a href="https://www.langchain.com/blog/introducing-managed-deep-agents">Managed Deep Agents</a></li><li><a href="https://www.langchain.com/blog/introducing-align-evals">Align Evals</a>；<a href="https://docs.langchain.com/langsmith/llm-gateway">LLM Gateway</a></li><li><a href="https://replit.com/blog/introducing-agent-4-built-for-creativity">Replit Agent 4</a></li><li><a href="https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/">GitHub Copilot app sessions</a></li><li><a href="https://openrouter.ai/blog/announcements/">OpenRouter announcements</a></li></ol></div>
+          </div>
+          <p class="fineprint">未扩展验证、仅按本地日报出现的观察对象：Kitesurf、Token Saver、Numbat、ori CLI、ForgeStencil、Swiftlet、Soup、SpecForge、Seedance 2.5 API、Lyria 3.5、FLUX 3 Video。它们没有在本简报中被描述为已亲测、已全面上线或已达到绝对效果。</p>
+        </section>
+      </article>
+    </div>
+
+    <footer class="footer"><span>DailyWrite · AI 情报编辑部研究简报</span><a href="#top">回到顶部 ↑</a></footer>
+  </main>
+
+  <script>
+    (() => {
+      const toolButtons = [...document.querySelectorAll('[data-tool-filter]')];
+      const tiers = [...document.querySelectorAll('[data-tier]')];
+      toolButtons.forEach((button) => button.addEventListener('click', () => {
+        toolButtons.forEach((item) => item.classList.toggle('active', item === button));
+        const value = button.dataset.toolFilter;
+        tiers.forEach((tier) => { tier.hidden = value !== 'all' && tier.dataset.tier !== value; });
+      }));
+
+      const topicButtons = [...document.querySelectorAll('[data-topic-filter]')];
+      const topics = [...document.querySelectorAll('.topic')];
+      topicButtons.forEach((button) => button.addEventListener('click', () => {
+        topicButtons.forEach((item) => item.classList.toggle('active', item === button));
+        const value = button.dataset.topicFilter;
+        topics.forEach((topic) => { topic.hidden = value === 'primary' && topic.dataset.priority !== 'primary'; });
+      }));
+
+      const expandButton = document.getElementById('expandTopics');
+      expandButton.addEventListener('click', () => {
+        const shouldOpen = topics.some((topic) => !topic.hidden && !topic.open);
+        topics.forEach((topic) => { if (!topic.hidden) topic.open = shouldOpen; });
+        expandButton.textContent = shouldOpen ? '全部收起' : '全部展开';
+      });
+
+      document.getElementById('printPage').addEventListener('click', () => window.print());
+    })();
+  </script>
+</body>
+</html>

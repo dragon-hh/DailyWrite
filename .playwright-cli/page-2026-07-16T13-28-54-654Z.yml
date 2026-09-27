@@ -1,0 +1,72 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - strong [ref=f1e6]: DailyWrite
+      - generic [ref=f1e7]: 本地优先 · Markdown
+    - navigation "主要导航" [ref=f1e8]:
+      - button "今日推进舱" [ref=f1e9] [cursor=pointer]
+      - button "每日待办" [ref=f1e13] [cursor=pointer]
+      - button "内容库" [ref=f1e18] [cursor=pointer]
+      - button "素材库" [ref=f1e23] [cursor=pointer]
+      - button "脚本库" [ref=f1e29] [cursor=pointer]
+      - button "发布库" [ref=f1e34] [cursor=pointer]
+      - button "复盘库" [ref=f1e39] [cursor=pointer]
+    - generic [ref=f1e45]:
+      - button "标签体系" [ref=f1e46] [cursor=pointer]
+      - button "模板中心" [ref=f1e51] [cursor=pointer]
+      - button "设置" [ref=f1e56] [cursor=pointer]
+    - generic [ref=f1e61]:
+      - button "本地存储 已连接" [ref=f1e62] [cursor=pointer]:
+        - generic [ref=f1e63]: 本地存储
+        - strong [ref=f1e65]: 已连接
+      - button "刷新本地数据" [ref=f1e66] [cursor=pointer]
+      - generic [ref=f1e70]: DailyWrite 本地内容库
+      - button "11 条一致性提醒" [ref=f1e71] [cursor=pointer]
+  - main [ref=f1e72]:
+    - region [ref=f1e1253]:
+      - generic [ref=f1e214]:
+        - generic [ref=f1e215]:
+          - text: 脚本库
+          - heading "脚本库" [level=1] [ref=f1e1254]
+        - button "回到今日推进舱" [ref=f1e217] [cursor=pointer]
+      - generic [ref=f1e220]:
+        - paragraph [ref=f1e1255]: 正在创作目录根层有 82 份可阅读脚本：78 份 Markdown、4 份 HTML；其中 7 份已登记主索引。
+        - generic [ref=f1e1256]:
+          - textbox [ref=f1e1261]:
+            - /placeholder: 搜索脚本标题或正文
+          - generic "筛选条件" [ref=f1e1262]:
+            - button "目录全部 82" [ref=f1e1263] [cursor=pointer]:
+              - text: 目录全部
+              - generic [ref=f1e1264]: "82"
+            - button "脚本创作中 5" [ref=f1e1265] [cursor=pointer]:
+              - text: 脚本创作中
+              - generic [ref=f1e1266]: "5"
+            - button "主索引已登记 7" [ref=f1e1267] [cursor=pointer]:
+              - text: 主索引已登记
+              - generic [ref=f1e1268]: "7"
+            - button "未登记库存 75" [ref=f1e1269] [cursor=pointer]:
+              - text: 未登记库存
+              - generic [ref=f1e1270]: "75"
+            - button "Markdown 78" [ref=f1e1271] [cursor=pointer]:
+              - text: Markdown
+              - generic [ref=f1e1272]: "78"
+            - button "HTML 4" [active] [ref=f1e1273] [cursor=pointer]:
+              - text: HTML
+              - generic [ref=f1e1274]: "4"
+        - generic [ref=f1e1275]:
+          - button "未登记库存 Claude Code Workflow，可能是下一个 MCP 时刻 HTML · 8.8 KB · 更新 05-31" [ref=f1e1866] [cursor=pointer]:
+            - generic [ref=f1e1867]: 未登记库存
+            - strong [ref=f1e1872]: Claude Code Workflow，可能是下一个 MCP 时刻
+            - generic [ref=f1e1873]: HTML · 8.8 KB · 更新 05-31
+          - button "未登记库存 我用 AI 把微信聊天记录，变成了私人商业情报系统 HTML · 9.2 KB · 更新 05-31" [ref=f1e1896] [cursor=pointer]:
+            - generic [ref=f1e1897]: 未登记库存
+            - strong [ref=f1e1902]: 我用 AI 把微信聊天记录，变成了私人商业情报系统
+            - generic [ref=f1e1903]: HTML · 9.2 KB · 更新 05-31
+          - button "未登记库存 XCrawl 推广演示：以前三四天，现在半小时 HTML · 20.7 KB · 更新 05-26" [ref=f1e1956] [cursor=pointer]:
+            - generic [ref=f1e1957]: 未登记库存
+            - strong [ref=f1e1962]: XCrawl 推广演示：以前三四天，现在半小时
+            - generic [ref=f1e1963]: HTML · 20.7 KB · 更新 05-26
+          - button "未登记库存 AI 博主自媒体选题库 · 2026-05-19 HTML · 54.2 KB · 更新 05-19" [ref=f1e2036] [cursor=pointer]:
+            - generic [ref=f1e2037]: 未登记库存
+            - strong [ref=f1e2042]: AI 博主自媒体选题库 · 2026-05-19
+            - generic [ref=f1e2043]: HTML · 54.2 KB · 更新 05-19

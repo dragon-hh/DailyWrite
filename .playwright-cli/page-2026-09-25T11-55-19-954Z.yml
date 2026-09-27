@@ -1,0 +1,149 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ↔
+        - generic [ref=e6]:
+          - text: IMAGE BENCH
+          - generic [ref=e7]: same prompt / different model
+      - generic [ref=e8]:
+        - button "左右对比" [ref=e9] [cursor=pointer]
+        - button "上下对比" [ref=e10] [cursor=pointer]
+        - button "回到顶部" [ref=e11] [cursor=pointer]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: 9.15 · IMAGE MODEL BENCHMARK
+        - heading [level=1] [ref=e17]:
+          - text: 同一条提示词，
+          - emphasis [ref=e18]: 两种视觉答案。
+        - paragraph [ref=e19]: 把 GPT-Image-2.5 和 Seedream 5.0 Pro 放进同一组真实任务里：审美、编辑、海报、UI、科研绘图。拖着看，放大看，再回到提示词看。
+      - generic [ref=e20]:
+        - strong [ref=e21]: 没有全能选手，只有合适的工具。
+        - text: 这页保留了文稿里的原始提示词和输出图，结论先放在每个卡片上，判断权留给你。
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]: "3 : 0"
+        - generic [ref=e25]: 原生审美 · Seedream 领先
+      - generic [ref=e26]:
+        - generic [ref=e27]: "2 : 0"
+        - generic [ref=e28]: 编辑与一致性 · GPT 领先
+      - generic [ref=e29]:
+        - generic [ref=e30]: "13"
+        - generic [ref=e31]: 提示词场景
+      - generic [ref=e32]:
+        - generic [ref=e33]: "31"
+        - generic [ref=e34]: 张本地素材
+    - generic "筛选对比维度" [ref=e35]:
+      - button "全部 13" [ref=e36] [cursor=pointer]
+      - button "01 审美" [active] [ref=e37] [cursor=pointer]
+      - button "02 编辑" [ref=e38] [cursor=pointer]
+      - button "03 海报" [ref=e39] [cursor=pointer]
+      - button "04 UI" [ref=e40] [cursor=pointer]
+      - button "05 科研绘图" [ref=e41] [cursor=pointer]
+    - generic [ref=e42]:
+      - generic [ref=e473]:
+        - heading "01 · 原生审美" [level=2] [ref=e474]
+        - paragraph [ref=e475]: 同一提示词，不改参数，先看模型自己的审美倾向。
+      - article [ref=e476]:
+        - generic [ref=e477]:
+          - generic [ref=e478]:
+            - generic [ref=e479]: 审美 / 01
+            - heading "中式诗意肖像" [level=3] [ref=e480]
+            - generic [ref=e481]: 柔润低纹理 · 16:9
+          - generic [ref=e482]:
+            - generic [ref=e483]: 人像
+            - generic [ref=e484]: 氛围
+            - generic [ref=e485]: 肤质
+        - paragraph [ref=e486]: Seedream 更暖、更有辨识度；GPT 的统一感更强，但容易出现假人和动漫感。
+        - generic [ref=e487]:
+          - generic [ref=e488]:
+            - generic [ref=e489]:
+              - generic [ref=e490]: GPT-Image-2.5
+              - generic [ref=e492]: 1 output
+            - figure [ref=e494]:
+              - img "GPT-Image-2.5 · 中式诗意肖像" [ref=e495]
+              - text: 点击放大
+          - generic [ref=e496]:
+            - generic [ref=e497]:
+              - generic [ref=e498]: Seedream 5.0 Pro
+              - generic [ref=e500]: 1 output
+            - figure [ref=e502]:
+              - img "Seedream 5.0 Pro · 中式诗意肖像" [ref=e503]
+              - text: 点击放大
+        - group [ref=e505]:
+          - generic "查看本组完整提示词 ＋" [ref=e506] [cursor=pointer]
+      - article [ref=e507]:
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - generic [ref=e510]: 审美 / 02
+            - heading "校园初恋特写" [level=3] [ref=e511]
+            - generic [ref=e512]: 清透伪素颜 · 超近景
+          - generic [ref=e513]:
+            - generic [ref=e514]: 人像
+            - generic [ref=e515]: 面部
+            - generic [ref=e516]: 真实感
+        - paragraph [ref=e517]: Seedream 的少女感更轻盈；GPT 更像稳定的标准化人像方案。
+        - generic [ref=e518]:
+          - generic [ref=e519]:
+            - generic [ref=e520]:
+              - generic [ref=e521]: GPT-Image-2.5
+              - generic [ref=e523]: 1 output
+            - figure [ref=e525]:
+              - img "GPT-Image-2.5 · 校园初恋特写" [ref=e526]
+              - text: 点击放大
+          - generic [ref=e527]:
+            - generic [ref=e528]:
+              - generic [ref=e529]: Seedream 5.0 Pro
+              - generic [ref=e531]: 1 output
+            - figure [ref=e533]:
+              - img "Seedream 5.0 Pro · 校园初恋特写" [ref=e534]
+              - text: 点击放大
+        - group [ref=e536]:
+          - generic "查看本组完整提示词 ＋" [ref=e537] [cursor=pointer]
+      - article [ref=e538]:
+        - generic [ref=e539]:
+          - generic [ref=e540]:
+            - generic [ref=e541]: 审美 / 03
+            - heading "海边胶片人像" [level=3] [ref=e542]
+            - generic [ref=e543]: 随机姿态 · 过曝颗粒
+          - generic [ref=e544]:
+            - generic [ref=e545]: 人像
+            - generic [ref=e546]: 胶片
+            - generic [ref=e547]: 随机性
+        - paragraph [ref=e548]: Seedream 的现场感和风格记忆点更明显；GPT 更克制、更规整。
+        - generic [ref=e549]:
+          - generic [ref=e550]:
+            - generic [ref=e551]:
+              - generic [ref=e552]: GPT-Image-2.5
+              - generic [ref=e554]: 1 output
+            - figure [ref=e556]:
+              - img "GPT-Image-2.5 · 海边胶片人像"
+              - text: 点击放大
+          - generic [ref=e557]:
+            - generic [ref=e558]:
+              - generic [ref=e559]: Seedream 5.0 Pro
+              - generic [ref=e561]: 1 output
+            - figure [ref=e563]:
+              - img "Seedream 5.0 Pro · 海边胶片人像"
+              - text: 点击放大
+        - group [ref=e565]:
+          - generic "查看本组完整提示词 ＋" [ref=e566] [cursor=pointer]
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - heading "把模型当成工具箱， 别把它当成冠军榜。" [level=2] [ref=e453]: 把模型当成工具箱，别把它当成冠军榜。
+        - paragraph [ref=e454]: 同一个模型在不同任务里会切换角色：Seedream 更容易给出有温度、有风格记忆点的人像；GPT 在参考图编辑、角色一致性和复杂版式上更像一个可靠的执行者。真正有用的比较，是把任务拆开。
+      - generic [ref=e455]:
+        - heading "场景选择速记" [level=3] [ref=e456]
+        - generic [ref=e457]:
+          - generic [ref=e458]: 想要氛围
+          - generic [ref=e459]: 先看 Seedream 的人像与节气海报
+        - generic [ref=e460]:
+          - generic [ref=e461]: 要做编辑
+          - generic [ref=e462]: 优先看 GPT 的融合与四视图
+        - generic [ref=e463]:
+          - generic [ref=e464]: 要做生产
+          - generic [ref=e465]: 重点放大 UI 和科研绘图的文字、结构、连接
+    - generic [ref=e466]:
+      - generic [ref=e467]: Source · 9.15 豆包生图和gpt生图对比-claude.md
+      - generic [ref=e468]: 本页图片为本地素材 · 点击任意图片放大

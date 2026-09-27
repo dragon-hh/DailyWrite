@@ -1,0 +1,77 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - generic:
+        - generic:
+          - generic: 外卖小程序 / 按技术层拆
+          - heading "三层都完成 用户仍然用不了" [level=2]: 三层都完成用户仍然用不了
+        - paragraph: 数据库、后端接口、前端页面分别完成，在最后一层打通前，用户什么都用不了。
+      - generic:
+        - generic:
+          - generic:
+            - generic: TECH / LAYERS
+            - generic: ×
+          - generic:
+            - generic:
+              - generic: 01 建数据库
+              - emphasis: DONE
+            - generic:
+              - generic: 02 后端接口
+              - emphasis: DONE
+            - generic:
+              - generic: 03 前端页面
+              - emphasis: DONE
+          - generic: 链路没有打通
+        - generic:
+          - generic:
+            - generic: 3/3
+            - heading "每层完成" [level=3]
+            - paragraph: 却很难单独验证
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]: 反过来 / 纵向切
+          - heading "每一步都是一个 能跑、能测的闭环" [level=2] [ref=e63]:
+            - text: 每一步都是一个
+            - generic [ref=e64]: 能跑、能测的闭环
+        - paragraph [ref=e65]: 先选一个最小但完整的用户动作，从页面到数据库一次打通。
+      - generic [ref=e66]:
+        - article [ref=e67]:
+          - text: "01"
+          - heading "固定套餐" [level=3] [ref=e68]
+          - paragraph [ref=e69]: 页面下单 → 后端建单数据库保存 → 下单成功
+          - generic [ref=e70]:
+            - generic [ref=e71]: PAGE
+            - generic [ref=e72]: →
+            - generic [ref=e73]: SUCCESS
+        - article [ref=e74]:
+          - text: "02"
+          - heading "加入购物车" [level=3] [ref=e75]
+          - paragraph [ref=e76]: 在完整闭环上增加能力
+          - generic [ref=e77]:
+            - generic [ref=e78]: ADD
+            - generic [ref=e79]: →
+            - generic [ref=e80]: RUN
+        - article [ref=e81]:
+          - text: "03"
+          - heading "真实支付" [level=3] [ref=e82]
+          - paragraph [ref=e83]: 继续扩展，不破坏闭环
+          - generic [ref=e84]:
+            - generic [ref=e85]: PAY
+            - generic [ref=e86]: →
+            - generic [ref=e87]: TEST
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [active] [ref=e27] [cursor=pointer]
+    - button "11. 每个任务交付完整功能" [ref=e28] [cursor=pointer]
+    - button "12. implement" [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [ref=e31] [cursor=pointer]

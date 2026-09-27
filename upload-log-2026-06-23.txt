@@ -1,0 +1,34 @@
+[2026-06-23 10:00:01] DailyWrite 入库检查开始
+处理: 测试文档已入库.md -> 标题: 测试文档已
+  ✗ 上传失败: [31;1mException: [0mE:\projects\openclawProjects\skills\feishu-picgo-doc\scripts\upload-local-doc.ps1:53[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  53 | [0m … eJson.ok) { [36;1mthrow "lark-cli docs +create failed: $($createOutput -joi[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mlark-cli docs +create failed: {   "ok": false,   "identity": "user",   "error": {     "type": "validation",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"subtype": "invalid_argument",     "message": "docs +create is v2-only; the old v1 interface has been shut down;[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mlegacy v1 flag(s) --title, --markdown, --wiki-node are no longer supported; --title -> put the title in[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m--content, for example <title>Title</title>; --markdown -> use --content with --doc-format markdown; --wiki-node[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m-> use --parent-token. Run `lark-cli skills read lark-doc references/lark-doc-create.md` for the current schema[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mand examples. AI agents MUST read `lark-cli skills read lark-doc references/lark-doc-xml.md` (XML) or `lark-cli[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mskills read lark-doc references/lark-doc-md.md` (Markdown) and follow the latest format rules there. MUST NOT[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mgrep/open local SKILL.md files to discover this guidance; use `lark-cli skills read ...` so content stays[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mversion-matched with this CLI. Run `lark-cli docs +create --help` for the latest command flags",     "param":[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"--title"   } }[0m
+
+=== 摘要 ===
+上传成功: 0 个
+失败: 1 个
+  测试文档已入库.md: [31;1mException: [0mE:\projects\openclawProjects\skills\feishu-picgo-doc\scripts\upload-local-doc.ps1:53[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m  53 | [0m … eJson.ok) { [36;1mthrow "lark-cli docs +create failed: $($createOutput -joi[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mlark-cli docs +create failed: {   "ok": false,   "identity": "user",   "error": {     "type": "validation",    [0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"subtype": "invalid_argument",     "message": "docs +create is v2-only; the old v1 interface has been shut down;[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mlegacy v1 flag(s) --title, --markdown, --wiki-node are no longer supported; --title -> put the title in[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m--content, for example <title>Title</title>; --markdown -> use --content with --doc-format markdown; --wiki-node[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m-> use --parent-token. Run `lark-cli skills read lark-doc references/lark-doc-create.md` for the current schema[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mand examples. AI agents MUST read `lark-cli skills read lark-doc references/lark-doc-xml.md` (XML) or `lark-cli[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mskills read lark-doc references/lark-doc-md.md` (Markdown) and follow the latest format rules there. MUST NOT[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mgrep/open local SKILL.md files to discover this guidance; use `lark-cli skills read ...` so content stays[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mversion-matched with this CLI. Run `lark-cli docs +create --help` for the latest command flags",     "param":[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1m"--title"   } }[0m

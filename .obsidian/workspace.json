@@ -1,0 +1,248 @@
+{
+  "main": {
+    "id": "fcde23764ea10c28",
+    "type": "split",
+    "children": [
+      {
+        "id": "f8912c715ba03371",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "60e263c379c379b2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01-内容生产/01-脚本创作中/5.20 微信聊天数据沉淀 -claude v4 口播稿.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "5.20 微信聊天数据沉淀 -claude v4 口播稿"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "104ec34090d49b4a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c4a6c4874c7ffc84",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b81bb9c40ac3acb3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "983d03a113145f6d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "6c2ab41ad13bb791",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 470.5
+  },
+  "right": {
+    "id": "f777a6a7b825b806",
+    "type": "split",
+    "children": [
+      {
+        "id": "59d23c0f1a12f598",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b8b927769d88654f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "草稿/4.25 gptimage十大有趣玩法 gpt-v1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "4.25 gptimage十大有趣玩法 gpt-v1 的反向链接列表"
+            }
+          },
+          {
+            "id": "3a30fd984ad2a01d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "草稿/4.25 gptimage十大有趣玩法 gpt-v1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "4.25 gptimage十大有趣玩法 gpt-v1 的出链列表"
+            }
+          },
+          {
+            "id": "1d50e94099a36707",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "5724be33833c414c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "c7de52a4556490c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "01-内容生产/01-脚本创作中/7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "7.11 我用codex最新模型5.6 做了一个超棒的应用-纯口播稿 -claude-sonnet-5 的大纲"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 521.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "60e263c379c379b2",
+  "lastOpenFiles": [
+    "01-内容生产/01-脚本创作中/8.16 可以一键监控全网博主的超级AI工作台-口播稿.md",
+    "01-内容生产/01-脚本创作中/7.15 硅谷顶级工程师的最新AI开发工作流 -claude-v2-口播稿.md",
+    "01-内容生产/01-脚本创作中/8.15 deepseek harness发布-claude v3-口播稿.md",
+    "01-内容生产/01-脚本创作中/9.17 codex高级使用技巧-claude-v1-口播稿.md",
+    "01-内容生产/01-脚本创作中/6.20 爬取ai博主视频，并存放多维表格.md",
+    "01-内容生产/01-脚本创作中/9.17 codex高级使用技巧-claude-v1.md",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude-v2.md",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude-v2-口播稿.md",
+    "01-内容生产/01-脚本创作中/5.20 微信聊天数据沉淀 -claude v4 口播稿.md",
+    "04-数据与复盘/平台导入/作品列表导出.xlsx",
+    "04-数据与复盘/平台导入/作品列表导出.xlsx.cce5ff1b-f601-431f-b6b6-b7e7d4de16b2.tmp",
+    "04-数据与复盘/平台导入",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/pop.wav",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/pop_hi.wav",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/NotoSansSC.ttf",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/whoosh.wav",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/voice.wav",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-05.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-11.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-10.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-04.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-12.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-06.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-07.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-13.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-17.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img/img-03.jpg",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/img",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.assets/public/typing.wav",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude-v3.md",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude.md",
+    "01-内容生产/01-脚本创作中/9.18 玩ai，怎么选模型和agent.md",
+    "01-内容生产/01-脚本创作中/8.16 可以一键监控全网博主的超级AI工作台.md",
+    "01-内容生产/00-选题收集箱/每日AI日报-aihot/AI日报-2026-09-26.md",
+    "01-内容生产/00-选题收集箱/每日AI日报-aiBuild/AI-Builders-Digest-2026-09-27.md",
+    "应用开发/提示词收藏网站/prd文档-v2.md",
+    "应用开发/提示词收藏网站/prd文档-v1.md",
+    "应用开发/提示词收藏网站/数据库信息.md",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比.md",
+    "01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比 1.md",
+    "01-内容生产/01-脚本创作中/选题.md",
+    "01-内容生产/01-脚本创作中/规划.md",
+    "01-内容生产/01-脚本创作中/7.11 AI 用得越深，越需要管理 Skill-v2.md",
+    "01-内容生产/01-脚本创作中/7.11 AI 用得越深，越需要管理 Skill-v2 口播稿-口播稿.md",
+    "01-内容生产/01-脚本创作中/7.11 AI 用得越深，越需要管理 Skill-v2 口播稿.md",
+    "01-内容生产/01-脚本创作中/7.13 agent公司.md",
+    "03-已发布归档/根目录整理/2026-05-19/未命名.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 1.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 5.canvas",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 7.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 6.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 4.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 3.canvas",
+    "03-已发布归档/根目录整理/2026-05-19/未命名 2.canvas"
+  ]
+}

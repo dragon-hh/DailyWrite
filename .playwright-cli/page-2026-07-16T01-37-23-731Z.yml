@@ -1,0 +1,119 @@
+- generic [ref=f2e3]:
+  - complementary [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - strong [ref=f2e6]: DailyWrite
+      - generic [ref=f2e7]: 本地优先 · Markdown
+    - navigation "主要导航" [ref=f2e8]:
+      - button "今日推进舱" [ref=f2e9] [cursor=pointer]
+      - button "每日待办" [ref=f2e13] [cursor=pointer]
+      - button "内容库" [ref=f2e18] [cursor=pointer]
+      - button "素材库" [ref=f2e23] [cursor=pointer]
+      - button "脚本库" [ref=f2e29] [cursor=pointer]
+      - button "发布库" [ref=f2e34] [cursor=pointer]
+      - button "复盘库" [ref=f2e39] [cursor=pointer]
+    - generic [ref=f2e45]:
+      - button "标签体系" [ref=f2e46] [cursor=pointer]
+      - button "模板中心" [ref=f2e51] [cursor=pointer]
+      - button "设置" [ref=f2e56] [cursor=pointer]
+    - generic [ref=f2e61]:
+      - button "本地存储 已连接" [ref=f2e62] [cursor=pointer]:
+        - generic [ref=f2e63]: 本地存储
+        - strong [ref=f2e65]: 已连接
+      - button "刷新本地数据" [ref=f2e66] [cursor=pointer]
+      - generic [ref=f2e70]: DailyWrite 本地内容库
+      - button "11 条一致性提醒" [ref=f2e71] [cursor=pointer]
+  - main [ref=f2e72]:
+    - generic [ref=f2e73]:
+      - generic [ref=f2e74]:
+        - generic [ref=f2e75]:
+          - heading "今日推进舱" [level=1] [ref=f2e76]
+          - generic [ref=f2e77]: 推进
+        - paragraph [ref=f2e78]: 专注当日最重要的一件事，让内容持续向前。
+      - generic [ref=f2e79]:
+        - time [ref=f2e80]: 2026-07-16 星期四
+        - generic [ref=f2e81]: 数据源：内容主索引
+    - region "今日建议主推" [ref=f2e82]:
+      - heading "DW-20260711-SKILL-MANAGEMENT-01 / 本地 AI Skill 管理与能力治理" [level=2] [ref=f2e84]
+      - generic [ref=f2e85]:
+        - generic [ref=f2e86]: 脚本创作中
+        - generic [ref=f2e87]: 脚本：3.2 KB
+        - generic [ref=f2e89]: 素材匹配：5 项
+        - generic [ref=f2e91]: 更新：07-11 17:56
+      - generic [ref=f2e92]:
+        - generic [ref=f2e93]: 当前阻塞 / 下一步
+        - generic [ref=f2e94]:
+          - strong [ref=f2e95]: 录制真实扫描和三个核心操作画面
+          - generic [ref=f2e96]: 最近修改 + 主索引已登记 + 脚本创作中 + 文件非空
+      - generic [ref=f2e97]:
+        - button "查看当前脚本" [ref=f2e98] [cursor=pointer]
+        - button "查看关联素材" [ref=f2e102] [cursor=pointer]
+        - button "复制下一步" [ref=f2e103] [cursor=pointer]
+    - region [ref=f2e107]:
+      - generic [ref=f2e108]:
+        - generic [ref=f2e109]:
+          - generic [ref=f2e110]: 今日待办
+          - heading "把今天要做的事，放进一个清晰队列" [level=2] [ref=f2e111]
+        - button "进入每日待办" [ref=f2e112] [cursor=pointer]
+      - generic [ref=f2e115]:
+        - paragraph [ref=f2e119]:
+          - strong [ref=f2e120]: 今天还没有待办
+          - generic [ref=f2e121]: 可以从零记录，也可以把当前主推内容变成第一条。
+        - button "把今日主推加入待办" [ref=f2e122] [cursor=pointer]
+    - region "内容生产管线" [ref=f2e123]:
+      - generic [ref=f2e125]:
+        - button "选题输入 73" [ref=f2e127] [cursor=pointer]:
+          - generic [ref=f2e128]: 选题输入
+          - strong [ref=f2e129]: "73"
+        - button "脚本创作中 5" [ref=f2e133] [cursor=pointer]:
+          - generic [ref=f2e134]: 脚本创作中
+          - strong [ref=f2e135]: "5"
+        - button "待拍摄 0" [ref=f2e139] [cursor=pointer]:
+          - generic [ref=f2e140]: 待拍摄
+          - strong [ref=f2e141]: "0"
+        - button "已发布 5" [ref=f2e145] [cursor=pointer]:
+          - generic [ref=f2e146]: 已发布
+          - strong [ref=f2e147]: "5"
+        - button "复盘完成 3" [ref=f2e151] [cursor=pointer]:
+          - generic [ref=f2e152]: 复盘完成
+          - strong [ref=f2e153]: "3"
+    - region [ref=f2e154]:
+      - generic [ref=f2e155]:
+        - heading "接下来处理" [level=2] [ref=f2e156]
+        - button "查看全部 7 项" [ref=f2e157] [cursor=pointer]
+      - table "待处理内容队列" [ref=f2e161]:
+        - row [ref=f2e162]:
+          - columnheader "优先级" [ref=f2e163]
+          - columnheader "内容" [ref=f2e164]
+          - columnheader "状态" [ref=f2e165]
+          - columnheader "下一步" [ref=f2e166]
+          - columnheader "更新时间" [ref=f2e167]
+        - row [ref=f2e168] [cursor=pointer]:
+          - cell "2" [ref=f2e169]
+          - cell [ref=f2e172]:
+            - strong [ref=f2e173]:
+              - text: DW-20260620-AI-CREATOR-TRACKER-01 /
+              - emphasis [ref=f2e174]: AI 博主视频文案追踪系统
+          - cell "脚本创作中" [ref=f2e175]
+          - cell "补真实飞书截图或直接进入公众号排版" [ref=f2e177]
+          - cell "06-20 23:01" [ref=f2e178]
+        - row [ref=f2e181] [cursor=pointer]:
+          - cell "3" [ref=f2e182]
+          - cell [ref=f2e185]:
+            - strong [ref=f2e186]:
+              - text: DW-20260604-CODEX-PLUGIN-01 /
+              - emphasis [ref=f2e187]: Codex 插件发布
+          - cell "脚本创作中" [ref=f2e188]
+          - cell "拆成教程或观点稿" [ref=f2e190]
+          - cell "06-07 00:14" [ref=f2e191]
+        - row [ref=f2e194] [cursor=pointer]:
+          - cell "4" [ref=f2e195]
+          - cell [ref=f2e198]:
+            - strong [ref=f2e199]:
+              - text: DW-20260605-CC-WORKFLOW-01 /
+              - emphasis [ref=f2e200]: Claude Code Workflow 新能力
+          - cell "脚本创作中" [ref=f2e201]
+          - cell "过开头和结构审查" [ref=f2e203]
+          - cell "06-05 15:01" [ref=f2e204]
+    - generic [ref=f2e207]:
+      - generic [ref=f2e208]: 每日专注一件事，长期主义的复利来自持续交付。
+      - button "查看系统健康" [ref=f2e209] [cursor=pointer]

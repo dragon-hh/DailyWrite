@@ -1,0 +1,13 @@
+90-工具项目/
+node_modules/
+out/
+tmp/
+.trash/
+.agents/
+.claude/
+.obsidian/
+.recode/
+*.zip
+*.docx
+*.xlsx
+*.pdf

@@ -1,0 +1,29 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: 先别急着写代码
+      - heading "AI 写代码前 先回答 25 个问题" [level=1] [ref=e7]:
+        - generic [ref=e8]: AI 写代码前
+        - generic [ref=e9]:
+          - text: 先回答
+          - generic [ref=e10]: 25 个问题
+      - paragraph [ref=e11]: 听起来很慢，但这反而是我一天里最省时间的一步。
+      - generic [ref=e12]: 错误需求 × 高速执行 = 高速返工
+    - generic [ref=e13]:
+      - generic [ref=e15]: "1"
+      - generic [ref=e16]: QUESTIONS BEFORE CODE
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [ref=e27] [cursor=pointer]
+    - button "11. 边界清楚才能并行" [ref=e28] [cursor=pointer]
+    - button "12. implement" [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [ref=e31] [cursor=pointer]

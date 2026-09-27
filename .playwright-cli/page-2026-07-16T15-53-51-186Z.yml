@@ -1,0 +1,254 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]: ← → 翻页 · B 静态 · ESC 索引
+  - generic [ref=f1e3]:
+    - generic [ref=f1e5]:
+      - generic [ref=f1e6]:
+        - generic [ref=f1e7]: AI DEV WORKFLOW · FIELD NOTE 0715
+        - generic [ref=f1e8]: DW · 2026.07.15 · 01 / 11
+      - generic [ref=f1e9]:
+        - generic [ref=f1e10]: BEFORE AI WRITES A SINGLE LINE
+        - heading "为什么我不让 AI 直接写代码" [level=1] [ref=f1e11]: 为什么我不让 AI直接写代码
+        - generic [ref=f1e12]:
+          - generic [ref=f1e13]: AI 写代码前，先做这 4 步。
+          - generic [ref=f1e14]:
+            - generic [ref=f1e15]: GRILL → SPEC → TICKETS → IMPLEMENT
+            - generic [ref=f1e16]: → SWIPE / ARROW KEYS
+    - generic [ref=f1e18]:
+      - generic [ref=f1e19]:
+        - generic [ref=f1e20]: THE REAL RISK · 开场判断
+        - generic [ref=f1e21]: 02 / 11
+      - heading "AI 开发最危险的， 不是代码写错。" [level=2] [ref=f1e24]: AI 开发最危险的，不是代码写错。
+      - generic [ref=f1e25]:
+        - paragraph [ref=f1e26]: 而是它把错误需求做得又快、又完整。
+        - generic [ref=f1e27]:
+          - generic [ref=f1e28]: "25"
+          - generic [ref=f1e29]: QUESTIONS BEFORE CODE
+    - generic [ref=f1e31]:
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]: MATT POCOCK SKILLS · 主线
+        - generic [ref=f1e34]: 03 / 11
+      - generic [ref=f1e35]:
+        - generic [ref=f1e36]: ONE COMPLETE ENGINEERING CHAIN
+        - heading "我跑了一天， 最顺手的是这条链路" [level=2] [ref=f1e37]: 我跑了一天，最顺手的是这条链路
+      - generic [ref=f1e39]:
+        - generic [ref=f1e42]:
+          - generic [ref=f1e43]: 01 · CLARIFY
+          - generic [ref=f1e44]: grill-with-docs
+          - generic [ref=f1e45]: 追问边界与决策
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: 02 · SPECIFY
+          - generic [ref=f1e50]: to-spec
+          - generic [ref=f1e51]: 生成可验收基准
+        - generic [ref=f1e54]:
+          - generic [ref=f1e55]: 03 · SLICE
+          - generic [ref=f1e56]: to-tickets
+          - generic [ref=f1e57]: 拆成独立小闭环
+        - generic [ref=f1e60]:
+          - generic [ref=f1e61]: 04 · BUILD
+          - generic [ref=f1e62]: implement
+          - generic [ref=f1e63]: TDD、审查、提交 Git
+      - generic [ref=f1e64]: 需求澄清、任务拆分、开发、测试和审查，被串成同一条主线。
+    - generic [ref=f1e66]:
+      - generic [ref=f1e67]:
+        - generic [ref=f1e68]: STEP 01 · GRILL-WITH-DOCS
+        - generic [ref=f1e69]: 04 / 11
+      - generic [ref=f1e70]:
+        - generic [ref=f1e71]: THE PAINFUL QUESTIONS SAVE THE MOST TIME
+        - heading "先把模糊需求 问到没有歧义" [level=2] [ref=f1e72]: 先把模糊需求问到没有歧义
+      - generic [ref=f1e73]:
+        - generic [ref=f1e74]:
+          - generic [ref=f1e75]: MY TEST
+          - generic [ref=f1e76]:
+            - generic [ref=f1e77]: "25"
+            - generic [ref=f1e78]: 个问题，一题一题追问
+          - generic [ref=f1e79]: SLOW FEELS PAINFUL. REWORK IS WORSE.
+        - generic [ref=f1e80]:
+          - generic [ref=f1e81]:
+            - generic [ref=f1e82]: "01"
+            - generic [ref=f1e83]:
+              - generic [ref=f1e84]: 产品边界是什么？
+              - generic [ref=f1e85]: 哪些用户、哪些场景、做到哪里为止。
+          - generic [ref=f1e86]:
+            - generic [ref=f1e87]: "02"
+            - generic [ref=f1e88]:
+              - generic [ref=f1e89]: 数据怎么存？
+              - generic [ref=f1e90]: 先决定结构、生命周期与责任边界。
+          - generic [ref=f1e91]:
+            - generic [ref=f1e92]: "03"
+            - generic [ref=f1e93]:
+              - generic [ref=f1e94]: 这次坚决不做什么？
+              - generic [ref=f1e95]: 把非目标写清，才不会越做越大。
+    - generic [ref=f1e98]:
+      - generic [ref=f1e99]:
+        - generic [ref=f1e100]:
+          - generic [ref=f1e101]: STEP 02
+          - generic [ref=f1e102]: TO-SPEC
+        - generic [ref=f1e103]:
+          - generic [ref=f1e104]: NOT DOCUMENTATION THEATER
+          - heading "不是 “写文档”" [level=2] [ref=f1e105]: 不是“写文档”
+        - generic [ref=f1e106]: 05 / 11
+      - generic [ref=f1e107]:
+        - generic [ref=f1e108]:
+          - generic [ref=f1e109]: ACCEPTANCE BASELINE
+          - generic [ref=f1e110]: WHAT / NOT / DONE
+        - generic [ref=f1e111]:
+          - heading "是把对话共识， 变成验收基准。" [level=2] [ref=f1e112]: 是把对话共识，变成验收基准。
+          - paragraph [ref=f1e113]: 做什么、不做什么、怎样才算做对。无论人还是 AI，都反复对照同一条基准线。
+        - generic [ref=f1e114]: CONVERSATION → SPECIFICATION → ACCEPTANCE
+    - generic [ref=f1e116]:
+      - generic [ref=f1e117]:
+        - generic [ref=f1e118]: STEP 03 · TO-TICKETS
+        - generic [ref=f1e119]: 06 / 11
+      - generic [ref=f1e120]:
+        - generic [ref=f1e121]: HORIZONTAL LAYERS VS. VERTICAL SLICES
+        - heading "任务不是拆得越细越好， 而是每一片都能跑通。" [level=2] [ref=f1e122]: 任务不是拆得越细越好，而是每一片都能跑通。
+      - generic [ref=f1e123]:
+        - generic [ref=f1e124]:
+          - generic [ref=f1e125]:
+            - generic [ref=f1e126]: A
+            - text: HORIZONTAL
+          - generic [ref=f1e127]: 横向拆分
+          - generic [ref=f1e128]: 菜单页、购物车、支付接口分别开发。单独完成任何一个，用户都无法点完一单。
+          - list [ref=f1e129]:
+            - listitem [ref=f1e130]: 按技术层分任务
+            - listitem [ref=f1e131]: 交付物彼此依赖
+            - listitem [ref=f1e132]: 很晚才知道能否工作
+        - generic [ref=f1e134]:
+          - generic [ref=f1e135]:
+            - generic [ref=f1e136]: B
+            - text: VERTICAL
+          - generic [ref=f1e137]: 纵向切片
+          - generic [ref=f1e138]: 每个任务都贯穿一个最小用户闭环，哪怕功能极简，也能独立运行、独立测试。
+          - list [ref=f1e139]:
+            - listitem [ref=f1e140]: 按用户结果分任务
+            - listitem [ref=f1e141]: 每一步都能验收
+            - listitem [ref=f1e142]: 随时保持系统可用
+    - generic [ref=f1e144]:
+      - generic [ref=f1e145]:
+        - generic [ref=f1e146]: VERTICAL SLICING · 外卖点餐示例
+        - generic [ref=f1e147]: 07 / 11
+      - generic [ref=f1e148]:
+        - generic [ref=f1e149]: EACH STEP IS A WORKING SYSTEM
+        - heading "从极简闭环开始， 一层一层加能力" [level=2] [ref=f1e150]: 从极简闭环开始，一层一层加能力
+      - generic [ref=f1e151]:
+        - generic [ref=f1e152]:
+          - generic [ref=f1e153]: 01 · MINIMUM LOOP
+          - generic [ref=f1e154]:
+            - generic [ref=f1e155]: 固定套餐
+            - generic [ref=f1e156]: 用户能看、能点、能生成订单。功能极简，但闭环完整。
+          - generic [ref=f1e157]: RUN · TEST · ACCEPT
+        - generic [ref=f1e158]:
+          - generic [ref=f1e159]: 02 · EXPAND
+          - generic [ref=f1e160]:
+            - generic [ref=f1e161]: 加入购物车
+            - generic [ref=f1e162]: 在已经能跑的闭环上增加选择与组合能力。
+          - generic [ref=f1e163]: ADD WITHOUT BREAKING
+        - generic [ref=f1e164]:
+          - generic [ref=f1e165]: 03 · REAL WORLD
+          - generic [ref=f1e166]:
+            - generic [ref=f1e167]: 接入真实支付
+            - generic [ref=f1e168]: 最后连接外部系统，仍然保持端到端可验证。
+          - generic [ref=f1e169]: INTEGRATE · REVIEW · SHIP
+    - generic [ref=f1e171]:
+      - generic [ref=f1e172]:
+        - generic [ref=f1e173]: WHY SLICES MATTER
+        - generic [ref=f1e174]: 08 / 11
+      - heading "边界清楚，AI 才能真正并行。" [level=2] [ref=f1e176]
+      - generic [ref=f1e177]:
+        - paragraph [ref=f1e178]: 任务大并不可怕。真正危险的是边界模糊，多个 Agent 互相覆盖、互相冲突。
+        - paragraph [ref=f1e179]: 每个 ticket 都能独立运行、独立测试，才有资格并行实现。
+    - generic [ref=f1e181]:
+      - generic [ref=f1e182]:
+        - generic [ref=f1e183]: STEP 04 · IMPLEMENT
+        - generic [ref=f1e184]: 09 / 11
+      - generic [ref=f1e185]:
+        - generic [ref=f1e186]: TDD · CODE REVIEW · GIT COMMIT
+        - heading "到这里，才真正开始写代码。" [level=2] [ref=f1e187]
+      - generic [ref=f1e188]:
+        - generic [ref=f1e189]:
+          - generic [ref=f1e190]:
+            - generic [ref=f1e191]: "01"
+            - text: PROJECT FIT
+          - generic [ref=f1e192]: 有没有踩烂架构？
+          - generic [ref=f1e193]: 代码必须遵守项目规范、既有边界与技术约束。漂亮但破坏主线，仍然不合格。
+          - list [ref=f1e194]:
+            - listitem [ref=f1e195]: 遵守项目规范
+            - listitem [ref=f1e196]: 保持架构一致
+            - listitem [ref=f1e197]: 通过测试与审查
+        - generic [ref=f1e199]:
+          - generic [ref=f1e200]:
+            - generic [ref=f1e201]: "02"
+            - text: REQUIREMENT FIT
+          - generic [ref=f1e202]: 有没有做对需求？
+          - generic [ref=f1e203]: 实现必须回到原始 spec 验收。代码再漂亮，需求做错了，也不能提交。
+          - list [ref=f1e204]:
+            - listitem [ref=f1e205]: 逐条对照 spec
+            - listitem [ref=f1e206]: 验证验收标准
+            - listitem [ref=f1e207]: 只交付约定范围
+    - generic [ref=f1e209]:
+      - generic [ref=f1e210]:
+        - generic [ref=f1e211]: THE FOUR-STEP MAINLINE
+        - generic [ref=f1e212]: 10 / 11
+      - generic [ref=f1e215]:
+        - generic [ref=f1e216]: USE FEWER, STRONGER SKILLS
+        - heading "一条主线，覆盖完整开发流程" [level=2] [ref=f1e217]
+      - generic [ref=f1e218]:
+        - generic [ref=f1e219]:
+          - generic [ref=f1e220]: — 01 / CLARIFY
+          - heading "grill-with-docs" [level=3] [ref=f1e221]
+          - paragraph [ref=f1e222]: 通过追问澄清需求，沉淀术语和关键决策。
+        - generic [ref=f1e223]:
+          - generic [ref=f1e224]: — 02 / SPECIFY
+          - heading "to-spec" [level=3] [ref=f1e225]
+          - paragraph [ref=f1e226]: 把讨论结果变成 PRD 与可验收基准。
+        - generic [ref=f1e227]:
+          - generic [ref=f1e228]: — 03 / SLICE
+          - heading "to-tickets" [level=3] [ref=f1e229]
+          - paragraph [ref=f1e230]: 拆成可独立运行、独立测试的纵向切片。
+        - generic [ref=f1e231]:
+          - generic [ref=f1e232]: — 04 / BUILD
+          - heading "implement" [level=3] [ref=f1e233]
+          - paragraph [ref=f1e234]: 多线程并行实现，TDD、审查并提交 Git。
+    - generic [ref=f1e237]:
+      - generic [ref=f1e238]:
+        - generic [ref=f1e239]:
+          - generic [ref=f1e240]: 11 / 11
+          - generic [ref=f1e241]: CLOSING
+        - generic [ref=f1e242]:
+          - generic [ref=f1e243]: MANIFESTO
+          - heading "先想清楚， 再写得更快。" [level=2] [ref=f1e244]: 先想清楚，再写得更快。
+          - generic [ref=f1e245]: 模型越强，需要的 Skill 越少。多余的 Skill，只会变成 Agent 的噪音。
+        - generic [ref=f1e246]: AI DEV WORKFLOW · V2
+      - generic [ref=f1e248]:
+        - generic [ref=f1e249]:
+          - generic [ref=f1e250]: START HERE
+          - generic [ref=f1e251]: 03 ACTIONS
+        - generic [ref=f1e252]:
+          - generic [ref=f1e253]:
+            - generic [ref=f1e254]: "01"
+            - generic [ref=f1e255]:
+              - heading "安装 Skills" [level=3] [ref=f1e256]
+              - code [ref=f1e257]: npx skills@latest add mattpocock/skills
+          - generic [ref=f1e258]:
+            - generic [ref=f1e259]: "02"
+            - generic [ref=f1e260]:
+              - heading "先跑四步主线" [level=3] [ref=f1e261]
+              - paragraph [ref=f1e262]: grill-with-docs → to-spec → to-tickets → implement
+          - generic [ref=f1e263]:
+            - generic [ref=f1e264]: "03"
+            - generic [ref=f1e265]:
+              - heading "不知道选哪个？" [level=3] [ref=f1e266]
+              - paragraph [ref=f1e267]: 调用 ask-matt，让它按问题与实际情况导航。
+        - generic [ref=f1e268]: → 完 · END OF FIELD NOTE
+  - generic [ref=f1e269]:
+    - button "Page 1" [ref=f1e270] [cursor=pointer]
+    - button "Page 2" [ref=f1e271] [cursor=pointer]
+    - button "Page 3" [ref=f1e272] [cursor=pointer]
+    - button "Page 4" [ref=f1e273] [cursor=pointer]
+    - button "Page 5" [ref=f1e274] [cursor=pointer]
+    - button "Page 6" [ref=f1e275] [cursor=pointer]
+    - button "Page 7" [ref=f1e276] [cursor=pointer]
+    - button "Page 8" [ref=f1e277] [cursor=pointer]
+    - button "Page 9" [ref=f1e278] [cursor=pointer]
+    - button "Page 10" [ref=f1e279] [cursor=pointer]
+    - button "Page 11" [ref=f1e280] [cursor=pointer]

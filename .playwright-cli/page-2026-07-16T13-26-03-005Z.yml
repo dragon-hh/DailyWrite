@@ -1,0 +1,122 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - strong [ref=f1e6]: DailyWrite
+      - generic [ref=f1e7]: 本地优先 · Markdown
+    - navigation "主要导航" [ref=f1e8]:
+      - button "今日推进舱" [ref=f1e9] [cursor=pointer]
+      - button "每日待办" [ref=f1e13] [cursor=pointer]
+      - button "内容库" [ref=f1e18] [cursor=pointer]
+      - button "素材库" [ref=f1e23] [cursor=pointer]
+      - button "脚本库" [ref=f1e29] [cursor=pointer]
+      - button "发布库" [ref=f1e34] [cursor=pointer]
+      - button "复盘库" [ref=f1e39] [cursor=pointer]
+    - generic [ref=f1e45]:
+      - button "标签体系" [ref=f1e46] [cursor=pointer]
+      - button "模板中心" [ref=f1e51] [cursor=pointer]
+      - button "设置" [ref=f1e56] [cursor=pointer]
+    - generic [ref=f1e61]:
+      - button "本地存储 已连接" [ref=f1e62] [cursor=pointer]:
+        - generic [ref=f1e63]: 本地存储
+        - strong [ref=f1e65]: 已连接
+      - button "刷新本地数据" [ref=f1e66] [cursor=pointer]
+      - generic [ref=f1e70]: DailyWrite 本地内容库
+      - button "11 条一致性提醒" [ref=f1e71] [cursor=pointer]
+  - main [ref=f1e72]:
+    - region [ref=f1e1062]:
+      - generic [ref=f1e214]:
+        - generic [ref=f1e215]:
+          - text: 脚本工作台
+          - heading "AI开发工作流 · 口播稿" [level=1] [ref=f1e1063]
+        - button "回到今日推进舱" [ref=f1e217] [cursor=pointer]
+      - region "AI开发工作流 · 口播稿 脚本与 Agent 对话工作台" [ref=f1e1064]:
+        - generic [ref=f1e1065]:
+          - button "返回脚本列表" [ref=f1e1066] [cursor=pointer]
+          - generic [ref=f1e1070]:
+            - generic [ref=f1e1071]: Markdown 原文
+            - generic [ref=f1e1072]: 2,220 字符
+            - generic [ref=f1e1073]: 更新 07-16 21:01
+        - generic [ref=f1e1074]:
+          - article [ref=f1e1075]:
+            - generic [ref=f1e1077]:
+              - text: MANUSCRIPT / 原稿
+              - heading "脚本原文" [level=2] [ref=f1e1078]
+            - generic [ref=f1e1082]:
+              - heading "AI开发工作流 · 口播稿" [level=2] [ref=f1e1083]
+              - paragraph [ref=f1e1084]: "---"
+              - heading "标题/钩子备选（三选一，或AB测试）" [level=3] [ref=f1e1085]
+              - paragraph [ref=f1e1086]: 1. 《为什么你的AI写的代码越写越乱？问题不在AI，在这一步》
+              - paragraph [ref=f1e1087]: 2. 《GitHub 17万star的顶级开发流程，普通人也能直接抄作业》
+              - paragraph [ref=f1e1088]: 3. 《我把顶级工程师的AI协作方法论拆成了5步，人人可用》
+              - paragraph [ref=f1e1089]: "---"
+              - heading "正文口播稿" [level=3] [ref=f1e1090]
+              - paragraph [ref=f1e1091]: "**【开头钩子｜0-10秒】**"
+              - paragraph [ref=f1e1092]: （语速稍快，带一点反问的攻击性）
+              - paragraph [ref=f1e1093]: 你有没有遇到过这种情况：跟AI说了一个需求，它噼里啪啦写了一堆代码，你一看——能跑，但完全不是你想要的那个东西。
+              - paragraph [ref=f1e1094]: 问题出在哪？不是AI不够聪明，是我们从第一步就跳过了"想清楚"这一步。
+              - paragraph [ref=f1e1095]: 今天给你拆解一套方法论。作者是Total TypeScript的创始人、前Vercel工程师Matt Pocock，他把自己每天在用的AI协作流程开源了，现在GitHub上超过17万星标——这个体量，已经不是"一个开发者的小工具"了，是被十几万工程师验证过的方法论。
+              - paragraph [ref=f1e1096]: 不管你是不是程序员，只要你在用AI做任何需要"从模糊想法到最终交付"的事情，这套逻辑都能直接搬过去用。
+              - paragraph [ref=f1e1097]: "**【核心内容｜第一步：grill-me 追问澄清】**"
+              - paragraph [ref=f1e1098]: （画面建议：叠加"25个问题"字幕强调）
+              - paragraph [ref=f1e1099]: 第一步，不是让AI开始干活，是让AI"逼问"你。
+              - paragraph [ref=f1e1100]: 这个skill的逻辑很反直觉——它不听你指挥，反而不断追问你：你到底要做什么？边界在哪？数据怎么存？MVP范围是什么？
+              - paragraph [ref=f1e1101]: 我自己在给客户做AI agent开发的时候，深有体会：项目做砸，十次有八次不是技术问题，是一开始需求就没对齐。AI给了我们前所未有的执行速度，但也放大了一个老问题——你话都没说清楚，它就能立刻把错的东西造出来，而且造得又快又"像样"。
+              - paragraph [ref=f1e1102]: 这一步很痛苦，因为它逼着你停下来，先想清楚，再动手。但恰恰是这一步，决定了后面所有工作是不是白费。
+              - paragraph [ref=f1e1103]: "**【核心内容｜第二步：to-prd 生成正式需求文档】**"
+              - paragraph [ref=f1e1104]: 第二步，把刚才追问出来的结论，沉淀成一份正式PRD——用户的问题是什么，要交付什么结果，测试从哪个边界切入，技术上已经做了哪些决策。
+              - paragraph [ref=f1e1105]: 这一步的价值不是"写文档"，是把散落在对话里的共识，变成一个所有人（包括AI）都能反复对照的基准线。
+              - paragraph [ref=f1e1106]: "**【核心内容｜第三步：to-issues 纵向切片】**"
+              - paragraph [ref=f1e1107]: （画面建议：外卖点餐app的错误拆法 vs 正确拆法，做成对比图）
+              - paragraph [ref=f1e1108]: 第三步是我觉得整套流程里最有价值的一个概念——纵向切片。
+              - paragraph [ref=f1e1109]: 举个例子，做一个外卖点餐小程序，很多人会横向拆：第一个任务做菜单页，第二个做购物车，第三个做支付接口……听着很合理对不对？但问题是，单独做完任何一个，用户依然没法完成一次点餐。
+              - paragraph [ref=f1e1110]: 纵向切片反过来做：第一个任务，只做一个固定套餐，用户能看、能点、能生成订单——一个完整的闭环，哪怕功能极简。第二个任务，在这个闭环上加购物车。第三个，接入真实支付。每一步都是一个能独立跑、独立测的最小闭环。
+              - paragraph [ref=f1e1111]: 为什么这个很关键？因为不管是人还是AI agent，最怕的从来不是任务大，是任务边界不清楚。边界清楚，AI才能真正并行干活，而不是互相踩坑。
+              - paragraph [ref=f1e1112]: "**【核心内容｜第四步：implement + 双轴审查】**"
+              - paragraph [ref=f1e1113]: 第四步是真正的代码实现，背后调用了测试驱动开发和代码审查两个子流程。
+              - paragraph [ref=f1e1114]: 代码审查这里有个设计我觉得特别值得学——双轴审查。一条轴看"这代码符不符合项目规范"，另一条轴看"这代码是不是真的实现了需求"。
+              - paragraph [ref=f1e1115]: 为什么要拆成两条线？因为这是两类完全不同的错误：代码可以写得很干净，但实现错了需求；也可以完美实现了需求，却踩烂了项目架构。混在一起审查，很容易顾此失彼。
+              - paragraph [ref=f1e1116]: "**【总结｜方法论提炼，人设升华点】**"
+              - paragraph [ref=f1e1117]: （这里是拉开差距的地方——从"介绍工具"升级成"给出判断"）
+              - paragraph [ref=f1e1118]: 把这四步串起来看，其实是一句话：AI解决的是"怎么做"，而"做什么、边界在哪"，永远是人的责任。
+              - paragraph [ref=f1e1119]: 这也是我这半年帮企业客户落地AI agent项目最大的一个体会——工具越强，越考验你想清楚问题的能力。谁能把需求拆得干净、边界划得清楚，谁就能把AI的执行力真正变成生产力，而不是变成一堆"看起来对、实际上错"的产出。
+              - paragraph [ref=f1e1120]: "**【安装方式 + 结尾】**"
+              - paragraph [ref=f1e1121]: 安装很简单，一行命令：
+              - paragraph [ref=f1e1122]: "`npx skills@latest add mattpocock/skills`"
+              - paragraph [ref=f1e1123]: 如果不确定该用哪个skill，直接调用 ask-matt，它会根据你的情况帮你导航。
+              - paragraph [ref=f1e1124]: 这套流程我自己在实际项目里也在用，后面会出一期实操案例，带你看看真实项目里怎么落地纵向切片。想看的话，点个关注，别错过。
+              - paragraph [ref=f1e1125]: "---"
+              - heading "备注（给你参考，不用念出来）" [level=3] [ref=f1e1126]
+              - paragraph [ref=f1e1127]: · **人设锚点**：稿子里加了两处"我在给客户做agent开发时"的实战背书，这是你和纯技术博主最大的差异化——别人在转述项目，你在给出经过验证的判断。可以根据实际项目细节再具体调整措辞，但注意不要透露客户信息。
+              - paragraph [ref=f1e1128]: · **数据已核实**：star数用"17万+"，比原稿的"16万"更准确且是最新数据；作者背景（Total TypeScript / 前Vercel工程师）建议保留，能显著提升可信度，但正式发布前建议自己再核对一次最新star数（这类数据涨得快）。
+              - paragraph [ref=f1e1129]: · **合规提示**：内容是纯技术方法论解读，没有导流敏感表述，install命令建议做成屏幕文字叠加而不是口头强调，观感更自然也更安全。
+              - paragraph [ref=f1e1130]: · **可选加分项**：如果想进一步强化"高价值人设"，可以在"纵向切片"这段之后，加15秒你自己踩过的反例（比如曾经横向拆任务导致项目返工的真实经历，脱敏处理），真实案例比方法论本身更容易被记住、被转发。
+          - complementary [ref=f1e1131]:
+            - generic [ref=f1e1132]:
+              - generic [ref=f1e1133]:
+                - text: AGENT DESK / 真实任务
+                - heading "和 Agent 一起改稿" [level=2] [ref=f1e1134]
+              - button "新会话" [ref=f1e1135] [cursor=pointer]
+            - generic "选择 Agent Runtime" [ref=f1e1138]:
+              - button "Codex 独立连续会话" [ref=f1e1139] [cursor=pointer]:
+                - generic [ref=f1e1143]:
+                  - strong [ref=f1e1144]: Codex
+                  - generic [ref=f1e1145]: 独立连续会话
+              - button "Claude Code 独立连续会话" [active] [pressed] [ref=f1e1146] [cursor=pointer]:
+                - generic [ref=f1e1154]:
+                  - strong [ref=f1e1155]: Claude Code
+                  - generic [ref=f1e1156]: 独立连续会话
+            - generic [ref=f1e1157]: Claude Code · 完全访问 · 脚本作为本机附件传入
+            - generic [ref=f1e1185]:
+              - strong [ref=f1e1188]: 从原稿出发，不从空白开始
+              - paragraph [ref=f1e1189]: Claude Code 会读取左侧脚本的最新磁盘内容；你可以让它诊断、改写，或直接修改文件。
+              - generic [ref=f1e1190]:
+                - button "先诊断这版脚本最影响传播的三个问题，不要直接改稿。" [ref=f1e1191] [cursor=pointer]
+                - button "基于当前原文，给我三个更强的黄金 3 秒开头。" [ref=f1e1192] [cursor=pointer]
+                - button "保留核心观点，把这版改得更口语、更适合提词器朗读。" [ref=f1e1193] [cursor=pointer]
+            - generic [ref=f1e1173]:
+              - generic [ref=f1e1174]: 给 Claude Code 的本轮要求
+              - textbox "给 Claude Code 的本轮要求" [ref=f1e1194]:
+                - /placeholder: 例如：先分析开头为什么留不住人，再直接把前 20 秒改好。
+              - generic [ref=f1e1176]:
+                - generic [ref=f1e1177]: Ctrl + Enter 派发真实任务
+                - button "派发给 Claude Code" [disabled] [ref=f1e1195]

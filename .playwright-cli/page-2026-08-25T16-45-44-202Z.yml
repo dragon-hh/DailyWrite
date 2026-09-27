@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - navigation "章节导航" [ref=e2]:
+    - link "开始" [ref=e3] [cursor=pointer]:
+      - /url: "#start"
+    - link "交易" [ref=e4] [cursor=pointer]:
+      - /url: "#deal"
+    - link "试算" [ref=e5] [cursor=pointer]:
+      - /url: "#try"
+    - link "结果" [ref=e6] [cursor=pointer]:
+      - /url: "#outcomes"
+    - link "风险" [ref=e7] [cursor=pointer]:
+      - /url: "#risk"
+    - link "检查" [ref=e8] [cursor=pointer]:
+      - /url: "#check"
+  - main [ref=e9]:
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - paragraph [ref=e13]: 股票期权 · 零基础图解
+        - heading "SELL PUT" [level=1] [ref=e14]:
+          - generic [ref=e15]: SELL
+          - generic [ref=e16]: PUT
+        - paragraph [ref=e17]: 先收钱，承诺：跌到某个价，我来买。
+        - generic [ref=e18]: ↓ 往下看一笔交易
+      - generic "一张低价接股票的承诺书插图" [ref=e19]:
+        - generic [ref=e20]: 收
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - generic [ref=e23]: PUT CONTRACT
+            - generic [ref=e24]: "#001"
+          - generic [ref=e25]: 我来接
+          - strong [ref=e26]: 股价低于 ¥90我也按 ¥90 买
+          - generic [ref=e28]: 对方为此先付我 ¥3 / 股
+        - generic [ref=e29]: ¥3
+    - generic [ref=e31]:
+      - paragraph [ref=e32]: 01 · 这笔交易里，谁给谁什么？
+      - heading "一手交钱， 一手交承诺。" [level=2] [ref=e33]: 一手交钱，一手交承诺。
+      - generic [ref=e34]:
+        - article [ref=e35]:
+          - img "你收到金币" [ref=e36]
+          - generic [ref=e40]:
+            - heading "你：卖方" [level=3] [ref=e41]
+            - paragraph [ref=e42]: 先收权利金
+        - generic [ref=e43]:
+          - generic [ref=e44]: 交换
+          - generic [ref=e45]: ⇄
+        - article [ref=e46]:
+          - img "对方拿着可卖股票的票据" [ref=e47]
+          - generic [ref=e52]:
+            - heading "对方：买方" [level=3] [ref=e53]
+            - paragraph [ref=e54]: 拿到“卖给你”的权利
+      - generic [ref=e55]: 你收的是小钱，接的是大承诺。
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - paragraph [ref=e59]: 02 · 拖一拖，看看结果
+        - heading "到期时，股价多少？" [level=2] [ref=e60]
+        - paragraph [ref=e61]: 例：卖出 1 张行权价 ¥90 的 Put收 ¥3 / 股
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: YOUR RESULT / 1 CONTRACT
+          - generic [ref=e65]: 不用买股票，权利金归你
+          - generic [ref=e66]: + ¥300
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: 到期股价
+            - status [ref=e70]: ¥100
+          - slider "选择到期股价" [ref=e71]: "100"
+          - generic [ref=e72]:
+            - generic [ref=e73]: ¥0
+            - generic [ref=e74]: 盈亏平衡 ¥87
+            - generic [ref=e75]: ¥120
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: 行权价
+            - strong [ref=e79]: ¥90
+          - generic [ref=e80]:
+            - generic [ref=e81]: 权利金
+            - strong [ref=e82]: ¥3
+          - generic [ref=e83]:
+            - generic [ref=e84]: 1 张
+            - strong [ref=e85]: 100 股
+    - generic [ref=e87]:
+      - paragraph [ref=e88]: 03 · 最常见的 3 个结局
+      - heading "不是只赚不赔。" [level=2] [ref=e89]
+      - generic [ref=e90]:
+        - article [ref=e91]:
+          - generic [ref=e92]: A / 股价 ¥100
+          - img [ref=e93]:
+            - generic [ref=e97]: ¥
+          - generic [ref=e98]:
+            - heading "没跌破 ¥90" [level=3] [ref=e99]
+            - paragraph [ref=e100]: 不用接股票
+            - text: 赚 ¥300
+        - article [ref=e101]:
+          - generic [ref=e102]: B / 股价 ¥88
+          - img [ref=e103]:
+            - generic [ref=e107]: "87"
+          - generic [ref=e108]:
+            - heading "小跌到 ¥88" [level=3] [ref=e109]
+            - paragraph [ref=e110]: 按 ¥90 接货；成本 ¥87
+            - text: 仍赚 ¥100
+        - article [ref=e111]:
+          - generic [ref=e112]: C / 股价 ¥50
+          - img [ref=e113]:
+            - generic [ref=e117]: 股票
+          - generic [ref=e118]:
+            - heading "暴跌到 ¥50" [level=3] [ref=e119]
+            - paragraph [ref=e120]: 仍要按 ¥90 接货
+            - text: 亏 ¥3,700
+    - generic [ref=e122]:
+      - generic "股票跌到零的风险悬崖插图" [ref=e123]:
+        - generic [ref=e126]: 股
+        - generic [ref=e127]: 90 → 0
+      - generic [ref=e128]:
+        - paragraph [ref=e129]: 04 · 最危险的误解
+        - heading "权利金很小， 亏损可以很大。" [level=2] [ref=e130]: 权利金很小，亏损可以很大。
+        - generic [ref=e131]: 股票跌到 0
+        - paragraph [ref=e132]: 你仍可能要按 ¥90买下 100 股。
+        - generic [ref=e133]:
+          - text: 最大亏损 = (90 − 3) × 100
+          - strong [ref=e134]: = ¥8,700
+    - generic [ref=e136]:
+      - paragraph [ref=e137]: 05 · 下单前，只问 4 句
+      - heading "四个“是”， 才继续研究。" [level=2] [ref=e138]: 四个“是”，才继续研究。
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - generic [ref=e141]: ✓
+          - paragraph [ref=e142]: 真想长期持有这只股票？
+        - generic [ref=e143]:
+          - generic [ref=e144]: ✓
+          - paragraph [ref=e145]: 真愿意按这个价格买？
+        - generic [ref=e146]:
+          - generic [ref=e147]: ✓
+          - paragraph [ref=e148]: 真留足接货现金？
+        - generic [ref=e149]:
+          - generic [ref=e150]: ✓
+          - paragraph [ref=e151]: 真能承受它跌很多？
+      - generic [ref=e152]: Sell Put ≠ 白捡利息它是“收钱 + 承担买入义务”。
+  - contentinfo [ref=e153]:
+    - generic [ref=e154]:
+      - paragraph [ref=e155]: 教学示例仅为理解机制，不构成投资建议。忽略了手续费、税费、提前指派、保证金变化与流动性。实际交易前请阅读券商规则及期权风险披露文件。
+      - paragraph [ref=e156]:
+        - text: 资料：
+        - link "OIC · Cash-Secured Put" [ref=e157] [cursor=pointer]:
+          - /url: https://www.optionseducation.org/strategies/all-strategies/cash-secured-put
+        - text: ·
+        - link "Investor.gov · Options" [ref=e158] [cursor=pointer]:
+          - /url: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins-63

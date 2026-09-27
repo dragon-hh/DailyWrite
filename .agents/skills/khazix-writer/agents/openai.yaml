@@ -1,0 +1,7 @@
+interface:
+  display_name: "文章写作"
+  short_description: "按个人风格撰写和打磨长短文章"
+  default_prompt: "Use $longform-writer to draft an article from the materials I provide."
+
+policy:
+  allow_implicit_invocation: false

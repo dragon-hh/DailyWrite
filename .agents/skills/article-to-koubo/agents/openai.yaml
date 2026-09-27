@@ -1,0 +1,4 @@
+interface:
+  display_name: "口播稿转换"
+  short_description: "把内容稿转换为提词器纯文本口播稿"
+  default_prompt: "Use $article-to-koubo to convert this Markdown article into a teleprompter-ready 口播稿 file."

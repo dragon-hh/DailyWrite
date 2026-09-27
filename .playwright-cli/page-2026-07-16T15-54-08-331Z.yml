@@ -1,0 +1,88 @@
+- main "AI 开发工作流 4:3 演示" [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]: AI DEV WORKFLOW / V2
+    - generic [ref=f2e7]: SYSTEM ONLINE
+  - generic [ref=f2e8]:
+    - generic [ref=f2e73]:
+      - generic [ref=f2e74]:
+        - generic [ref=f2e75]:
+          - generic [ref=f2e76]: 反过来 / 纵向切
+          - heading "每一步都是一个 能跑、能测的闭环" [level=2] [ref=f2e77]:
+            - text: 每一步都是一个
+            - generic [ref=f2e78]: 能跑、能测的闭环
+        - paragraph [ref=f2e79]: 哪怕功能极简，也先让用户完成一次真正的点餐。
+      - generic [ref=f2e80]:
+        - article [ref=f2e81]:
+          - text: "01"
+          - heading "固定套餐" [level=3] [ref=f2e82]
+          - paragraph [ref=f2e83]: 能看、能点、能生成订单
+          - generic [ref=f2e84]:
+            - generic [ref=f2e85]: VIEW
+            - generic [ref=f2e86]: →
+            - generic [ref=f2e87]: ORDER
+        - article [ref=f2e88]:
+          - text: "02"
+          - heading "加入购物车" [level=3] [ref=f2e89]
+          - paragraph [ref=f2e90]: 在完整闭环上增加能力
+          - generic [ref=f2e91]:
+            - generic [ref=f2e92]: ADD
+            - generic [ref=f2e93]: →
+            - generic [ref=f2e94]: RUN
+        - article [ref=f2e95]:
+          - text: "03"
+          - heading "真实支付" [level=3] [ref=f2e96]
+          - paragraph [ref=f2e97]: 继续扩展，不破坏闭环
+          - generic [ref=f2e98]:
+            - generic [ref=f2e99]: PAY
+            - generic [ref=f2e100]: →
+            - generic [ref=f2e101]: TEST
+    - generic:
+      - generic:
+        - generic: FINAL / 完整开发流程
+        - heading "先想清楚 再让 AI 跑得快" [level=2]:
+          - text: 先想清楚再让 AI
+          - generic: 跑得快
+        - generic:
+          - generic:
+            - generic: "01"
+            - generic: 通过追问澄清需求
+            - code: grill-with-docs
+          - generic:
+            - generic: "02"
+            - generic: 基于讨论生成 PRD
+            - code: to-spec
+          - generic:
+            - generic: "03"
+            - generic: 拆成可独立运行的子任务
+            - code: to-tickets
+          - generic:
+            - generic: "04"
+            - generic: 多线程并行实现
+            - code: implement
+      - generic:
+        - generic: INSTALL / 按需选择
+        - code: npx skills@latest addmattpocock/skills
+        - generic:
+          - text: 不知道该调用哪个 Skill？直接调用
+          - strong: ask-matt
+          - text: ，让它根据问题导航。
+  - generic "场景导航" [ref=f2e22]:
+    - button "1. 25 个问题" [ref=f2e23] [cursor=pointer]
+    - button "2. 真正的危险" [ref=f2e24] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=f2e25] [cursor=pointer]
+    - button "4. 四步主线" [ref=f2e26] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=f2e27] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=f2e28] [cursor=pointer]
+    - button "7. to-spec" [ref=f2e29] [cursor=pointer]
+    - button "8. to-tickets" [ref=f2e30] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=f2e31] [cursor=pointer]
+    - button "10. 纵向切片" [active] [ref=f2e32] [cursor=pointer]
+    - button "11. 边界清楚才能并行" [ref=f2e33] [cursor=pointer]
+    - button "12. implement" [ref=f2e34] [cursor=pointer]
+    - button "13. 双重审查" [ref=f2e35] [cursor=pointer]
+    - button "14. 完整流程" [ref=f2e36] [cursor=pointer]
+  - generic [ref=f2e37]:
+    - generic [ref=f2e40]: 10 / 14
+    - generic [ref=f2e41]:
+      - button "上一页" [ref=f2e42] [cursor=pointer]: ←
+      - button "下一页" [ref=f2e43] [cursor=pointer]: →

@@ -1,0 +1,148 @@
+- generic [active] [ref=f2e1]:
+  - navigation "章节导航" [ref=f2e3]:
+    - link "开始" [ref=f2e4] [cursor=pointer]:
+      - /url: "#start"
+    - link "交易" [ref=f2e5] [cursor=pointer]:
+      - /url: "#deal"
+    - link "试算" [ref=f2e6] [cursor=pointer]:
+      - /url: "#try"
+    - link "结果" [ref=f2e7] [cursor=pointer]:
+      - /url: "#outcomes"
+    - link "风险" [ref=f2e8] [cursor=pointer]:
+      - /url: "#risk"
+    - link "检查" [ref=f2e9] [cursor=pointer]:
+      - /url: "#check"
+  - main [ref=f2e10]:
+    - generic [ref=f2e12]:
+      - generic [ref=f2e13]:
+        - paragraph [ref=f2e14]: 卖出看跌期权 · 零基础图解
+        - heading "SELL PUT" [level=1] [ref=f2e15]:
+          - generic [ref=f2e16]: SELL
+          - generic [ref=f2e17]: PUT
+        - paragraph [ref=f2e18]: 先收钱，承诺：跌到某个价，我来买。
+        - generic [ref=f2e19]: ↓ 往下看一笔交易
+      - generic "一张低价接股票的承诺书插图" [ref=f2e20]:
+        - generic [ref=f2e21]: 收
+        - generic [ref=f2e22]:
+          - generic [ref=f2e23]:
+            - generic [ref=f2e24]: PUT CONTRACT
+            - generic [ref=f2e25]: "#001"
+          - generic [ref=f2e26]: 我来接
+          - strong [ref=f2e27]: 股价低于 ¥90我也按 ¥90 买
+          - generic [ref=f2e29]: 对方为这项权利，先付我 ¥3 / 股
+        - generic [ref=f2e30]: ¥3
+    - generic [ref=f2e32]:
+      - paragraph [ref=f2e33]: 01 · 这笔交易里，谁给谁什么？
+      - heading "一手交钱， 一手交承诺。" [level=2] [ref=f2e34]: 一手交钱，一手交承诺。
+      - generic [ref=f2e35]:
+        - article [ref=f2e36]:
+          - img "你收到金币" [ref=f2e37]
+          - generic [ref=f2e41]:
+            - heading "你：卖方" [level=3] [ref=f2e42]
+            - paragraph [ref=f2e43]: 先收权利金
+        - generic [ref=f2e44]:
+          - generic [ref=f2e45]: 交换
+          - generic [ref=f2e46]: ⇄
+        - article [ref=f2e47]:
+          - img "对方拿着可卖股票的票据" [ref=f2e48]
+          - generic [ref=f2e53]:
+            - heading "对方：买方" [level=3] [ref=f2e54]
+            - paragraph [ref=f2e55]: 拿到“卖给你”的权利
+      - generic [ref=f2e56]: 对方有权按约定价卖，你有义务买。
+    - generic [ref=f2e58]:
+      - generic [ref=f2e59]:
+        - paragraph [ref=f2e60]: 02 · 拖一拖，看看结果
+        - heading "到期时， 股价多少？" [level=2] [ref=f2e61]: 到期时，股价多少？
+        - paragraph [ref=f2e62]: 假设现价 ¥100约定 30 天后到期按 ¥90 接，收 ¥3 / 股
+        - paragraph [ref=f2e63]: 先用“现金担保 Put”理解：留足 ¥9,000 接货。以下均为到期总盈亏，已计入股票市值。
+      - generic [ref=f2e64]:
+        - generic [ref=f2e65]:
+          - generic [ref=f2e66]: 到期总盈亏 / 1 张合约
+          - generic [ref=f2e67]: 通常不用接货，最多赚这笔权利金
+          - generic [ref=f2e68]: + ¥300
+        - generic [ref=f2e69]:
+          - generic [ref=f2e70]:
+            - generic [ref=f2e71]: 到期股价
+            - status [ref=f2e72]: ¥100
+          - slider "选择到期股价" [ref=f2e73]: "100"
+          - generic [ref=f2e74]:
+            - generic [ref=f2e75]: ¥0
+            - generic [ref=f2e76]: ¥87 持平
+            - generic [ref=f2e77]: ¥120
+        - generic [ref=f2e78]:
+          - generic [ref=f2e79]:
+            - generic [ref=f2e80]: 行权价
+            - strong [ref=f2e81]: ¥90
+          - generic [ref=f2e82]:
+            - generic [ref=f2e83]: 权利金
+            - strong [ref=f2e84]: ¥3
+          - generic [ref=f2e85]:
+            - generic [ref=f2e86]: 1 张
+            - strong [ref=f2e87]: 100 股
+    - generic [ref=f2e89]:
+      - paragraph [ref=f2e90]: 03 · 持有到期，按股票市值计算
+      - heading "不是只赚不赔。" [level=2] [ref=f2e91]
+      - generic [ref=f2e92]:
+        - article [ref=f2e93]:
+          - generic [ref=f2e94]: A / 股价 ¥100
+          - img [ref=f2e95]:
+            - generic [ref=f2e99]: ¥
+          - generic [ref=f2e100]:
+            - heading "高于 ¥90" [level=3] [ref=f2e101]
+            - paragraph [ref=f2e102]: 通常不接货；大涨也不多赚
+            - text: 最多赚 ¥300
+        - article [ref=f2e103]:
+          - generic [ref=f2e104]: B / 股价 ¥88
+          - img [ref=f2e105]:
+            - generic [ref=f2e109]: "87"
+          - generic [ref=f2e110]:
+            - heading "小跌到 ¥88" [level=3] [ref=f2e111]
+            - paragraph [ref=f2e112]: 按 ¥90 接货；成本 ¥87
+            - text: 仍赚 ¥100
+        - article [ref=f2e113]:
+          - generic [ref=f2e114]: C / 股价 ¥50
+          - img [ref=f2e115]:
+            - generic [ref=f2e119]: 股票
+          - generic [ref=f2e120]:
+            - heading "暴跌到 ¥50" [level=3] [ref=f2e121]
+            - paragraph [ref=f2e122]: 仍要按 ¥90 接货
+            - text: 亏 ¥3,700
+    - generic [ref=f2e124]:
+      - generic "股票跌到零的风险悬崖插图" [ref=f2e125]:
+        - generic [ref=f2e128]: 股
+        - generic [ref=f2e129]: 90 → 0
+      - generic [ref=f2e130]:
+        - paragraph [ref=f2e131]: 04 · 最危险的误解
+        - heading "权利金很小， 亏损可以很大。" [level=2] [ref=f2e132]: 权利金很小，亏损可以很大。
+        - generic [ref=f2e133]: 股票跌到 0
+        - paragraph [ref=f2e134]: 你仍可能要按 ¥90买下 100 股。
+        - generic [ref=f2e135]:
+          - text: 最大亏损 = (90 − 3) × 100
+          - strong [ref=f2e136]: = ¥8,700
+    - generic [ref=f2e138]:
+      - paragraph [ref=f2e139]: 05 · 下单前，只问 4 句
+      - heading "四个“是”， 才继续研究。" [level=2] [ref=f2e140]: 四个“是”，才继续研究。
+      - generic [ref=f2e141]:
+        - generic [ref=f2e142]:
+          - generic [ref=f2e143]: ✓
+          - paragraph [ref=f2e144]: 真想长期持有这只股票？
+        - generic [ref=f2e145]:
+          - generic [ref=f2e146]: ✓
+          - paragraph [ref=f2e147]: 真愿意按这个价格买？
+        - generic [ref=f2e148]:
+          - generic [ref=f2e149]: ✓
+          - paragraph [ref=f2e150]: 真留足接货现金？本例：¥9,000
+        - generic [ref=f2e151]:
+          - generic [ref=f2e152]: ✓
+          - paragraph [ref=f2e153]: 真能承受它跌很多？
+      - generic [ref=f2e154]: Sell Put ≠ 白捡利息它是“收钱 + 承担买入义务”。
+  - contentinfo [ref=f2e156]:
+    - generic [ref=f2e157]:
+      - paragraph [ref=f2e158]: 假设每张合约 100 股，金额用“元”演示；实际以合约规格为准。盈亏忽略费用、税费和利息。美式期权可能提前被要求买入（指派）；股价恰好等于行权价时也不能保证不被指派。未备足现金的卖 Put 还可能面临追保、强平。想提前退出，需买回同一合约，可能亏损。仅作入门教学，不构成投资建议。
+      - paragraph [ref=f2e159]:
+        - text: 资料：
+        - link "OIC · Cash-Secured Put" [ref=f2e160] [cursor=pointer]:
+          - /url: https://www.optionseducation.org/strategies/all-strategies/cash-secured-put
+        - text: ·
+        - link "SEC · Options" [ref=f2e161] [cursor=pointer]:
+          - /url: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-63

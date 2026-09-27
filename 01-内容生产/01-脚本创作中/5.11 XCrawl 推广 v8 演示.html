@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XCrawl 推广演示：以前三四天，现在半小时</title>
+  <link rel="icon" href="data:,">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06080d;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-strong: rgba(255, 255, 255, 0.095);
+      --line: rgba(255, 255, 255, 0.13);
+      --text: #f7fbff;
+      --muted: #91a0b6;
+      --cyan: #11d9f2;
+      --pink: #ff2b76;
+      --amber: #f4bd45;
+      --green: #52df88;
+      --blue: #75a7ff;
+      --danger: #ff6a5f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Noto Sans SC", sans-serif;
+    }
+
+    body {
+      user-select: none;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        radial-gradient(circle at 16% 18%, rgba(17,217,242,0.19), transparent 32%),
+        radial-gradient(circle at 86% 70%, rgba(255,43,118,0.17), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,0.05), transparent 46%);
+      background-size: 56px 56px, 56px 56px, auto, auto, auto;
+      opacity: 0.9;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.025) 0,
+        rgba(255,255,255,0.025) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      mix-blend-mode: screen;
+      opacity: 0.45;
+    }
+
+    #deck {
+      position: relative;
+      z-index: 2;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-items: center;
+      padding: clamp(26px, 5vw, 76px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(2vw);
+      transition: opacity 560ms ease, transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .layout {
+      width: min(1500px, 100%);
+      margin: 0 auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(420px, 1.45fr);
+      gap: clamp(28px, 5vw, 76px);
+      align-items: center;
+    }
+
+    .center {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 28px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 1120px;
+      font-size: clamp(54px, 9.2vw, 142px);
+      line-height: 0.92;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(42px, 6.5vw, 92px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: clamp(26px, 3.2vw, 48px);
+      line-height: 1.14;
+      font-weight: 900;
+    }
+
+    .lead {
+      max-width: 980px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.1vw, 30px);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .big-number {
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(54px, 8vw, 122px);
+      line-height: 0.95;
+      font-weight: 700;
+      color: var(--cyan);
+      text-shadow: 0 0 34px rgba(17,217,242,0.42);
+    }
+
+    .accent-pink {
+      color: var(--pink);
+      text-shadow: 0 0 34px rgba(255,43,118,0.35);
+    }
+
+    .accent-cyan {
+      color: var(--cyan);
+    }
+
+    .accent-amber {
+      color: var(--amber);
+    }
+
+    .accent-green {
+      color: var(--green);
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+      backdrop-filter: blur(18px);
+    }
+
+    .panel.pad {
+      padding: clamp(18px, 2.5vw, 34px);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 142px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 22px;
+      display: grid;
+      align-content: space-between;
+      gap: 14px;
+    }
+
+    .card .icon {
+      width: 30px;
+      height: 30px;
+      color: var(--cyan);
+    }
+
+    .card-title {
+      font-size: clamp(19px, 1.8vw, 28px);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .card-text {
+      color: var(--muted);
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.5;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      min-height: 230px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.045);
+      overflow: hidden;
+    }
+
+    .step::before {
+      content: attr(data-step);
+      position: absolute;
+      right: 18px;
+      bottom: -18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 84px;
+      color: rgba(255,255,255,0.06);
+      font-weight: 700;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .compare-box {
+      min-height: 420px;
+      padding: clamp(22px, 3vw, 40px);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.052);
+    }
+
+    .compare-box.dull {
+      border-color: rgba(255,106,95,0.35);
+    }
+
+    .compare-box.bright {
+      border-color: rgba(17,217,242,0.45);
+      background: rgba(17,217,242,0.07);
+    }
+
+    .bullets {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.4vw, 21px);
+      line-height: 1.45;
+    }
+
+    .bullet i {
+      width: 22px;
+      height: 22px;
+      margin-top: 3px;
+      flex: 0 0 auto;
+      color: var(--cyan);
+    }
+
+    .quote {
+      padding: clamp(24px, 4vw, 54px);
+      border-left: 6px solid var(--pink);
+      background: linear-gradient(90deg, rgba(255,43,118,0.12), rgba(255,255,255,0.045));
+      border-radius: 8px;
+      font-size: clamp(28px, 4.5vw, 66px);
+      line-height: 1.18;
+      font-weight: 900;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      min-height: 156px;
+      padding: 22px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .metric b {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .metric span {
+      display: block;
+      font-size: clamp(19px, 2vw, 28px);
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .command {
+      padding: 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.22);
+    }
+
+    code {
+      display: inline-block;
+      color: var(--amber);
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(15px, 1.4vw, 20px);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.52;
+      margin-top: 10px;
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 5;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 5px;
+      background: rgba(255,255,255,0.11);
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--cyan), var(--pink), var(--amber));
+      transition: width 360ms ease;
+    }
+
+    .nav {
+      position: fixed;
+      z-index: 6;
+      right: 24px;
+      bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav button:hover {
+      background: rgba(17,217,242,0.16);
+      border-color: rgba(17,217,242,0.52);
+    }
+
+    .counter {
+      min-width: 74px;
+      text-align: center;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 620ms ease, transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .active .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 { transition-delay: 90ms; }
+    .d2 { transition-delay: 180ms; }
+    .d3 { transition-delay: 270ms; }
+    .d4 { transition-delay: 360ms; }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      #deck {
+        min-height: 100vh;
+      }
+
+      .slide {
+        min-height: 100vh;
+        height: auto;
+        overflow-y: auto;
+      }
+
+      .split,
+      .compare,
+      .timeline,
+      .matrix,
+      .command-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-box,
+      .step {
+        min-height: auto;
+      }
+
+      .nav {
+        right: 14px;
+        bottom: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="deck" aria-live="polite">
+    <section class="slide active">
+      <div class="layout center">
+        <h1 class="reveal d1">以前三四天<br><span class="accent-cyan">现在半小时</span></h1>
+        <p class="lead reveal d2">调研跨境电商智能宠物喂食器这个类目，现在还有没有机会。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout compare">
+        <article class="compare-box dull reveal">
+          <h2 style="margin-top: 22px;">三四天<br>不一定理清楚</h2>
+          <div class="bullets">
+            <div class="bullet"><i data-lucide="shopping-bag"></i><span>手动翻亚马逊，记录价格、评分。</span></div>
+            <div class="bullet"><i data-lucide="message-square-warning"></i><span>一条条看差评。</span></div>
+            <div class="bullet"><i data-lucide="table-2"></i><span>最后再整理成表格。</span></div>
+          </div>
+        </article>
+        <article class="compare-box bright reveal d1">
+          <h2 style="margin-top: 22px;">Agent 采集<br>半小时出判断</h2>
+          <div class="bullets">
+            <div class="bullet"><i data-lucide="bot"></i><span>让 Agent 采集类目的头部商品。</span></div>
+            <div class="bullet"><i data-lucide="list-checks"></i><span>集中整理定价、评分、评论和差评高频词。</span></div>
+            <div class="bullet"><i data-lucide="target"></i><span>直接得到更像样的机会判断。</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">先拿到<br><span class="accent-pink">可分析的数据</span></h2>
+          <p class="lead reveal d2">这一步不是写结论，而是把商品信息采集成能比较、能判断的结构。</p>
+        </div>
+        <div class="matrix reveal d2">
+          <div class="metric"><b>01</b><span>定价区间</span></div>
+          <div class="metric"><b>02</b><span>评分分布</span></div>
+          <div class="metric"><b>03</b><span>评论数量</span></div>
+          <div class="metric"><b>04</b><span>差评高频词</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">机会不在<br>多加功能</h2>
+          <p class="lead reveal d2">真正的切入点，是把 App 连接和出粮稳定性做好。</p>
+        </div>
+        <div class="cards">
+          <div class="card reveal d1">
+            <i class="icon" data-lucide="wifi-off"></i>
+            <div>
+              <div class="card-title">差评集中点之一</div>
+              <div class="card-text">App 连接不稳定。</div>
+            </div>
+          </div>
+          <div class="card reveal d2">
+            <i class="icon" data-lucide="circle-alert"></i>
+            <div>
+              <div class="card-title">差评集中点之二</div>
+              <div class="card-text">出粮口容易卡。</div>
+            </div>
+          </div>
+          <div class="card reveal d3">
+            <i class="icon" data-lucide="badge-dollar-sign"></i>
+            <div>
+              <div class="card-title">$45-$65</div>
+              <div class="card-text">评分靠前的产品，价格基本压在这个区间。</div>
+            </div>
+          </div>
+          <div class="card reveal d4">
+            <i class="icon" data-lucide="trending-down"></i>
+            <div>
+              <div class="card-title">$80 以上</div>
+              <div class="card-text">反而很少有高分。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout center">
+        <div class="quote reveal d1">Agent 不是不会分析，<br>是抓不到干净数据。</div>
+        <p class="lead reveal d2">单个网页还好，一旦开始批量采集，任务就不稳定。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">Token 烧了很多</h2>
+        </div>
+        <div class="timeline">
+          <article class="step reveal d1" data-step="01">
+            <h3>页面抓不到</h3>
+            <p class="caption">有的页面直接拿不到有效内容。</p>
+          </article>
+          <article class="step reveal d2" data-step="02">
+            <h3>结构是乱的</h3>
+            <p class="caption">内容返回了，但结构不稳定，后续分析很难接上。</p>
+          </article>
+          <article class="step reveal d3" data-step="03">
+            <h3>动态渲染读不出来</h3>
+            <p class="caption">站点需要渲染，Agent 直接读不到想要的信息。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">网页采集<br><span class="accent-cyan">工具层</span></h2>
+          <p class="lead reveal d2">它把网页采集里比较容易翻车的部分拆出来，让 Agent 先拿采集结果，再做整理和分析。</p>
+        </div>
+        <div class="cards">
+          <div class="card reveal d1"><i class="icon" data-lucide="file-search"></i><div><div class="card-title">页面抓取</div><div class="card-text">单页内容采集。</div></div></div>
+          <div class="card reveal d2"><i class="icon" data-lucide="map"></i><div><div class="card-title">站点地图发现</div><div class="card-text">发现页面和 URL 结构。</div></div></div>
+          <div class="card reveal d3"><i class="icon" data-lucide="network"></i><div><div class="card-title">全站爬取</div><div class="card-text">面向多个页面持续采集。</div></div></div>
+          <div class="card reveal d4"><i class="icon" data-lucide="search"></i><div><div class="card-title">搜索结果获取</div><div class="card-text">快速获取搜索结果。</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">术业有专攻</h2>
+        </div>
+        <div class="panel pad reveal d2">
+          <div class="bullets" style="margin-top: 0;">
+            <div class="bullet"><i data-lucide="monitor-cog"></i><span>动态渲染：处理 Agent 直接读不出来的站点。</span></div>
+            <div class="bullet"><i data-lucide="rotate-ccw"></i><span>失败重试：减少批量任务里的不稳定。</span></div>
+            <div class="bullet"><i data-lucide="braces"></i><span>结构化输出：让结果能继续被整理和分析。</span></div>
+            <div class="bullet"><i data-lucide="route"></i><span>减少反复试错：Agent 不需要每次都猜页面结构。</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">支持接入<br>主流 Agent</h2>
+       
+        </div>
+        <div class="command-grid reveal d2">
+          <div class="command"><code>xcrawl-scrape</code><p class="caption">单页精准抓取</p></div>
+          <div class="command"><code>xcrawl-map</code><p class="caption">站点结构探测与 URL 发现</p></div>
+          <div class="command"><code>xcrawl-crawl</code><p class="caption">全站智能爬取</p></div>
+          <div class="command"><code>xcrawl-search</code><p class="caption">多引擎搜索结果快速获取</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="layout split">
+        <div class="stack">
+          <h2 class="reveal d1">不是所有
+		  <br>
+		  任务都需要</h2>
+        </div>
+        <div class="compare">
+          <article class="compare-box dull reveal d1" style="min-height: 330px;">
+            <h3>普通浏览器工具可能就够了</h3>
+            <div class="bullets">
+              <div class="bullet"><i data-lucide="file-text"></i><span>只是让 AI 总结一个页面。</span></div>
+            </div>
+          </article>
+          <article class="compare-box bright reveal d2" style="min-height: 330px;">
+            <h3>XCrawl 更适合</h3>
+            <div class="bullets">
+              <div class="bullet"><i data-lucide="boxes"></i><span>批量看竞品。</span></div>
+              <div class="bullet"><i data-lucide="search-check"></i><span>整理搜索结果。</span></div>
+              <div class="bullet"><i data-lucide="rows-3"></i><span>抓多个页面里的结构化信息。</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav" aria-label="幻灯片导航">
+    <button type="button" id="prev" title="上一页" aria-label="上一页">
+	
+   
+    <button type="button" id="next" title="下一页" aria-label="下一页">
+	
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const progress = document.getElementById("progress");
+    const counter = document.getElementById("counter");
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    let current = 0;
+
+    function pad(num) {
+      return String(num).padStart(2, "0");
+    }
+
+    function showSlide(index) {
+      current = Math.max(0, Math.min(index, slides.length - 1));
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === current);
+      });
+      progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+      counter.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+    }
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+    function prevSlide() {
+      showSlide(current - 1);
+    }
+
+    prevButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      prevSlide();
+    });
+
+    nextButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      nextSlide();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " ") nextSlide();
+      if (event.key === "ArrowLeft") prevSlide();
+      if (event.key === "Home") showSlide(0);
+      if (event.key === "End") showSlide(slides.length - 1);
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.clientX > window.innerWidth * 0.3) nextSlide();
+      else prevSlide();
+    });
+
+    showSlide(0);
+  </script>
+</body>
+</html>

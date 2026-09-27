@@ -1,0 +1,151 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ↔
+        - generic [ref=e6]:
+          - text: IMAGE BENCH
+          - generic [ref=e7]: same prompt / different model
+      - generic [ref=e8]:
+        - button "左右对比" [ref=e9] [cursor=pointer]
+        - button "上下对比" [ref=e10] [cursor=pointer]
+        - button "回到顶部" [ref=e11] [cursor=pointer]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: 9.15 · IMAGE MODEL BENCHMARK
+        - heading [level=1] [ref=e17]:
+          - text: 同一条提示词，
+          - emphasis [ref=e18]: 两种视觉答案。
+        - paragraph [ref=e19]: 把 GPT-Image-2.5 和 Seedream 5.0 Pro 放进同一组真实任务里：审美、编辑、海报、UI、科研绘图。拖着看，放大看，再回到提示词看。
+      - generic [ref=e20]:
+        - strong [ref=e21]: 没有全能选手，只有合适的工具。
+        - text: 这页保留了文稿里的原始提示词和输出图，结论先放在每个卡片上，判断权留给你。
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]: "3 : 0"
+        - generic [ref=e25]: 原生审美 · Seedream 领先
+      - generic [ref=e26]:
+        - generic [ref=e27]: "2 : 0"
+        - generic [ref=e28]: 编辑与一致性 · GPT 领先
+      - generic [ref=e29]:
+        - generic [ref=e30]: "13"
+        - generic [ref=e31]: 提示词场景
+      - generic [ref=e32]:
+        - generic [ref=e33]: "31"
+        - generic [ref=e34]: 张本地素材
+    - generic "筛选对比维度" [ref=e35]:
+      - button "全部 13" [ref=e36] [cursor=pointer]
+      - button "01 审美" [ref=e37] [cursor=pointer]
+      - button "02 编辑" [ref=e38] [cursor=pointer]
+      - button "03 海报" [ref=e39] [cursor=pointer]
+      - button "04 UI" [ref=e40] [cursor=pointer]
+      - button "05 科研绘图" [ref=e41] [cursor=pointer]
+    - generic [ref=e42]:
+      - generic [ref=e473]:
+        - heading "01 · 原生审美" [level=2] [ref=e474]
+        - paragraph [ref=e475]: 同一提示词，不改参数，先看模型自己的审美倾向。
+      - article [ref=e476]:
+        - generic [ref=e477]:
+          - generic [ref=e478]:
+            - generic [ref=e479]: 审美 / 01
+            - heading "中式诗意肖像" [level=3] [ref=e480]
+            - generic [ref=e481]: 柔润低纹理 · 16:9
+          - generic [ref=e482]:
+            - generic [ref=e483]: 人像
+            - generic [ref=e484]: 氛围
+            - generic [ref=e485]: 肤质
+        - paragraph [ref=e486]: Seedream 更暖、更有辨识度；GPT 的统一感更强，但容易出现假人和动漫感。
+        - generic [ref=e487]:
+          - generic [ref=e488]:
+            - generic [ref=e489]:
+              - generic [ref=e490]: GPT-Image-2.5
+              - generic [ref=e492]: 1 output
+            - figure [ref=e494]:
+              - img "GPT-Image-2.5 · 中式诗意肖像" [ref=e495]
+              - text: 点击放大
+          - generic [ref=e496]:
+            - generic [ref=e497]:
+              - generic [ref=e498]: Seedream 5.0 Pro
+              - generic [ref=e500]: 1 output
+            - figure [ref=e502]:
+              - img "Seedream 5.0 Pro · 中式诗意肖像" [ref=e503]
+              - text: 点击放大
+        - group [ref=e505]:
+          - generic "查看本组完整提示词 −" [active] [ref=e567] [cursor=pointer]
+          - generic [ref=e568]: 生成图片：修长柔和的鹅蛋脸，舒展的深棕杏眼，平缓自然眉，鼻梁纤细，嘴唇轻合，素净淡妆。生成一张横向16:9的中式诗意电影肖像。 成像质感优先：这是一帧柔润、略理想化的中式美学AI电影影像，具有明显的表面肌理柔化，不是展示皮肤细节的高清摄影。脸部仍是真人五官和自然体积，但皮肤表面极平顺，像奶油金色的温润瓷光，只有宽大、连续、柔缓的光影塑形，没有任何毛孔、颗粒、雀斑、绒毛、细纹或砂纸肌理；眼睛、眉形和唇线可辨，其余皮肤不刻画细碎细节。白衣像光滑的柔润绸面，无布纹，无密集细褶；白花的瓣面平顺，只有几道柔和明暗，无植物纤维纹理。头发是整体暗色体块与宽柔金色光纹，不强调每根发丝。背景完全化开，大面积绿光渐变。强力降低微纹理对比，同时保留扎实黑位和清楚的大块明暗，不给画面蒙灰；高光边缘略有扩散软晕，呈现柔而凝练的中式电影意境。 画面是一位女子在深檐下安静执花的正面肩部以上肖像。相机保持足够距离，从完整发顶到双肩的中近景，必须看见整个圆润颅顶轮廓，发顶在画面高度3%左右，额头发际线约在高度25%，双眼约在高度46%，唇部约在高度66%，肩线只在最下方约15%区域出现。人脸中轴在横幅中央约51%处，脸宽约占横幅四分之一，头发连盘髻约占三分之一；人物左右均留出宽阔的绿色背景，不能将头放大裁掉。她头部端正、不歪头，面部近乎正对镜头，眼睑稍垂、目光沉静地看向镜头，唇自然轻合。深棕近黑的头发偏分后低低盘起，画面右侧耳后别一朵乳白花，两耳佩戴细长素白水滴坠。纯米白色光滑柔软的窄立领挂脖衣，露肩，领子简洁贴颈。画面左下的一只手握住短花梗，将一朵奶白色花举在嘴唇下方，花中心约在画面横向47%、纵向75%。花不是密集碎瓣的花球，而是两三层数量不多的宽阔、略尖、厚润花瓣，向左右舒展成浅碗，白花直径约脸宽一半；可以看见分明的大瓣轮廓，手指自然弯曲。 画面的神韵来自有方向的暖光、浓淡分明的绿金色和柔润低纹理。右上方的暖阳擦亮发顶及右侧盘发，在深黑发块上形成成片蜜金亮纹；右侧面颊有一块较宽的奶油金受光面，边缘柔软，鼻梁中部稍亮。眉弓下、眼窝、左脸和下颌是温润黄赭阴影，仍保留眼神与五官体积。整张脸的底色是暖米金中间调，有局部亮暗层次，不是全脸粉白，也不陷入全脸棕黑。颈侧与肩膀只有零散柔暖光片，不沿肩线连续描出耀眼白边。少量发丝和白花瓣最亮，亮部温和收住。 背景以有密度的中等亮度冷玉绿为主，大片柔和青绿色和翠绿色，明确偏绿而不是卡其黄、橄榄棕或灰褐色。画面左后方约占四成面积，呈宽广、平缓、连续的青瓷绿色光场，像远处明亮绿水映入窗内；右后方更深，偏墨青绿。绿色的中间调与脸颊中间调相近，左侧局部比脸稍亮；只有人物和花受光处温暖，背景仍清凉。画面最右约六分之一为扎实近黑竖向窗框，最左有一条黑框和一道很宽很模糊的浅绿竖向光带。背后所有景物都化成大块平顺的绿光渐变，横向大块颜色互相融化，看不到任何一片树叶、一根树枝、一块砖、一条屋檐、一格窗棂；没有斑驳树影、密集散景光斑或颗粒状绿色团块。保留绿黑背景与奶油金人物的清楚冷暖分离。 避免均匀正面美容光、粉白皮肤、全脸深暗、满肩硬白轮廓光、橙色滤镜、灰黄背景、锐利毛孔、HDR细节、密集菊花瓣、清晰园林建筑、花纹服装、多余手指与肢体、文字、标志和水印。
+          - button "复制提示词" [ref=e570] [cursor=pointer]
+      - article [ref=e507]:
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - generic [ref=e510]: 审美 / 02
+            - heading "校园初恋特写" [level=3] [ref=e511]
+            - generic [ref=e512]: 清透伪素颜 · 超近景
+          - generic [ref=e513]:
+            - generic [ref=e514]: 人像
+            - generic [ref=e515]: 面部
+            - generic [ref=e516]: 真实感
+        - paragraph [ref=e517]: Seedream 的少女感更轻盈；GPT 更像稳定的标准化人像方案。
+        - generic [ref=e518]:
+          - generic [ref=e519]:
+            - generic [ref=e520]:
+              - generic [ref=e521]: GPT-Image-2.5
+              - generic [ref=e523]: 1 output
+            - figure [ref=e525]:
+              - img "GPT-Image-2.5 · 校园初恋特写" [ref=e526]
+              - text: 点击放大
+          - generic [ref=e527]:
+            - generic [ref=e528]:
+              - generic [ref=e529]: Seedream 5.0 Pro
+              - generic [ref=e531]: 1 output
+            - figure [ref=e533]:
+              - img "Seedream 5.0 Pro · 校园初恋特写" [ref=e534]
+              - text: 点击放大
+        - group [ref=e536]:
+          - generic "查看本组完整提示词 ＋" [ref=e537] [cursor=pointer]
+      - article [ref=e538]:
+        - generic [ref=e539]:
+          - generic [ref=e540]:
+            - generic [ref=e541]: 审美 / 03
+            - heading "海边胶片人像" [level=3] [ref=e542]
+            - generic [ref=e543]: 随机姿态 · 过曝颗粒
+          - generic [ref=e544]:
+            - generic [ref=e545]: 人像
+            - generic [ref=e546]: 胶片
+            - generic [ref=e547]: 随机性
+        - paragraph [ref=e548]: Seedream 的现场感和风格记忆点更明显；GPT 更克制、更规整。
+        - generic [ref=e549]:
+          - generic [ref=e550]:
+            - generic [ref=e551]:
+              - generic [ref=e552]: GPT-Image-2.5
+              - generic [ref=e554]: 1 output
+            - figure [ref=e556]:
+              - img "GPT-Image-2.5 · 海边胶片人像"
+              - text: 点击放大
+          - generic [ref=e557]:
+            - generic [ref=e558]:
+              - generic [ref=e559]: Seedream 5.0 Pro
+              - generic [ref=e561]: 1 output
+            - figure [ref=e563]:
+              - img "Seedream 5.0 Pro · 海边胶片人像"
+              - text: 点击放大
+        - group [ref=e565]:
+          - generic "查看本组完整提示词 ＋" [ref=e566] [cursor=pointer]
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - heading "把模型当成工具箱， 别把它当成冠军榜。" [level=2] [ref=e453]: 把模型当成工具箱，别把它当成冠军榜。
+        - paragraph [ref=e454]: 同一个模型在不同任务里会切换角色：Seedream 更容易给出有温度、有风格记忆点的人像；GPT 在参考图编辑、角色一致性和复杂版式上更像一个可靠的执行者。真正有用的比较，是把任务拆开。
+      - generic [ref=e455]:
+        - heading "场景选择速记" [level=3] [ref=e456]
+        - generic [ref=e457]:
+          - generic [ref=e458]: 想要氛围
+          - generic [ref=e459]: 先看 Seedream 的人像与节气海报
+        - generic [ref=e460]:
+          - generic [ref=e461]: 要做编辑
+          - generic [ref=e462]: 优先看 GPT 的融合与四视图
+        - generic [ref=e463]:
+          - generic [ref=e464]: 要做生产
+          - generic [ref=e465]: 重点放大 UI 和科研绘图的文字、结构、连接
+    - generic [ref=e466]:
+      - generic [ref=e467]: Source · 9.15 豆包生图和gpt生图对比-claude.md
+      - generic [ref=e468]: 本页图片为本地素材 · 点击任意图片放大

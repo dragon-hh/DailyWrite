@@ -1,0 +1,247 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: ← → 翻页 · B 静态 · ESC 索引
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: AI DAILY · AUTOMATED INPUT SYSTEM
+        - generic [ref=e8]: DW · 2026.06.19 · 01 / 08
+      - generic [ref=e9]:
+        - generic [ref=e10]: TWO DIGESTS · ONE MORNING ROUTINE
+        - heading "每天 10 分钟 抓住 AI 动态" [level=1] [ref=e11]:
+          - text: 每天 10 分钟
+          - text: 抓住 AI 动态
+        - generic [ref=e12]:
+          - generic [ref=e13]: 两个日报负责广度和深度。每天早上 10 点,飞书自动推送,同时备份进 Obsidian 知识库。
+          - generic [ref=e14]:
+            - generic [ref=e15]: 口播稿 · 6.19 ai日报-claude v1
+            - generic [ref=e16]: → arrow keys / swipe
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - img "AI HOT 日报截图" [ref=e20]
+        - generic [ref=e21]:
+          - generic [ref=e22]: VISUAL EVIDENCE · AI HOT
+          - generic [ref=e23]: 02 / 08
+        - generic [ref=e25]:
+          - text: AI HOT
+          - text: 日报
+      - generic [ref=e26]:
+        - generic [ref=e27]: 它按时间线整理模型发布、产品更新、行业动态和重要论文。对 AI 从业者来说,这里既是素材库,也是认知更新窗口。
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e31]: Push Time
+            - generic [ref=e32]: 10:00
+            - paragraph [ref=e34]: 每天早上主动送到飞书
+          - generic [ref=e35]:
+            - generic [ref=e37]: Daily Cost
+            - generic [ref=e38]: 10min
+            - paragraph [ref=e40]: 每天扫完关键动态
+          - generic [ref=e41]:
+            - generic [ref=e43]: System
+            - generic [ref=e44]: "2"
+            - paragraph [ref=e46]: 两个日报组成输入系统
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e50]: DIGEST PAIR · WIDTH / DEPTH
+        - generic [ref=e51]: 03 / 08
+      - generic [ref=e52]:
+        - generic [ref=e53]: 不是多看信息,而是分工明确
+        - heading "一个看发生了什么 一个看聪明人在想什么" [level=2] [ref=e54]:
+          - text: 一个看发生了什么
+          - text: 一个看聪明人在想什么
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - generic [ref=e58]: "01"
+            - generic [ref=e59]: AI HOT
+          - generic [ref=e60]: 行业时间线
+          - paragraph [ref=e61]: 模型发布、产品更新、行业动态、重要论文,按时间线梳理成每日热点。
+          - list [ref=e62]:
+            - listitem [ref=e63]: 清一色硬核科技媒体信源
+            - listitem [ref=e64]: 适合作为素材库和认知窗口
+            - listitem [ref=e65]: 也支持社区共建提报信源
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: "02"
+            - generic [ref=e70]: AI Builders
+          - generic [ref=e71]: 顶级玩家大脑
+          - paragraph [ref=e72]: 追踪真正构建产品的人,看他们的推文、博客、播客里出现的新观点和新趋势。
+          - list [ref=e73]:
+            - listitem [ref=e74]: 长播客会被摘要提炼
+            - listitem [ref=e75]: 每条内容附原始来源
+            - listitem [ref=e76]: 想深入就追源,不想深入也能扫核心
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]: FIELD NOTES · SOURCE / SCREENSHOTS
+        - generic [ref=e81]: 04 / 08
+      - generic [ref=e82]:
+        - generic [ref=e83]: 三张截图对应原稿里的三类证据
+        - heading "不是标题党流量号 而是可追源的信息输入" [level=2] [ref=e84]:
+          - text: 不是标题党流量号
+          - text: 而是可追源的信息输入
+      - generic [ref=e85]:
+        - article [ref=e86]:
+          - img "AI HOT 信源墙截图" [ref=e88]
+          - generic [ref=e89]: SOURCE WALL
+          - paragraph [ref=e90]: 原稿强调:信源以硬核科技媒体为主。
+        - article [ref=e91]:
+          - img "AI Builders Digest 截图" [ref=e93]
+          - generic [ref=e94]: BUILDERS
+          - paragraph [ref=e95]: 追踪推文、博客、播客中的新观点。
+        - article [ref=e96]:
+          - img "AI HOT 日报内容截图" [ref=e98]
+          - generic [ref=e99]: TIMELINE
+          - paragraph [ref=e100]: 按时间线看行业当天发生了什么。
+        - article [ref=e101]:
+          - generic [ref=e102]: PODCAST
+          - paragraph [ref=e103]: 长播客摘要提炼
+          - paragraph [ref=e104]: 不必完整听完,先吸收核心观点。
+        - article [ref=e105]:
+          - generic [ref=e106]: ORIGIN
+          - paragraph [ref=e107]: 每条附原始来源
+          - paragraph [ref=e108]: 感兴趣再深入,不感兴趣扫一眼。
+        - article [ref=e109]:
+          - generic [ref=e110]: RESULT
+          - paragraph [ref=e111]: 信息每天主动找我
+          - paragraph [ref=e112]: 我只需要消费就好了。
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]: WORKFLOW · FEISHU / OBSIDIAN
+        - generic [ref=e117]: 05 / 08
+      - generic [ref=e118]:
+        - generic [ref=e119]: 自动化不是多一个工具,而是少一次主动寻找
+        - heading "让日报自动找上我" [level=2] [ref=e120]
+      - generic [ref=e122]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: "01"
+          - generic [ref=e127]: 两个日报
+          - generic [ref=e128]: 广度 + 深度
+        - generic [ref=e131]:
+          - generic [ref=e132]: "02"
+          - generic [ref=e133]: OpenClaw
+          - generic [ref=e134]: 配置定时任务
+        - generic [ref=e137]:
+          - generic [ref=e138]: 10:00
+          - generic [ref=e139]: 飞书推送
+          - generic [ref=e140]: 每天早上到眼前
+        - generic [ref=e143]:
+          - generic [ref=e144]: "04"
+          - generic [ref=e145]: Obsidian
+          - generic [ref=e146]: 同步备份
+        - generic [ref=e149]:
+          - generic [ref=e150]: "05"
+          - generic [ref=e151]: 内容生产
+          - generic [ref=e152]: 检索、加工、复用
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]: KNOWLEDGE LOOP · INPUT TO OUTPUT
+        - generic [ref=e157]: 06 / 08
+      - generic [ref=e158]:
+        - generic [ref=e159]: 真正有用的是沉淀后的二次加工
+        - heading "从信息输入 到素材复用" [level=2] [ref=e160]:
+          - text: 从信息输入
+          - text: 到素材复用
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - generic [ref=e164]: "01"
+            - generic [ref=e165]:
+              - generic [ref=e166]: 消费日报
+              - paragraph [ref=e167]: 每天 10 分钟掌握重要动态。
+          - generic [ref=e168]:
+            - generic [ref=e169]: "02"
+            - generic [ref=e170]:
+              - generic [ref=e171]: 备份知识库
+              - paragraph [ref=e172]: 同步存进 Obsidian,后续可检索。
+          - generic [ref=e173]:
+            - generic [ref=e174]: "03"
+            - generic [ref=e175]:
+              - generic [ref=e176]: 加工处理
+              - paragraph [ref=e177]: 关键词、趋势、案例都能再处理。
+          - generic [ref=e178]:
+            - generic [ref=e179]: "04"
+            - generic [ref=e180]:
+              - generic [ref=e181]: 写内容找素材
+              - paragraph [ref=e182]: 信息变成可复用的内容资产。
+        - generic [ref=e183]:
+          - img [ref=e184]
+          - generic:
+            - generic: LOOP
+          - generic [ref=e195]: READ
+          - generic [ref=e196]: SAVE
+          - generic [ref=e197]: PROCESS
+          - generic [ref=e198]: REUSE
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]: TRANSFER · SAME METHOD
+        - generic [ref=e203]: 07 / 08
+      - heading "这套玩法 不只适合 AI" [level=2] [ref=e206]:
+        - text: 这套玩法
+        - text: 不只适合 AI
+      - generic [ref=e207]:
+        - article [ref=e208]:
+          - generic [ref=e209]: — 01 / FINANCE
+          - generic [ref=e210]:
+            - heading "财经日报" [level=3] [ref=e211]
+            - paragraph [ref=e212]: 关注市场变化和政策信号。
+        - article [ref=e213]:
+          - generic [ref=e214]: — 02 / ENERGY
+          - generic [ref=e215]:
+            - heading "能源动态" [level=3] [ref=e216]
+            - paragraph [ref=e217]: 收敛行业信源,固定时间推送。
+        - article [ref=e218]:
+          - generic [ref=e219]: — 03 / MEDICAL
+          - generic [ref=e220]:
+            - heading "医疗政策" [level=3] [ref=e221]
+            - paragraph [ref=e222]: 重要更新沉淀进知识库。
+        - article [ref=e223]:
+          - generic [ref=e224]: — 04 / FORMULA
+          - generic [ref=e225]:
+            - heading "收敛信源 自动推送 沉淀知识库" [level=3] [ref=e226]:
+              - text: 收敛信源
+              - text: 自动推送
+              - text: 沉淀知识库
+            - paragraph [ref=e227]: 思路完全一样。
+    - generic [ref=e230]:
+      - generic [ref=e231]:
+        - generic [ref=e232]:
+          - generic [ref=e233]: 08 / 08
+          - generic [ref=e234]: CLOSING
+        - generic [ref=e235]:
+          - generic [ref=e236]: MANIFESTO
+          - heading "让信息 主动 找你" [level=2] [ref=e237]:
+            - text: 让信息
+            - text: 主动 找你
+          - generic [ref=e238]: 信息摄入的效率和质量,决定了你做判断的速度和准确性。
+        - generic [ref=e239]:
+          - generic [ref=e240]: AI DAILY WORKFLOW
+          - generic [ref=e241]: END
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]: COPY & RUN
+          - generic [ref=e245]: 03 ACTIONS
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]: "01"
+            - generic [ref=e249]:
+              - heading "安装 ai-hot" [level=3] [ref=e250]
+              - paragraph [ref=e251]: 把 skill 链接发给 Agent,设置每天 10 点推送日报。
+          - generic [ref=e252]:
+            - generic [ref=e253]: "02"
+            - generic [ref=e254]:
+              - heading "安装 AI Builders" [level=3] [ref=e255]
+              - paragraph [ref=e256]: 同样设置每天 10 点推送,补上深度观点。
+          - generic [ref=e257]:
+            - generic [ref=e258]: "03"
+            - generic [ref=e259]:
+              - heading "收藏安装指令" [level=3] [ref=e260]
+              - paragraph [ref=e261]: 评论区复制,有问题评论区见。
+        - generic [ref=e262]: → 完 · END OF FIELD NOTE
+  - generic [ref=e263]:
+    - button "Page 1" [ref=e264] [cursor=pointer]
+    - button "Page 2" [ref=e265] [cursor=pointer]
+    - button "Page 3" [ref=e266] [cursor=pointer]
+    - button "Page 4" [ref=e267] [cursor=pointer]
+    - button "Page 5" [ref=e268] [cursor=pointer]
+    - button "Page 6" [ref=e269] [cursor=pointer]
+    - button "Page 7" [ref=e270] [cursor=pointer]
+    - button "Page 8" [ref=e271] [cursor=pointer]

@@ -1,0 +1,235 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: ← → 翻页 · B 静态 · ESC 索引
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]: AI DAILY · AUTOMATED INPUT SYSTEM
+        - generic [ref=e8]: DW · 2026.06.19 · 01 / 08
+      - generic [ref=e9]:
+        - generic [ref=e10]: HOOK · INFORMATION OVERLOAD
+        - heading "每天被 AI 信息 轰炸？" [level=1] [ref=e11]:
+          - text: 每天被 AI
+          - text: 信息 轰炸？
+        - generic [ref=e12]:
+          - generic [ref=e13]: 真正有价值的东西,你却可能错过了。今天分享一套 AI 信息输入系统:两个日报 + 全自动推送。
+          - generic [ref=e14]:
+            - generic [ref=e15]: 口播稿 · 6.19 ai日报-claude v1
+            - generic [ref=e16]: → arrow keys / swipe
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: OPENING · TWO DIGESTS + AUTOMATION
+        - generic [ref=e21]: 02 / 08
+      - generic [ref=e22]:
+        - generic [ref=e23]: 两个 AI 日报 skill:一个负责广度,一个负责深度
+        - heading "每天 10 分钟 重要动态基本不会漏" [level=2] [ref=e24]:
+          - text: 每天 10 分钟
+          - text: 重要动态基本不会漏
+      - generic [ref=e25]:
+        - article [ref=e26]:
+          - generic [ref=e27]: "01"
+          - generic [ref=e28]: ai-hot
+          - paragraph [ref=e29]: 负责广度,按时间线梳理 AI 领域每天热点。
+        - article [ref=e30]:
+          - generic [ref=e31]: "02"
+          - generic [ref=e32]: AI Builders
+          - paragraph [ref=e33]: 负责深度,追踪构建产品的人在想什么。
+        - article [ref=e34]:
+          - generic [ref=e35]: 10:00
+          - generic [ref=e36]: 自动送达
+          - paragraph [ref=e37]: 每天早上 10 点,日报自动送到眼前。
+        - article [ref=e38]:
+          - generic [ref=e39]: Agent
+          - generic [ref=e40]: 全自动推送
+          - paragraph [ref=e41]: 用 Agent 帮你把日报推送到飞书。
+        - article [ref=e42]:
+          - generic [ref=e43]: Feishu
+          - generic [ref=e44]: 即时消费
+          - paragraph [ref=e45]: 信息主动找你,你只需要消费就好了。
+        - article [ref=e46]:
+          - generic [ref=e47]: Obsidian
+          - generic [ref=e48]: 知识库沉淀
+          - paragraph [ref=e49]: 顺便存进 Obsidian,后续检索和写稿都方便。
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - img "AI HOT 信源墙截图" [ref=e53]
+        - generic [ref=e54]:
+          - generic [ref=e55]: FIRST DIGEST · AI HOT
+          - generic [ref=e56]: 03 / 08
+        - generic [ref=e58]:
+          - text: 第一个
+          - text: ai-hot
+      - generic [ref=e59]:
+        - generic [ref=e60]: 来自博主「数字生命卡兹克」。它做的事情很简单:按时间线,把 AI 领域每天的热点和新闻梳理成日报。
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e64]: Timeline
+            - generic [ref=e65]: 按时间线
+            - paragraph [ref=e67]: 发生什么,先排清楚。
+          - generic [ref=e68]:
+            - generic [ref=e70]: Coverage
+            - generic [ref=e71]: 4类
+            - paragraph [ref=e73]: 模型、产品、行业、论文。
+          - generic [ref=e74]:
+            - generic [ref=e76]: Source
+            - generic [ref=e77]: 硬核
+            - paragraph [ref=e79]: 不是标题党流量号,质量有保证。
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - generic [ref=e83]: SECOND DIGEST · AI BUILDERS DIGEST
+        - generic [ref=e84]: 04 / 08
+      - generic [ref=e85]:
+        - generic [ref=e86]: 第二个来自「张咋啦」
+        - heading "AI Builders 关注的是 聪明人在想什么" [level=2] [ref=e87]:
+          - text: AI Builders 关注的是
+          - text: 聪明人在想什么
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: "01"
+            - generic [ref=e92]: Difference
+          - generic [ref=e93]: 不是发生了什么
+          - paragraph [ref=e94]: ai-hot 帮你跟着行业跑,看每天发生了哪些重要更新。
+          - list [ref=e95]:
+            - listitem [ref=e96]: 模型发布
+            - listitem [ref=e97]: 产品更新
+            - listitem [ref=e98]: 行业动态和重要论文
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - generic [ref=e102]: "02"
+            - generic [ref=e103]: Builders
+          - generic [ref=e104]: 而是谁在怎么想
+          - paragraph [ref=e105]: 它追踪真正构建产品的人,从推文、博客、播客里提炼新观点和新趋势。
+          - img "AI Builders Digest 截图" [ref=e107]
+          - list [ref=e108]:
+            - listitem [ref=e109]: 长播客会被摘要提炼
+            - listitem [ref=e110]: 每条内容附原始来源
+            - listitem [ref=e111]: 扫一眼也能吸收核心观点
+    - generic [ref=e113]:
+      - generic [ref=e114]:
+        - generic [ref=e115]: MY AUTOMATION WORKFLOW · OPENCLAW
+        - generic [ref=e116]: 05 / 08
+      - generic [ref=e117]:
+        - generic [ref=e118]: 但光看日报还不够,我做了一件事
+        - heading "让日报自动找上我" [level=2] [ref=e119]
+      - generic [ref=e121]:
+        - generic [ref=e124]:
+          - generic [ref=e125]: "01"
+          - generic [ref=e126]: 两个日报
+          - generic [ref=e127]: 广度 + 深度
+        - generic [ref=e130]:
+          - generic [ref=e131]: "02"
+          - generic [ref=e132]: OpenClaw
+          - generic [ref=e133]: 配置定时任务
+        - generic [ref=e136]:
+          - generic [ref=e137]: 10:00
+          - generic [ref=e138]: 飞书推送
+          - generic [ref=e139]: 每天早上到眼前
+        - generic [ref=e142]:
+          - generic [ref=e143]: "04"
+          - generic [ref=e144]: Obsidian
+          - generic [ref=e145]: 同步备份
+        - generic [ref=e148]:
+          - generic [ref=e149]: "05"
+          - generic [ref=e150]: 后续加工
+          - generic [ref=e151]: 关键词、检索、素材
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - generic [ref=e155]: INSTALL GUIDE · COPY TO AGENT
+        - generic [ref=e156]: 06 / 08
+      - generic [ref=e157]:
+        - generic [ref=e158]: 安装方式很简单,直接把指令发给你的 Agent
+        - heading "两条安装指令 直接复制用" [level=2] [ref=e159]:
+          - text: 两条安装指令
+          - text: 直接复制用
+      - generic [ref=e160]:
+        - article [ref=e161]:
+          - generic [ref=e162]: AI-HOT INSTALL
+          - generic [ref=e163]: "帮我安装这个 skill:"
+          - generic [ref=e164]: https://aihot.virxact.com/aihot-skill/ 并设置每天 10 点推送日报
+        - article [ref=e165]:
+          - generic [ref=e166]: BUILDERS INSTALL
+          - generic [ref=e167]: "帮我安装这个 skill:"
+          - generic [ref=e168]: https://github.com/zarazhangrui/follow-builders 并设置每天 10 点推送日报
+        - article [ref=e169]:
+          - generic [ref=e170]: COMMENT AREA
+          - generic [ref=e171]: 指令我放评论区了
+          - paragraph [ref=e172]: 直接复制用就行。
+        - article [ref=e173]:
+          - generic [ref=e174]: PROMISE
+          - generic [ref=e175]: 两个日报 + 一套自动化流程
+          - paragraph [ref=e176]: 我已经用了好几个月,效果很不错。
+    - generic [ref=e178]:
+      - generic [ref=e179]:
+        - generic [ref=e180]: TRANSFER · SAME METHOD
+        - generic [ref=e181]: 07 / 08
+      - heading "这套玩法 不只适合 AI" [level=2] [ref=e184]:
+        - text: 这套玩法
+        - text: 不只适合 AI
+      - generic [ref=e185]:
+        - article [ref=e186]:
+          - generic [ref=e187]: — 01 / FINANCE
+          - generic [ref=e188]:
+            - heading "财经日报" [level=3] [ref=e189]
+            - paragraph [ref=e190]: 关注市场变化和政策信号。
+        - article [ref=e191]:
+          - generic [ref=e192]: — 02 / ENERGY
+          - generic [ref=e193]:
+            - heading "能源动态" [level=3] [ref=e194]
+            - paragraph [ref=e195]: 收敛行业信源,固定时间推送。
+        - article [ref=e196]:
+          - generic [ref=e197]: — 03 / MEDICAL
+          - generic [ref=e198]:
+            - heading "医疗政策" [level=3] [ref=e199]
+            - paragraph [ref=e200]: 重要更新沉淀进知识库。
+        - article [ref=e201]:
+          - generic [ref=e202]: — 04 / FORMULA
+          - generic [ref=e203]:
+            - heading "收敛信源 自动推送 沉淀知识库" [level=3] [ref=e204]:
+              - text: 收敛信源
+              - text: 自动推送
+              - text: 沉淀知识库
+            - paragraph [ref=e205]: 思路完全一样。
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - generic [ref=e211]: 08 / 08
+          - generic [ref=e212]: CLOSING
+        - generic [ref=e213]:
+          - generic [ref=e214]: MANIFESTO
+          - heading "两个日报 一套 流程" [level=2] [ref=e215]:
+            - text: 两个日报
+            - text: 一套 流程
+          - generic [ref=e216]: 好了,今天分享就这些。我已经用了好几个月,效果很不错。
+        - generic [ref=e217]:
+          - generic [ref=e218]: AI DAILY WORKFLOW
+          - generic [ref=e219]: END
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e222]: ENDING · CTA
+          - generic [ref=e223]: 03 LINES
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - generic [ref=e226]: "01"
+            - generic [ref=e227]:
+              - heading "两个日报" [level=3] [ref=e228]
+              - paragraph [ref=e229]: 一个负责广度,一个负责深度。
+          - generic [ref=e230]:
+            - generic [ref=e231]: "02"
+            - generic [ref=e232]:
+              - heading "一套自动化流程" [level=3] [ref=e233]
+              - paragraph [ref=e234]: 每天 10 点推送到飞书,同时备份进 Obsidian。
+          - generic [ref=e235]:
+            - generic [ref=e236]: "03"
+            - generic [ref=e237]:
+              - heading "点个收藏" [level=3] [ref=e238]
+              - paragraph [ref=e239]: 方便回来看安装指令。有问题我们评论区见。
+        - generic [ref=e240]: → 完 · END OF FIELD NOTE
+  - generic [ref=e241]:
+    - button "Page 1" [ref=e242] [cursor=pointer]
+    - button "Page 2" [ref=e243] [cursor=pointer]
+    - button "Page 3" [ref=e244] [cursor=pointer]
+    - button "Page 4" [ref=e245] [cursor=pointer]
+    - button "Page 5" [ref=e246] [cursor=pointer]
+    - button "Page 6" [ref=e247] [cursor=pointer]
+    - button "Page 7" [ref=e248] [cursor=pointer]
+    - button "Page 8" [ref=e249] [cursor=pointer]

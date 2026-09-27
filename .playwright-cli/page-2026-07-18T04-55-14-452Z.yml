@@ -1,0 +1,62 @@
+- main "AI 开发工作流 4:3 演示" [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - generic:
+        - generic: STEP 04 / implement
+        - heading "到这里 才真正 开始写代码" [level=2]:
+          - text: 到这里才真正
+          - generic: 开始写代码
+        - paragraph: 在适合的边界使用 TDD，过程中持续运行测试，完成后审查并提交。
+      - generic:
+        - generic:
+          - generic: $ implement ticket-01
+          - generic: → choose suitable TDD boundary
+          - generic: → run tests continuously
+          - generic: ✓ tests passed
+          - generic: → review code
+          - generic: ✓ git commit
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - generic [ref=e122]: FINAL / 完整开发流程
+        - heading "先想清楚 再让 AI 跑得快" [level=2] [ref=e123]:
+          - text: 先想清楚再让 AI
+          - generic [ref=e124]: 跑得快
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: "01"
+            - generic [ref=e128]: 通过追问澄清需求
+            - code [ref=e129]: grill-with-docs
+          - generic [ref=e130]:
+            - generic [ref=e131]: "02"
+            - generic [ref=e132]: 基于讨论生成 PRD
+            - code [ref=e133]: to-spec
+          - generic [ref=e134]:
+            - generic [ref=e135]: "03"
+            - generic [ref=e136]: 拆成可独立运行的子任务
+            - code [ref=e137]: to-tickets
+          - generic [ref=e138]:
+            - generic [ref=e139]: "04"
+            - generic [ref=e140]: 完成开发和 Git 管理
+            - code [ref=e141]: implement
+      - generic [ref=e142]:
+        - generic [ref=e143]: INSTALL / 按需选择
+        - code [ref=e144]: npx skills@latest addmattpocock/skills
+        - generic [ref=e146]:
+          - text: 不知道该调用哪个 Skill？直接调用
+          - strong [ref=e148]: ask-matt
+          - text: ，让它根据任务帮你导航。
+  - generic "场景导航" [ref=e17]:
+    - button "1. 25 个问题" [ref=e18] [cursor=pointer]
+    - button "2. 真正的危险" [ref=e19] [cursor=pointer]
+    - button "3. 工程级 Skills" [ref=e20] [cursor=pointer]
+    - button "4. 四步主线" [ref=e21] [cursor=pointer]
+    - button "5. grill-with-docs" [ref=e22] [cursor=pointer]
+    - button "6. 关键决策沉淀" [ref=e23] [cursor=pointer]
+    - button "7. to-spec" [ref=e24] [cursor=pointer]
+    - button "8. to-tickets" [ref=e25] [cursor=pointer]
+    - button "9. 横向拆分的问题" [ref=e26] [cursor=pointer]
+    - button "10. 纵向切片" [ref=e27] [cursor=pointer]
+    - button "11. 每个任务交付完整功能" [ref=e28] [cursor=pointer]
+    - button "12. implement" [ref=e29] [cursor=pointer]
+    - button "13. 双重审查" [ref=e30] [cursor=pointer]
+    - button "14. 完整流程" [active] [ref=e31] [cursor=pointer]

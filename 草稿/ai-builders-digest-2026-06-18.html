@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Builders Digest 2026-06-18 · One Screen</title>
+  <style>
+    :root {
+      --paper: #f4f5f0;
+      --ink: #171811;
+      --muted: #62675e;
+      --line: rgba(23, 24, 17, .16);
+      --card: rgba(255, 253, 246, .9);
+      --red: #dc4b35;
+      --teal: #117a72;
+      --blue: #345a8a;
+      --green: #6b8d35;
+      --yellow: #e1b735;
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(23, 24, 17, .055) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(180deg, #fbfaf4 0%, var(--paper) 58%, #e9ebe3 100%);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .stage {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+    }
+
+    .board {
+      width: min(100vw - 20px, calc((100vh - 20px) * 16 / 9));
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 20px);
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 253, 246, .42);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 80px rgba(34, 36, 28, .16);
+      padding: clamp(14px, 1.45vw, 24px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: clamp(8px, .8vw, 13px);
+    }
+
+    .board::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 10px;
+      background: linear-gradient(90deg, var(--red) 0 16%, var(--yellow) 16% 31%, var(--teal) 31% 53%, var(--blue) 53% 73%, var(--green) 73% 100%);
+    }
+
+    .top {
+      padding-top: 10px;
+      display: grid;
+      grid-template-columns: 1.4fr .95fr;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: clamp(8px, .72vw, 12px);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 32px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1 {
+      margin: 5px 0 0;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(34px, 5vw, 82px);
+      line-height: .9;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .thesis {
+      color: #303329;
+      font-size: clamp(12px, 1.05vw, 17px);
+      line-height: 1.48;
+      padding: 13px 15px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    .stats {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+    }
+
+    .stat {
+      min-height: 48px;
+      padding: 7px 9px;
+      background: rgba(255, 253, 246, .9);
+      border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat b {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.4vw, 38px);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: clamp(7px, .64vw, 10px);
+      line-height: 1.2;
+    }
+
+    .main {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: .82fr 2.25fr .95fr;
+      gap: 10px;
+    }
+
+    .panel {
+      min-height: 0;
+      background: rgba(255, 253, 246, .76);
+      border: 1px solid var(--line);
+      padding: 12px;
+      overflow: hidden;
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: clamp(8px, .7vw, 11px);
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, .78);
+      color: #383b33;
+      font-size: clamp(7px, .58vw, 10px);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .theme-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .theme {
+      padding: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--red);
+    }
+
+    .theme:nth-child(2) {
+      border-left-color: var(--teal);
+    }
+
+    .theme:nth-child(3) {
+      border-left-color: var(--yellow);
+    }
+
+    .theme h2 {
+      margin: 0;
+      font-size: clamp(13px, 1.02vw, 17px);
+      line-height: 1.16;
+    }
+
+    .theme p {
+      margin: 6px 0 0;
+      color: #41443c;
+      font-size: clamp(9px, .72vw, 12px);
+      line-height: 1.46;
+    }
+
+    .quote {
+      margin-top: 8px;
+      padding: 10px;
+      background: #191a13;
+      color: #fffdf6;
+      font-size: clamp(10px, .78vw, 13px);
+      line-height: 1.45;
+    }
+
+    .signal-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 6px;
+    }
+
+    .signal {
+      min-width: 0;
+      min-height: 0;
+      background: rgba(255, 253, 246, .92);
+      border: 1px solid var(--line);
+      padding: 8px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 4px;
+    }
+
+    .signal .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      color: var(--muted);
+      font-size: clamp(6px, .52vw, 8px);
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .signal h3 {
+      margin: 0;
+      font-size: clamp(9px, .8vw, 13px);
+      line-height: 1.08;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .signal p {
+      margin: 0;
+      color: #363930;
+      font-size: clamp(7.4px, .59vw, 10px);
+      line-height: 1.35;
+      overflow: hidden;
+    }
+
+    .signal a {
+      justify-self: start;
+      color: #284f7d;
+      font-size: clamp(6.6px, .52vw, 9px);
+      font-weight: 900;
+      border-bottom: 1px solid rgba(40, 79, 125, .28);
+    }
+
+    .tag-infra {
+      color: var(--blue);
+    }
+
+    .tag-product {
+      color: var(--teal);
+    }
+
+    .tag-human {
+      color: var(--red);
+    }
+
+    .tag-market {
+      color: var(--green);
+    }
+
+    .right-stack {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mini {
+      min-height: 0;
+      padding: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .mini h2 {
+      margin: 0;
+      font-size: clamp(12px, .95vw, 16px);
+      line-height: 1.18;
+    }
+
+    .mini p,
+    .mini li {
+      color: #3b3e35;
+      font-size: clamp(7.8px, .62vw, 10.5px);
+      line-height: 1.42;
+    }
+
+    .mini p {
+      margin: 6px 0 0;
+    }
+
+    .mini ul {
+      margin: 7px 0 0;
+      padding: 0 0 0 14px;
+    }
+
+    .mini a {
+      color: #284f7d;
+      font-weight: 900;
+    }
+
+    .sources {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
+      min-height: 36px;
+      padding: 8px 10px;
+      background: rgba(255, 253, 246, .8);
+      border: 1px solid var(--line);
+    }
+
+    .sources b {
+      font-size: clamp(8px, .65vw, 11px);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .source-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      overflow: hidden;
+      max-height: 42px;
+    }
+
+    .source-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 17px;
+      padding: 2px 5px;
+      border: 1px solid rgba(23, 24, 17, .13);
+      border-radius: 999px;
+      color: #294f7c;
+      background: #fffdf6;
+      font-size: clamp(6px, .48vw, 8px);
+      font-weight: 900;
+    }
+
+    @media (max-aspect-ratio: 4 / 3) {
+      .stage {
+        align-items: start;
+      }
+
+      .board {
+        width: calc(100vw - 14px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <main class="board" aria-label="AI Builders Digest 2026-06-18 单屏展示">
+      <header class="top">
+        <div>
+          <div class="kicker">AI Builders Digest · 2026-06-18</div>
+          <h1>AI builder 信号：不在热闹里，在路径里</h1>
+        </div>
+        <section class="thesis">
+          本期核心：AI 工具竞争正在从“发布功能”转向“稳定进入工作流”。真正的护城河，是进入判断、数据、模型消耗和组织边界的关键路径。
+          <div class="stats">
+            <div class="stat"><b>13</b><span>X / Twitter builder 信号</span></div>
+            <div class="stat"><b>1</b><span>官方博客：Claude × Apple</span></div>
+            <div class="stat"><b>1</b><span>播客：Simile 人类模拟</span></div>
+          </div>
+        </section>
+      </header>
+
+      <section class="main">
+        <aside class="panel">
+          <div class="panel-title"><span>Three Lines</span><span class="pill">总判断</span></div>
+          <div class="theme-list">
+            <article class="theme">
+              <h2>01 · agent 基础设施</h2>
+              <p>Codex 容量、Vercel 长执行、Slack HTML attachments、Claude on Apple：agent 要进生产环境，先要稳定、长任务、可协作。</p>
+            </article>
+            <article class="theme">
+              <h2>02 · 应用层护城河</h2>
+              <p>Cursor、workflow、opinionated product：价值不在“什么都能做”，而在是否站进用户判断、数据和 token 路径。</p>
+            </article>
+            <article class="theme">
+              <h2>03 · 人的判断变稀缺</h2>
+              <p>人类独特性、创始人边界、模拟人群：AI 越强，越要看自我觉察、偏好、善意和关系中的独立判断。</p>
+            </article>
+          </div>
+          <div class="quote">可直接延展成内容主线：<br>“AI 产品不是拼功能表，而是拼你有没有进入用户做判断的那条路。”</div>
+        </aside>
+
+        <section class="signal-grid" aria-label="13 个 builder 信号">
+          <article class="signal"><div class="meta"><span>01</span><span class="tag-market">Market</span></div><h3>Josh Woodward</h3><p>Google AI Futures Fund 扩展到巴西，押注区域 deep tech 生态。</p><a href="https://x.com/joshwoodward/status/2067025851829330076" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>02</span><span class="tag-infra">Infra</span></div><h3>Thibault Sottiaux</h3><p>Codex capacity 修复、rate limit 重置、欧洲推出：产品化进入高并发阶段。</p><a href="https://x.com/thsottiaux/status/2066865154902380796" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>03</span><span class="tag-product">Product</span></div><h3>Peter Yang</h3><p>4 个文件的 skill，把 Codex / Claude Code 变个人 advisor；重点是工作流。</p><a href="https://x.com/petergyang/status/2067056979974160749" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>04</span><span class="tag-human">Human</span></div><h3>Madhu Guru</h3><p>AI 迫使我们重估“智力”之外的自我觉察、直觉、同理心和善意。</p><a href="https://x.com/realmadhuguru/status/2067090477434966396" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>05</span><span class="tag-infra">Infra</span></div><h3>Thariq</h3><p>Slack 可渲染 HTML attachments，报告、预览和轻量 UI 更容易进协作流。</p><a href="https://x.com/trq212/status/2067021344341098670" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>06</span><span class="tag-infra">Infra</span></div><h3>Guillermo Rauch</h3><p>Vercel 30 分钟 functions 与 24 小时 sandbox，利好长任务 agent workloads。</p><a href="https://x.com/rauchg/status/2067137678772937000" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>07</span><span class="tag-market">Market</span></div><h3>Aaron Levie</h3><p>open weights 与 closed models 差距，会重塑芯片、部署、成本和应用利润。</p><a href="https://x.com/levie/status/2067070918300664161" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>08</span><span class="tag-product">Product</span></div><h3>Ryo Lu</h3><p>Cursor mobile 的象征：title 不重要，能 build 才重要。</p><a href="https://x.com/ryolu_/status/2067124871226929526" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>09</span><span class="tag-human">Human</span></div><h3>Garry Tan</h3><p>self-differentiation 是创始人团队压力与边界管理问题。</p><a href="https://x.com/garrytan/status/2067100549775032702" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>10</span><span class="tag-product">Product</span></div><h3>Zara Zhang</h3><p>反对追热点和大而泛：真正好用的 AI agent 要有 opinion 和 soul。</p><a href="https://x.com/zarazhangrui/status/2066994434953421226" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>11</span><span class="tag-market">Market</span></div><h3>Nikunj Kothari</h3><p>AI 应用护城河：站在 judgement / data path，或站在 token path。</p><a href="https://x.com/nikunj/status/2066905445974102384" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>12</span><span class="tag-product">Product</span></div><h3>Dan Shipper</h3><p>从 Atlas Browser 切回 Dia：AI browser 不只看愿景，也看日常稳定性。</p><a href="https://x.com/danshipper/status/2066914130863473048" target="_blank" rel="noreferrer">source</a></article>
+          <article class="signal"><div class="meta"><span>13</span><span class="tag-market">Market</span></div><h3>Aditya Agarwal</h3><p>Snowflake 穿越 AI shift，依赖既懂商业化又懂平台迁移的操盘经验。</p><a href="https://x.com/adityaag/status/2066915803610370098" target="_blank" rel="noreferrer">source</a></article>
+        </section>
+
+        <aside class="right-stack">
+          <article class="mini">
+            <div class="panel-title"><span>Official Blog</span><span class="pill">Claude</span></div>
+            <h2>Claude × Apple Foundation Models</h2>
+            <p>Apple 本地模型处理低延迟摘要/抽取；Claude 承接多步推理、代码生成、web search、代码执行与结构化响应。关键实践：用 @Generable typed outputs 先整理输入。</p>
+            <p><a href="https://claude.com/blog/claude-for-foundation-models" target="_blank" rel="noreferrer">claude.com/blog</a></p>
+          </article>
+          <article class="mini">
+            <div class="panel-title"><span>Podcast</span><span class="pill">Simile</span></div>
+            <h2>人类社会模拟器</h2>
+            <p>Joon Sung Park 认为 LLM 已能编码部分人类行为。Simile 采集真实人的行为和人生故事数据，用 agents 帮企业测试产品、市场与社会系统的二阶影响。</p>
+            <p><a href="https://www.youtube.com/watch?v=lfhFmwcESRw" target="_blank" rel="noreferrer">YouTube source</a></p>
+          </article>
+          <article class="mini">
+            <div class="panel-title"><span>Content Hooks</span><span class="pill">可拍</span></div>
+            <h2>4 个选题入口</h2>
+            <ul>
+              <li>为什么 AI agent 产品不要做“大而泛”？</li>
+              <li>Codex 真正竞争力可能不是写代码。</li>
+              <li>AI 应用公司的护城河到底在哪里？</li>
+              <li>当 AI 能模拟人类，市场调研会变成什么？</li>
+            </ul>
+          </article>
+        </aside>
+      </section>
+
+      <footer class="sources">
+        <b>Sources · 22 links</b>
+        <div class="source-links">
+          <a href="https://x.com/joshwoodward/status/2067025851829330076" target="_blank" rel="noreferrer">Josh</a>
+          <a href="https://x.com/thsottiaux/status/2066865154902380796" target="_blank" rel="noreferrer">Codex 1</a>
+          <a href="https://x.com/thsottiaux/status/2066956441173323943" target="_blank" rel="noreferrer">Codex 2</a>
+          <a href="https://x.com/thsottiaux/status/2067064381855187231" target="_blank" rel="noreferrer">Codex 3</a>
+          <a href="https://x.com/petergyang/status/2067056979974160749" target="_blank" rel="noreferrer">Peter 1</a>
+          <a href="https://x.com/petergyang/status/2067047343971848201" target="_blank" rel="noreferrer">Peter 2</a>
+          <a href="https://x.com/realmadhuguru/status/2067090477434966396" target="_blank" rel="noreferrer">Madhu 1</a>
+          <a href="https://x.com/realmadhuguru/status/2066935654500671499" target="_blank" rel="noreferrer">Madhu 2</a>
+          <a href="https://x.com/trq212/status/2067021344341098670" target="_blank" rel="noreferrer">Slack</a>
+          <a href="https://x.com/rauchg/status/2067137678772937000" target="_blank" rel="noreferrer">Vercel</a>
+          <a href="https://x.com/levie/status/2067070918300664161" target="_blank" rel="noreferrer">Levie 1</a>
+          <a href="https://x.com/levie/status/2066908002809221496" target="_blank" rel="noreferrer">Levie 2</a>
+          <a href="https://x.com/ryolu_/status/2067124871226929526" target="_blank" rel="noreferrer">Ryo 1</a>
+          <a href="https://x.com/ryolu_/status/2066902677905461579" target="_blank" rel="noreferrer">Ryo 2</a>
+          <a href="https://x.com/garrytan/status/2067100549775032702" target="_blank" rel="noreferrer">Garry</a>
+          <a href="https://x.com/zarazhangrui/status/2066994434953421226" target="_blank" rel="noreferrer">Zara 1</a>
+          <a href="https://x.com/zarazhangrui/status/2066936706281206165" target="_blank" rel="noreferrer">Zara 2</a>
+          <a href="https://x.com/nikunj/status/2066905445974102384" target="_blank" rel="noreferrer">Nikunj</a>
+          <a href="https://x.com/danshipper/status/2066914130863473048" target="_blank" rel="noreferrer">Dan</a>
+          <a href="https://x.com/adityaag/status/2066915803610370098" target="_blank" rel="noreferrer">Aditya</a>
+          <a href="https://claude.com/blog/claude-for-foundation-models" target="_blank" rel="noreferrer">Claude</a>
+          <a href="https://www.youtube.com/watch?v=lfhFmwcESRw" target="_blank" rel="noreferrer">Podcast</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

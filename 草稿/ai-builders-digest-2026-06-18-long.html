@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Builders Digest 2026-06-18</title>
+  <style>
+    :root {
+      --paper: #f4f5f0;
+      --ink: #181914;
+      --muted: #64695f;
+      --line: rgba(24, 25, 20, .14);
+      --panel: rgba(255, 255, 250, .82);
+      --panel-strong: #fffdf6;
+      --red: #dd4c35;
+      --teal: #117b73;
+      --yellow: #e4b73a;
+      --green: #6b8d35;
+      --blue: #345a8a;
+      --shadow: 0 18px 50px rgba(34, 36, 28, .12);
+      --radius: 8px;
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(24, 25, 20, .04) 1px, transparent 1px) 0 0 / 42px 42px,
+        linear-gradient(180deg, #fafaf7 0%, var(--paper) 48%, #eceee7 100%);
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: end;
+      padding: 28px 0 44px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 12px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0 16%,
+        var(--yellow) 16% 31%,
+        var(--teal) 31% 53%,
+        var(--blue) 53% 73%,
+        var(--green) 73% 100%
+      );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 36px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: .14em;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1 {
+      margin: 24px 0 0;
+      max-width: 980px;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(48px, 6.7vw, 104px);
+      line-height: .92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .hero-copy {
+      margin: 28px 0 0;
+      max-width: 720px;
+      font-size: clamp(18px, 2vw, 26px);
+      line-height: 1.45;
+      color: #34362f;
+      text-wrap: pretty;
+    }
+
+    .hero-aside {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .hero-aside h2 {
+      margin: 0 0 18px;
+      font-size: 14px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .stat {
+      background: #fffdf6;
+      min-height: 106px;
+      padding: 14px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .lead-list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .lead-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      line-height: 1.55;
+      color: #2f312b;
+    }
+
+    .lead-list b {
+      color: var(--red);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 245, 240, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 64px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav a,
+    .filter button {
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 250, .7);
+      color: #3f423b;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .search {
+      width: min(320px, 38vw);
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fffdf6;
+      padding: 0 16px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .72fr) minmax(280px, .28fr);
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(34px, 4.7vw, 74px);
+      line-height: .95;
+      letter-spacing: 0;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .theme {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      min-height: 280px;
+      display: grid;
+      align-content: space-between;
+      box-shadow: 0 10px 30px rgba(34, 36, 28, .08);
+    }
+
+    .theme:nth-child(1) {
+      border-top: 6px solid var(--red);
+    }
+
+    .theme:nth-child(2) {
+      border-top: 6px solid var(--teal);
+    }
+
+    .theme:nth-child(3) {
+      border-top: 6px solid var(--yellow);
+    }
+
+    .theme h3 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .theme p {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #3f423a;
+    }
+
+    .theme .from {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #34362f;
+      background: rgba(255, 255, 250, .74);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 20px;
+    }
+
+    .filter button {
+      cursor: pointer;
+    }
+
+    .filter button.active {
+      background: var(--ink);
+      color: #fffdf6;
+      border-color: var(--ink);
+    }
+
+    .signal-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .side-index {
+      position: sticky;
+      top: 88px;
+      background: rgba(255, 255, 250, .7);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .side-index h3 {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .density {
+      display: grid;
+      gap: 10px;
+    }
+
+    .density-row {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 10px;
+      align-items: center;
+      color: #3d4037;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(24, 25, 20, .1);
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--teal);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(255, 255, 250, .92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      min-height: 310px;
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(34, 36, 28, .08);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+    }
+
+    .card.hide {
+      display: none;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .marker {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fffdf6;
+      background: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      flex: 0 0 auto;
+    }
+
+    .card[data-theme="infra"] .marker,
+    .card[data-theme="infra"] .category {
+      background: var(--blue);
+    }
+
+    .card[data-theme="product"] .marker,
+    .card[data-theme="product"] .category {
+      background: var(--teal);
+    }
+
+    .card[data-theme="human"] .marker,
+    .card[data-theme="human"] .category {
+      background: var(--red);
+    }
+
+    .card[data-theme="market"] .marker,
+    .card[data-theme="market"] .category {
+      background: var(--green);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    .role {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .card p {
+      color: #34362f;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .category {
+      color: #fffdf6;
+      border: 0;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .links a {
+      min-height: 28px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(24, 25, 20, .06);
+      color: #35372f;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .blog-podcast {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(320px, .52fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      min-height: 390px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .feature h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Songti SC", serif;
+      font-size: clamp(30px, 4vw, 62px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .feature p {
+      margin-top: 22px;
+      color: #30322d;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .feature a {
+      justify-self: start;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: #fffdf6;
+      background: var(--ink);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .topic {
+      min-height: 220px;
+      background: rgba(255, 255, 250, .88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .topic strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .topic span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .source-list {
+      columns: 2;
+      column-gap: 26px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .source-list li {
+      break-inside: avoid;
+      margin: 0 0 9px;
+      line-height: 1.45;
+    }
+
+    .source-list a {
+      color: #284f7d;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      border-bottom: 1px solid rgba(40, 79, 125, .25);
+    }
+
+    .empty {
+      display: none;
+      padding: 26px;
+      border: 1px dashed rgba(24, 25, 20, .3);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: rgba(255, 255, 250, .6);
+    }
+
+    .footer {
+      padding: 36px 0 48px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .section-head,
+      .signal-layout,
+      .blog-podcast {
+        grid-template-columns: 1fr;
+      }
+
+      .side-index {
+        position: static;
+      }
+
+      .theme-grid,
+      .topic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 20px, 1440px);
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 56px;
+      }
+
+      .hero-aside,
+      .feature,
+      .card,
+      .theme,
+      .topic {
+        padding: 18px;
+      }
+
+      .stat-grid,
+      .theme-grid,
+      .topic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .source-list {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow">AI Builders Digest · 2026-06-18</div>
+        <h1><span>AI builder 信号</span><span>不在热闹里</span><span>在路径里</span></h1>
+        <p class="hero-copy">本期信息从 X/Twitter、官方博客和播客里抽取：工具产品化、agent 基础设施、应用层护城河、创始人判断与人类模拟，正在变成同一条线索。</p>
+      </div>
+      <aside class="hero-aside">
+        <h2>Digest Snapshot</h2>
+        <div class="stat-grid" aria-label="本期摘要数量">
+          <div class="stat"><strong>13</strong><span>X / Twitter 人物与信号</span></div>
+          <div class="stat"><strong>1</strong><span>官方博客重点更新</span></div>
+          <div class="stat"><strong>1</strong><span>长播客深度观点</span></div>
+        </div>
+        <ul class="lead-list">
+          <li><b>01</b><span>AI 工具竞争从功能发布，转向稳定性、执行窗口和协作入口。</span></li>
+          <li><b>02</b><span>应用层价值不再只是 UI，而是 judgment path、data path 和 token path。</span></li>
+          <li><b>03</b><span>“人如何判断”正在成为 AI 时代的产品、组织和内容母题。</span></li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <div class="nav-links">
+        <a href="#themes">三条主线</a>
+        <a href="#signals">信号卡片</a>
+        <a href="#deep">官方与播客</a>
+        <a href="#topics">创作入口</a>
+        <a href="#sources">来源链接</a>
+      </div>
+      <input class="search" id="search" type="search" placeholder="搜索人物、产品或关键词">
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" id="themes">
+      <div class="shell">
+        <div class="section-head">
+          <h2>三条主线</h2>
+          <p>不是把新闻堆起来，而是看它们共同指向什么：产品化、护城河、人的判断。</p>
+        </div>
+        <div class="theme-grid">
+          <article class="theme">
+            <div>
+              <span class="chip">Infrastructure</span>
+              <h3>AI agent 进入长任务基础设施阶段</h3>
+              <p>Codex 的容量、Vercel 的长执行窗口、Slack 的 HTML attachments，指向同一件事：agent 不只是会生成，而是要稳定进入协作和生产环境。</p>
+            </div>
+            <div class="from">
+              <span class="chip">Codex</span>
+              <span class="chip">Vercel</span>
+              <span class="chip">Slack</span>
+              <span class="chip">Claude on Apple</span>
+            </div>
+          </article>
+          <article class="theme">
+            <div>
+              <span class="chip">Product</span>
+              <h3>应用层护城河变成工作流和路径</h3>
+              <p>Cursor、Peter Yang、Aaron Levie、Nikunj Kothari 和 Zara Zhang 的观点都在反复说明：泛化功能不够，产品要站进用户判断、数据产生和模型消耗的关键路径。</p>
+            </div>
+            <div class="from">
+              <span class="chip">Cursor</span>
+              <span class="chip">Workflow</span>
+              <span class="chip">Opinionated product</span>
+            </div>
+          </article>
+          <article class="theme">
+            <div>
+              <span class="chip">Human</span>
+              <h3>AI 逼着我们重看“人”的部分</h3>
+              <p>从 Madhu 的人类独特性，到 Garry Tan 的 self-differentiation，再到 Simile 的人类社会模拟器，本期最深的线索是：真正稀缺的不是信息，而是判断、边界和偏好。</p>
+            </div>
+            <div class="from">
+              <span class="chip">Human uniqueness</span>
+              <span class="chip">Founder psychology</span>
+              <span class="chip">Simulated humans</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="signals">
+      <div class="shell">
+        <div class="section-head">
+          <h2>信号卡片</h2>
+          <p>每张卡保留原始人物、机构、核心判断和来源链接。可以按主题筛选，也可以直接搜索。</p>
+        </div>
+
+        <div class="filter" aria-label="筛选信号主题">
+          <button class="active" data-filter="all" type="button">全部</button>
+          <button data-filter="infra" type="button">基础设施</button>
+          <button data-filter="product" type="button">产品路径</button>
+          <button data-filter="human" type="button">人和组织</button>
+          <button data-filter="market" type="button">市场结构</button>
+        </div>
+
+        <div class="signal-layout">
+          <aside class="side-index">
+            <h3>Signal Mix</h3>
+            <div class="density">
+              <div class="density-row"><span>产品路径</span><div class="bar"><i style="width: 92%; background: var(--teal);"></i></div></div>
+              <div class="density-row"><span>基础设施</span><div class="bar"><i style="width: 78%; background: var(--blue);"></i></div></div>
+              <div class="density-row"><span>市场结构</span><div class="bar"><i style="width: 70%; background: var(--green);"></i></div></div>
+              <div class="density-row"><span>人和组织</span><div class="bar"><i style="width: 64%; background: var(--red);"></i></div></div>
+            </div>
+          </aside>
+
+          <div>
+            <div class="cards" id="cards"></div>
+            <div class="empty" id="empty">没有匹配的信号。换一个关键词试试。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deep">
+      <div class="shell">
+        <div class="section-head">
+          <h2>官方与播客</h2>
+          <p>官方博客给开发路径，播客给底层想象力。本期一个偏工程，一个偏社会模拟。</p>
+        </div>
+        <div class="blog-podcast">
+          <article class="feature">
+            <div>
+              <span class="chip">Official Blog</span>
+              <h3>Claude 进入 Apple Foundation Models framework</h3>
+              <p>Claude Blog 发布面向 Apple Foundation Models framework 的支持。Apple 本地模型适合低延迟摘要、抽取，Claude 负责多步推理、代码生成、web search、代码执行和结构化响应。关键实践点是用 @Generable typed outputs 先整理输入，再交给 Claude。</p>
+            </div>
+            <a href="https://claude.com/blog/claude-for-foundation-models" target="_blank" rel="noreferrer">打开来源</a>
+          </article>
+
+          <article class="feature">
+            <div>
+              <span class="chip">Podcast</span>
+              <h3>Simile: 把真实人群变成可测试的社会模拟器</h3>
+              <p>Joon Sung Park 认为，LLM 已经足够编码一部分人类行为。Simile 的方向不是让通用模型扮演某类人，而是采集真实人的行为和人生故事数据，用 agents 帮企业测试产品、市场和社会系统的二阶影响。</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=lfhFmwcESRw" target="_blank" rel="noreferrer">打开来源</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="topics">
+      <div class="shell">
+        <div class="section-head">
+          <h2>可转化选题</h2>
+          <p>从本期摘要里抽出的内容入口，适合继续写成短视频脚本、小红书图文或方法论卡片。</p>
+        </div>
+        <div class="topic-grid">
+          <article class="topic">
+            <strong>为什么 AI agent 产品不要做“大而泛”？</strong>
+            <span>从 Zara Zhang、Peter Yang 和 Cursor 相关观点切入，讲清楚 opinion、workflow 和小而锋利。</span>
+          </article>
+          <article class="topic">
+            <strong>Codex 的真正竞争力，可能不是会写代码</strong>
+            <span>把 capacity、rate limit、欧洲推出和稳定性串起来，讲 AI 编程工具的产品化压力。</span>
+          </article>
+          <article class="topic">
+            <strong>AI 应用公司的护城河到底在哪里？</strong>
+            <span>用 Aaron Levie 和 Nikunj Kothari 的框架，拆 judgment path、data path、token path。</span>
+          </article>
+          <article class="topic">
+            <strong>当 AI 能模拟人类，市场调研会变成什么？</strong>
+            <span>从 Simile 和 Smallville 讲起，连接用户研究、产品测试和二阶影响。</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="shell">
+        <div class="section-head">
+          <h2>来源链接</h2>
+          <p>保留原文里的全部链接，方便回看和核验。</p>
+        </div>
+        <ul class="source-list" id="sourceList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">基于附件《AI Builders Digest 2026-06-18》整理为本地 HTML 展示页；内容展示未改写原始来源事实，只做结构化排版与选题入口提炼。</div>
+  </footer>
+
+  <script>
+    const signals = [
+      {
+        name: "Josh Woodward",
+        role: "Google / Google Labs / Gemini App / Google AI Studio VP",
+        theme: "market",
+        category: "区域生态",
+        initial: "JW",
+        text: "Google AI Futures Fund 扩展到巴西，并与 Monashees 推出 Gama Fund。面向 deep tech 创始人提供 Google DeepMind 模型早期访问、最高 200 万美元联合投资、35 万美元 Google Cloud 与 Gemini credits，以及在 IPT Open campus hub 与 Google 工程师共创的机会。重点信号是 Google 正在把 AI 创业生态前沿押注继续扩展到区域市场。",
+        links: ["https://x.com/joshwoodward/status/2067025851829330076"]
+      },
+      {
+        name: "Thibault Sottiaux",
+        role: "OpenAI Codex & ChatGPT",
+        theme: "infra",
+        category: "产品化稳定性",
+        initial: "TS",
+        text: "这组更新围绕 Codex 稳定性与可用性：团队注意到部分用户遇到 model at capacity 高错误率并在修复，随后确认问题已经解决，并提示 24 小时内会重置所有计划的 Codex rate limits；同时 Codex 的一批重要功能正在欧洲推出。重点不是单个功能，而是 Codex 正在进入更广覆盖、更高并发的产品化阶段。",
+        links: [
+          "https://x.com/thsottiaux/status/2066865154902380796",
+          "https://x.com/thsottiaux/status/2066956441173323943",
+          "https://x.com/thsottiaux/status/2067064381855187231"
+        ]
+      },
+      {
+        name: "Peter Yang",
+        role: "AI 教程作者",
+        theme: "product",
+        category: "工作流设计",
+        initial: "PY",
+        text: "Peter Yang 预告了一个新教程：用一个包含 4 个文件的 skill，把 Codex 或 Claude Code 变成个人 advisor。他还对一些 CEO 决策没人敢说 no 的产品现象表达保留。核心观点是 AI 工具的实用价值越来越取决于清晰的工作流设计，而不是堆叠概念。",
+        links: [
+          "https://x.com/petergyang/status/2067056979974160749",
+          "https://x.com/petergyang/status/2067047343971848201"
+        ]
+      },
+      {
+        name: "Madhu Guru",
+        role: "前 Google Gemini / Veo / Nano Banana 产品负责人",
+        theme: "human",
+        category: "人类独特性",
+        initial: "MG",
+        text: "Madhu 的判断很尖锐：过去一个世纪我们把智力当成人类最核心的特征，却低估了自我觉察、直觉、同理心和善意。接下来几年 AI 会迫使我们重新定义什么才是人类独特性。他还把 SpaceX-Cursor 交易的真正价值归结为 agentic harness：规划、上下文管理、工具调用、迭代、验证、记忆和错误恢复会成为大规模自动化知识工作的核心。",
+        links: [
+          "https://x.com/realmadhuguru/status/2067090477434966396",
+          "https://x.com/realmadhuguru/status/2066935654500671499"
+        ]
+      },
+      {
+        name: "Thariq",
+        role: "Anthropic Claude Code",
+        theme: "infra",
+        category: "协作入口",
+        initial: "TH",
+        text: "Thariq 提到 Slack 现在可以渲染 HTML attachments，而不只是把 HTML 当文本显示。这个小变化对 agent 工作流很实用：AI 生成的报告、预览、调试输出和轻量 UI 可以更自然地进入协作消息流。",
+        links: ["https://x.com/trq212/status/2067021344341098670"]
+      },
+      {
+        name: "Guillermo Rauch",
+        role: "Vercel CEO",
+        theme: "infra",
+        category: "执行窗口",
+        initial: "GR",
+        text: "Guillermo 给 Vercel 的新运行能力划了重点：30 分钟 function invocations，加上新的 24 小时 sandbox lifetimes。对 AI app 和 agentic workloads 来说，这类基础设施变化很关键，因为更长的执行窗口和持久沙箱会直接影响长任务、代码执行、调试和异步工作流的体验。",
+        links: ["https://x.com/rauchg/status/2067137678772937000"]
+      },
+      {
+        name: "Aaron Levie",
+        role: "Box CEO",
+        theme: "market",
+        category: "市场结构",
+        initial: "AL",
+        text: "Aaron Levie 把 open weights 与 closed models 的能力差距视为 AI 市场结构的关键变量：如果开源权重模型只落后 3 到 6 个月，芯片栈、推理部署、sovereign AI、应用层利润率和企业 AI 成本都会走向一种结构；如果落后数年，则会是另一种结构。他还认为 Cursor deal 是应用层 AI 的第一个大型成功模板，证明了深领域聚焦、模型路由、前沿模型与自研模型取舍，以及应用层 GTM 与分发的重要性。",
+        links: [
+          "https://x.com/levie/status/2067070918300664161",
+          "https://x.com/levie/status/2066908002809221496"
+        ]
+      },
+      {
+        name: "Ryo Lu",
+        role: "Cursor 设计师，早期 Notion / Stripe",
+        theme: "product",
+        category: "能 build 才重要",
+        initial: "RL",
+        text: "Ryo Lu 强调 Cursor mobile 的一个象征意义：产品的真实部分很大程度由一位 designer 用 Cursor 编出来。他的结论很直接：title 不重要，能 build 才重要。另一个想法是把 X 和 Cursor 想象成同一种东西，指向社交入口和构建环境可能融合的方向。",
+        links: [
+          "https://x.com/ryolu_/status/2067124871226929526",
+          "https://x.com/ryolu_/status/2066902677905461579"
+        ]
+      },
+      {
+        name: "Garry Tan",
+        role: "Y Combinator President & CEO",
+        theme: "human",
+        category: "边界管理",
+        initial: "GT",
+        text: "Garry Tan 的一条偏心理学的长推谈 Bowen 的 self-differentiation：低分化的人高度受他人情绪线索影响，在关系中失去边界，容易陷入大家必须感受一致的状态。他把讨好型和强迫他人服从型看成同一问题的两种表现，解决方式是降低长期焦虑，并提高在关系中保持独立自我的能力。对 founder 来说，这其实是团队压力与边界管理问题。",
+        links: ["https://x.com/garrytan/status/2067100549775032702"]
+      },
+      {
+        name: "Zara Zhang",
+        role: "Builder",
+        theme: "product",
+        category: "小而锋利",
+        initial: "ZZ",
+        text: "Zara 的两条内容都在反对追热点和做大而泛。她认为 cool thing 很少一开始就 cool，往往是有人在别人觉得太小的事情上做深了；同时，她批评什么都能做、集成一切的 AI agent 产品，因为那很容易变成 Claude / Codex 的泛化替代品。真正值得用的产品需要 opinion 和 soul，要小而锋利。",
+        links: [
+          "https://x.com/zarazhangrui/status/2066994434953421226",
+          "https://x.com/zarazhangrui/status/2066936706281206165"
+        ]
+      },
+      {
+        name: "Nikunj Kothari",
+        role: "FPV Ventures partner",
+        theme: "market",
+        category: "护城河路径",
+        initial: "NK",
+        text: "Nikunj 把 Cursor 相关收购放进应用公司路径里看：要么站在 judgement / data path，要么站在 token path。也就是说，AI 应用公司的护城河不只是 UI，而是能否进入用户做判断、产生数据、消耗模型能力的关键路径。",
+        links: ["https://x.com/nikunj/status/2066905445974102384"]
+      },
+      {
+        name: "Dan Shipper",
+        role: "Every CEO",
+        theme: "product",
+        category: "日常稳定性",
+        initial: "DS",
+        text: "Dan Shipper 提到自己从 Atlas Browser 切回 Dia，原因是 Atlas 有太多奇怪 bug，而且没有明显改善。这个反馈来自重度 AI 工具用户，信号很朴素：AI browser 竞争不只看愿景，也看日常稳定性。",
+        links: ["https://x.com/danshipper/status/2066914130863473048"]
+      },
+      {
+        name: "Aditya Agarwal",
+        role: "South Park Commons General Partner，Bevel Health Co-Founder",
+        theme: "market",
+        category: "转型操盘",
+        initial: "AA",
+        text: "Aditya 提到 Sridhar Ramaswamy 下周会到访 South Park Commons。他曾把 Google 广告业务从 15 亿美元做到 1000 亿美元以上，现在正在带 Snowflake 穿越 AI shift。这类内容的价值在于提示：AI 基础设施和数据公司转型，越来越依赖既懂大规模商业化、又懂技术平台迁移的操盘经验。",
+        links: ["https://x.com/adityaag/status/2066915803610370098"]
+      }
+    ];
+
+    const extraSources = [
+      "https://claude.com/blog/claude-for-foundation-models",
+      "https://www.youtube.com/watch?v=lfhFmwcESRw"
+    ];
+
+    const cards = document.getElementById("cards");
+    const empty = document.getElementById("empty");
+    const sourceList = document.getElementById("sourceList");
+    const search = document.getElementById("search");
+    const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+    let activeFilter = "all";
+
+    function renderCards() {
+      cards.innerHTML = signals.map((item, index) => `
+        <article class="card" data-theme="${item.theme}" data-search="${[item.name, item.role, item.category, item.text].join(" ").toLowerCase()}">
+          <div class="card-top">
+            <div>
+              <div class="label">${String(index + 1).padStart(2, "0")} / X Twitter</div>
+              <h3>${item.name}</h3>
+              <div class="role">${item.role}</div>
+            </div>
+            <div class="marker">${item.initial}</div>
+          </div>
+          <span class="chip category">${item.category}</span>
+          <p>${item.text}</p>
+          <div class="card-foot">
+            <span class="chip">${themeLabel(item.theme)}</span>
+            <div class="links">${item.links.map((link, linkIndex) => `<a href="${link}" target="_blank" rel="noreferrer">来源 ${linkIndex + 1}</a>`).join("")}</div>
+          </div>
+        </article>
+      `).join("");
+      applyFilters();
+    }
+
+    function renderSources() {
+      const allSources = signals.flatMap(item => item.links).concat(extraSources);
+      sourceList.innerHTML = allSources.map((link, index) => `
+        <li><a href="${link}" target="_blank" rel="noreferrer">${String(index + 1).padStart(2, "0")} · ${link}</a></li>
+      `).join("");
+    }
+
+    function themeLabel(theme) {
+      return {
+        infra: "基础设施",
+        product: "产品路径",
+        human: "人和组织",
+        market: "市场结构"
+      }[theme] || "信号";
+    }
+
+    function applyFilters() {
+      const query = search.value.trim().toLowerCase();
+      const items = Array.from(document.querySelectorAll(".card"));
+      let visible = 0;
+
+      items.forEach(card => {
+        const matchTheme = activeFilter === "all" || card.dataset.theme === activeFilter;
+        const matchQuery = !query || card.dataset.search.includes(query);
+        const shouldShow = matchTheme && matchQuery;
+        card.classList.toggle("hide", !shouldShow);
+        if (shouldShow) visible += 1;
+      });
+
+      empty.style.display = visible ? "none" : "block";
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach(item => item.classList.toggle("active", item === button));
+        applyFilters();
+      });
+    });
+
+    search.addEventListener("input", applyFilters);
+
+    renderCards();
+    renderSources();
+  </script>
+</body>
+</html>

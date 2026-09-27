@@ -1,0 +1,19 @@
+
+# ReCode local database
+.recode
+
+# Runtime and tool caches
+node_modules/
+out/
+tmp/
+.trash/
+90-工具项目/
+
+# Local agent/runtime directories
+.claude/sessions/
+
+# Temporary inputs and binary exports
+*.zip
+*.docx
+*.xlsx
+*.pdf

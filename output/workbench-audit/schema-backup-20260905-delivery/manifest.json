@@ -1,0 +1,20 @@
+[
+  {
+    "path": "AGENTS.md",
+    "beforeSha256": "de175f8a66370a7e3e2a9e4c8d8daf07a2b1b60a931575ea8bdbfde375566499",
+    "afterSha256": "45e087efdaf7a4145876bc6f9afdc25d02126c178071bc820ee0432562a116cd",
+    "backup": "E:\\projects\\knowledgeProjects\\DailyWrite\\output\\workbench-audit\\schema-backup-20260905-delivery\\AGENTS.md"
+  },
+  {
+    "path": "CLAUDE.md",
+    "beforeSha256": "9725055bd43bcc54d5da8661114f3a5c218c95d9d92f157d6ba00520a7cd61e9",
+    "afterSha256": "0cb61afc3084ca78a56e29d04d82e46b5dd2a542a2578d8a385fd32ca9741add",
+    "backup": "E:\\projects\\knowledgeProjects\\DailyWrite\\output\\workbench-audit\\schema-backup-20260905-delivery\\CLAUDE.md"
+  },
+  {
+    "path": "SOURCE_OF_TRUTH.md",
+    "beforeSha256": "a86d65e25e462fa99bc0b9014078bede8c980b1ff99528282c9860004c0ea2a4",
+    "afterSha256": "3ef951728085e61781631bf26311d7caf7b09b4cb53fd51ddde5d12e5d133cb9",
+    "backup": "E:\\projects\\knowledgeProjects\\DailyWrite\\output\\workbench-audit\\schema-backup-20260905-delivery\\SOURCE_OF_TRUTH.md"
+  }
+]
