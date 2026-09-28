@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>只剩2%额度如何用Codex - 短视频封面</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 1080px;
+      height: 1920px;
+      margin: 0;
+      overflow: hidden;
+      background: #071014;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+    }
+
+    .cover {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      color: #f6fbf8;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(51, 255, 154, 0.28), transparent 28%),
+        radial-gradient(circle at 14% 72%, rgba(255, 211, 77, 0.18), transparent 34%),
+        linear-gradient(145deg, #081318 0%, #0c1d22 45%, #061012 100%);
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.13;
+      background-image:
+        linear-gradient(rgba(146, 255, 209, 0.45) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(146, 255, 209, 0.45) 1px, transparent 1px);
+      background-size: 72px 72px;
+      transform: skewY(-8deg) scale(1.15);
+      transform-origin: center;
+    }
+
+    .topbar {
+      position: absolute;
+      top: 76px;
+      left: 72px;
+      right: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0;
+      color: rgba(246, 251, 248, 0.88);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #34ffa3;
+      box-shadow: 0 0 26px rgba(52, 255, 163, 0.45);
+    }
+
+    .tag {
+      padding: 12px 18px;
+      border: 2px solid rgba(246, 251, 248, 0.22);
+      border-radius: 999px;
+      font-size: 28px;
+      color: rgba(246, 251, 248, 0.74);
+      background: rgba(246, 251, 248, 0.05);
+    }
+
+    .terminal {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      top: 206px;
+      height: 420px;
+      border: 2px solid rgba(87, 255, 172, 0.32);
+      border-radius: 28px;
+      background: rgba(4, 11, 13, 0.72);
+      box-shadow:
+        0 42px 90px rgba(0, 0, 0, 0.36),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .terminal-head {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5d5d; }
+    .dot.yellow { background: #ffd34d; }
+    .dot.green { background: #34ffa3; }
+
+    .terminal-body {
+      padding: 42px 44px;
+      font-family: Consolas, "SFMono-Regular", monospace;
+    }
+
+    .command-label {
+      color: rgba(246, 251, 248, 0.46);
+      font-size: 32px;
+      margin-bottom: 22px;
+    }
+
+    .command {
+      color: #34ffa3;
+      font-size: 72px;
+      line-height: 1;
+      font-weight: 900;
+      text-shadow: 0 0 28px rgba(52, 255, 163, 0.42);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 28px;
+      height: 68px;
+      margin-left: 8px;
+      vertical-align: -8px;
+      background: #34ffa3;
+      box-shadow: 0 0 24px rgba(52, 255, 163, 0.56);
+    }
+
+    .battery-wrap {
+      position: absolute;
+      right: 76px;
+      top: 524px;
+      width: 292px;
+      height: 154px;
+      transform: rotate(4deg);
+    }
+
+    .battery {
+      position: relative;
+      width: 246px;
+      height: 112px;
+      border: 8px solid #ff4f4f;
+      border-radius: 22px;
+      background: rgba(255, 79, 79, 0.08);
+      box-shadow: 0 0 42px rgba(255, 79, 79, 0.34);
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      right: -31px;
+      top: 31px;
+      width: 24px;
+      height: 48px;
+      border-radius: 0 10px 10px 0;
+      background: #ff4f4f;
+    }
+
+    .battery-fill {
+      position: absolute;
+      left: 13px;
+      top: 13px;
+      width: 14px;
+      height: 70px;
+      border-radius: 10px;
+      background: #ff4f4f;
+    }
+
+    .battery-text {
+      position: absolute;
+      left: 58px;
+      top: 30px;
+      color: #ff6969;
+      font-size: 42px;
+      font-weight: 900;
+    }
+
+    .headline {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      top: 714px;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .headline .line-small {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 86px;
+      line-height: 1.04;
+      color: #f6fbf8;
+    }
+
+    .headline .line-big {
+      display: block;
+      font-size: 172px;
+      line-height: 0.98;
+      color: #ffd34d;
+      text-shadow: 0 12px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .headline .line-mid {
+      display: block;
+      margin-top: 22px;
+      font-size: 104px;
+      line-height: 1.05;
+      color: #f6fbf8;
+    }
+
+    .slash {
+      color: #34ffa3;
+      text-shadow: 0 0 30px rgba(52, 255, 163, 0.48);
+    }
+
+    .promise {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      bottom: 220px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .promise-item {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 86px;
+      padding: 18px 26px;
+      border-left: 8px solid #34ffa3;
+      border-radius: 14px;
+      background: rgba(246, 251, 248, 0.08);
+      font-size: 42px;
+      line-height: 1.18;
+      font-weight: 800;
+      color: rgba(246, 251, 248, 0.92);
+    }
+
+    .number {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #34ffa3;
+      color: #061012;
+      font-size: 30px;
+      font-weight: 950;
+    }
+
+    .bottom-note {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      bottom: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(246, 251, 248, 0.62);
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .arrow {
+      width: 180px;
+      height: 3px;
+      background: rgba(246, 251, 248, 0.5);
+      position: relative;
+    }
+
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -8px;
+      width: 18px;
+      height: 18px;
+      border-right: 3px solid rgba(246, 251, 248, 0.5);
+      border-top: 3px solid rgba(246, 251, 248, 0.5);
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  <main class="cover" aria-label="只剩2%额度如何用Codex">
+    <div class="grid"></div>
+
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span>CODEX 实战技巧</span>
+      </div>
+      <div class="tag">额度快用完时</div>
+    </div>
+
+    <section class="terminal" aria-label="Codex goal command">
+      <div class="terminal-head">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="terminal-body">
+        <div class="command-label">codex terminal</div>
+        <div class="command">/goal<span class="cursor"></span></div>
+      </div>
+    </section>
+
+    <div class="battery-wrap" aria-hidden="true">
+      <div class="battery">
+        <div class="battery-fill"></div>
+        <div class="battery-text">2%</div>
+      </div>
+    </div>
+
+    <h1 class="headline">
+      <span class="line-small">只剩 2% 额度</span>
+      <span class="line-big">别乱问</span>
+      <span class="line-mid">用 <span class="slash">/goal</span> 跑到底</span>
+    </h1>
+
+    <section class="promise" aria-label="封面卖点">
+      <div class="promise-item">
+        <span class="number">1</span>
+        <span>一个目标，自动规划执行验证</span>
+      </div>
+      <div class="promise-item">
+        <span class="number">2</span>
+        <span>最后一点额度，跑完整任务</span>
+      </div>
+    </section>
+
+    <div class="bottom-note">
+      <span>目标终态 · 约束边界 · 验收标准</span>
+      <span class="arrow"></span>
+    </div>
+  </main>
+</body>
+</html>

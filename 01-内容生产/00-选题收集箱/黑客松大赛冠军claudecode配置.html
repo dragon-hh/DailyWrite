@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Claude Code - Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bg: '#0F1115',
+                        surface: '#1E293B',
+                        accent: '#38BDF8',
+                        secondary: '#A855F7',
+                        success: '#22C55E',
+                        warning: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Core PPT Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #0F1115;
+            color: #E2E8F0;
+            overflow-y: scroll; 
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Each Slide */
+        section.slide {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 6rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden; 
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 0.75rem;
+        }
+
+        .glass-accent {
+            border-left: 3px solid #38BDF8;
+        }
+
+        /* Typography */
+        h1, h2, h3 { line-height: 1.2; }
+        
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.875rem;
+            z-index: 100;
+        }
+        
+        /* Keyboard Hint */
+        .key-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.75rem;
+            z-index: 100;
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* Decor elements */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Elements -->
+    <div class="slide-counter">Everything Claude Code v2.0</div>
+    <div class="key-hint">
+        <span>[←] PREV</span>
+        <span>[→] NEXT</span>
+    </div>
+
+    <!-- SLIDE 1: COVER -->
+    <section class="slide" id="slide-1">
+        <div class="orb w-[500px] h-[500px] bg-blue-500 top-0 right-0"></div>
+        <div class="grid grid-cols-12 gap-12 items-center h-full">
+            <div class="col-span-7">
+                <div class="mb-6 flex items-center space-x-3">
+                    <div class="h-[1px] w-12 bg-accent"></div>
+                    <span class="text-accent tracking-widest text-sm font-bold uppercase">Project Overview</span>
+                </div>
+                <h1 class="text-8xl font-black mb-8 text-white tracking-tighter">
+                    Everything<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">Claude Code</span>
+                </h1>
+                <p class="text-3xl font-light text-gray-300 max-w-2xl leading-relaxed">
+                    不仅是提示词，而是<br>
+                    Claude Code 的<strong class="text-white font-bold border-b-4 border-accent">工程化外骨骼</strong>。
+                </p>
+                <div class="mt-12 flex space-x-6">
+                    <div class="glass px-6 py-4">
+                        <div class="text-sm text-gray-400">Target</div>
+                        <div class="text-xl font-bold text-white">高级开发智能体</div>
+                    </div>
+                    <div class="glass px-6 py-4">
+                        <div class="text-sm text-gray-400">Core</div>
+                        <div class="text-xl font-bold text-white">记忆 + 规范</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-5 flex justify-center">
+                <div class="w-full aspect-square border border-white/10 rounded-full relative flex items-center justify-center">
+                    <div class="absolute w-[80%] h-[80%] border border-accent/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                    <div class="absolute w-[60%] h-[60%] border border-white/10 rounded-full"></div>
+                    <div class="font-mono text-accent text-lg">System<br>Initialized</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: PAIN POINTS -->
+    <section class="slide" id="slide-2">
+        <div class="orb w-[600px] h-[600px] bg-purple-900 bottom-[-20%] left-[-10%]"></div>
+        <div class="mb-12 border-l-4 border-accent pl-6">
+            <h2 class="text-5xl font-bold text-white">核心价值：解决三大痛点</h2>
+            <p class="text-xl text-gray-400 mt-2">Why Everything Claude Code?</p>
+        </div>
+        <div class="grid grid-cols-3 gap-8 h-full max-h-[60vh]">
+            <div class="glass p-8 flex flex-col hover:bg-white/5 transition-all">
+                <div class="text-4xl mb-6 text-gray-600">01</div>
+                <h3 class="text-2xl font-bold text-white mb-4">上下文遗忘<br><span class="text-sm font-normal text-gray-400">Context Amnesia</span></h3>
+                <p class="text-gray-300 leading-relaxed mb-4">LLM 通常“用完即忘”。</p>
+                <div class="mt-auto pt-6 border-t border-white/10">
+                    <p class="text-accent font-medium">解决方案：</p>
+                    <p class="text-sm text-gray-400">持久化钩子 (Hooks) 保存项目特定知识。</p>
+                </div>
+            </div>
+            <div class="glass p-8 flex flex-col hover:bg-white/5 transition-all">
+                <div class="text-4xl mb-6 text-gray-600">02</div>
+                <h3 class="text-2xl font-bold text-white mb-4">Token 浪费<br><span class="text-sm font-normal text-gray-400">Token Economics</span></h3>
+                <p class="text-gray-300 leading-relaxed mb-4">避免每次全量读取文件。</p>
+                <div class="mt-auto pt-6 border-t border-white/10">
+                    <p class="text-accent font-medium">解决方案：</p>
+                    <p class="text-sm text-gray-400">子代理 (Sub-agents) + 智能检索。</p>
+                </div>
+            </div>
+            <div class="glass p-8 flex flex-col hover:bg-white/5 transition-all">
+                <div class="text-4xl mb-6 text-gray-600">03</div>
+                <h3 class="text-2xl font-bold text-white mb-4">质量失控<br><span class="text-sm font-normal text-gray-400">Quality Control</span></h3>
+                <p class="text-gray-300 leading-relaxed mb-4">防止生成难以维护的代码。</p>
+                <div class="mt-auto pt-6 border-t border-white/10">
+                    <p class="text-accent font-medium">解决方案：</p>
+                    <p class="text-sm text-gray-400">强制工程标准（TDD、安全审查）。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: AGENTS (A) -->
+    <section class="slide" id="slide-3">
+        <div class="mb-8 flex justify-between items-end">
+            <div>
+                <h2 class="text-4xl font-bold text-white">架构 A：代理 (Agents)</h2>
+                <p class="text-lg text-gray-400 mt-2">13+ 预定义角色，各司其职的虚拟团队</p>
+            </div>
+            <div class="text-right text-sm font-mono text-gray-500">Location: agents/</div>
+        </div>
+        <div class="grid grid-cols-12 gap-6 h-full">
+            <div class="col-span-4 flex flex-col gap-4">
+                <div class="text-accent uppercase text-sm font-bold tracking-widest mb-2">01. 核心指挥层</div>
+                <div class="glass glass-accent p-6 flex-1">
+                    <h4 class="text-xl font-bold text-white mb-2">Planner (规划师)</h4>
+                    <p class="text-sm text-gray-400">大脑。分析需求、制定步骤、识别风险。</p>
+                </div>
+                <div class="glass glass-accent p-6 flex-1">
+                    <h4 class="text-xl font-bold text-white mb-2">Architect (架构师)</h4>
+                    <p class="text-sm text-gray-400">高层设计。目录结构、技术栈选择。</p>
+                </div>
+            </div>
+            <div class="col-span-4 flex flex-col gap-4">
+                <div class="text-accent uppercase text-sm font-bold tracking-widest mb-2">02. 通用工具人</div>
+                <div class="glass p-5 h-full overflow-y-auto">
+                    <ul class="space-y-4">
+                        <li><strong class="text-white block">Code Reviewer</strong><span class="text-xs text-gray-400">代码逻辑、风格审查</span></li>
+                        <li><strong class="text-white block">TDD Guide</strong><span class="text-xs text-gray-400">引导红-绿-重构流程</span></li>
+                        <li><strong class="text-white block">Build Error Resolver</strong><span class="text-xs text-gray-400">修复编译器/运行时错误</span></li>
+                        <li><strong class="text-white block">Refactor Cleaner</strong><span class="text-xs text-gray-400">清理死代码</span></li>
+                         <li><strong class="text-white block">E2E Runner</strong><span class="text-xs text-gray-400">Playwright/Cypress 测试</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-span-4 flex flex-col gap-4">
+                <div class="text-accent uppercase text-sm font-bold tracking-widest mb-2">03. 领域专家 (按需)</div>
+                <div class="glass p-5 border-l border-purple-500/50 h-full">
+                     <ul class="space-y-4">
+                        <li><strong class="text-white block">Security Reviewer</strong><span class="text-xs text-gray-400">OWASP Top 10, 注入防护</span></li>
+                        <li><strong class="text-white block">Database Reviewer</strong><span class="text-xs text-gray-400">SQL 性能, Schema 设计</span></li>
+                        <li><strong class="text-white block">Go Expert</strong><span class="text-xs text-gray-400">Goroutines, Channels</span></li>
+                        <li><strong class="text-white block">Python Reviewer</strong><span class="text-xs text-gray-400">PEP8, 性能优化</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: CONTINUOUS LEARNING (B) -->
+    <section class="slide" id="slide-4">
+        <div class="orb w-[800px] h-[800px] bg-secondary top-[20%] right-[-20%] opacity-10"></div>
+        <div class="grid grid-cols-12 gap-12 h-full items-center">
+            <div class="col-span-5">
+                <h2 class="text-5xl font-bold text-white mb-6">架构 B：持续学习</h2>
+                <p class="text-xl text-gray-300 mb-8">让 Claude 拥有“记忆”的核心机制。<span class="text-sm text-gray-500 mt-2 block">V2 (Observer Agent + 置信度评分)</span></p>
+                <div class="glass p-6 border-l-4 border-secondary">
+                    <h4 class="text-lg font-bold text-white mb-2">Example:</h4>
+                    <p class="font-mono text-sm text-gray-300">"用户不喜欢 try-catch，更喜欢 Go 风格的错误处理。"</p>
+                    <div class="mt-4 flex items-center space-x-2">
+                        <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Confidence: High</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-7 relative">
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center group">
+                        <div class="w-16 h-16 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center text-xl font-bold text-gray-400 group-hover:bg-accent group-hover:text-black transition-colors">1</div>
+                        <div class="ml-6 glass p-4 flex-1"><h4 class="text-white font-bold">Trigger</h4><p class="text-sm text-gray-400">会话结束 (Session End) 时自动运行 Hooks。</p></div>
+                    </div>
+                    <div class="h-8 border-l-2 border-dashed border-gray-700 ml-8"></div>
+                    <div class="flex items-center group">
+                        <div class="w-16 h-16 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center text-xl font-bold text-gray-400 group-hover:bg-accent group-hover:text-black transition-colors">2</div>
+                        <div class="ml-6 glass p-4 flex-1"><h4 class="text-white font-bold">Observe</h4><p class="text-sm text-gray-400">分析全部 Prompt/Response，计算“置信度”。</p></div>
+                    </div>
+                    <div class="h-8 border-l-2 border-dashed border-gray-700 ml-8"></div>
+                    <div class="flex items-center group">
+                        <div class="w-16 h-16 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center text-xl font-bold text-gray-400 group-hover:bg-accent group-hover:text-black transition-colors">3</div>
+                        <div class="ml-6 glass p-4 flex-1"><h4 class="text-white font-bold">Extract & Store</h4><p class="text-sm text-gray-400">提取模式存入 JSON/Markdown。</p></div>
+                    </div>
+                    <div class="h-8 border-l-2 border-dashed border-gray-700 ml-8"></div>
+                    <div class="flex items-center group">
+                        <div class="w-16 h-16 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center text-xl font-bold text-gray-400 group-hover:bg-secondary group-hover:text-white transition-colors">4</div>
+                        <div class="ml-6 glass p-4 flex-1 border-secondary/50"><h4 class="text-white font-bold">Apply</h4><p class="text-sm text-gray-400">下次会话开始时，自动注入经验。</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: COMMANDS (C) - MOVED HERE -->
+    <section class="slide" id="slide-5">
+        <h2 class="text-4xl font-bold text-white mb-8">架构 C：命令清单 (Commands)</h2>
+        <div class="grid grid-cols-4 gap-6 h-full">
+            <div class="col-span-1">
+                <h3 class="text-accent font-bold mb-4 uppercase text-sm tracking-wider">核心工作流</h3>
+                <div class="space-y-2">
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-accent text-sm font-bold">/plan</code><p class="text-xs text-gray-400 mt-1">生成计划</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-accent text-sm font-bold">/tdd</code><p class="text-xs text-gray-400 mt-1">启动开发</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-accent text-sm font-bold">/code-review</code><p class="text-xs text-gray-400 mt-1">审查代码</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-accent text-sm font-bold">/checkpoint</code><p class="text-xs text-gray-400 mt-1">保存快照</p></div>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-accent font-bold mb-4 uppercase text-sm tracking-wider">修复与维护</h3>
+                <div class="space-y-2">
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-white text-sm font-bold">/build-fix</code><p class="text-xs text-gray-400 mt-1">解决构建报错</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-white text-sm font-bold">/refactor-clean</code><p class="text-xs text-gray-400 mt-1">清理死代码</p></div>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <h3 class="text-secondary font-bold mb-4 uppercase text-sm tracking-wider">学习与进化</h3>
+                <div class="space-y-2">
+                    <div class="glass p-3 hover:bg-white/10 cursor-default border-l-2 border-secondary"><code class="text-secondary text-sm font-bold">/evolve</code><p class="text-xs text-gray-400 mt-1">聚类直觉</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-secondary text-sm font-bold">/learn</code><p class="text-xs text-gray-400 mt-1">手动提取知识</p></div>
+                </div>
+            </div>
+             <div class="col-span-1">
+                <h3 class="text-accent font-bold mb-4 uppercase text-sm tracking-wider">语言特定</h3>
+                <div class="space-y-2">
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-gray-300 text-sm font-bold">/go-test</code><p class="text-xs text-gray-400 mt-1">Go 专用 TDD</p></div>
+                    <div class="glass p-3 hover:bg-white/10 cursor-default"><code class="text-gray-300 text-sm font-bold">/python-review</code><p class="text-xs text-gray-400 mt-1">Python 专家审查</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: HOOKS & RULES (D & E) - MOVED HERE & SWAPPED COLUMNS -->
+    <section class="slide" id="slide-6">
+        <div class="grid grid-cols-2 gap-16 h-full">
+            
+            <!-- Left Column: Hooks (D) -->
+            <div class="flex flex-col h-full">
+                <h2 class="text-4xl font-bold text-white mb-6">架构 D：钩子 (Hooks)</h2>
+                <p class="text-gray-400 mb-6">自动化触发器，定义在 hooks.json 中。</p>
+                <div class="space-y-4">
+                    <div class="glass p-4 flex items-center"><span class="bg-gray-700 text-white font-mono text-xs px-2 py-1 rounded mr-4">Start</span><div><strong class="text-white">Session Start</strong><p class="text-xs text-gray-400">注入上下文。</p></div></div>
+                    <div class="glass p-4 flex items-center"><span class="bg-gray-700 text-white font-mono text-xs px-2 py-1 rounded mr-4">End</span><div><strong class="text-white">Session End</strong><p class="text-xs text-gray-400">提取新知识。</p></div></div>
+                    <div class="glass p-4 flex items-center"><span class="bg-warning/20 text-warning font-mono text-xs px-2 py-1 rounded mr-4">Check</span><div><strong class="text-white">Pre-Tool Use</strong><p class="text-xs text-gray-400">拦截检查（如检测 console.log）。</p></div></div>
+                </div>
+            </div>
+
+            <!-- Right Column: Rules (E) -->
+            <div class="flex flex-col h-full">
+                <h2 class="text-4xl font-bold text-white mb-6">架构 E：规则 (Rules)</h2>
+                <p class="text-gray-400 mb-6">System Prompt 的一部分，具有最高优先级。</p>
+                <div class="grid grid-cols-2 gap-4 flex-1 overflow-y-auto content-start">
+                    <div class="glass p-4 border-l-2 border-red-500"><h5 class="text-white font-bold">Security</h5><p class="text-xs text-gray-400 mt-1">严禁硬编码密钥、SQL注入防护。</p></div>
+                    <div class="glass p-4 border-l-2 border-blue-500"><h5 class="text-white font-bold">Coding Style</h5><p class="text-xs text-gray-400 mt-1">不可变数据、命名规范。</p></div>
+                    <div class="glass p-4 border-l-2 border-green-500"><h5 class="text-white font-bold">Testing</h5><p class="text-xs text-gray-400 mt-1">覆盖率 >80%。</p></div>
+                    <div class="glass p-4 border-l-2 border-yellow-500"><h5 class="text-white font-bold">Git Workflow</h5><p class="text-xs text-gray-400 mt-1">Conventional Commits。</p></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SLIDE 7: INSTALLATION -->
+    <section class="slide" id="slide-7">
+        <div class="grid grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-5xl font-bold text-white mb-8">安装与配置</h2>
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="text-accent font-bold mb-3 flex items-center"><span class="w-6 h-6 rounded-full bg-accent text-black flex items-center justify-center text-sm mr-2">1</span>方式一：插件安装（推荐）</h4>
+                        <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 border border-gray-700">
+                            <p>/plugin marketplace add affaan-m/everything-claude-code</p>
+                            <p class="mt-2">/plugin install everything-claude-code@everything-claude-code</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-3 flex items-center"><span class="w-6 h-6 rounded-full bg-gray-700 text-white flex items-center justify-center text-sm mr-2">2</span>方式二：手动安装</h4>
+                        <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 border border-gray-700">
+                            <p>git clone https://github.com/affaan-m/everything-claude-code.git</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-success font-bold mb-3 flex items-center"><span class="w-6 h-6 rounded-full bg-success text-black flex items-center justify-center text-sm mr-2">3</span>初始化配置 (关键)</h4>
+                        <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 border border-gray-700 inline-block">
+                            <p>/setup-pm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                 <div class="w-full aspect-video glass flex items-center justify-center text-gray-500 font-mono border-dashed border-2 border-gray-700">
+                    [ Terminal UI Simulation ]<br>
+                    > Installation Complete...<br>
+                    > Agents Ready: 13
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: WORKFLOW -->
+    <section class="slide" id="slide-8">
+        <h2 class="text-5xl font-bold text-white mb-12 text-center">最佳实践工作流</h2>
+        <div class="flex justify-between items-start relative">
+            <div class="absolute top-[2.5rem] left-0 right-0 h-1 bg-gray-800 z-0"></div>
+            <div class="relative z-10 flex flex-col items-center w-1/5">
+                <div class="w-20 h-20 rounded-full bg-surface border-4 border-gray-700 flex items-center justify-center text-2xl font-bold text-white mb-6">1</div>
+                <h4 class="text-xl font-bold text-accent mb-2">Plan</h4>
+                <div class="glass p-4 text-center w-full min-h-[160px]"><code class="text-xs block mb-2 bg-black/30 p-1 rounded">/plan</code><p class="text-sm text-gray-400">先生成文档，分析风险。</p></div>
+            </div>
+             <div class="relative z-10 flex flex-col items-center w-1/5">
+                <div class="w-20 h-20 rounded-full bg-surface border-4 border-accent flex items-center justify-center text-2xl font-bold text-white mb-6">2</div>
+                <h4 class="text-xl font-bold text-white mb-2">Dev</h4>
+                <div class="glass p-4 text-center w-full min-h-[160px]"><code class="text-xs block mb-2 bg-black/30 p-1 rounded">/tdd</code><p class="text-sm text-gray-400">红-绿-重构。</p></div>
+            </div>
+             <div class="relative z-10 flex flex-col items-center w-1/5">
+                <div class="w-20 h-20 rounded-full bg-surface border-4 border-gray-700 flex items-center justify-center text-2xl font-bold text-white mb-6">3</div>
+                <h4 class="text-xl font-bold text-white mb-2">Debug</h4>
+                <div class="glass p-4 text-center w-full min-h-[160px]"><code class="text-xs block mb-2 bg-black/30 p-1 rounded">/build-fix</code><p class="text-sm text-gray-400">自动分析日志。</p></div>
+            </div>
+             <div class="relative z-10 flex flex-col items-center w-1/5">
+                <div class="w-20 h-20 rounded-full bg-surface border-4 border-gray-700 flex items-center justify-center text-2xl font-bold text-white mb-6">4</div>
+                <h4 class="text-xl font-bold text-white mb-2">Review</h4>
+                <div class="glass p-4 text-center w-full min-h-[160px]"><code class="text-xs block mb-2 bg-black/30 p-1 rounded">/code-review</code><p class="text-sm text-gray-400">模拟 PR 审查。</p></div>
+            </div>
+             <div class="relative z-10 flex flex-col items-center w-1/5">
+                <div class="w-20 h-20 rounded-full bg-surface border-4 border-secondary flex items-center justify-center text-2xl font-bold text-white mb-6">5</div>
+                <h4 class="text-xl font-bold text-secondary mb-2">Evolve</h4>
+                <div class="glass p-4 text-center w-full min-h-[160px]"><code class="text-xs block mb-2 bg-black/30 p-1 rounded">/evolve</code><p class="text-sm text-gray-400">固化经验。</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: FAQ -->
+    <section class="slide" id="slide-9">
+        <h2 class="text-4xl font-bold text-white mb-8 border-b border-gray-700 pb-4">常见问题 (FAQ)</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="glass p-6">
+                <h4 class="text-accent font-bold mb-2">Q: 这会消耗更多的 Token 吗？</h4>
+                <p class="text-gray-300">A: 短期会，但<strong>长期更省</strong>。精准检索减少了反复试错。</p>
+            </div>
+            <div class="glass p-6">
+                <h4 class="text-accent font-bold mb-2">Q: 它可以用于任何语言吗？</h4>
+                <p class="text-gray-300">A: 核心架构语言无关。TS, Python, Go, Java 有专门优化。</p>
+            </div>
+            <div class="flex items-center justify-center flex-col text-center">
+                <h3 class="text-3xl font-bold text-white mb-4">Ready to Upgrade?</h3>
+                <div class="px-8 py-3 bg-accent text-black font-bold rounded-full cursor-pointer hover:bg-white transition-colors">Start Setup</div>
+            </div>
+        </div>
+        <div class="absolute bottom-6 left-0 right-0 text-center text-xs text-gray-600">Based on the "Everything Claude Code" Guide | Designed by PPT Master V2</div>
+    </section>
+
+    <!-- Keyboard Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('section.slide');
+            let currentIndex = 0;
+
+            // 1. Sync index with manual scroll using IntersectionObserver
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        currentIndex = Array.from(slides).indexOf(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            slides.forEach(slide => observer.observe(slide));
+
+            // 2. Navigation Function
+            const goToSlide = (index) => {
+                if (index >= 0 && index < slides.length) {
+                    slides[index].scrollIntoView({ behavior: 'smooth' });
+                    currentIndex = index;
+                }
+            };
+
+            // 3. Event Listener
+            document.addEventListener('keydown', (e) => {
+                // Next Slide: Right Arrow, Down Arrow, Spacebar
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                    e.preventDefault(); 
+                    goToSlide(currentIndex + 1);
+                } 
+                // Prev Slide: Left Arrow, Up Arrow
+                else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    goToSlide(currentIndex - 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

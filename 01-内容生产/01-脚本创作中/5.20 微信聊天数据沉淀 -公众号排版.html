@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>我用 AI 把微信聊天记录，变成了私人商业情报系统</title>
+</head>
+<body>
+  <section style="margin:0 auto;max-width:680px;padding:16px 0;color:#1f2937;font-size:16px;line-height:1.85;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Arial,sans-serif;">
+    <h1 style="margin:0 0 18px;font-size:24px;line-height:1.35;color:#111827;font-weight:800;">
+      我用 AI 把微信聊天记录，变成了私人商业情报系统
+    </h1>
+
+    <p style="margin:0 0 18px;color:#4b5563;">
+      我之前因为微信消息太多，差点损失 2000 块。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      上个月有个客户跟我聊过一个需求，我当时说：“好的，马上做。”
+    </p>
+
+    <p style="margin:0 0 22px;">
+      结果三天后他来问进度，我才想起：我根本还没开始做。
+    </p>
+
+    <section style="margin:24px 0;padding:18px 18px 16px;border-left:4px solid #10b981;background:#f0fdf4;border-radius:8px;">
+      <p style="margin:0;color:#065f46;font-size:18px;font-weight:700;line-height:1.6;">
+        更可怕的是，这种事不止发生过一次。
+      </p>
+      <p style="margin:8px 0 0;color:#047857;">
+        所以我做了一套系统：让 AI 自动把每天的微信聊天记录，整理成一份商业情报日报。
+      </p>
+    </section>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      先看结果
+    </h2>
+
+    <p style="margin:0 0 18px;">
+      这是我 5 月 16 日的微信聊天日报。
+    </p>
+
+    <section style="margin:22px 0;padding:18px;border:1px solid #d1fae5;background:#ecfdf5;border-radius:10px;">
+      <p style="margin:0 0 12px;color:#064e3b;font-weight:700;">当天数据</p>
+      <p style="margin:0 0 8px;font-size:24px;line-height:1.4;color:#111827;font-weight:800;">
+        727 条消息 · 14 个会话 · 2 条商业线索
+      </p>
+      <p style="margin:0;color:#047857;">
+        其中一条，如果不是日报提醒，我大概率就错过了。
+      </p>
+    </section>
+
+    <p style="margin:0 0 18px;">
+      这才是它最有价值的地方。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      它不是简单统计“今天聊了多少条消息”，而是从真实对话里，把我当时没意识到的信号捞出来。
+    </p>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      我做了 8 个微信 Skill
+    </h2>
+
+    <p style="margin:0 0 18px;">
+      核心逻辑很简单：
+    </p>
+
+    <section style="margin:20px 0;">
+      <p style="margin:0 0 12px;padding:12px 14px;background:#f9fafb;border-radius:8px;">
+        1. 自动导出微信聊天记录。
+      </p>
+      <p style="margin:0 0 12px;padding:12px 14px;background:#f9fafb;border-radius:8px;">
+        2. 按年份、月份、日期分层归档。
+      </p>
+      <p style="margin:0 0 12px;padding:12px 14px;background:#f9fafb;border-radius:8px;">
+        3. 基于真实聊天记录生成日报、周报、月报。
+      </p>
+      <p style="margin:0;padding:12px 14px;background:#f9fafb;border-radius:8px;">
+        4. 同时输出 Markdown 和 HTML：Markdown 给 AI 继续调用，HTML 给人直接阅读。
+      </p>
+    </section>
+
+    <p style="margin:22px 0 18px;">
+      对我来说，这不是一次性的“聊天总结”。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      这是在给自己的业务数据建一套基础设施。
+    </p>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      日报到底会提醒我什么？
+    </h2>
+
+    <p style="margin:0 0 16px;">
+      它会把一天里的关键信号拆出来：
+    </p>
+
+    <ul style="margin:0 0 20px;padding-left:22px;">
+      <li style="margin:0 0 10px;">哪些对话最重要；</li>
+      <li style="margin:0 0 10px;">哪些承诺还没兑现；</li>
+      <li style="margin:0 0 10px;">哪些客户有隐性需求没被挖出来；</li>
+      <li style="margin:0 0 10px;">哪些事情需要优先跟进；</li>
+      <li style="margin:0;">我的工作消息高峰集中在哪些时间段。</li>
+    </ul>
+
+    <p style="margin:0 0 18px;">
+      比如 5 月 16 日那天，它提醒我：当天主要精力集中在客户侧 Agent、飞书接入、权限排查、远程环境、图片识别、微信数据读取这些问题上。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      它还告诉我，工作消息高峰集中在上午 11 点，以及晚上 8 点到 11 点。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      这说明什么？
+    </p>
+
+    <p style="margin:0 0 22px;">
+      我白天在响应客户，晚上还在继续处理即时沟通。这个节奏如果不被看见，就很容易变成长期消耗。
+    </p>
+
+    <section style="margin:26px 0;padding:18px;background:#111827;color:#f9fafb;border-radius:10px;">
+      <p style="margin:0;font-size:18px;line-height:1.7;font-weight:800;">
+        大多数人以为自己是在“聊天”。<br>
+        但对老板、销售、顾问、自由职业者来说，微信其实是第一业务现场。
+      </p>
+    </section>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      周报的价值更明显
+    </h2>
+
+    <p style="margin:0 0 18px;">
+      单日数据只能看到局部，周报能看到趋势。
+    </p>
+
+    <section style="margin:22px 0;padding:18px;border:1px solid #e5e7eb;background:#f9fafb;border-radius:10px;">
+      <p style="margin:0 0 12px;color:#374151;font-weight:700;">本周数据</p>
+      <p style="margin:0 0 8px;font-size:23px;line-height:1.4;color:#111827;font-weight:800;">
+        4413 条消息 · 86 个会话
+      </p>
+      <p style="margin:0;color:#4b5563;">
+        收到消息 2684 条，自己发送 1729 条。
+      </p>
+    </section>
+
+    <p style="margin:0 0 16px;">
+      周报会继续往下追：
+    </p>
+
+    <ul style="margin:0 0 20px;padding-left:22px;">
+      <li style="margin:0 0 10px;">哪些线索这一周还没跟进；</li>
+      <li style="margin:0 0 10px;">哪些人最近联系变少了；</li>
+      <li style="margin:0 0 10px;">哪些商务和交付问题开始反复出现；</li>
+      <li style="margin:0 0 10px;">哪些技术问题应该沉淀成知识库；</li>
+      <li style="margin:0;">哪些对话背后，其实已经出现了新的需求。</li>
+    </ul>
+
+    <p style="margin:0 0 18px;">
+      这些信号单独看都很小。
+    </p>
+
+    <p style="margin:0 0 22px;">
+      但放到一周的数据里，它们就会变成决策线索。
+    </p>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      为什么一定要沉淀？
+    </h2>
+
+    <p style="margin:0 0 18px;">
+      因为聊天记录如果只是躺在微信里，它很快就会变成噪音。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      你明明答应过某个客户一件事，但三天后找不到上下文。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      你明明遇到过某个技术问题，但下一次还是重新排查。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      你明明听到过一个潜在需求，但当时没当回事，过几天就忘了。
+    </p>
+
+    <section style="margin:24px 0;padding:18px 18px 16px;border-left:4px solid #111827;background:#f3f4f6;border-radius:8px;">
+      <p style="margin:0;color:#111827;font-size:18px;font-weight:800;line-height:1.7;">
+        聊天记录不是废数据。<br>
+        它是你业务现场留下来的原始证据。
+      </p>
+    </section>
+
+    <p style="margin:0 0 18px;">
+      真正重要的不是“让 AI 帮我总结一下”。
+    </p>
+
+    <p style="margin:0 0 18px;">
+      真正重要的是：把每天发生的真实对话，变成以后可以被检索、被复盘、被再次利用的资产。
+    </p>
+
+    <h2 style="margin:34px 0 14px;font-size:20px;line-height:1.45;color:#111827;font-weight:800;">
+      这套系统适合谁？
+    </h2>
+
+    <p style="margin:0 0 16px;">
+      如果你的客户、合作方、交付沟通大量发生在微信里，这套东西就很有价值。
+    </p>
+
+    <ul style="margin:0 0 20px;padding-left:22px;">
+      <li style="margin:0 0 10px;">老板：看见业务机会和团队沟通风险；</li>
+      <li style="margin:0 0 10px;">销售：跟进线索、复盘客户需求；</li>
+      <li style="margin:0 0 10px;">顾问：沉淀客户问题和交付经验；</li>
+      <li style="margin:0;">自由职业者：管理承诺、节奏和机会。</li>
+    </ul>
+
+    <p style="margin:0 0 18px;">
+      你的微信里，藏着客户需求、合作机会、未兑现承诺，还有你真实的工作节奏。
+    </p>
+
+    <p style="margin:0 0 22px;">
+      大多数人只是在用它聊天。聪明一点的人，已经可以用它做决策。
+    </p>
+
+    <section style="margin:30px 0 0;padding:20px;background:#ecfdf5;border-radius:10px;text-align:center;">
+      <p style="margin:0 0 8px;color:#065f46;font-size:18px;line-height:1.7;font-weight:800;">
+        如果你也想把聊天记录变成自己的商业情报系统，
+      </p>
+      <p style="margin:0;color:#047857;">
+        欢迎一起交流。
+      </p>
+    </section>
+  </section>
+</body>
+</html>

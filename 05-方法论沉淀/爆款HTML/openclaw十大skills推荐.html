@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 必备 10 大 Skill 推荐</title>
+    <!-- Tailwind CSS for layout and styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for modern scalable icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter and Noto Sans SC for crisp typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070B14;
+            --accent-cyan: #00E5FF;
+            --accent-pink: #FF007A;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            user-select: none;
+        }
+
+        /* Continuous Canvas Backgrounds */
+        .ambient-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .orb-cyan {
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            top: -10%; left: -10%;
+        }
+
+        .orb-pink {
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--accent-pink) 0%, transparent 70%);
+            bottom: -10%; right: -10%;
+        }
+
+        /* Slide Container */
+        #slide-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Kinetic Typography & Staggered Animations */
+        .anim-element {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide.active .anim-element {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+
+        /* Asymmetric Layouts (30/70) */
+        .grid-30-70 {
+            display: grid;
+            grid-template-columns: 3fr 7fr;
+            gap: 4rem;
+            width: 100%;
+            max-width: 1600px;
+            align-items: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-cyan { color: var(--accent-cyan); }
+        .text-pink { color: var(--accent-pink); }
+
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 4px;
+            background: rgba(255,255,255,0.1);
+            z-index: 50;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid;
+        }
+        
+        /* Table overrides for Slide 11 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 3fr;
+            gap: 1rem;
+        }
+        .summary-row {
+            display: contents;
+        }
+        .summary-cell {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.3s;
+        }
+        .summary-row:hover .summary-cell {
+            background: rgba(255,255,255,0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cinematic Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-cyan" id="orb-left"></div>
+        <div class="orb orb-pink" id="orb-right"></div>
+    </div>
+
+    <!-- Presentation Canvas -->
+    <div id="slide-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide" data-bg="center">
+            <div class="text-center w-full max-w-6xl mx-auto">
+                <div class="anim-element text-xl tracking-[0.3em] text-pink mb-8 uppercase font-bold">告别“失忆与眼瞎”</div>
+                <h1 class="anim-element delay-100 font-black mb-10 leading-none">
+                    <span class="block text-5xl md:text-6xl mb-4 text-white">唤醒你的</span>
+                    <span class="block text-7xl md:text-[9rem] text-cyan tracking-tight">OpenClaw</span>
+                </h1>
+                <p class="anim-element delay-200 text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed">
+                    只装本体不够，你需要超级外挂。基于下载量与实战经验，为你精选 10 大核心 Skill。
+                </p>
+                <div class="anim-element delay-300">
+                    <div class="inline-flex items-center gap-4 border border-[rgba(255,255,255,0.2)] rounded-full px-8 py-4 backdrop-blur-sm">
+                        <i data-lucide="zap" class="text-cyan"></i>
+                        <span class="text-xl font-bold">让 Agent 战力暴增 3 倍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Background -->
+        <div class="slide" data-bg="split">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center pr-12 border-r border-[rgba(255,255,255,0.1)]">
+                    <h2 class="anim-element text-5xl font-black mb-6 leading-tight">背景<br><span class="text-cyan"></span></h2>
+                
+                </div>
+                <div class="flex flex-col justify-center pl-12">
+                    <div class="anim-element delay-200 glass-card mb-8 flex items-center gap-8">
+                        <i data-lucide="github" class="w-20 h-20 text-white"></i>
+                        <div>
+                            <div class="text-5xl font-black text-white mb-2">220,000+ <span class="text-2xl text-muted font-normal">Stars</span></div>
+                            <div class="text-xl text-muted">OpenClaw: 目前最火的开源 AI Agent</div>
+                        </div>
+                    </div>
+                    <div class="anim-element delay-300 glass-card flex items-center gap-8 border-cyan/30 bg-cyan/5">
+                        <i data-lucide="layers" class="w-20 h-20 text-cyan"></i>
+                        <div>
+                            <div class="text-5xl font-black text-cyan mb-2">17,000+ <span class="text-2xl text-cyan/60 font-normal">Skills</span></div>
+                            <div class="text-xl text-muted">ClawHub: 截至 2026 年 2 月底的社区生态</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Security -->
+        <div class="slide" data-bg="left">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-pink border-pink mb-6">🔒 第一类：安全守门员</div>
+                    <h2 class="anim-element delay-100 text-6xl font-black mb-4 leading-tight">skill-vetting</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">安全审查员<br><span class="text-lg text-white/50">(建议第一个安装)</span></p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-4xl font-bold mb-8 text-white">在安装任何 Skill 之前帮你扫描安全风险。</h3>
+                    <div class="anim-element delay-200 glass-card">
+                        <p class="text-xl text-muted leading-relaxed mb-8">
+                            Skill Vetter 是一个 AI Agent 专用的安全审查工具。在从 ClawHub、GitHub 安装前，它会检查红旗标识、权限范围和可疑模式，把安全威胁挡在门外。
+                        </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="border-l-4 border-pink pl-4">
+                                <h4 class="font-bold text-white mb-2">安全扫描</h4>
+                                <p class="text-sm text-muted">检测 prompt 注入、工具投毒、隐藏恶意代码</p>
+                            </div>
+                            <div class="border-l-4 border-pink pl-4">
+                                <h4 class="font-bold text-white mb-2">实用性评估</h4>
+                                <p class="text-sm text-muted">判断这个 Skill 值不值得装</p>
+                            </div>
+                            <div class="border-l-4 border-pink pl-4">
+                                <h4 class="font-bold text-white mb-2">权限审查</h4>
+                                <p class="text-sm text-muted">精准识别过度的权限请求</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Memory -->
+        <div class="slide" data-bg="right">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-cyan border-cyan mb-6">🧠 第二类：记忆与成长</div>
+                    <h2 class="anim-element delay-100 text-5xl font-black mb-4 leading-tight">self-improving<br>-agent</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">自我进化引擎<br><span class="text-lg text-cyan">(ClawHub 下载量 TOP 1)</span></p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-3xl font-bold mb-6 text-white leading-snug">打破大模型"失忆症"，让 Agent 跨会话持续学习、越用越聪明。</h3>
+                    <div class="anim-element delay-200 glass-card mb-6">
+                        <ul class="space-y-4 text-lg text-muted">
+                            <li class="flex items-start gap-4"><i data-lucide="database" class="w-6 h-6 text-cyan shrink-0 mt-1"></i> <div><strong class="text-white">持久化经验存储：</strong>创建 .learnings/ 目录，提取错误日志与成功经验，作为长期本地记忆库。</div></li>
+                            <li class="flex items-start gap-4"><i data-lucide="code" class="w-6 h-6 text-cyan shrink-0 mt-1"></i> <div><strong class="text-white">配置与模板注入：</strong>将“自我优化”机制强行嵌入到底层执行逻辑中。</div></li>
+                            <li class="flex items-start gap-4"><i data-lucide="git-merge" class="w-6 h-6 text-cyan shrink-0 mt-1"></i> <div><strong class="text-white">Hook 拦截动态调整：</strong>在生成回复前介入，加载历史经验调整策略。</div></li>
+                        </ul>
+                    </div>
+                    <div class="anim-element delay-300 bg-cyan/10 border border-cyan/30 rounded-xl p-6 flex items-start gap-4">
+                        <i data-lucide="lightbulb" class="w-8 h-8 text-cyan shrink-0"></i>
+                        <p class="text-lg text-cyan font-bold">💡 实战建议：这个 Skill 的价值不在第一天，而在第30天。用得越久，Agent 越像你的"数字分身"。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Search -->
+        <div class="slide" data-bg="left">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-[#A855F7] border-[#A855F7] mb-6">🔍 第三类：装上"眼睛"</div>
+                    <h2 class="anim-element delay-100 text-5xl font-black mb-4 leading-tight">tavily-search</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">AI 专属搜索引擎</p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-3xl font-bold mb-6 text-white leading-snug">让 Agent 学会上网搜索，而且搜出来的结果是 <span class="text-[#A855F7]">AI 友好的</span>。</h3>
+                    <div class="anim-element delay-200 glass-card mb-6 border-[#A855F7]/30">
+                        <p class="text-xl text-muted mb-6">不同于传统引擎返回链接，Tavily 返回干净的、结构化的内容（完整文本、提取答案），Agent 可以直接使用。</p>
+                        <div class="flex flex-wrap gap-4 mb-2">
+                            <span class="bg-white/5 px-4 py-2 rounded-lg text-sm font-bold">AI 优化结构化结果</span>
+                            <span class="bg-white/5 px-4 py-2 rounded-lg text-sm font-bold">快速/深度双模式</span>
+                            <span class="bg-white/5 px-4 py-2 rounded-lg text-sm font-bold">独立 extract 命令</span>
+                        </div>
+                    </div>
+                    <div class="anim-element delay-300 bg-[#A855F7]/10 border border-[#A855F7]/30 rounded-xl p-6 flex items-start gap-4">
+                        <i data-lucide="lightbulb" class="w-8 h-8 text-[#A855F7] shrink-0"></i>
+                        <p class="text-lg text-white">💡 <strong class="text-[#A855F7]">实战建议：</strong>Tavily 提供每月 1,000 次免费额度，个人完全够用。配合 <code class="text-[#A855F7]">summarize</code> 使用效果拉满。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Summarize -->
+        <div class="slide" data-bg="right">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-[#A855F7] border-[#A855F7] mb-6">📄 官方内置神技</div>
+                    <h2 class="anim-element delay-100 text-6xl font-black mb-4 leading-tight">summarize</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">全格式内容摘要专家</p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-3xl font-bold mb-6 text-white leading-snug">网页、PDF、图片、音频、YouTube——什么格式都能一口吞下去给你摘要。</h3>
+                    <div class="anim-element delay-200 glass-card mb-6">
+                        <div class="grid grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="globe"></i> 网页提取</h4>
+                                <p class="text-muted text-sm">自动剥离广告、导航栏和不可见代码。</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="youtube"></i> 音视频处理</h4>
+                                <p class="text-muted text-sm">自动调用 yt-dlp 获取字幕，或使用本地 Whisper 转录无字幕音频。</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="file-text"></i> 文档与视觉</h4>
+                                <p class="text-muted text-sm">支持 OCR 提取图片文本，解析 PDF 结构。</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="cpu"></i> 本地守护架构</h4>
+                                <p class="text-muted text-sm">繁重的下载、OCR 在本地后台完成，前端不卡顿。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anim-element delay-300 text-lg text-muted">
+                        💡 日常工作流：<strong class="text-white">“Tavily 搜 + Summarize 吞”</strong>。搜到页面后压缩成 500 字喂给上下文，效率翻倍。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Find Skills -->
+        <div class="slide" data-bg="center">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-[#FBBF24] border-[#FBBF24] mb-6">🛠 第四类：Skill 管理</div>
+                    <h2 class="anim-element delay-100 text-6xl font-black mb-4 leading-tight">find-skills</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">寻找 Skill 的 Skill</p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-4xl font-bold mb-8 text-white leading-snug">用自然语言告诉 Agent 你需要什么能力，它帮你找到并安装对应 Skill。</h3>
+                    <div class="anim-element delay-200 glass-card border-[#FBBF24]/30">
+                        <p class="text-xl text-muted mb-8">源于 Vercel 推出的 skills.sh，它是你的专属 Skill 导购员。</p>
+                        <div class="flex items-center gap-4 text-white font-bold mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#FBBF24]/20 flex items-center justify-center text-[#FBBF24]">1</div> 理解自然语言需求
+                        </div>
+                        <div class="flex items-center gap-4 text-white font-bold mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#FBBF24]/20 flex items-center justify-center text-[#FBBF24]">2</div> 搜索技能库
+                        </div>
+                        <div class="flex items-center gap-4 text-white font-bold mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#FBBF24]/20 flex items-center justify-center text-[#FBBF24]">3</div> 展示候选功能用法
+                        </div>
+                        <div class="flex items-center gap-4 text-white font-bold">
+                            <div class="w-10 h-10 rounded-full bg-[#FBBF24]/20 flex items-center justify-center text-[#FBBF24]">4</div> 协助安装配置
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Discipline -->
+        <div class="slide" data-bg="split">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-red-500 border-red-500 mb-6">📐 第五类：开发提效</div>
+                    <h2 class="anim-element delay-100 text-5xl font-black mb-4 leading-tight">using-<br>superpowers</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">行为纪律框架</p>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <h3 class="anim-element delay-100 text-3xl font-bold mb-6 text-white leading-snug">让 Agent 严格按"先查 Skill 再行动"的规则做事，杜绝偷懒和无纪律探索。</h3>
+                    <div class="anim-element delay-200 glass-card mb-6 border-red-500/30">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-bold text-red-400 mb-2">🛑 硬规则</h4>
+                                <p class="text-muted">把"先查看可用 Skill 再行动"变成强制流程，减少重复犯错。</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-red-400 mb-2">🚩 红旗提示</h4>
+                                <p class="text-muted">通过明确的优先级和红旗机制，阻断常见的偷懒路径。</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-red-400 mb-2">🚥 多 Skill 优先级</h4>
+                                <p class="text-muted">当多个可用时：先流程类，再实现类，避免顺序错误。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anim-element delay-300 text-lg text-muted">
+                        💡 如果你经常发现 Agent "绕远路"或者自己瞎搞，这个 Skill 能帮你<strong class="text-red-400">"管教"</strong>它。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Frontend & Vercel -->
+        <div class="slide" data-bg="right">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-white border-white mb-6">🎨 开发与设计</div>
+                    <h2 class="anim-element delay-100 text-5xl font-black mb-4 leading-tight">React &<br>Frontend</h2>
+                    <p class="anim-element delay-200 text-2xl text-muted mb-8">大厂最佳实践</p>
+                </div>
+                <div class="flex flex-col justify-center gap-6">
+                    <div class="anim-element delay-100 glass-card border-white/20">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-3xl font-black">❼</span>
+                            <h3 class="text-2xl font-bold text-white">vercel-react-best-practices</h3>
+                        </div>
+                        <p class="text-cyan font-bold mb-2">🎯 性能优化圣经（前端必装）</p>
+                        <p class="text-muted">Vercel 官方工程团队出品的 React/Next.js 最佳实践，指导 Agent 写出真正的高性能优化代码。</p>
+                    </div>
+
+                    <div class="anim-element delay-200 glass-card border-white/20">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-3xl font-black">❽</span>
+                            <h3 class="text-2xl font-bold text-white">frontend-design</h3>
+                        </div>
+                        <p class="text-pink font-bold mb-2">🎯 UI 设计质量守门员</p>
+                        <p class="text-muted mb-4">Anthropic 官方出品。强制 Agent 先做"设计思考与审美取向选择"，再写代码。</p>
+                        <ul class="list-disc list-inside text-sm text-white/70">
+                            <li>确保界面有明确风格主张</li>
+                            <li>以生产级代码交付，保持高审美</li>
+                            <li>把 Agent 从"能跑就行"提升到"设计合格"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: GitHub & Browser -->
+        <div class="slide" data-bg="left">
+            <div class="grid-30-70 h-full">
+                <div class="flex flex-col justify-center">
+                    <div class="anim-element tag text-green-400 border-green-400 mb-6">⚙️ 第六类：全能操作</div>
+                    <h2 class="anim-element delay-100 text-5xl font-black mb-4 leading-tight">工作流<br>操控器</h2>
+                </div>
+                <div class="flex flex-col justify-center gap-6">
+                    <div class="anim-element delay-100 glass-card border-green-400/30">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="text-3xl font-black">❾</span>
+                            <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i data-lucide="github"></i> github</h3>
+                        </div>
+                        <p class="text-green-400 font-bold mb-4">🎯 让 Agent 直接操作你的仓库</p>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-black/40 p-3 rounded"><strong>Issue 管理:</strong> gh issue list / create</div>
+                            <div class="bg-black/40 p-3 rounded"><strong>PR 操作:</strong> gh pr create / merge</div>
+                            <div class="bg-black/40 p-3 rounded"><strong>CI 监控:</strong> gh run list / view</div>
+                            <div class="bg-black/40 p-3 rounded"><strong>高级查询:</strong> 自定义 API 调用</div>
+                        </div>
+                    </div>
+
+                    <div class="anim-element delay-200 glass-card border-blue-400/30">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="text-3xl font-black">❿</span>
+                            <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i data-lucide="globe"></i> agent-browser</h3>
+                        </div>
+                        <p class="text-blue-400 font-bold mb-2">🎯 AI 浏览器自动化</p>
+                        <p class="text-muted">基于 Rust 的快速无头浏览器自动化 CLI。让你的 OpenClaw 长出"手"和"眼"，像人一样打开网页、点击按钮、填写表单、截图取证。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Elements -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+   
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Presentation Logic
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progress-bar');
+        const orbLeft = document.getElementById('orb-left');
+        const orbRight = document.getElementById('orb-right');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                    // Parallax Background Logic based on slide data-bg attribute
+                    const bgPos = slide.getAttribute('data-bg');
+                    if(bgPos === 'center') {
+                        orbLeft.style.transform = 'translate(20vw, 20vh) scale(1.2)';
+                        orbRight.style.transform = 'translate(-20vw, -20vh) scale(1.2)';
+                    } else if (bgPos === 'split') {
+                        orbLeft.style.transform = 'translate(-10vw, 40vh) scale(0.8)';
+                        orbRight.style.transform = 'translate(10vw, -40vh) scale(0.8)';
+                    } else if (bgPos === 'left') {
+                        orbLeft.style.transform = 'translate(-30vw, 0) scale(1.5)';
+                        orbRight.style.transform = 'translate(30vw, 20vh) scale(0.6)';
+                    } else if (bgPos === 'right') {
+                        orbLeft.style.transform = 'translate(30vw, 20vh) scale(0.6)';
+                        orbRight.style.transform = 'translate(-30vw, 0) scale(1.5)';
+                    }
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update Progress
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlides();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlides();
+            }
+        }
+
+        // Event Listeners
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        window.addEventListener('click', (e) => {
+            const clickX = e.clientX;
+            const windowWidth = window.innerWidth;
+            if (clickX > windowWidth * 0.3) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+
+        // Initial call
+        updateSlides();
+    </script>
+</body>
+</html>
+```

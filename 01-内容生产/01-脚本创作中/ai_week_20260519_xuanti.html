@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 博主自媒体选题库 · 2026-05-19</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5f6b7a;
+      --line: #d9e0e7;
+      --paper: #f7f8fa;
+      --card: #ffffff;
+      --accent: #0f766e;
+      --accent-2: #b45309;
+      --soft: #e8f4f2;
+      --soft-2: #fff4df;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    header {
+      padding: 56px 7vw 28px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .summary {
+      margin: 18px 0 0;
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .stat {
+      min-width: 150px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+      border-radius: 8px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+    .stat span { color: var(--muted); font-size: 13px; }
+    main {
+      width: min(1160px, 92vw);
+      margin: 28px auto 64px;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 12px 0;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(10px);
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card {
+      margin-top: 16px;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(18, 28, 38, .05);
+    }
+    .card.priority-high { border-left: 5px solid var(--accent); }
+    .card.priority-mid { border-left: 5px solid var(--accent-2); }
+    .card-head {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .num {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 20px;
+    }
+    .priority-mid .num {
+      background: var(--soft-2);
+      color: var(--accent-2);
+    }
+    .cluster {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.24;
+      letter-spacing: 0;
+    }
+    .angle {
+      margin: 18px 0;
+      color: #2d3a47;
+      font-size: 17px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    section {
+      border-top: 1px solid var(--line);
+      padding-top: 13px;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    p { margin: 0; }
+    ul { margin: 0; padding-left: 20px; }
+    li + li { margin-top: 6px; }
+    .hooks li { font-weight: 650; }
+    .evidence a {
+      color: var(--accent);
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .evidence a:hover { text-decoration: underline; }
+    .evidence span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .formats {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      header { padding: 36px 5vw 22px; }
+      .summary { font-size: 16px; }
+      main { width: min(680px, 94vw); margin-top: 18px; }
+      .card { padding: 18px; }
+      .card-head { grid-template-columns: 42px 1fr; gap: 12px; }
+      .num { width: 42px; height: 42px; font-size: 16px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">AI HOT WEEKLY TOPICS</p>
+    <h1>AI 博主自媒体选题库</h1>
+    <p class="summary">基于 2026-05-12 ~ 2026-05-19（北京时间） 的 195 条 AI HOT 精选内容，整理成可直接扩写为图文、短视频、直播或播客的选题卡片。</p>
+    <div class="stats">
+      <div class="stat"><strong>25</strong><span>选题卡片</span></div>
+      <div class="stat"><strong>12</strong><span>高优先级</span></div>
+      <div class="stat"><strong>195</strong><span>素材条目</span></div>
+    </div>
+  </header>
+  <main>
+    <div class="toolbar">
+      <span class="pill">优先做高优先级</span>
+      <span class="pill">每张卡片含素材链接</span>
+      <span class="pill">适合 AI 博主周更栏目</span>
+    </div>
+    <article class="card priority-high">
+        <div class="card-head">
+          <span class="num">01</span>
+          <div>
+            <p class="cluster">AI 编程 · 高优先级</p>
+            <h2>AI 编程模型进入长任务时代：Cursor Composer 2.5 为什么值得单独讲</h2>
+          </div>
+        </div>
+        <p class="angle">从“补全代码”讲到“连续几十步执行任务”，解释 Composer 2.5、Kimi 底座、长轨迹训练和效率提升之间的关系。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>开发者、技术管理者、AI 工具付费用户</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>帮用户判断下一代编程工具的核心差异不只是模型分数，而是长任务稳定性、反馈学习和成本效率。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>Cursor 又放大招，但真正的重点不是 2.5</li><li>AI 编程工具开始卷“能不能干完活”</li><li>Kimi、Cursor、SpaceXAI 连在一起意味着什么</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/dotey/status/2056432162635731438" target="_blank" rel="noreferrer">Cursor 发布 Composer 2.5 编程模型</a><span>X：宝玉 (@dotey) · 05/19 01:50</span></li><li><a href="https://www.ithome.com/0/952/336.htm" target="_blank" rel="noreferrer">Kimi最新融资获国资与央企加注，估值半年翻四倍</a><span>IT之家（RSS） · 05/19 15:39</span></li><li><a href="https://x.com/berryxia/status/2056549740393947627" target="_blank" rel="noreferrer">Cursor发布Composer 2.5模型，号称目前最强</a><span>X：Berry Xia (@berryxia) · 05/19 09:37</span></li></ul>
+        </section>
+        <p class="formats">深度解读 · 5 分钟视频 · 图文拆解</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">02</span>
+          <div>
+            <p class="cluster">企业智能体 · 高优先级</p>
+            <h2>企业智能体真正的门槛：不是模型，而是能不能安全接入内网</h2>
+          </div>
+        </div>
+        <p class="angle">用 Claude 自托管沙箱、MCP 隧道和 Stainless 收购串起来，讲企业为什么开始关心执行环境、工具边界、API 连接。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>企业 IT、SaaS 创业者、ToB 产品经理</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>把智能体落地从“功能演示”拉回工程现实：权限、数据、审计、内网连接才是采购和部署的关键。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>Claude 新功能暴露了企业 AI 的真问题</li><li>智能体进公司，第一关不是智商</li><li>MCP 为什么突然变成企业 AI 基建</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noreferrer">Claude智能体托管平台新增自托管沙箱与MCP隧道功能</a><span>Claude：Blog（网页） · 05/19 17:09</span></li><li><a href="https://x.com/claudeai/status/2056645485696315581" target="_blank" rel="noreferrer">Claude推出自托管沙箱与MCP隧道功能</a><span>X：Claude (@claudeai) · 05/19 15:57</span></li><li><a href="https://www.anthropic.com/news/anthropic-acquires-stainless" target="_blank" rel="noreferrer">Anthropic收购SDK与MCP服务器工具开发商Stainless</a><span>Anthropic：Newsroom（网页） · 05/19 01:06</span></li></ul>
+        </section>
+        <p class="formats">商业分析 · 架构图文 · 播客选题</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">03</span>
+          <div>
+            <p class="cluster">AI 编程 · 高优先级</p>
+            <h2>从桌面到手机：AI 编码助手正在变成后台员工</h2>
+          </div>
+        </div>
+        <p class="angle">把 GitHub Copilot 远程会话、Codex 远程连接、Claude Code /goal 和后台会话能力放在一起，讲 AI 编码从“我盯着它做”变成“我派任务给它做”。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>独立开发者、远程办公人群、效率工具用户</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成工作流教程，展示如何把碎片时间变成异步开发管理。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>以后写代码，可能真的不用坐在电脑前</li><li>手机上管 AI 写代码，是噱头还是趋势</li><li>AI 编程的下一步：异步派单</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere" target="_blank" rel="noreferrer">将你的本地GitHub会话带到任何地方</a><span>GitHub Blog · 05/19 00:54</span></li><li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.144" target="_blank" rel="noreferrer">Claude AI助手v2.1.144版本更新</a><span>Claude Code：GitHub Releases（RSS） · 05/19 08:48</span></li><li><a href="https://x.com/OpenAIDevs/status/2056442456800141424" target="_blank" rel="noreferrer">Mac远程运行Codex，手机办公两不误</a><span>X：OpenAI Developers (@OpenAIDevs) · 05/19 02:31</span></li></ul>
+        </section>
+        <p class="formats">教程 · 场景化短视频 · 效率工具测评</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">04</span>
+          <div>
+            <p class="cluster">创意生产 · 高优先级</p>
+            <h2>Runway Agent、Claude Design、Grok Imagine：创意工具正在代理化</h2>
+          </div>
+        </div>
+        <p class="angle">从单点生成图、生成视频，转向“一句话给目标，系统完成脚本、视觉方向、素材和成片”的代理式创作。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>设计师、短视频创作者、品牌营销团队</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>让非技术创作者理解：接下来要学的不是某个按钮，而是如何定义目标、风格和验收标准。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 设计工具不再只是生成一张图</li><li>Runway Agent 说明创意行业要换工作流了</li><li>会写需求的人，开始替代会点按钮的人</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/alibaba_cloud/status/2056581373301788747" target="_blank" rel="noreferrer">QoderWork推出Design Desk无限画布AI工作区</a><span>X：阿里云 / Alibaba Cloud (@alibaba_cloud) · 05/19 11:43</span></li><li><a href="https://x.com/berryxia/status/2056525311635026398" target="_blank" rel="noreferrer">Claude Design大升级：Token限制翻倍</a><span>X：Berry Xia (@berryxia) · 05/19 08:00</span></li><li><a href="https://x.com/claudeai/status/2056460045756309820" target="_blank" rel="noreferrer">Claude Design 全面升级创作能力</a><span>X：Claude (@claudeai) · 05/19 03:40</span></li></ul>
+        </section>
+        <p class="formats">案例合集 · 工作流拆解 · 创作者转型指南</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">05</span>
+          <div>
+            <p class="cluster">AI 基建 · 高优先级</p>
+            <h2>谷歌和黑石组 AI 云公司：算力正在金融化</h2>
+          </div>
+        </div>
+        <p class="angle">用 50 亿美元股权、TPU 商业化、500 兆瓦数据中心这些数字解释：AI 云已经不是传统云竞争，而是资本、能源和芯片的组合战。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>投资人、创业者、AI 基建关注者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>帮助读者看懂为什么模型公司、云厂商、金融资本都在抢算力入口。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 云下一场战争，黑石也下场了</li><li>500 兆瓦数据中心意味着什么</li><li>谷歌 TPU 开始变成一门外部生意</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.ithome.com/0/952/097.htm" target="_blank" rel="noreferrer">谷歌联手黑石组建 AI 云公司：50 亿美元起步，2027 年冲刺 500 兆瓦</a><span>IT之家（RSS） · 05/19 09:52</span></li><li><a href="https://x.com/testingcatalog/status/2056707725740953606" target="_blank" rel="noreferrer">谷歌I/O大会发布Gemini 3.5 Flash</a><span>X：Testing Catalog (@testingcatalog) · 05/19 20:05</span></li><li><a href="https://www.tomtunguz.com/first-derivative-of-inference" target="_blank" rel="noreferrer">推理的一阶导数：AI浪潮下的增长逻辑</a><span>Tomer Tunguz 博客（VC 分析） · 05/15 08:00</span></li></ul>
+        </section>
+        <p class="formats">商业长文 · 数据图解 · 财经向视频</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">06</span>
+          <div>
+            <p class="cluster">国产大模型 · 高优先级</p>
+            <h2>Kimi 估值暴涨背后：国产大模型的融资逻辑变了</h2>
+          </div>
+        </div>
+        <p class="angle">围绕 Kimi 融资、国资央企入局、Kimi K2.5/2.6 与 Cursor 生态连接，讲国产模型从“产品用户增长”进入“战略基础设施”叙事。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>创业者、投资人、国内 AI 从业者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>区分普通融资新闻和产业信号：谁在买单，为什么买单，模型公司的商业出口在哪里。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>Kimi 这轮融资，重点不是钱多</li><li>国产大模型为什么开始被当成基础设施</li><li>Cursor 背后的 Kimi 叙事</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.ithome.com/0/952/336.htm" target="_blank" rel="noreferrer">Kimi最新融资获国资与央企加注，估值半年翻四倍</a><span>IT之家（RSS） · 05/19 15:39</span></li><li><a href="https://x.com/berryxia/status/2056549740393947627" target="_blank" rel="noreferrer">Cursor发布Composer 2.5模型，号称目前最强</a><span>X：Berry Xia (@berryxia) · 05/19 09:37</span></li><li><a href="https://x.com/dotey/status/2056432162635731438" target="_blank" rel="noreferrer">Cursor 发布 Composer 2.5 编程模型</a><span>X：宝玉 (@dotey) · 05/19 01:50</span></li></ul>
+        </section>
+        <p class="formats">商业分析 · 热点快评 · 产业图谱</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">07</span>
+          <div>
+            <p class="cluster">国产大模型 · 中优先级</p>
+            <h2>Qwen 3.7 预览、SenseNova-U1、Hy3：国产模型又到密集发布期</h2>
+          </div>
+        </div>
+        <p class="angle">用一周内多个国产模型条目说明竞争焦点从纯文本扩展到视觉、多模态、开源生态和代理能力。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>模型爱好者、开发者、AI 博主受众</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>可以做成“本周国产模型雷达”，适合持续栏目化。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>这一周，国产模型又开始刷屏</li><li>别只看参数，国产模型在卷什么</li><li>Qwen、商汤、混元这一轮信号</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/SenseTime_AI/status/2055315819165597702" target="_blank" rel="noreferrer">SenseNova发布增强版信息图表生成模型SenseNova-U1-8B-MoT-Infographic</a><span>X：商汤 SenseTime (@SenseTime_AI) · 05/15 23:54</span></li><li><a href="https://x.com/SenseTime_AI/status/2054876860711149780" target="_blank" rel="noreferrer">SenseNova U1技术报告发布，基于MoE架构开放模型权重</a><span>X：商汤 SenseTime (@SenseTime_AI) · 05/14 18:49</span></li><li><a href="https://x.com/SenseTime_AI/status/2054446490420924558" target="_blank" rel="noreferrer">SenseNova-U1 技术报告深度发布：前沿原生多模态模型构建全指南</a><span>X：商汤 SenseTime (@SenseTime_AI) · 05/13 14:19</span></li></ul>
+        </section>
+        <p class="formats">周更栏目 · 模型雷达 · 信息图</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">08</span>
+          <div>
+            <p class="cluster">商业应用 · 高优先级</p>
+            <h2>Claude for Small Business：小公司也能买到 AI 员工了吗</h2>
+          </div>
+        </div>
+        <p class="angle">解读 Claude 面向小企业的连接器和自动化工作流，重点讲财务、销售、运营重复任务如何被 AI 接管。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>小企业主、服务商、自动化顾问</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合转成面向老板的内容：不用讲模型，用场景讲 ROI。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 员工第一次像小企业套餐了</li><li>小公司用 AI，先别训练模型</li><li>Claude 想抢的是老板的后台工作</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.anthropic.com/news/claude-for-small-business" target="_blank" rel="noreferrer">Anthropic推出面向小型企业的Claude服务包</a><span>Anthropic：Newsroom（网页） · 05/13 00:00</span></li><li><a href="https://x.ai/news/grok-skills" target="_blank" rel="noreferrer">Grok平台技能功能上线</a><span>xAI：News（网页） · 05/18 08:00</span></li><li><a href="https://x.com/kimmonismus/status/2055952702908355012" target="_blank" rel="noreferrer">微软AI CEO预测18个月内AI自动化所有白领工作</a><span>X：Kim (@kimmonismus) · 05/17 18:04</span></li></ul>
+        </section>
+        <p class="formats">老板向短视频 · SaaS 选题 · 场景清单</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">09</span>
+          <div>
+            <p class="cluster">开发者生态 · 高优先级</p>
+            <h2>MCP 生态为何突然重要：从工具协议到开发者护城河</h2>
+          </div>
+        </div>
+        <p class="angle">把 Anthropic 收购 Stainless、MCP 隧道、MCP 服务器生成工具串起来，解释模型要变成代理，必须先把外部工具标准化。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>开发者、API 平台、工具创业者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成技术商业交叉内容，解释协议为什么会带来生态锁定。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>MCP 不只是一个技术协议</li><li>Anthropic 收购 Stainless 的真实信号</li><li>未来 API 文档可能直接变成智能体工具</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.anthropic.com/news/anthropic-acquires-stainless" target="_blank" rel="noreferrer">Anthropic收购SDK与MCP服务器工具开发商Stainless</a><span>Anthropic：Newsroom（网页） · 05/19 01:06</span></li><li><a href="https://x.com/AnthropicAI/status/2056419620643541012" target="_blank" rel="noreferrer">Anthropic收购SDK平台Stainless</a><span>X：Anthropic (@AnthropicAI) · 05/19 01:00</span></li><li><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noreferrer">Claude智能体托管平台新增自托管沙箱与MCP隧道功能</a><span>Claude：Blog（网页） · 05/19 17:09</span></li></ul>
+        </section>
+        <p class="formats">技术解读 · 生态分析 · 开发者向文章</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">10</span>
+          <div>
+            <p class="cluster">智能体可靠性 · 中优先级</p>
+            <h2>Statewright 的启示：智能体越强，越需要状态机约束</h2>
+          </div>
+        </div>
+        <p class="angle">用 Statewright 的可视化状态机说明，提升智能体可靠性不一定靠更大模型，也可以靠工作流约束、工具权限和阶段划分。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>Agent 开发者、产品经理、自动化工程师</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>给做 Agent 产品的人一个可执行框架：先定义状态，再开放工具。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>让智能体少犯错，可能不是换模型</li><li>AI Agent 的可靠性秘密：限制它</li><li>状态机正在回到 AI 产品设计中心</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://github.com/statewright/statewright" target="_blank" rel="noreferrer">展示 HN：Statewright--通过可视化状态机提升AI智能体可靠性</a><span>Hacker News：AI 热帖 · 05/12 22:24</span></li><li><a href="https://developers.googleblog.com/announcing-genkit-middleware-intercept-extend-and-harden-your-agentic-apps" target="_blank" rel="noreferrer">Genkit 推出中间件系统：增强智能体AI应用的可控性与可靠性</a><span>Google Developers Blog（RSS） · 05/14 00:00</span></li><li><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noreferrer">Claude智能体托管平台新增自托管沙箱与MCP隧道功能</a><span>Claude：Blog（网页） · 05/19 17:09</span></li></ul>
+        </section>
+        <p class="formats">技术教程 · 产品方法论 · 架构拆解</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">11</span>
+          <div>
+            <p class="cluster">AI 评测 · 高优先级</p>
+            <h2>AgentLens：AI 写代码通过测试，也可能只是运气好</h2>
+          </div>
+        </div>
+        <p class="angle">解释“幸运通过”问题：只看最终测试通过会掩盖回归循环、盲目重试和低质量路径。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>工程团队、模型评测关注者、技术博主</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成评测科普，提醒团队别只用 pass rate 判断 AI 编程能力。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 代码通过测试，也可能不靠谱</li><li>SWE-bench 分数背后藏着一个坑</li><li>评测 AI 编程，不能只看最后答案</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://arxiv.org/abs/2605.12925" target="_blank" rel="noreferrer">AgentLens：揭示软件工程智能体评估中的&quot;幸运通过&quot;问题</a><span>HuggingFace Daily Papers（社区热门论文） · 05/13 08:00</span></li><li><a href="https://x.com/TencentHunyuan/status/2056567125205270882" target="_blank" rel="noreferrer">开源古代汉字视觉感知评估基准Chronicles-OCR</a><span>X：腾讯混元 (@TencentHunyuan) · 05/19 10:46</span></li><li><a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noreferrer">The Open Agent Leaderboard（开放智能体排行榜）</a><span>Hugging Face：Blog（RSS） · 05/18 22:12</span></li></ul>
+        </section>
+        <p class="formats">论文解读 · 工程管理内容 · 评测方法论</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">12</span>
+          <div>
+            <p class="cluster">RAG · 中优先级</p>
+            <h2>PyRAG：为什么“检索廉价，代码为王”是 RAG 的新方向</h2>
+          </div>
+        </div>
+        <p class="angle">用 PyRAG 讲多跳推理为什么要显式程序化：中间变量、执行反馈、自我修复比黑箱链式思考更可控。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>RAG 开发者、知识库产品、AI 应用创业者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>帮助应用开发者升级 RAG 方案，从“向量库 + prompt”进入可执行推理流程。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>RAG 下一步，不是再换一个向量库</li><li>多跳推理为什么应该写成代码</li><li>检索便宜了，真正贵的是推理结构</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://arxiv.org/abs/2605.12975" target="_blank" rel="noreferrer">检索廉价，代码为王：基于可执行程序的多跳推理检索增强生成</a><span>HuggingFace Daily Papers（社区热门论文） · 05/13 08:00</span></li><li><a href="https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start" target="_blank" rel="noreferrer">在大型代码库中高效运用Claude Code：最佳实践与入门指南</a><span>Claude：Blog（网页） · 05/14 00:00</span></li><li><a href="https://www.ithome.com/0/952/354.htm" target="_blank" rel="noreferrer">地平线开源 HoloMotion-1 4 亿参数机器人小脑大模型，可实现舞蹈、健身、搬箱子等动作</a><span>IT之家（RSS） · 05/19 16:08</span></li></ul>
+        </section>
+        <p class="formats">技术科普 · 方案拆解 · 开发者长文</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">13</span>
+          <div>
+            <p class="cluster">AI 安全 · 高优先级</p>
+            <h2>ExploitGym：AI 安全风险从“会聊天”变成“会动手”</h2>
+          </div>
+        </div>
+        <p class="angle">用真实漏洞利用基准解释：前沿模型已经能把漏洞描述转成攻击程序，安全讨论必须从内容安全扩展到行动能力。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>安全从业者、企业管理者、AI 政策关注者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成严肃科普，避免夸张恐慌，但讲清楚双重用途风险。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 安全最该关注的，可能不是幻觉</li><li>当 AI 能写漏洞利用程序，企业该怎么办</li><li>ExploitGym 给安全行业敲了什么警钟</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://rdi.berkeley.edu/blog/exploitgym" target="_blank" rel="noreferrer">ExploitGym：AI智能体能否将安全漏洞转化为真实攻击？</a><span>Berkeley RDI：Blog（AI 安全与评测） · 05/13 00:00</span></li><li><a href="https://x.com/kimmonismus/status/2055571960260645125" target="_blank" rel="noreferrer">研究人员利用Anthropic Mythos工具构建macOS内核漏洞，绕过苹果M5芯片内存完整性执行安全系统</a><span>X：Kim (@kimmonismus) · 05/16 16:52</span></li><li><a href="https://www.anthropic.com/news/anthropic-kpmg" target="_blank" rel="noreferrer">毕马威与Anthropic建立全球联盟，全面整合Claude AI模型</a><span>Anthropic：Newsroom（网页） · 05/19 20:57</span></li></ul>
+        </section>
+        <p class="formats">安全科普 · 企业风险清单 · 政策分析</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">14</span>
+          <div>
+            <p class="cluster">具身智能 · 高优先级</p>
+            <h2>机器人 AI 一周内三条信号：Atlas、HoloMotion、Cosmos</h2>
+          </div>
+        </div>
+        <p class="angle">把现代汽车部署 Atlas、地平线 HoloMotion-1、NVIDIA Cosmos 微调放在一起，讲具身智能正在从演示走向规模化训练和部署。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>机器人关注者、硬科技投资人、AI 科普读者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合用“机器人真正缺什么”作为主线：控制、数据、仿真视频、端侧推理和真实场景。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>人形机器人这周出现了三个关键信号</li><li>机器人不是缺大脑，而是缺小脑</li><li>从视频生成到真实动作，具身智能在补哪块拼图</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.ithome.com/0/952/459.htm" target="_blank" rel="noreferrer">现代汽车集团计划部署 2.5 万台波士顿动力 Atlas 人形机器人</a><span>IT之家（RSS） · 05/19 18:50</span></li><li><a href="https://www.ithome.com/0/952/354.htm" target="_blank" rel="noreferrer">地平线开源 HoloMotion-1 4 亿参数机器人小脑大模型，可实现舞蹈、健身、搬箱子等动作</a><span>IT之家（RSS） · 05/19 16:08</span></li><li><a href="https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation" target="_blank" rel="noreferrer">NVIDIA 通过 LoRA/DoRA 微调 Cosmos Predict 2.5 实现机器人视频生成</a><span>Hugging Face：Blog（RSS） · 05/19 00:00</span></li></ul>
+        </section>
+        <p class="formats">硬科技解读 · 行业周报 · 科普视频</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">15</span>
+          <div>
+            <p class="cluster">AI 医疗 · 中优先级</p>
+            <h2>AI 医疗的长期主义：从 AlphaFold 到 Isomorphic Labs</h2>
+          </div>
+        </div>
+        <p class="angle">围绕 Demis Hassabis 对 AI 改善人类健康的表达和 Isomorphic Labs 新融资，讲 AI 医疗不是一个应用，而是一条长期产业链。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>医疗科技关注者、投资人、普通科普受众</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成非热点型 evergreen 内容，解释药物发现为什么是 AI 最重要的应用之一。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 最重要的应用，可能不在聊天框里</li><li>AlphaFold 之后，AI 医疗下一站是什么</li><li>21 亿美元押注的不是一个模型</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/demishassabis/status/2054197462101889277" target="_blank" rel="noreferrer">人工智能首要应用应是改善人类健康</a><span>X：Demis Hassabis (@demishassabis) · 05/12 21:50</span></li><li><a href="https://www.anthropic.com/news/gates-foundation-partnership" target="_blank" rel="noreferrer">Anthropic与盖茨基金会达成2亿美元合作，聚焦全球健康与教育</a><span>Anthropic：Newsroom（网页） · 05/14 23:29</span></li><li><a href="https://x.com/Baidu_Inc/status/2054400181903524133" target="_blank" rel="noreferrer">智能体时代新指标：日活跃智能体数</a><span>X：百度 Baidu (@Baidu_Inc) · 05/13 11:15</span></li></ul>
+        </section>
+        <p class="formats">科普长文 · 财经视频 · 人物线索</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">16</span>
+          <div>
+            <p class="cluster">交互设计 · 中优先级</p>
+            <h2>AI 鼠标指针：下一代人机交互可能从光标开始</h2>
+          </div>
+        </div>
+        <p class="angle">用 Google AI Studio 的鼠标指针实验讲：AI 不一定以聊天窗口出现，也可能嵌入传统界面控件。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>产品经理、设计师、交互研究者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>帮助产品人打开思路：未来 AI 功能不是“加个聊天框”，而是重塑已有交互对象。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 产品别再只做聊天框了</li><li>谷歌为什么要重新发明鼠标指针</li><li>下一个 AI 入口可能是光标</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/demishassabis/status/2054326444189253655" target="_blank" rel="noreferrer">谷歌AI重塑智能鼠标指针交互</a><span>X：Demis Hassabis (@demishassabis) · 05/13 06:22</span></li><li><a href="https://x.com/testingcatalog/status/2056707725740953606" target="_blank" rel="noreferrer">谷歌I/O大会发布Gemini 3.5 Flash</a><span>X：Testing Catalog (@testingcatalog) · 05/19 20:05</span></li><li><a href="https://x.com/AYi_AInotes/status/2056685348156055980" target="_blank" rel="noreferrer">我真的要吹爆HTML！</a><span>X：阿易 AI Notes (@AYi_AInotes) · 05/19 18:36</span></li></ul>
+        </section>
+        <p class="formats">产品分析 · 交互设计文章 · 短视频</p>
+      </article>
+<article class="card priority-high">
+        <div class="card-head">
+          <span class="num">17</span>
+          <div>
+            <p class="cluster">AI 成本 · 高优先级</p>
+            <h2>Token 浪费、提示缓存和本地模型：AI 使用成本开始精细化</h2>
+          </div>
+        </div>
+        <p class="angle">结合 token 浪费、提示缓存诊断、oMLX 本地能力提升，讲 AI 成本优化从“少用”变成“上下文治理 + 模型路由”。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>重度 AI 用户、团队负责人、开发者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>非常适合实用教程：如何省钱、提速、减少重复上下文。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>90% 的 AI 编程账单可能花错了</li><li>AI 时代最贵的不是模型，是上下文</li><li>会管理 token 的人，会比会写 prompt 的人更省钱</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.ithome.com/0/950/415.htm" target="_blank" rel="noreferrer">&quot;让 Token 消耗降低 61%&quot;：腾讯开源 Agent Memory</a><span>IT之家（RSS） · 05/14 15:12</span></li><li><a href="https://x.com/berryxia/status/2054339265103065156" target="_blank" rel="noreferrer">90%的人在白白浪费&quot;Token&quot;！</a><span>X：Berry Xia (@berryxia) · 05/13 07:13</span></li><li><a href="https://x.com/berryxia/status/2054749585520890314" target="_blank" rel="noreferrer">UnslothAI发布Qwen3.6 MTP GGUF模型，实现推理速度大幅提升</a><span>X：Berry Xia (@berryxia) · 05/14 10:24</span></li></ul>
+        </section>
+        <p class="formats">教程 · 清单 · 工具评测</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">18</span>
+          <div>
+            <p class="cluster">治理与社会 · 中优先级</p>
+            <h2>AI 治理进入主流叙事：诉讼、宗教伦理和供应链安全同周出现</h2>
+          </div>
+        </div>
+        <p class="angle">从马斯克诉讼败诉、AI 通谕、OpenAI 供应链攻击响应串起，讲 AI 行业的关注点正在从“谁领先”扩展到“谁负责”。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>科技评论读者、政策关注者、泛 AI 用户</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成观点稿，避免技术细节，强调 AI 进入社会基础设施后的治理复杂度。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 行业这一周，不只有模型发布</li><li>当 AI 变成社会议题，科技公司要回答什么</li><li>AI 的下一场竞争：责任和信任</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai" target="_blank" rel="noreferrer">埃隆·马斯克对山姆·阿尔特曼和OpenAI提起的诉讼败诉</a><span>Hacker News 热门（buzzing.cc 中文翻译） · 05/19 02:14</span></li><li><a href="https://www.vaticannews.va/en/pope/news/2026-05/pope-leo-xiv-first-encyclical-magnifica-humanitas.html" target="_blank" rel="noreferrer">Anthropic联合创始人将与教皇利奥十四世共同发布人工智能通谕</a><span>Hacker News 热门（buzzing.cc 中文翻译） · 05/19 10:13</span></li><li><a href="https://x.com/AYi_AInotes/status/2054856518185439662" target="_blank" rel="noreferrer">OpenAI遭集体诉讼，被指通过追踪代码向Meta等泄露用户查询隐私</a><span>X：阿易 AI Notes (@AYi_AInotes) · 05/14 17:29</span></li></ul>
+        </section>
+        <p class="formats">评论 · 播客 · 长图文</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">19</span>
+          <div>
+            <p class="cluster">AI 工作流 · 中优先级</p>
+            <h2>从 HTML 到单文件交付：AI 时代内容和工具的最小可交付物</h2>
+          </div>
+        </div>
+        <p class="angle">用“2 分钟生成交互式 HTML 项目计划页”的案例讲，HTML 正变成 AI 交付高保真结果的轻量容器。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>知识工作者、独立开发者、内容创作者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合马上转教程：如何写提示词，让 AI 生成可直接打开的单文件工具或报告。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 时代，HTML 又香了</li><li>别再只让 AI 写 Markdown 了</li><li>一个文件交付完整交互页面，为什么重要</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/AYi_AInotes/status/2056685348156055980" target="_blank" rel="noreferrer">我真的要吹爆HTML！</a><span>X：阿易 AI Notes (@AYi_AInotes) · 05/19 18:36</span></li><li><a href="https://www.vaticannews.va/en/pope/news/2026-05/pope-leo-xiv-first-encyclical-magnifica-humanitas.html" target="_blank" rel="noreferrer">Anthropic联合创始人将与教皇利奥十四世共同发布人工智能通谕</a><span>Hacker News 热门（buzzing.cc 中文翻译） · 05/19 10:13</span></li><li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.144" target="_blank" rel="noreferrer">Claude AI助手v2.1.144版本更新</a><span>Claude Code：GitHub Releases（RSS） · 05/19 08:48</span></li></ul>
+        </section>
+        <p class="formats">实操教程 · 模板分享 · 短视频</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">20</span>
+          <div>
+            <p class="cluster">商业应用 · 中优先级</p>
+            <h2>AI 财务和老板后台：Codex、Claude、小企业自动化能做什么</h2>
+          </div>
+        </div>
+        <p class="angle">把 Codex 财务团队案例和 Claude 小企业服务包结合，讲 AI 自动化不是替代 CFO，而是自动生成报告、差异分析、月末流程。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>老板、财务团队、管理咨询从业者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>能转成“老板看得懂”的业务流程清单。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>财务团队怎么用 AI，别只让它写邮件</li><li>AI 最容易落地的地方，可能是老板后台</li><li>小企业 AI 自动化的 10 个入口</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.anthropic.com/news/claude-for-small-business" target="_blank" rel="noreferrer">Anthropic推出面向小型企业的Claude服务包</a><span>Anthropic：Newsroom（网页） · 05/13 00:00</span></li><li><a href="https://openai.com/academy/how-finance-teams-use-codex" target="_blank" rel="noreferrer">财务团队如何使用 Codex</a><span>OpenAI：官网动态（RSS · 排除企业/客户案例） · 05/12 23:00</span></li><li><a href="https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex" target="_blank" rel="noreferrer">数据科学团队如何使用 Codex</a><span>OpenAI：官网动态（RSS · 排除企业/客户案例） · 05/15 08:00</span></li></ul>
+        </section>
+        <p class="formats">业务清单 · 案例分析 · 咨询型内容</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">21</span>
+          <div>
+            <p class="cluster">开源生态 · 中优先级</p>
+            <h2>开放模型生态的复利：为什么中国 AI 社区会越滚越快</h2>
+          </div>
+        </div>
+        <p class="angle">用开放模型生态复合增长的观点，结合 Qwen、Kimi、DeepSeek、GLM 等开发者使用场景，讲生态参与度如何反哺模型迭代。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>开源关注者、开发者、投资人</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做成宏观解释：开源不是公益，而是分发、反馈和标准形成机制。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>中国 AI 开源为什么越跑越快</li><li>开源模型的真正优势，不只是免费</li><li>模型生态的复利从哪里来</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.interconnects.ai/p/latest-open-artifacts-21-open-model" target="_blank" rel="noreferrer">最新开源成果（#21）：开源模型盛宴！Gemma 4、DeepSeek V4、Kimi K2.6、MiMo 2.5、GLM-5.1 等。基于CAISI的V4评估。</a><span>Nathan Lambert：Interconnects（RSS） · 05/17 01:00</span></li><li><a href="https://x.com/SiliconFlowAI/status/2054484427192050041" target="_blank" rel="noreferrer">在VS Code中集成多款AI模型开发</a><span>X：硅基流动 SiliconFlow (@SiliconFlowAI) · 05/13 16:50</span></li><li><a href="https://www.interconnects.ai/p/how-open-model-ecosystems-compound" target="_blank" rel="noreferrer">开放模型生态的复合增长</a><span>Nathan Lambert：Interconnects（RSS） · 05/12 23:54</span></li></ul>
+        </section>
+        <p class="formats">深度文章 · 产业分析 · 开发者播客</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">22</span>
+          <div>
+            <p class="cluster">多模态应用 · 中优先级</p>
+            <h2>视觉与文档 AI 继续下沉：PaddleOCR 3.5 和古文字 OCR 基准说明什么</h2>
+          </div>
+        </div>
+        <p class="angle">从 PaddleOCR Transformers 后端到 Chronicles-OCR，讲 OCR 不只是识别文字，而是进入文档解析、古籍数字化和多模态评估。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>文档 AI 开发者、企业知识库团队、OCR 用户</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合垂直行业内容：档案、合同、票据、古籍和知识库。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>OCR 还没过时，它正在被大模型重做</li><li>文档 AI 的下一步：从识别到理解</li><li>古文字 OCR 为什么值得关注</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/TencentHunyuan/status/2056567125205270882" target="_blank" rel="noreferrer">开源古代汉字视觉感知评估基准Chronicles-OCR</a><span>X：腾讯混元 (@TencentHunyuan) · 05/19 10:46</span></li><li><a href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers" target="_blank" rel="noreferrer">PaddleOCR 3.5：使用Transformers后端运行OCR和文档解析任务</a><span>Hugging Face：Blog（RSS） · 05/18 23:12</span></li><li><a href="https://x.com/shao__meng/status/2056535561540948056" target="_blank" rel="noreferrer">「开发日志」提示词：让AI编码决策可审计</a><span>X：邵猛 (@shao__meng) · 05/19 08:41</span></li></ul>
+        </section>
+        <p class="formats">行业解读 · 技术科普 · 案例清单</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">23</span>
+          <div>
+            <p class="cluster">营销 AI · 中优先级</p>
+            <h2>AI 视频广告的下一步：让模型自己优化创意表现</h2>
+          </div>
+        </div>
+        <p class="angle">用 Luma Agents、Runway Agent、Grok 视频生成说明，AI 视频不只负责生成素材，也开始参与测试、迭代和优化广告效果。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>品牌方、投手、广告创意团队</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合面向营销人讲：AI 创意系统的核心是反馈闭环。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 做广告，不只是生成视频</li><li>以后投放优化可能从改文案变成派 Agent</li><li>创意团队该如何和视频 Agent 协作</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/elonmusk/status/2056274129985085606" target="_blank" rel="noreferrer">Grok现已支持视频理解与分析</a><span>X：Elon Musk (@elonmusk, xAI) · 05/18 15:22</span></li><li><a href="https://x.com/runwayml/status/2055364605979869229" target="_blank" rel="noreferrer">Runway Agent一键生成完整广告</a><span>X：Runway (@runwayml) · 05/16 03:08</span></li><li><a href="https://x.com/cb_doge/status/2055280665583898691" target="_blank" rel="noreferrer">X平台开源&quot;For You&quot;信息流推荐算法</a><span>X：cb_doge (@cb_doge) · 05/15 21:34</span></li></ul>
+        </section>
+        <p class="formats">营销方法论 · 案例拆解 · 短视频</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">24</span>
+          <div>
+            <p class="cluster">世界模型 · 中优先级</p>
+            <h2>多智能体世界模型 Agora-1：游戏、仿真和机器人会被同一种技术连接吗</h2>
+          </div>
+        </div>
+        <p class="angle">以实时多 agent 世界模型为切入点，讲从生成视频到可互动模拟世界的变化。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>游戏开发者、机器人研究者、前沿 AI 爱好者</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>适合做前沿科普：为什么“能一起玩”的世界模型比单人视频生成更重要。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 生成视频之后，下一步是生成可玩的世界</li><li>Agora-1 为什么让游戏和机器人都兴奋</li><li>世界模型开始从观看走向互动</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://x.com/berryxia/status/2056548546544124240" target="_blank" rel="noreferrer">首个实时多agent世界模型发布，人类可与AI同屏互动</a><span>X：Berry Xia (@berryxia) · 05/19 09:32</span></li><li><a href="https://arxiv.org/abs/2605.17242" target="_blank" rel="noreferrer">从可运行到可交付：基于多智能体测试驱动的开发范式用于从需求生成全栈Web应用</a><span>HuggingFace Daily Papers（社区热门论文） · 05/17 08:00</span></li><li><a href="https://nvlabs.github.io/Sana/WM" target="_blank" rel="noreferrer">SANA-WM：一个用于生成1分钟720p视频的26亿级开源世界模型</a><span>Hacker News 热门（buzzing.cc 中文翻译） · 05/16 23:25</span></li></ul>
+        </section>
+        <p class="formats">前沿科普 · 游戏行业分析 · 视频解读</p>
+      </article>
+<article class="card priority-mid">
+        <div class="card-head">
+          <span class="num">25</span>
+          <div>
+            <p class="cluster">AI 商业模式 · 中优先级</p>
+            <h2>AI 产品定价开始重构：Copilot 新计划和 Claude Token 翻倍透露了什么</h2>
+          </div>
+        </div>
+        <p class="angle">结合 GitHub Copilot 个人计划调整、Claude Design token 翻倍、Copilot 使用率争议，讲 AI 产品正在寻找更细颗粒度的付费方式。</p>
+        <div class="grid">
+          <section>
+            <h3>适合受众</h3>
+            <p>SaaS 创业者、AI 付费用户、产品经理</p>
+          </section>
+          <section>
+            <h3>读者价值</h3>
+            <p>帮助产品人理解“按席位、按量、按任务、按高级模型”之间的博弈。</p>
+          </section>
+        </div>
+        <section>
+          <h3>标题钩子</h3>
+          <ul class="hooks"><li>AI 产品定价越来越不像传统 SaaS</li><li>Token 翻倍和新套餐背后，是一场留存战</li><li>为什么 Copilot 的付费使用率会被质疑</li></ul>
+        </section>
+        <section>
+          <h3>素材依据</h3>
+          <ul class="evidence"><li><a href="https://www.ithome.com/0/952/463.htm" target="_blank" rel="noreferrer">前高管称微软 AI 布局失利，Copilot 付费使用率不足 3%</a><span>IT之家（RSS） · 05/19 19:35</span></li><li><a href="https://x.com/berryxia/status/2056525311635026398" target="_blank" rel="noreferrer">Claude Design大升级：Token限制翻倍</a><span>X：Berry Xia (@berryxia) · 05/19 08:00</span></li><li><a href="https://x.com/claudeai/status/2056460045756309820" target="_blank" rel="noreferrer">Claude Design 全面升级创作能力</a><span>X：Claude (@claudeai) · 05/19 03:40</span></li></ul>
+        </section>
+        <p class="formats">商业分析 · 产品定价拆解 · 快评</p>
+      </article>
+  </main>
+</body>
+</html>
