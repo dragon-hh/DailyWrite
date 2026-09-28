@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "newFiles": 11,
+  "episodeFiles": 33,
+  "freshExportRowsVerified": 10,
+  "exactPublishedBodiesVerified": 11,
+  "summaryLinksVerified": 33,
+  "indexAndPublicationPathsAligned": true,
+  "protectedFilesUnchanged": 69,
+  "backupTransaction": "committed"
+}

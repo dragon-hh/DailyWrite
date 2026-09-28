@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "publicRowsVerified": 30,
+  "legacyMetricFilesVerified": 22,
+  "historicalSnapshotsPreserved": 2,
+  "legacyBodiesPreserved": 22,
+  "summaryTotals": {
+    "播放量": 4066947,
+    "点赞量": 115833,
+    "收藏量": 124056,
+    "分享量": 23132,
+    "评论量": 5447,
+    "粉丝增量": 13595
+  },
+  "transactionBackupVerified": true,
+  "indexRowsUnchanged": true
+}
