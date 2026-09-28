@@ -108,3 +108,115 @@
 - 写前备份与请求收据：`E:/projects/knowledgeProjects/DailyWrite-历史过程稿备份/2026-09-17/codex口播稿-v2写前备份/`。
 
 - 2026-09-27T13:27:13.097Z 工作台 analytics-import；content_id: 无；request_id: manual-import-20260927-a011dada0081425f9a7b84424bd734af；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:02.116Z 工作台 publish；content_id: DW-20260917-CODEX-WORKFLOW-01；request_id: bulk-publish-20260927-2a089ff08e7c49a7a32d76df8be64862；关联文件: 01-内容生产/01-脚本创作中/9.17 codex高级使用技巧-claude-v1-口播稿.md。
+
+- 2026-09-27T15:27:02.295Z 工作台 publish；content_id: DW-20260815-DEEPSEEK-HARNESS-01；request_id: bulk-publish-20260927-48c6d8c158254677b39d84b7fb995b45；关联文件: 01-内容生产/01-脚本创作中/8.15 deepseek harness发布-claude v3.md。
+
+- 2026-09-27T15:27:02.455Z 工作台 publish；content_id: DW-20260715-AI-DEV-SKILL-WORKFLOW-01；request_id: bulk-publish-20260927-189f5289f89b48159135c30bb3caa246；关联文件: 01-内容生产/01-脚本创作中/7.15 硅谷顶级工程师的最新AI开发工作流 -claude-v2.md。
+
+- 2026-09-27T15:27:02.607Z 工作台 publish；content_id: DW-20260620-AI-CREATOR-TRACKER-01；request_id: bulk-publish-20260927-62ac964e85ca4a7d8fcdb279d9f41a3f；关联文件: 01-内容生产/01-脚本创作中/6.20 爬取ai博主视频，并存放多维表格-claude-v1 1.md。
+
+- 2026-09-27T15:27:02.771Z 工作台 publish；content_id: DW-20260605-CC-WORKFLOW-01；request_id: bulk-publish-20260927-e2020e0f6a67402f83e4cf481b3ce0c8；关联文件: 01-内容生产/01-脚本创作中/5.30 claudecode workflow v4 口播稿.md。
+
+- 2026-09-27T15:27:16.674Z 工作台 register；content_id: DW-20260927-63692E72AA32；request_id: bulk-publish-20260927-059226cc08d844328be38924a16fd57e；关联文件: 01-内容生产/01-脚本创作中/7.4 豆包办公任务推广 1.md。
+
+- 2026-09-27T15:27:16.846Z 工作台 publish；content_id: DW-20260927-63692E72AA32；request_id: bulk-publish-20260927-2783e65bac824c64baa27bc9a9b93525；关联文件: 01-内容生产/01-脚本创作中/7.4 豆包办公任务推广 1.md。
+
+- 2026-09-27T15:27:17.010Z 工作台 register；content_id: DW-20260927-34A87258B328；request_id: bulk-publish-20260927-9696509eff624e6a9eac4a3b15210d56；关联文件: 01-内容生产/01-脚本创作中/6.19 ai日报-claude v1 1.md。
+
+- 2026-09-27T15:27:17.148Z 工作台 publish；content_id: DW-20260927-34A87258B328；request_id: bulk-publish-20260927-1ae2db0c45184fe79043d51e379f26e9；关联文件: 01-内容生产/01-脚本创作中/6.19 ai日报-claude v1 1.md。
+
+- 2026-09-27T15:27:17.304Z 工作台 register；content_id: DW-20260927-5E64ADE79FD5；request_id: bulk-publish-20260927-2fc854c45e914da4b2a459cece4508f4；关联文件: 01-内容生产/01-脚本创作中/5.20 微信聊天数据沉淀 -claude v4 口播稿.md。
+
+- 2026-09-27T15:27:17.450Z 工作台 publish；content_id: DW-20260927-5E64ADE79FD5；request_id: bulk-publish-20260927-95c3f590a7614939acc587dd2a85a66d；关联文件: 01-内容生产/01-脚本创作中/5.20 微信聊天数据沉淀 -claude v4 口播稿.md。
+
+- 2026-09-27T15:27:32.864Z 工作台 platform-link；content_id: DW-20260917-CODEX-WORKFLOW-01；request_id: bulk-link-20260927-56042b519e7f4572be50a783884c514c；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.017Z 工作台 platform-link；content_id: DW-20260815-DEEPSEEK-HARNESS-01；request_id: bulk-link-20260927-c7fbe9f44d71455e9fe7591ba908b057；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.143Z 工作台 platform-link；content_id: DW-20260715-AI-DEV-SKILL-WORKFLOW-01；request_id: bulk-link-20260927-4043341fbbca4f45bd09e3f3a9082809；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.277Z 工作台 platform-link；content_id: DW-20260927-63692E72AA32；request_id: bulk-link-20260927-a840e0efac224f7191947f0a1b0663d9；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.414Z 工作台 platform-link；content_id: DW-20260620-AI-CREATOR-TRACKER-01；request_id: bulk-link-20260927-f424982c058548399d348702e2fe0441；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.553Z 工作台 platform-link；content_id: DW-20260620-AI-CREATOR-TRACKER-01；request_id: bulk-link-20260927-7472bad69d524757b7d23a0c5d52db9f；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.687Z 工作台 platform-link；content_id: DW-20260927-34A87258B328；request_id: bulk-link-20260927-4c418a611099499dbf459ef061a590db；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:33.827Z 工作台 platform-link；content_id: DW-20260605-CC-WORKFLOW-01；request_id: bulk-link-20260927-970f562ce9894276815bc27d91c39a7f；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:27:34.038Z 工作台 platform-link；content_id: DW-20260927-5E64ADE79FD5；request_id: bulk-link-20260927-16379e5674d24d1cad7cc96e7046a1f7；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:16.247Z 工作台 register；content_id: DW-20260927-13FCB3D74AE1；request_id: codex-register-image-comparison-f26a551f057b442481c6251cfa310c9e；关联文件: 01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude-v2.md。
+
+- 2026-09-27T15:31:16.412Z 工作台 publish；content_id: DW-20260927-13FCB3D74AE1；request_id: codex-publish-image-comparison-bea224e1da3346b5b22b08b8928a2f29；关联文件: 01-内容生产/01-脚本创作中/9.15 豆包生图和gpt生图对比-claude-v2.md。
+
+- 2026-09-27T15:31:16.575Z 工作台 register；content_id: DW-20260927-5AE65027300B；request_id: codex-register-ai-ppt-7b604565a0f54494ac9f54ffff5067c9；关联文件: 01-内容生产/01-脚本创作中/2.11 ai ppt神器 Gemini-发布稿.md。
+
+- 2026-09-27T15:31:16.726Z 工作台 publish；content_id: DW-20260927-5AE65027300B；request_id: codex-publish-ai-ppt-c84fb91f34324d3cabfd2484fff38a38；关联文件: 01-内容生产/01-脚本创作中/2.11 ai ppt神器 Gemini-发布稿.md。
+
+- 2026-09-27T15:31:55.642Z 工作台 platform-link；content_id: DW-20260503-CODEX-PET；request_id: codex-platform-link-7635692430432033673-358435f3bd7f47b4b1164f9616858273；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:55.797Z 工作台 platform-link；content_id: DW-20260429-MIMO-MULTIMODAL；request_id: codex-platform-link-7634182951772753190-b8a548efe2f046eeafd6fe9e89d0af50；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:55.953Z 工作台 platform-link；content_id: DW-20260428-CLAUDE-DESKTOP-CN；request_id: codex-platform-link-7633474967338718638-c39be15cedad4bcabbd891d3edfb53f5；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.102Z 工作台 platform-link；content_id: DW-20260422-CLAUDECODE-COMMANDS；request_id: codex-platform-link-7631568120880599731-bf3f7697a2124759baf6ec04d184f018；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.242Z 工作台 platform-link；content_id: DW-20260420-GEMMA-CLAUDECODE；request_id: codex-platform-link-7630698435666038051-a8754f3b3af94705accfa4d277469415；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.381Z 工作台 platform-link；content_id: DW-20260412-VIDEO-TO-NOTES-SKILL；request_id: codex-platform-link-7627850088028109222-891bb19abb93413b94f200cad65ab5bb；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.524Z 工作台 platform-link；content_id: DW-20260410-WECHAT-CHAT-ANALYSIS；request_id: codex-platform-link-7627107053455485542-fdb9bcdaeb55468a89a544021b3affb3；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.663Z 工作台 platform-link；content_id: DW-20260331-GSTACK；request_id: codex-platform-link-7623331041310182656-552a290e60c547ba9da7aa11251990ac；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:56.868Z 工作台 platform-link；content_id: DW-20260326-OPENCLAW-CLAUDECODE-ACP；request_id: codex-platform-link-7621438252230151466-70888b7e355246ecb4064c9c35169bc9；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.094Z 工作台 platform-link；content_id: DW-20260318-OPENCLAW-AGENT-TEAM；request_id: codex-platform-link-7618582013578120463-61f0bcdba3d24bc489d6dd8bf0ef2de8；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.296Z 工作台 platform-link；content_id: DW-20260316-OPENCLAW-MINIMAX；request_id: codex-platform-link-7617834153031093531-182de32c6e584d0481abcf949a2c2f2f；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.436Z 工作台 platform-link；content_id: DW-20260312-OPENCLAW-BUGS；request_id: codex-platform-link-7616037367098412294-fccb90174748451b869d326f29d759e0；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.566Z 工作台 platform-link；content_id: DW-20260307-OPENCLAW-SKILLS；request_id: codex-platform-link-7614496760291020067-8885cbe6942c4c53b94de79a8e02851c；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.706Z 工作台 platform-link；content_id: DW-20260927-5AE65027300B；request_id: codex-platform-link-7605605168641592639-426f3cf409cb47da84533fd2aac25527；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:57.867Z 工作台 platform-link；content_id: DW-20260208-VIBE-CODING；request_id: codex-platform-link-7604485515164880163-f91c345d2bf246f2826e67e8dd918a50；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.015Z 工作台 platform-link；content_id: DW-20260207-AGENT-SKILLS-INSTALL；request_id: codex-platform-link-7604090738770529546-40cbd12c1b534056a776301453c05cb3；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.152Z 工作台 platform-link；content_id: DW-20260205-CLAUDECODE-VSCODE；request_id: codex-platform-link-7603380758333508904-9d2faa4e4832408092497803a9204baf；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.305Z 工作台 platform-link；content_id: DW-20260204-CLAUDECODE-AGENT-TEAM；request_id: codex-platform-link-7602978535447285032-04717ef720d34569a9c0700ef752e167；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.433Z 工作台 platform-link；content_id: DW-20260128-REMOTION-CODE-VIDEO；request_id: codex-platform-link-7600394302530800923-da3b9e8090db45709f87c6118ad37f61；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.579Z 工作台 platform-link；content_id: DW-20260122-AI-CHAT-NAVIGATION；request_id: codex-platform-link-7598195002128207104-1336beeebab6433b84abee8960da321d；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T15:31:58.718Z 工作台 platform-link；content_id: DW-20260117-MANUS-DANKOE；request_id: codex-platform-link-7596327998182264105-7fc3886035ae4a649dfe54bf73a85d71；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T16:29:43.842Z 工作台 analytics-import；content_id: 无；request_id: ca7dd338-a014-4540-87fe-2b5a8c755c39；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T16:29:45.085Z 工作台 analytics-import；content_id: 无；request_id: 9fbb7736-119f-4ef5-ba1d-af6336fc3c7d；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T16:59:55.726Z 工作台 correct-published-body；content_id: DW-20260927-34A87258B328；request_id: correct-ai-daily-20260928-v1；关联文件: 01-内容生产/01-脚本创作中/6.19 ai日报-claude v1 口播稿.md；原因: 用户确认 6.19 ai日报-claude v1 口播稿.md 是实际发布正文；原入库文件仅为配套建议。
+
+- 2026-09-27T16:59:55.748Z 工作台 withdraw-incorrect-publication；content_id: DW-20260927-63692E72AA32；request_id: withdraw-doubao-20260928-v1；关联文件: 03-已发布归档/已发布成品/DW-20260927-63692E72AA32.md；原因: 用户确认豆包办公任务没有发布；此前把平台导出记录和残缺 Markdown 误登记为该作品。
+
+- 2026-09-27T17:13:21.343Z 工作台 register；content_id: DW-20260927-C49B7E6A2AFE；request_id: register-doubao-creative-20260928-v1；关联文件: 01-内容生产/01-脚本创作中/6.28 豆包使用分享 -创意视频 -v4-口播稿.md。
+
+- 2026-09-27T17:13:21.518Z 工作台 publish；content_id: DW-20260927-C49B7E6A2AFE；request_id: publish-doubao-creative-20260928-v1；关联文件: 01-内容生产/01-脚本创作中/6.28 豆包使用分享 -创意视频 -v4-口播稿.md。
+
+- 2026-09-27T17:13:21.682Z 工作台 platform-link；content_id: DW-20260927-C49B7E6A2AFE；request_id: link-doubao-creative-20260928-v1；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T17:17:47.741Z 工作台 register；content_id: DW-20260927-A8082587F1DC；request_id: register-ai-creator-tracker-episode2-20260928-v1；关联文件: 01-内容生产/01-脚本创作中/6.22 爬取ai博主视频，并存放多维表格第二集 1-口播稿.md。
+
+- 2026-09-27T17:17:47.910Z 工作台 publish；content_id: DW-20260927-A8082587F1DC；request_id: publish-ai-creator-tracker-episode2-20260928-v1；关联文件: 01-内容生产/01-脚本创作中/6.22 爬取ai博主视频，并存放多维表格第二集 1-口播稿.md。
+
+- 2026-09-27T17:17:48.087Z 工作台 platform-link；content_id: DW-20260927-A8082587F1DC；request_id: relink-ai-creator-tracker-episode2-20260928-v1；关联文件: 见主索引交付元数据。
+
+- 2026-09-27T17:20:24.7611940Z 已发布视频版本归档：10 组、39 个非最终 Markdown 已移至外层冷备份；清单及逐文件原路径、目标路径、SHA256 见 E:/projects/knowledgeProjects/DailyWrite-历史过程稿备份/2026-09-28/已发布视频版本归档/manifest.json；最终发布稿保留原位，6.25 AI 博主追踪第二集已独立登记。
