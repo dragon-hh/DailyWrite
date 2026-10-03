@@ -220,3 +220,12 @@
 - 2026-09-27T17:17:48.087Z 工作台 platform-link；content_id: DW-20260927-A8082587F1DC；request_id: relink-ai-creator-tracker-episode2-20260928-v1；关联文件: 见主索引交付元数据。
 
 - 2026-09-27T17:20:24.7611940Z 已发布视频版本归档：10 组、39 个非最终 Markdown 已移至外层冷备份；清单及逐文件原路径、目标路径、SHA256 见 E:/projects/knowledgeProjects/DailyWrite-历史过程稿备份/2026-09-28/已发布视频版本归档/manifest.json；最终发布稿保留原位，6.25 AI 博主追踪第二集已独立登记。
+
+
+## 2026-10-03 retire | 停止小云雀 Seedance 2.5 内容计划
+
+- 原因：用户明确确认“现在不做它了”，要求移除小云雀这几个选题。
+- 动作：从当前生产索引移除 17 条小云雀拍摄执行包记录，清除状态看板当前视图及旧看板中的 34 处对应条目。
+- 范围：仅撤销这 17 条创作登记；保留此前维护日志和来源登记，不删除或重建稿件。
+- 移除的 content_id：DW-20260720-XYQ-REVIEW-01、DW-20260720-XYQ-AIVSREAL-01、DW-20260720-XYQ-LIVEFILM-01、DW-20260720-XYQ-3DWORKFLOW-01、DW-20260720-XYQ-GAMECG-01、DW-20260720-XYQ-LONGTAKE-01、DW-20260720-XYQ-AIACTOR-01、DW-20260720-XYQ-GLOBAL-01、DW-20260720-XYQ-BLOCKING-01、DW-20260720-XYQ-RESHOOT-01、DW-20260720-XYQ-STORYSELL-01、DW-20260720-XYQ-TVC-01、DW-20260720-XYQ-SALESREMAKE-01、DW-20260720-XYQ-DIGITALVLOG-01、DW-20260719-XYQ-POV-SCIENCE-01、DW-20260720-XYQ-UGCFX-01、DW-20260720-XYQ-DUOANIME-01。
+- request_id：retire-xyq-20261003-fbda862a-fa28-4c93-b433-fc63c96c6021。
